@@ -11,12 +11,12 @@ import (
 // Creator provides the means to create a document in DynamoDB without needing
 // to worry about marshalling or building the input
 type Creator struct {
-	client DynamoDBClient
+	client DynamoDB
 	table  string
 }
 
 // NewCreator returns a new Creator that can create documents in table
-func NewCreator(client DynamoDBClient, table string) *Creator {
+func NewCreator(client DynamoDB, table string) *Creator {
 	return &Creator{
 		client: client,
 		table:  table,

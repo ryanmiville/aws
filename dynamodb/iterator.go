@@ -158,7 +158,7 @@ type output struct {
 
 type getFunc func(ctx context.Context, input *input) (output, error)
 
-func getScan(client DynamoDBClient) getFunc {
+func getScan(client DynamoDB) getFunc {
 	return func(ctx context.Context, input *input) (output, error) {
 		in := &dyn.ScanInput{
 			ExpressionAttributeNames:  input.ExpressionAttributeNames,
@@ -180,7 +180,7 @@ func getScan(client DynamoDBClient) getFunc {
 	}
 }
 
-func getQuery(client DynamoDBClient) getFunc {
+func getQuery(client DynamoDB) getFunc {
 	return func(ctx context.Context, input *input) (output, error) {
 		in := &dyn.QueryInput{
 			ExpressionAttributeNames:  input.ExpressionAttributeNames,

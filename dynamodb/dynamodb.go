@@ -2,16 +2,17 @@ package dynamodb
 
 import (
 	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/request"
+	"github.com/aws/aws-sdk-go/aws/client"
 	dyn "github.com/aws/aws-sdk-go/service/dynamodb"
+	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbiface"
 )
 
-// DynamoDBClient is the interface that provides API calls to DynamoDB
-//go:generate counterfeiter . DynamoDBClient
-type DynamoDBClient interface {
-	ScanWithContext(ctx aws.Context, input *dyn.ScanInput, opts ...request.Option) (*dyn.ScanOutput, error)
-	PutItemWithContext(ctx aws.Context, input *dyn.PutItemInput, opts ...request.Option) (*dyn.PutItemOutput, error)
-	QueryWithContext(ctx aws.Context, input *dyn.QueryInput, opts ...request.Option) (*dyn.QueryOutput, error)
+// DynamoDB is the interface that provides API calls to DynamoDB
+//go:generate counterfeiter . DynamoDB
+type DynamoDB dynamodbiface.DynamoDBAPI
+
+func New(p client.ConfigProvider, cfgs ...*aws.Config) DynamoDB {
+	return dyn.New(p, cfgs...)
 }
 
 // UnmarshalFunc describes how to unmarshal an item from DynamoDB

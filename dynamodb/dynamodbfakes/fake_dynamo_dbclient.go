@@ -283,4 +283,4 @@ func (fake *FakeDynamoDBClient) recordInvocation(key string, args []interface{})
 	fake.invocations[key] = append(fake.invocations[key], args)
 }
 
-var _ dynamodb.DynamoDBClient = new(FakeDynamoDBClient)
+var _ dynamodb.DynamoDB = new(FakeDynamoDBClient)
