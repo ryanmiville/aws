@@ -28,7 +28,7 @@ func TestCreate(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			item := struct{ Field string }{"hello"}
 			table := "table"
-			client := &dynamodbfakes.FakeDynamoDBClient{}
+			client := &dynamodbfakes.FakeDynamoDB{}
 			client.PutItemWithContextReturns(nil, tc.clientErr)
 			creator := dynamodb.NewCreator(client, table)
 			err := creator.Create(context.Background(), item)
