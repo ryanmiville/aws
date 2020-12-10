@@ -19,7 +19,7 @@ type Iterator struct {
 	done       bool
 }
 
-func Scanner(client DynamoDB, table string) *Iterator {
+func Scan(client DynamoDB, table string) *Iterator {
 	s := fmt.Sprintf(`SELECT * FROM "%s"`, table)
 	return NewIter(client, s)
 }

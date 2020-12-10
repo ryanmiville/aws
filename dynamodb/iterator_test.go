@@ -31,7 +31,7 @@ func TestNext(t *testing.T) {
 	t.Run("paginates through all docs", func(t *testing.T) {
 		ctx := context.Background()
 		client := testClient(docs...)
-		iter := dynamodb.Scanner(client, "table")
+		iter := dynamodb.Scan(client, "table")
 		count := 0
 		for iter.Next(ctx) {
 			count++
@@ -44,7 +44,7 @@ func TestNext(t *testing.T) {
 	t.Run("stays false", func(t *testing.T) {
 		ctx := context.Background()
 		client := testClient()
-		iter := dynamodb.Scanner(client, "table")
+		iter := dynamodb.Scan(client, "table")
 		for iter.Next(ctx) {
 		}
 		assert.False(t, iter.Next(ctx))
@@ -65,7 +65,7 @@ func TestDocument(t *testing.T) {
 	}
 	ctx := context.Background()
 	client := testClient(docs...)
-	iter := dynamodb.Scanner(client, "table")
+	iter := dynamodb.Scan(client, "table")
 	var got []document
 	for iter.Next(ctx) {
 		var d document
@@ -79,7 +79,7 @@ func TestAPIError(t *testing.T) {
 	expected := errors.New("failed api call")
 	client := &dynamodbfakes.FakeDynamoDB{}
 	client.ExecuteStatementWithContextReturns(nil, expected)
-	iter := dynamodb.Scanner(client, "table")
+	iter := dynamodb.Scan(client, "table")
 	iter.Next(context.Background())
 	assert.True(t, errors.Is(iter.Err(), expected))
 }
