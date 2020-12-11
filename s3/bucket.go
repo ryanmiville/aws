@@ -67,13 +67,13 @@ func (w *writer) pipe(pr *io.PipeReader, upload func(r io.Reader) error) {
 		err := upload(pr)
 		if err != nil {
 			w.err = err
-			pr.CloseWithError(err)
+			_ = pr.CloseWithError(err)
 		}
 	}()
 }
 
 func (w *writer) Close() error {
-	w.w.Close()
+	_ = w.w.Close()
 	<-w.donec
 	return w.err
 }
