@@ -35,11 +35,24 @@ if scanner.Err() != nil {
 ## S3
 The `s3` package provides a `Bucket` abstraction to allow for easy reading and writing to a bucket.
 
-The `NewReader` method returns an `io.ReadCloser`. The reader MUST be closed.
+The `NewWriter` method returns an `io.WriteCloser`. The written bytes are sent when `Close()` is called.
 ```go
 sess := session.Must(session.NewSession())
 client := s3.New(sess)
-bucket := s3.NewBucket(client, "bucketName")
+bucket := s3.NewBucket(client, "people-bucket")
+
+w := bucket.NewWriter(ctx, "key/to/person.json")
+p := newPerson()
+if err := json.NewEncoder(w).Encode(&p); err != nil {
+    return err
+}
+// remember to close w
+if err := w.Close(); err {
+    return err
+}
+```
+Likewise, The `NewReader` method returns an `io.ReadCloser`. The reader must always be closed as well.
+```go
 r, err := bucket.NewReader(ctx, "key/to/person.json")
 if err != nil {
 	return err
@@ -51,17 +64,5 @@ if err := json.NewDecoder(r).Decode(&p); err != nil {
 // remember to close r
 if err := r.Close(); err {
 	return err
-}
-```
-Likewise, `NewWriter` returns an `io.WriteCloser`. The written bytes are sent when `Close()` is called.
-```go
-w := bucket.NewWriter(ctx, "key/to/person.json")
-p := newPerson()
-if err := json.NewEncoder(w).Encode(&p); err != nil {
-    return err
-}
-// remember to close w
-if err := w.Close(); err {
-    return err
 }
 ```
