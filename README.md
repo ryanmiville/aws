@@ -35,7 +35,7 @@ if scanner.Err() != nil {
 ## S3
 The `s3` package provides a `Bucket` abstraction to allow for easy reading and writing to a bucket.
 
-The `NewWriter` method returns an `io.WriteCloser`. The written bytes are sent when `Close()` is called.
+The `NewWriter` method returns an `io.WriteCloser`. The writer MUST be closed for the upload to complete.
 ```go
 sess := session.Must(session.NewSession())
 client := s3.New(sess)
