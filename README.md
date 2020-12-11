@@ -10,8 +10,8 @@ iter := dynamodb.NewIter(client, query)
 for iter.Next(ctx) {
 	var p Person
 	if err := iter.Document(&p); err != nil {
-        return err
-    }
+		return err
+	}
     //do stuff with p
 }
 if iter.Err() != nil {
@@ -24,8 +24,8 @@ scanner := dynamodb.Scan(client, "people")
 for scanner.Next(ctx) {
 	var p Person
 	if err := scanner.Document(&p); err != nil {
-        return err
-    }
+		return err
+	}
     //do stuff with p
 }
 if scanner.Err() != nil {
