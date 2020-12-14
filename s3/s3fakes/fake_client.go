@@ -11,7 +11,7 @@ import (
 	"github.com/ryanmiville/aws/s3"
 )
 
-type FakeS3 struct {
+type FakeClient struct {
 	AbortMultipartUploadStub        func(*s3a.AbortMultipartUploadInput) (*s3a.AbortMultipartUploadOutput, error)
 	abortMultipartUploadMutex       sync.RWMutex
 	abortMultipartUploadArgsForCall []struct {
@@ -4166,7 +4166,7 @@ type FakeS3 struct {
 	invocationsMutex sync.RWMutex
 }
 
-func (fake *FakeS3) AbortMultipartUpload(arg1 *s3a.AbortMultipartUploadInput) (*s3a.AbortMultipartUploadOutput, error) {
+func (fake *FakeClient) AbortMultipartUpload(arg1 *s3a.AbortMultipartUploadInput) (*s3a.AbortMultipartUploadOutput, error) {
 	fake.abortMultipartUploadMutex.Lock()
 	ret, specificReturn := fake.abortMultipartUploadReturnsOnCall[len(fake.abortMultipartUploadArgsForCall)]
 	fake.abortMultipartUploadArgsForCall = append(fake.abortMultipartUploadArgsForCall, struct {
@@ -4184,26 +4184,26 @@ func (fake *FakeS3) AbortMultipartUpload(arg1 *s3a.AbortMultipartUploadInput) (*
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) AbortMultipartUploadCallCount() int {
+func (fake *FakeClient) AbortMultipartUploadCallCount() int {
 	fake.abortMultipartUploadMutex.RLock()
 	defer fake.abortMultipartUploadMutex.RUnlock()
 	return len(fake.abortMultipartUploadArgsForCall)
 }
 
-func (fake *FakeS3) AbortMultipartUploadCalls(stub func(*s3a.AbortMultipartUploadInput) (*s3a.AbortMultipartUploadOutput, error)) {
+func (fake *FakeClient) AbortMultipartUploadCalls(stub func(*s3a.AbortMultipartUploadInput) (*s3a.AbortMultipartUploadOutput, error)) {
 	fake.abortMultipartUploadMutex.Lock()
 	defer fake.abortMultipartUploadMutex.Unlock()
 	fake.AbortMultipartUploadStub = stub
 }
 
-func (fake *FakeS3) AbortMultipartUploadArgsForCall(i int) *s3a.AbortMultipartUploadInput {
+func (fake *FakeClient) AbortMultipartUploadArgsForCall(i int) *s3a.AbortMultipartUploadInput {
 	fake.abortMultipartUploadMutex.RLock()
 	defer fake.abortMultipartUploadMutex.RUnlock()
 	argsForCall := fake.abortMultipartUploadArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) AbortMultipartUploadReturns(result1 *s3a.AbortMultipartUploadOutput, result2 error) {
+func (fake *FakeClient) AbortMultipartUploadReturns(result1 *s3a.AbortMultipartUploadOutput, result2 error) {
 	fake.abortMultipartUploadMutex.Lock()
 	defer fake.abortMultipartUploadMutex.Unlock()
 	fake.AbortMultipartUploadStub = nil
@@ -4213,7 +4213,7 @@ func (fake *FakeS3) AbortMultipartUploadReturns(result1 *s3a.AbortMultipartUploa
 	}{result1, result2}
 }
 
-func (fake *FakeS3) AbortMultipartUploadReturnsOnCall(i int, result1 *s3a.AbortMultipartUploadOutput, result2 error) {
+func (fake *FakeClient) AbortMultipartUploadReturnsOnCall(i int, result1 *s3a.AbortMultipartUploadOutput, result2 error) {
 	fake.abortMultipartUploadMutex.Lock()
 	defer fake.abortMultipartUploadMutex.Unlock()
 	fake.AbortMultipartUploadStub = nil
@@ -4229,7 +4229,7 @@ func (fake *FakeS3) AbortMultipartUploadReturnsOnCall(i int, result1 *s3a.AbortM
 	}{result1, result2}
 }
 
-func (fake *FakeS3) AbortMultipartUploadRequest(arg1 *s3a.AbortMultipartUploadInput) (*request.Request, *s3a.AbortMultipartUploadOutput) {
+func (fake *FakeClient) AbortMultipartUploadRequest(arg1 *s3a.AbortMultipartUploadInput) (*request.Request, *s3a.AbortMultipartUploadOutput) {
 	fake.abortMultipartUploadRequestMutex.Lock()
 	ret, specificReturn := fake.abortMultipartUploadRequestReturnsOnCall[len(fake.abortMultipartUploadRequestArgsForCall)]
 	fake.abortMultipartUploadRequestArgsForCall = append(fake.abortMultipartUploadRequestArgsForCall, struct {
@@ -4247,26 +4247,26 @@ func (fake *FakeS3) AbortMultipartUploadRequest(arg1 *s3a.AbortMultipartUploadIn
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) AbortMultipartUploadRequestCallCount() int {
+func (fake *FakeClient) AbortMultipartUploadRequestCallCount() int {
 	fake.abortMultipartUploadRequestMutex.RLock()
 	defer fake.abortMultipartUploadRequestMutex.RUnlock()
 	return len(fake.abortMultipartUploadRequestArgsForCall)
 }
 
-func (fake *FakeS3) AbortMultipartUploadRequestCalls(stub func(*s3a.AbortMultipartUploadInput) (*request.Request, *s3a.AbortMultipartUploadOutput)) {
+func (fake *FakeClient) AbortMultipartUploadRequestCalls(stub func(*s3a.AbortMultipartUploadInput) (*request.Request, *s3a.AbortMultipartUploadOutput)) {
 	fake.abortMultipartUploadRequestMutex.Lock()
 	defer fake.abortMultipartUploadRequestMutex.Unlock()
 	fake.AbortMultipartUploadRequestStub = stub
 }
 
-func (fake *FakeS3) AbortMultipartUploadRequestArgsForCall(i int) *s3a.AbortMultipartUploadInput {
+func (fake *FakeClient) AbortMultipartUploadRequestArgsForCall(i int) *s3a.AbortMultipartUploadInput {
 	fake.abortMultipartUploadRequestMutex.RLock()
 	defer fake.abortMultipartUploadRequestMutex.RUnlock()
 	argsForCall := fake.abortMultipartUploadRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) AbortMultipartUploadRequestReturns(result1 *request.Request, result2 *s3a.AbortMultipartUploadOutput) {
+func (fake *FakeClient) AbortMultipartUploadRequestReturns(result1 *request.Request, result2 *s3a.AbortMultipartUploadOutput) {
 	fake.abortMultipartUploadRequestMutex.Lock()
 	defer fake.abortMultipartUploadRequestMutex.Unlock()
 	fake.AbortMultipartUploadRequestStub = nil
@@ -4276,7 +4276,7 @@ func (fake *FakeS3) AbortMultipartUploadRequestReturns(result1 *request.Request,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) AbortMultipartUploadRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.AbortMultipartUploadOutput) {
+func (fake *FakeClient) AbortMultipartUploadRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.AbortMultipartUploadOutput) {
 	fake.abortMultipartUploadRequestMutex.Lock()
 	defer fake.abortMultipartUploadRequestMutex.Unlock()
 	fake.AbortMultipartUploadRequestStub = nil
@@ -4292,7 +4292,7 @@ func (fake *FakeS3) AbortMultipartUploadRequestReturnsOnCall(i int, result1 *req
 	}{result1, result2}
 }
 
-func (fake *FakeS3) AbortMultipartUploadWithContext(arg1 context.Context, arg2 *s3a.AbortMultipartUploadInput, arg3 ...request.Option) (*s3a.AbortMultipartUploadOutput, error) {
+func (fake *FakeClient) AbortMultipartUploadWithContext(arg1 context.Context, arg2 *s3a.AbortMultipartUploadInput, arg3 ...request.Option) (*s3a.AbortMultipartUploadOutput, error) {
 	fake.abortMultipartUploadWithContextMutex.Lock()
 	ret, specificReturn := fake.abortMultipartUploadWithContextReturnsOnCall[len(fake.abortMultipartUploadWithContextArgsForCall)]
 	fake.abortMultipartUploadWithContextArgsForCall = append(fake.abortMultipartUploadWithContextArgsForCall, struct {
@@ -4312,26 +4312,26 @@ func (fake *FakeS3) AbortMultipartUploadWithContext(arg1 context.Context, arg2 *
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) AbortMultipartUploadWithContextCallCount() int {
+func (fake *FakeClient) AbortMultipartUploadWithContextCallCount() int {
 	fake.abortMultipartUploadWithContextMutex.RLock()
 	defer fake.abortMultipartUploadWithContextMutex.RUnlock()
 	return len(fake.abortMultipartUploadWithContextArgsForCall)
 }
 
-func (fake *FakeS3) AbortMultipartUploadWithContextCalls(stub func(context.Context, *s3a.AbortMultipartUploadInput, ...request.Option) (*s3a.AbortMultipartUploadOutput, error)) {
+func (fake *FakeClient) AbortMultipartUploadWithContextCalls(stub func(context.Context, *s3a.AbortMultipartUploadInput, ...request.Option) (*s3a.AbortMultipartUploadOutput, error)) {
 	fake.abortMultipartUploadWithContextMutex.Lock()
 	defer fake.abortMultipartUploadWithContextMutex.Unlock()
 	fake.AbortMultipartUploadWithContextStub = stub
 }
 
-func (fake *FakeS3) AbortMultipartUploadWithContextArgsForCall(i int) (context.Context, *s3a.AbortMultipartUploadInput, []request.Option) {
+func (fake *FakeClient) AbortMultipartUploadWithContextArgsForCall(i int) (context.Context, *s3a.AbortMultipartUploadInput, []request.Option) {
 	fake.abortMultipartUploadWithContextMutex.RLock()
 	defer fake.abortMultipartUploadWithContextMutex.RUnlock()
 	argsForCall := fake.abortMultipartUploadWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) AbortMultipartUploadWithContextReturns(result1 *s3a.AbortMultipartUploadOutput, result2 error) {
+func (fake *FakeClient) AbortMultipartUploadWithContextReturns(result1 *s3a.AbortMultipartUploadOutput, result2 error) {
 	fake.abortMultipartUploadWithContextMutex.Lock()
 	defer fake.abortMultipartUploadWithContextMutex.Unlock()
 	fake.AbortMultipartUploadWithContextStub = nil
@@ -4341,7 +4341,7 @@ func (fake *FakeS3) AbortMultipartUploadWithContextReturns(result1 *s3a.AbortMul
 	}{result1, result2}
 }
 
-func (fake *FakeS3) AbortMultipartUploadWithContextReturnsOnCall(i int, result1 *s3a.AbortMultipartUploadOutput, result2 error) {
+func (fake *FakeClient) AbortMultipartUploadWithContextReturnsOnCall(i int, result1 *s3a.AbortMultipartUploadOutput, result2 error) {
 	fake.abortMultipartUploadWithContextMutex.Lock()
 	defer fake.abortMultipartUploadWithContextMutex.Unlock()
 	fake.AbortMultipartUploadWithContextStub = nil
@@ -4357,7 +4357,7 @@ func (fake *FakeS3) AbortMultipartUploadWithContextReturnsOnCall(i int, result1 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CompleteMultipartUpload(arg1 *s3a.CompleteMultipartUploadInput) (*s3a.CompleteMultipartUploadOutput, error) {
+func (fake *FakeClient) CompleteMultipartUpload(arg1 *s3a.CompleteMultipartUploadInput) (*s3a.CompleteMultipartUploadOutput, error) {
 	fake.completeMultipartUploadMutex.Lock()
 	ret, specificReturn := fake.completeMultipartUploadReturnsOnCall[len(fake.completeMultipartUploadArgsForCall)]
 	fake.completeMultipartUploadArgsForCall = append(fake.completeMultipartUploadArgsForCall, struct {
@@ -4375,26 +4375,26 @@ func (fake *FakeS3) CompleteMultipartUpload(arg1 *s3a.CompleteMultipartUploadInp
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) CompleteMultipartUploadCallCount() int {
+func (fake *FakeClient) CompleteMultipartUploadCallCount() int {
 	fake.completeMultipartUploadMutex.RLock()
 	defer fake.completeMultipartUploadMutex.RUnlock()
 	return len(fake.completeMultipartUploadArgsForCall)
 }
 
-func (fake *FakeS3) CompleteMultipartUploadCalls(stub func(*s3a.CompleteMultipartUploadInput) (*s3a.CompleteMultipartUploadOutput, error)) {
+func (fake *FakeClient) CompleteMultipartUploadCalls(stub func(*s3a.CompleteMultipartUploadInput) (*s3a.CompleteMultipartUploadOutput, error)) {
 	fake.completeMultipartUploadMutex.Lock()
 	defer fake.completeMultipartUploadMutex.Unlock()
 	fake.CompleteMultipartUploadStub = stub
 }
 
-func (fake *FakeS3) CompleteMultipartUploadArgsForCall(i int) *s3a.CompleteMultipartUploadInput {
+func (fake *FakeClient) CompleteMultipartUploadArgsForCall(i int) *s3a.CompleteMultipartUploadInput {
 	fake.completeMultipartUploadMutex.RLock()
 	defer fake.completeMultipartUploadMutex.RUnlock()
 	argsForCall := fake.completeMultipartUploadArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) CompleteMultipartUploadReturns(result1 *s3a.CompleteMultipartUploadOutput, result2 error) {
+func (fake *FakeClient) CompleteMultipartUploadReturns(result1 *s3a.CompleteMultipartUploadOutput, result2 error) {
 	fake.completeMultipartUploadMutex.Lock()
 	defer fake.completeMultipartUploadMutex.Unlock()
 	fake.CompleteMultipartUploadStub = nil
@@ -4404,7 +4404,7 @@ func (fake *FakeS3) CompleteMultipartUploadReturns(result1 *s3a.CompleteMultipar
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CompleteMultipartUploadReturnsOnCall(i int, result1 *s3a.CompleteMultipartUploadOutput, result2 error) {
+func (fake *FakeClient) CompleteMultipartUploadReturnsOnCall(i int, result1 *s3a.CompleteMultipartUploadOutput, result2 error) {
 	fake.completeMultipartUploadMutex.Lock()
 	defer fake.completeMultipartUploadMutex.Unlock()
 	fake.CompleteMultipartUploadStub = nil
@@ -4420,7 +4420,7 @@ func (fake *FakeS3) CompleteMultipartUploadReturnsOnCall(i int, result1 *s3a.Com
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CompleteMultipartUploadRequest(arg1 *s3a.CompleteMultipartUploadInput) (*request.Request, *s3a.CompleteMultipartUploadOutput) {
+func (fake *FakeClient) CompleteMultipartUploadRequest(arg1 *s3a.CompleteMultipartUploadInput) (*request.Request, *s3a.CompleteMultipartUploadOutput) {
 	fake.completeMultipartUploadRequestMutex.Lock()
 	ret, specificReturn := fake.completeMultipartUploadRequestReturnsOnCall[len(fake.completeMultipartUploadRequestArgsForCall)]
 	fake.completeMultipartUploadRequestArgsForCall = append(fake.completeMultipartUploadRequestArgsForCall, struct {
@@ -4438,26 +4438,26 @@ func (fake *FakeS3) CompleteMultipartUploadRequest(arg1 *s3a.CompleteMultipartUp
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) CompleteMultipartUploadRequestCallCount() int {
+func (fake *FakeClient) CompleteMultipartUploadRequestCallCount() int {
 	fake.completeMultipartUploadRequestMutex.RLock()
 	defer fake.completeMultipartUploadRequestMutex.RUnlock()
 	return len(fake.completeMultipartUploadRequestArgsForCall)
 }
 
-func (fake *FakeS3) CompleteMultipartUploadRequestCalls(stub func(*s3a.CompleteMultipartUploadInput) (*request.Request, *s3a.CompleteMultipartUploadOutput)) {
+func (fake *FakeClient) CompleteMultipartUploadRequestCalls(stub func(*s3a.CompleteMultipartUploadInput) (*request.Request, *s3a.CompleteMultipartUploadOutput)) {
 	fake.completeMultipartUploadRequestMutex.Lock()
 	defer fake.completeMultipartUploadRequestMutex.Unlock()
 	fake.CompleteMultipartUploadRequestStub = stub
 }
 
-func (fake *FakeS3) CompleteMultipartUploadRequestArgsForCall(i int) *s3a.CompleteMultipartUploadInput {
+func (fake *FakeClient) CompleteMultipartUploadRequestArgsForCall(i int) *s3a.CompleteMultipartUploadInput {
 	fake.completeMultipartUploadRequestMutex.RLock()
 	defer fake.completeMultipartUploadRequestMutex.RUnlock()
 	argsForCall := fake.completeMultipartUploadRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) CompleteMultipartUploadRequestReturns(result1 *request.Request, result2 *s3a.CompleteMultipartUploadOutput) {
+func (fake *FakeClient) CompleteMultipartUploadRequestReturns(result1 *request.Request, result2 *s3a.CompleteMultipartUploadOutput) {
 	fake.completeMultipartUploadRequestMutex.Lock()
 	defer fake.completeMultipartUploadRequestMutex.Unlock()
 	fake.CompleteMultipartUploadRequestStub = nil
@@ -4467,7 +4467,7 @@ func (fake *FakeS3) CompleteMultipartUploadRequestReturns(result1 *request.Reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CompleteMultipartUploadRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.CompleteMultipartUploadOutput) {
+func (fake *FakeClient) CompleteMultipartUploadRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.CompleteMultipartUploadOutput) {
 	fake.completeMultipartUploadRequestMutex.Lock()
 	defer fake.completeMultipartUploadRequestMutex.Unlock()
 	fake.CompleteMultipartUploadRequestStub = nil
@@ -4483,7 +4483,7 @@ func (fake *FakeS3) CompleteMultipartUploadRequestReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CompleteMultipartUploadWithContext(arg1 context.Context, arg2 *s3a.CompleteMultipartUploadInput, arg3 ...request.Option) (*s3a.CompleteMultipartUploadOutput, error) {
+func (fake *FakeClient) CompleteMultipartUploadWithContext(arg1 context.Context, arg2 *s3a.CompleteMultipartUploadInput, arg3 ...request.Option) (*s3a.CompleteMultipartUploadOutput, error) {
 	fake.completeMultipartUploadWithContextMutex.Lock()
 	ret, specificReturn := fake.completeMultipartUploadWithContextReturnsOnCall[len(fake.completeMultipartUploadWithContextArgsForCall)]
 	fake.completeMultipartUploadWithContextArgsForCall = append(fake.completeMultipartUploadWithContextArgsForCall, struct {
@@ -4503,26 +4503,26 @@ func (fake *FakeS3) CompleteMultipartUploadWithContext(arg1 context.Context, arg
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) CompleteMultipartUploadWithContextCallCount() int {
+func (fake *FakeClient) CompleteMultipartUploadWithContextCallCount() int {
 	fake.completeMultipartUploadWithContextMutex.RLock()
 	defer fake.completeMultipartUploadWithContextMutex.RUnlock()
 	return len(fake.completeMultipartUploadWithContextArgsForCall)
 }
 
-func (fake *FakeS3) CompleteMultipartUploadWithContextCalls(stub func(context.Context, *s3a.CompleteMultipartUploadInput, ...request.Option) (*s3a.CompleteMultipartUploadOutput, error)) {
+func (fake *FakeClient) CompleteMultipartUploadWithContextCalls(stub func(context.Context, *s3a.CompleteMultipartUploadInput, ...request.Option) (*s3a.CompleteMultipartUploadOutput, error)) {
 	fake.completeMultipartUploadWithContextMutex.Lock()
 	defer fake.completeMultipartUploadWithContextMutex.Unlock()
 	fake.CompleteMultipartUploadWithContextStub = stub
 }
 
-func (fake *FakeS3) CompleteMultipartUploadWithContextArgsForCall(i int) (context.Context, *s3a.CompleteMultipartUploadInput, []request.Option) {
+func (fake *FakeClient) CompleteMultipartUploadWithContextArgsForCall(i int) (context.Context, *s3a.CompleteMultipartUploadInput, []request.Option) {
 	fake.completeMultipartUploadWithContextMutex.RLock()
 	defer fake.completeMultipartUploadWithContextMutex.RUnlock()
 	argsForCall := fake.completeMultipartUploadWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) CompleteMultipartUploadWithContextReturns(result1 *s3a.CompleteMultipartUploadOutput, result2 error) {
+func (fake *FakeClient) CompleteMultipartUploadWithContextReturns(result1 *s3a.CompleteMultipartUploadOutput, result2 error) {
 	fake.completeMultipartUploadWithContextMutex.Lock()
 	defer fake.completeMultipartUploadWithContextMutex.Unlock()
 	fake.CompleteMultipartUploadWithContextStub = nil
@@ -4532,7 +4532,7 @@ func (fake *FakeS3) CompleteMultipartUploadWithContextReturns(result1 *s3a.Compl
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CompleteMultipartUploadWithContextReturnsOnCall(i int, result1 *s3a.CompleteMultipartUploadOutput, result2 error) {
+func (fake *FakeClient) CompleteMultipartUploadWithContextReturnsOnCall(i int, result1 *s3a.CompleteMultipartUploadOutput, result2 error) {
 	fake.completeMultipartUploadWithContextMutex.Lock()
 	defer fake.completeMultipartUploadWithContextMutex.Unlock()
 	fake.CompleteMultipartUploadWithContextStub = nil
@@ -4548,7 +4548,7 @@ func (fake *FakeS3) CompleteMultipartUploadWithContextReturnsOnCall(i int, resul
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CopyObject(arg1 *s3a.CopyObjectInput) (*s3a.CopyObjectOutput, error) {
+func (fake *FakeClient) CopyObject(arg1 *s3a.CopyObjectInput) (*s3a.CopyObjectOutput, error) {
 	fake.copyObjectMutex.Lock()
 	ret, specificReturn := fake.copyObjectReturnsOnCall[len(fake.copyObjectArgsForCall)]
 	fake.copyObjectArgsForCall = append(fake.copyObjectArgsForCall, struct {
@@ -4566,26 +4566,26 @@ func (fake *FakeS3) CopyObject(arg1 *s3a.CopyObjectInput) (*s3a.CopyObjectOutput
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) CopyObjectCallCount() int {
+func (fake *FakeClient) CopyObjectCallCount() int {
 	fake.copyObjectMutex.RLock()
 	defer fake.copyObjectMutex.RUnlock()
 	return len(fake.copyObjectArgsForCall)
 }
 
-func (fake *FakeS3) CopyObjectCalls(stub func(*s3a.CopyObjectInput) (*s3a.CopyObjectOutput, error)) {
+func (fake *FakeClient) CopyObjectCalls(stub func(*s3a.CopyObjectInput) (*s3a.CopyObjectOutput, error)) {
 	fake.copyObjectMutex.Lock()
 	defer fake.copyObjectMutex.Unlock()
 	fake.CopyObjectStub = stub
 }
 
-func (fake *FakeS3) CopyObjectArgsForCall(i int) *s3a.CopyObjectInput {
+func (fake *FakeClient) CopyObjectArgsForCall(i int) *s3a.CopyObjectInput {
 	fake.copyObjectMutex.RLock()
 	defer fake.copyObjectMutex.RUnlock()
 	argsForCall := fake.copyObjectArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) CopyObjectReturns(result1 *s3a.CopyObjectOutput, result2 error) {
+func (fake *FakeClient) CopyObjectReturns(result1 *s3a.CopyObjectOutput, result2 error) {
 	fake.copyObjectMutex.Lock()
 	defer fake.copyObjectMutex.Unlock()
 	fake.CopyObjectStub = nil
@@ -4595,7 +4595,7 @@ func (fake *FakeS3) CopyObjectReturns(result1 *s3a.CopyObjectOutput, result2 err
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CopyObjectReturnsOnCall(i int, result1 *s3a.CopyObjectOutput, result2 error) {
+func (fake *FakeClient) CopyObjectReturnsOnCall(i int, result1 *s3a.CopyObjectOutput, result2 error) {
 	fake.copyObjectMutex.Lock()
 	defer fake.copyObjectMutex.Unlock()
 	fake.CopyObjectStub = nil
@@ -4611,7 +4611,7 @@ func (fake *FakeS3) CopyObjectReturnsOnCall(i int, result1 *s3a.CopyObjectOutput
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CopyObjectRequest(arg1 *s3a.CopyObjectInput) (*request.Request, *s3a.CopyObjectOutput) {
+func (fake *FakeClient) CopyObjectRequest(arg1 *s3a.CopyObjectInput) (*request.Request, *s3a.CopyObjectOutput) {
 	fake.copyObjectRequestMutex.Lock()
 	ret, specificReturn := fake.copyObjectRequestReturnsOnCall[len(fake.copyObjectRequestArgsForCall)]
 	fake.copyObjectRequestArgsForCall = append(fake.copyObjectRequestArgsForCall, struct {
@@ -4629,26 +4629,26 @@ func (fake *FakeS3) CopyObjectRequest(arg1 *s3a.CopyObjectInput) (*request.Reque
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) CopyObjectRequestCallCount() int {
+func (fake *FakeClient) CopyObjectRequestCallCount() int {
 	fake.copyObjectRequestMutex.RLock()
 	defer fake.copyObjectRequestMutex.RUnlock()
 	return len(fake.copyObjectRequestArgsForCall)
 }
 
-func (fake *FakeS3) CopyObjectRequestCalls(stub func(*s3a.CopyObjectInput) (*request.Request, *s3a.CopyObjectOutput)) {
+func (fake *FakeClient) CopyObjectRequestCalls(stub func(*s3a.CopyObjectInput) (*request.Request, *s3a.CopyObjectOutput)) {
 	fake.copyObjectRequestMutex.Lock()
 	defer fake.copyObjectRequestMutex.Unlock()
 	fake.CopyObjectRequestStub = stub
 }
 
-func (fake *FakeS3) CopyObjectRequestArgsForCall(i int) *s3a.CopyObjectInput {
+func (fake *FakeClient) CopyObjectRequestArgsForCall(i int) *s3a.CopyObjectInput {
 	fake.copyObjectRequestMutex.RLock()
 	defer fake.copyObjectRequestMutex.RUnlock()
 	argsForCall := fake.copyObjectRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) CopyObjectRequestReturns(result1 *request.Request, result2 *s3a.CopyObjectOutput) {
+func (fake *FakeClient) CopyObjectRequestReturns(result1 *request.Request, result2 *s3a.CopyObjectOutput) {
 	fake.copyObjectRequestMutex.Lock()
 	defer fake.copyObjectRequestMutex.Unlock()
 	fake.CopyObjectRequestStub = nil
@@ -4658,7 +4658,7 @@ func (fake *FakeS3) CopyObjectRequestReturns(result1 *request.Request, result2 *
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CopyObjectRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.CopyObjectOutput) {
+func (fake *FakeClient) CopyObjectRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.CopyObjectOutput) {
 	fake.copyObjectRequestMutex.Lock()
 	defer fake.copyObjectRequestMutex.Unlock()
 	fake.CopyObjectRequestStub = nil
@@ -4674,7 +4674,7 @@ func (fake *FakeS3) CopyObjectRequestReturnsOnCall(i int, result1 *request.Reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CopyObjectWithContext(arg1 context.Context, arg2 *s3a.CopyObjectInput, arg3 ...request.Option) (*s3a.CopyObjectOutput, error) {
+func (fake *FakeClient) CopyObjectWithContext(arg1 context.Context, arg2 *s3a.CopyObjectInput, arg3 ...request.Option) (*s3a.CopyObjectOutput, error) {
 	fake.copyObjectWithContextMutex.Lock()
 	ret, specificReturn := fake.copyObjectWithContextReturnsOnCall[len(fake.copyObjectWithContextArgsForCall)]
 	fake.copyObjectWithContextArgsForCall = append(fake.copyObjectWithContextArgsForCall, struct {
@@ -4694,26 +4694,26 @@ func (fake *FakeS3) CopyObjectWithContext(arg1 context.Context, arg2 *s3a.CopyOb
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) CopyObjectWithContextCallCount() int {
+func (fake *FakeClient) CopyObjectWithContextCallCount() int {
 	fake.copyObjectWithContextMutex.RLock()
 	defer fake.copyObjectWithContextMutex.RUnlock()
 	return len(fake.copyObjectWithContextArgsForCall)
 }
 
-func (fake *FakeS3) CopyObjectWithContextCalls(stub func(context.Context, *s3a.CopyObjectInput, ...request.Option) (*s3a.CopyObjectOutput, error)) {
+func (fake *FakeClient) CopyObjectWithContextCalls(stub func(context.Context, *s3a.CopyObjectInput, ...request.Option) (*s3a.CopyObjectOutput, error)) {
 	fake.copyObjectWithContextMutex.Lock()
 	defer fake.copyObjectWithContextMutex.Unlock()
 	fake.CopyObjectWithContextStub = stub
 }
 
-func (fake *FakeS3) CopyObjectWithContextArgsForCall(i int) (context.Context, *s3a.CopyObjectInput, []request.Option) {
+func (fake *FakeClient) CopyObjectWithContextArgsForCall(i int) (context.Context, *s3a.CopyObjectInput, []request.Option) {
 	fake.copyObjectWithContextMutex.RLock()
 	defer fake.copyObjectWithContextMutex.RUnlock()
 	argsForCall := fake.copyObjectWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) CopyObjectWithContextReturns(result1 *s3a.CopyObjectOutput, result2 error) {
+func (fake *FakeClient) CopyObjectWithContextReturns(result1 *s3a.CopyObjectOutput, result2 error) {
 	fake.copyObjectWithContextMutex.Lock()
 	defer fake.copyObjectWithContextMutex.Unlock()
 	fake.CopyObjectWithContextStub = nil
@@ -4723,7 +4723,7 @@ func (fake *FakeS3) CopyObjectWithContextReturns(result1 *s3a.CopyObjectOutput, 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CopyObjectWithContextReturnsOnCall(i int, result1 *s3a.CopyObjectOutput, result2 error) {
+func (fake *FakeClient) CopyObjectWithContextReturnsOnCall(i int, result1 *s3a.CopyObjectOutput, result2 error) {
 	fake.copyObjectWithContextMutex.Lock()
 	defer fake.copyObjectWithContextMutex.Unlock()
 	fake.CopyObjectWithContextStub = nil
@@ -4739,7 +4739,7 @@ func (fake *FakeS3) CopyObjectWithContextReturnsOnCall(i int, result1 *s3a.CopyO
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CreateBucket(arg1 *s3a.CreateBucketInput) (*s3a.CreateBucketOutput, error) {
+func (fake *FakeClient) CreateBucket(arg1 *s3a.CreateBucketInput) (*s3a.CreateBucketOutput, error) {
 	fake.createBucketMutex.Lock()
 	ret, specificReturn := fake.createBucketReturnsOnCall[len(fake.createBucketArgsForCall)]
 	fake.createBucketArgsForCall = append(fake.createBucketArgsForCall, struct {
@@ -4757,26 +4757,26 @@ func (fake *FakeS3) CreateBucket(arg1 *s3a.CreateBucketInput) (*s3a.CreateBucket
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) CreateBucketCallCount() int {
+func (fake *FakeClient) CreateBucketCallCount() int {
 	fake.createBucketMutex.RLock()
 	defer fake.createBucketMutex.RUnlock()
 	return len(fake.createBucketArgsForCall)
 }
 
-func (fake *FakeS3) CreateBucketCalls(stub func(*s3a.CreateBucketInput) (*s3a.CreateBucketOutput, error)) {
+func (fake *FakeClient) CreateBucketCalls(stub func(*s3a.CreateBucketInput) (*s3a.CreateBucketOutput, error)) {
 	fake.createBucketMutex.Lock()
 	defer fake.createBucketMutex.Unlock()
 	fake.CreateBucketStub = stub
 }
 
-func (fake *FakeS3) CreateBucketArgsForCall(i int) *s3a.CreateBucketInput {
+func (fake *FakeClient) CreateBucketArgsForCall(i int) *s3a.CreateBucketInput {
 	fake.createBucketMutex.RLock()
 	defer fake.createBucketMutex.RUnlock()
 	argsForCall := fake.createBucketArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) CreateBucketReturns(result1 *s3a.CreateBucketOutput, result2 error) {
+func (fake *FakeClient) CreateBucketReturns(result1 *s3a.CreateBucketOutput, result2 error) {
 	fake.createBucketMutex.Lock()
 	defer fake.createBucketMutex.Unlock()
 	fake.CreateBucketStub = nil
@@ -4786,7 +4786,7 @@ func (fake *FakeS3) CreateBucketReturns(result1 *s3a.CreateBucketOutput, result2
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CreateBucketReturnsOnCall(i int, result1 *s3a.CreateBucketOutput, result2 error) {
+func (fake *FakeClient) CreateBucketReturnsOnCall(i int, result1 *s3a.CreateBucketOutput, result2 error) {
 	fake.createBucketMutex.Lock()
 	defer fake.createBucketMutex.Unlock()
 	fake.CreateBucketStub = nil
@@ -4802,7 +4802,7 @@ func (fake *FakeS3) CreateBucketReturnsOnCall(i int, result1 *s3a.CreateBucketOu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CreateBucketRequest(arg1 *s3a.CreateBucketInput) (*request.Request, *s3a.CreateBucketOutput) {
+func (fake *FakeClient) CreateBucketRequest(arg1 *s3a.CreateBucketInput) (*request.Request, *s3a.CreateBucketOutput) {
 	fake.createBucketRequestMutex.Lock()
 	ret, specificReturn := fake.createBucketRequestReturnsOnCall[len(fake.createBucketRequestArgsForCall)]
 	fake.createBucketRequestArgsForCall = append(fake.createBucketRequestArgsForCall, struct {
@@ -4820,26 +4820,26 @@ func (fake *FakeS3) CreateBucketRequest(arg1 *s3a.CreateBucketInput) (*request.R
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) CreateBucketRequestCallCount() int {
+func (fake *FakeClient) CreateBucketRequestCallCount() int {
 	fake.createBucketRequestMutex.RLock()
 	defer fake.createBucketRequestMutex.RUnlock()
 	return len(fake.createBucketRequestArgsForCall)
 }
 
-func (fake *FakeS3) CreateBucketRequestCalls(stub func(*s3a.CreateBucketInput) (*request.Request, *s3a.CreateBucketOutput)) {
+func (fake *FakeClient) CreateBucketRequestCalls(stub func(*s3a.CreateBucketInput) (*request.Request, *s3a.CreateBucketOutput)) {
 	fake.createBucketRequestMutex.Lock()
 	defer fake.createBucketRequestMutex.Unlock()
 	fake.CreateBucketRequestStub = stub
 }
 
-func (fake *FakeS3) CreateBucketRequestArgsForCall(i int) *s3a.CreateBucketInput {
+func (fake *FakeClient) CreateBucketRequestArgsForCall(i int) *s3a.CreateBucketInput {
 	fake.createBucketRequestMutex.RLock()
 	defer fake.createBucketRequestMutex.RUnlock()
 	argsForCall := fake.createBucketRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) CreateBucketRequestReturns(result1 *request.Request, result2 *s3a.CreateBucketOutput) {
+func (fake *FakeClient) CreateBucketRequestReturns(result1 *request.Request, result2 *s3a.CreateBucketOutput) {
 	fake.createBucketRequestMutex.Lock()
 	defer fake.createBucketRequestMutex.Unlock()
 	fake.CreateBucketRequestStub = nil
@@ -4849,7 +4849,7 @@ func (fake *FakeS3) CreateBucketRequestReturns(result1 *request.Request, result2
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CreateBucketRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.CreateBucketOutput) {
+func (fake *FakeClient) CreateBucketRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.CreateBucketOutput) {
 	fake.createBucketRequestMutex.Lock()
 	defer fake.createBucketRequestMutex.Unlock()
 	fake.CreateBucketRequestStub = nil
@@ -4865,7 +4865,7 @@ func (fake *FakeS3) CreateBucketRequestReturnsOnCall(i int, result1 *request.Req
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CreateBucketWithContext(arg1 context.Context, arg2 *s3a.CreateBucketInput, arg3 ...request.Option) (*s3a.CreateBucketOutput, error) {
+func (fake *FakeClient) CreateBucketWithContext(arg1 context.Context, arg2 *s3a.CreateBucketInput, arg3 ...request.Option) (*s3a.CreateBucketOutput, error) {
 	fake.createBucketWithContextMutex.Lock()
 	ret, specificReturn := fake.createBucketWithContextReturnsOnCall[len(fake.createBucketWithContextArgsForCall)]
 	fake.createBucketWithContextArgsForCall = append(fake.createBucketWithContextArgsForCall, struct {
@@ -4885,26 +4885,26 @@ func (fake *FakeS3) CreateBucketWithContext(arg1 context.Context, arg2 *s3a.Crea
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) CreateBucketWithContextCallCount() int {
+func (fake *FakeClient) CreateBucketWithContextCallCount() int {
 	fake.createBucketWithContextMutex.RLock()
 	defer fake.createBucketWithContextMutex.RUnlock()
 	return len(fake.createBucketWithContextArgsForCall)
 }
 
-func (fake *FakeS3) CreateBucketWithContextCalls(stub func(context.Context, *s3a.CreateBucketInput, ...request.Option) (*s3a.CreateBucketOutput, error)) {
+func (fake *FakeClient) CreateBucketWithContextCalls(stub func(context.Context, *s3a.CreateBucketInput, ...request.Option) (*s3a.CreateBucketOutput, error)) {
 	fake.createBucketWithContextMutex.Lock()
 	defer fake.createBucketWithContextMutex.Unlock()
 	fake.CreateBucketWithContextStub = stub
 }
 
-func (fake *FakeS3) CreateBucketWithContextArgsForCall(i int) (context.Context, *s3a.CreateBucketInput, []request.Option) {
+func (fake *FakeClient) CreateBucketWithContextArgsForCall(i int) (context.Context, *s3a.CreateBucketInput, []request.Option) {
 	fake.createBucketWithContextMutex.RLock()
 	defer fake.createBucketWithContextMutex.RUnlock()
 	argsForCall := fake.createBucketWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) CreateBucketWithContextReturns(result1 *s3a.CreateBucketOutput, result2 error) {
+func (fake *FakeClient) CreateBucketWithContextReturns(result1 *s3a.CreateBucketOutput, result2 error) {
 	fake.createBucketWithContextMutex.Lock()
 	defer fake.createBucketWithContextMutex.Unlock()
 	fake.CreateBucketWithContextStub = nil
@@ -4914,7 +4914,7 @@ func (fake *FakeS3) CreateBucketWithContextReturns(result1 *s3a.CreateBucketOutp
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CreateBucketWithContextReturnsOnCall(i int, result1 *s3a.CreateBucketOutput, result2 error) {
+func (fake *FakeClient) CreateBucketWithContextReturnsOnCall(i int, result1 *s3a.CreateBucketOutput, result2 error) {
 	fake.createBucketWithContextMutex.Lock()
 	defer fake.createBucketWithContextMutex.Unlock()
 	fake.CreateBucketWithContextStub = nil
@@ -4930,7 +4930,7 @@ func (fake *FakeS3) CreateBucketWithContextReturnsOnCall(i int, result1 *s3a.Cre
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CreateMultipartUpload(arg1 *s3a.CreateMultipartUploadInput) (*s3a.CreateMultipartUploadOutput, error) {
+func (fake *FakeClient) CreateMultipartUpload(arg1 *s3a.CreateMultipartUploadInput) (*s3a.CreateMultipartUploadOutput, error) {
 	fake.createMultipartUploadMutex.Lock()
 	ret, specificReturn := fake.createMultipartUploadReturnsOnCall[len(fake.createMultipartUploadArgsForCall)]
 	fake.createMultipartUploadArgsForCall = append(fake.createMultipartUploadArgsForCall, struct {
@@ -4948,26 +4948,26 @@ func (fake *FakeS3) CreateMultipartUpload(arg1 *s3a.CreateMultipartUploadInput) 
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) CreateMultipartUploadCallCount() int {
+func (fake *FakeClient) CreateMultipartUploadCallCount() int {
 	fake.createMultipartUploadMutex.RLock()
 	defer fake.createMultipartUploadMutex.RUnlock()
 	return len(fake.createMultipartUploadArgsForCall)
 }
 
-func (fake *FakeS3) CreateMultipartUploadCalls(stub func(*s3a.CreateMultipartUploadInput) (*s3a.CreateMultipartUploadOutput, error)) {
+func (fake *FakeClient) CreateMultipartUploadCalls(stub func(*s3a.CreateMultipartUploadInput) (*s3a.CreateMultipartUploadOutput, error)) {
 	fake.createMultipartUploadMutex.Lock()
 	defer fake.createMultipartUploadMutex.Unlock()
 	fake.CreateMultipartUploadStub = stub
 }
 
-func (fake *FakeS3) CreateMultipartUploadArgsForCall(i int) *s3a.CreateMultipartUploadInput {
+func (fake *FakeClient) CreateMultipartUploadArgsForCall(i int) *s3a.CreateMultipartUploadInput {
 	fake.createMultipartUploadMutex.RLock()
 	defer fake.createMultipartUploadMutex.RUnlock()
 	argsForCall := fake.createMultipartUploadArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) CreateMultipartUploadReturns(result1 *s3a.CreateMultipartUploadOutput, result2 error) {
+func (fake *FakeClient) CreateMultipartUploadReturns(result1 *s3a.CreateMultipartUploadOutput, result2 error) {
 	fake.createMultipartUploadMutex.Lock()
 	defer fake.createMultipartUploadMutex.Unlock()
 	fake.CreateMultipartUploadStub = nil
@@ -4977,7 +4977,7 @@ func (fake *FakeS3) CreateMultipartUploadReturns(result1 *s3a.CreateMultipartUpl
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CreateMultipartUploadReturnsOnCall(i int, result1 *s3a.CreateMultipartUploadOutput, result2 error) {
+func (fake *FakeClient) CreateMultipartUploadReturnsOnCall(i int, result1 *s3a.CreateMultipartUploadOutput, result2 error) {
 	fake.createMultipartUploadMutex.Lock()
 	defer fake.createMultipartUploadMutex.Unlock()
 	fake.CreateMultipartUploadStub = nil
@@ -4993,7 +4993,7 @@ func (fake *FakeS3) CreateMultipartUploadReturnsOnCall(i int, result1 *s3a.Creat
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CreateMultipartUploadRequest(arg1 *s3a.CreateMultipartUploadInput) (*request.Request, *s3a.CreateMultipartUploadOutput) {
+func (fake *FakeClient) CreateMultipartUploadRequest(arg1 *s3a.CreateMultipartUploadInput) (*request.Request, *s3a.CreateMultipartUploadOutput) {
 	fake.createMultipartUploadRequestMutex.Lock()
 	ret, specificReturn := fake.createMultipartUploadRequestReturnsOnCall[len(fake.createMultipartUploadRequestArgsForCall)]
 	fake.createMultipartUploadRequestArgsForCall = append(fake.createMultipartUploadRequestArgsForCall, struct {
@@ -5011,26 +5011,26 @@ func (fake *FakeS3) CreateMultipartUploadRequest(arg1 *s3a.CreateMultipartUpload
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) CreateMultipartUploadRequestCallCount() int {
+func (fake *FakeClient) CreateMultipartUploadRequestCallCount() int {
 	fake.createMultipartUploadRequestMutex.RLock()
 	defer fake.createMultipartUploadRequestMutex.RUnlock()
 	return len(fake.createMultipartUploadRequestArgsForCall)
 }
 
-func (fake *FakeS3) CreateMultipartUploadRequestCalls(stub func(*s3a.CreateMultipartUploadInput) (*request.Request, *s3a.CreateMultipartUploadOutput)) {
+func (fake *FakeClient) CreateMultipartUploadRequestCalls(stub func(*s3a.CreateMultipartUploadInput) (*request.Request, *s3a.CreateMultipartUploadOutput)) {
 	fake.createMultipartUploadRequestMutex.Lock()
 	defer fake.createMultipartUploadRequestMutex.Unlock()
 	fake.CreateMultipartUploadRequestStub = stub
 }
 
-func (fake *FakeS3) CreateMultipartUploadRequestArgsForCall(i int) *s3a.CreateMultipartUploadInput {
+func (fake *FakeClient) CreateMultipartUploadRequestArgsForCall(i int) *s3a.CreateMultipartUploadInput {
 	fake.createMultipartUploadRequestMutex.RLock()
 	defer fake.createMultipartUploadRequestMutex.RUnlock()
 	argsForCall := fake.createMultipartUploadRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) CreateMultipartUploadRequestReturns(result1 *request.Request, result2 *s3a.CreateMultipartUploadOutput) {
+func (fake *FakeClient) CreateMultipartUploadRequestReturns(result1 *request.Request, result2 *s3a.CreateMultipartUploadOutput) {
 	fake.createMultipartUploadRequestMutex.Lock()
 	defer fake.createMultipartUploadRequestMutex.Unlock()
 	fake.CreateMultipartUploadRequestStub = nil
@@ -5040,7 +5040,7 @@ func (fake *FakeS3) CreateMultipartUploadRequestReturns(result1 *request.Request
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CreateMultipartUploadRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.CreateMultipartUploadOutput) {
+func (fake *FakeClient) CreateMultipartUploadRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.CreateMultipartUploadOutput) {
 	fake.createMultipartUploadRequestMutex.Lock()
 	defer fake.createMultipartUploadRequestMutex.Unlock()
 	fake.CreateMultipartUploadRequestStub = nil
@@ -5056,7 +5056,7 @@ func (fake *FakeS3) CreateMultipartUploadRequestReturnsOnCall(i int, result1 *re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CreateMultipartUploadWithContext(arg1 context.Context, arg2 *s3a.CreateMultipartUploadInput, arg3 ...request.Option) (*s3a.CreateMultipartUploadOutput, error) {
+func (fake *FakeClient) CreateMultipartUploadWithContext(arg1 context.Context, arg2 *s3a.CreateMultipartUploadInput, arg3 ...request.Option) (*s3a.CreateMultipartUploadOutput, error) {
 	fake.createMultipartUploadWithContextMutex.Lock()
 	ret, specificReturn := fake.createMultipartUploadWithContextReturnsOnCall[len(fake.createMultipartUploadWithContextArgsForCall)]
 	fake.createMultipartUploadWithContextArgsForCall = append(fake.createMultipartUploadWithContextArgsForCall, struct {
@@ -5076,26 +5076,26 @@ func (fake *FakeS3) CreateMultipartUploadWithContext(arg1 context.Context, arg2 
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) CreateMultipartUploadWithContextCallCount() int {
+func (fake *FakeClient) CreateMultipartUploadWithContextCallCount() int {
 	fake.createMultipartUploadWithContextMutex.RLock()
 	defer fake.createMultipartUploadWithContextMutex.RUnlock()
 	return len(fake.createMultipartUploadWithContextArgsForCall)
 }
 
-func (fake *FakeS3) CreateMultipartUploadWithContextCalls(stub func(context.Context, *s3a.CreateMultipartUploadInput, ...request.Option) (*s3a.CreateMultipartUploadOutput, error)) {
+func (fake *FakeClient) CreateMultipartUploadWithContextCalls(stub func(context.Context, *s3a.CreateMultipartUploadInput, ...request.Option) (*s3a.CreateMultipartUploadOutput, error)) {
 	fake.createMultipartUploadWithContextMutex.Lock()
 	defer fake.createMultipartUploadWithContextMutex.Unlock()
 	fake.CreateMultipartUploadWithContextStub = stub
 }
 
-func (fake *FakeS3) CreateMultipartUploadWithContextArgsForCall(i int) (context.Context, *s3a.CreateMultipartUploadInput, []request.Option) {
+func (fake *FakeClient) CreateMultipartUploadWithContextArgsForCall(i int) (context.Context, *s3a.CreateMultipartUploadInput, []request.Option) {
 	fake.createMultipartUploadWithContextMutex.RLock()
 	defer fake.createMultipartUploadWithContextMutex.RUnlock()
 	argsForCall := fake.createMultipartUploadWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) CreateMultipartUploadWithContextReturns(result1 *s3a.CreateMultipartUploadOutput, result2 error) {
+func (fake *FakeClient) CreateMultipartUploadWithContextReturns(result1 *s3a.CreateMultipartUploadOutput, result2 error) {
 	fake.createMultipartUploadWithContextMutex.Lock()
 	defer fake.createMultipartUploadWithContextMutex.Unlock()
 	fake.CreateMultipartUploadWithContextStub = nil
@@ -5105,7 +5105,7 @@ func (fake *FakeS3) CreateMultipartUploadWithContextReturns(result1 *s3a.CreateM
 	}{result1, result2}
 }
 
-func (fake *FakeS3) CreateMultipartUploadWithContextReturnsOnCall(i int, result1 *s3a.CreateMultipartUploadOutput, result2 error) {
+func (fake *FakeClient) CreateMultipartUploadWithContextReturnsOnCall(i int, result1 *s3a.CreateMultipartUploadOutput, result2 error) {
 	fake.createMultipartUploadWithContextMutex.Lock()
 	defer fake.createMultipartUploadWithContextMutex.Unlock()
 	fake.CreateMultipartUploadWithContextStub = nil
@@ -5121,7 +5121,7 @@ func (fake *FakeS3) CreateMultipartUploadWithContextReturnsOnCall(i int, result1
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucket(arg1 *s3a.DeleteBucketInput) (*s3a.DeleteBucketOutput, error) {
+func (fake *FakeClient) DeleteBucket(arg1 *s3a.DeleteBucketInput) (*s3a.DeleteBucketOutput, error) {
 	fake.deleteBucketMutex.Lock()
 	ret, specificReturn := fake.deleteBucketReturnsOnCall[len(fake.deleteBucketArgsForCall)]
 	fake.deleteBucketArgsForCall = append(fake.deleteBucketArgsForCall, struct {
@@ -5139,26 +5139,26 @@ func (fake *FakeS3) DeleteBucket(arg1 *s3a.DeleteBucketInput) (*s3a.DeleteBucket
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketCallCount() int {
+func (fake *FakeClient) DeleteBucketCallCount() int {
 	fake.deleteBucketMutex.RLock()
 	defer fake.deleteBucketMutex.RUnlock()
 	return len(fake.deleteBucketArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketCalls(stub func(*s3a.DeleteBucketInput) (*s3a.DeleteBucketOutput, error)) {
+func (fake *FakeClient) DeleteBucketCalls(stub func(*s3a.DeleteBucketInput) (*s3a.DeleteBucketOutput, error)) {
 	fake.deleteBucketMutex.Lock()
 	defer fake.deleteBucketMutex.Unlock()
 	fake.DeleteBucketStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketArgsForCall(i int) *s3a.DeleteBucketInput {
+func (fake *FakeClient) DeleteBucketArgsForCall(i int) *s3a.DeleteBucketInput {
 	fake.deleteBucketMutex.RLock()
 	defer fake.deleteBucketMutex.RUnlock()
 	argsForCall := fake.deleteBucketArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketReturns(result1 *s3a.DeleteBucketOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketReturns(result1 *s3a.DeleteBucketOutput, result2 error) {
 	fake.deleteBucketMutex.Lock()
 	defer fake.deleteBucketMutex.Unlock()
 	fake.DeleteBucketStub = nil
@@ -5168,7 +5168,7 @@ func (fake *FakeS3) DeleteBucketReturns(result1 *s3a.DeleteBucketOutput, result2
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketReturnsOnCall(i int, result1 *s3a.DeleteBucketOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketReturnsOnCall(i int, result1 *s3a.DeleteBucketOutput, result2 error) {
 	fake.deleteBucketMutex.Lock()
 	defer fake.deleteBucketMutex.Unlock()
 	fake.DeleteBucketStub = nil
@@ -5184,7 +5184,7 @@ func (fake *FakeS3) DeleteBucketReturnsOnCall(i int, result1 *s3a.DeleteBucketOu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketAnalyticsConfiguration(arg1 *s3a.DeleteBucketAnalyticsConfigurationInput) (*s3a.DeleteBucketAnalyticsConfigurationOutput, error) {
+func (fake *FakeClient) DeleteBucketAnalyticsConfiguration(arg1 *s3a.DeleteBucketAnalyticsConfigurationInput) (*s3a.DeleteBucketAnalyticsConfigurationOutput, error) {
 	fake.deleteBucketAnalyticsConfigurationMutex.Lock()
 	ret, specificReturn := fake.deleteBucketAnalyticsConfigurationReturnsOnCall[len(fake.deleteBucketAnalyticsConfigurationArgsForCall)]
 	fake.deleteBucketAnalyticsConfigurationArgsForCall = append(fake.deleteBucketAnalyticsConfigurationArgsForCall, struct {
@@ -5202,26 +5202,26 @@ func (fake *FakeS3) DeleteBucketAnalyticsConfiguration(arg1 *s3a.DeleteBucketAna
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketAnalyticsConfigurationCallCount() int {
+func (fake *FakeClient) DeleteBucketAnalyticsConfigurationCallCount() int {
 	fake.deleteBucketAnalyticsConfigurationMutex.RLock()
 	defer fake.deleteBucketAnalyticsConfigurationMutex.RUnlock()
 	return len(fake.deleteBucketAnalyticsConfigurationArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketAnalyticsConfigurationCalls(stub func(*s3a.DeleteBucketAnalyticsConfigurationInput) (*s3a.DeleteBucketAnalyticsConfigurationOutput, error)) {
+func (fake *FakeClient) DeleteBucketAnalyticsConfigurationCalls(stub func(*s3a.DeleteBucketAnalyticsConfigurationInput) (*s3a.DeleteBucketAnalyticsConfigurationOutput, error)) {
 	fake.deleteBucketAnalyticsConfigurationMutex.Lock()
 	defer fake.deleteBucketAnalyticsConfigurationMutex.Unlock()
 	fake.DeleteBucketAnalyticsConfigurationStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketAnalyticsConfigurationArgsForCall(i int) *s3a.DeleteBucketAnalyticsConfigurationInput {
+func (fake *FakeClient) DeleteBucketAnalyticsConfigurationArgsForCall(i int) *s3a.DeleteBucketAnalyticsConfigurationInput {
 	fake.deleteBucketAnalyticsConfigurationMutex.RLock()
 	defer fake.deleteBucketAnalyticsConfigurationMutex.RUnlock()
 	argsForCall := fake.deleteBucketAnalyticsConfigurationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketAnalyticsConfigurationReturns(result1 *s3a.DeleteBucketAnalyticsConfigurationOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketAnalyticsConfigurationReturns(result1 *s3a.DeleteBucketAnalyticsConfigurationOutput, result2 error) {
 	fake.deleteBucketAnalyticsConfigurationMutex.Lock()
 	defer fake.deleteBucketAnalyticsConfigurationMutex.Unlock()
 	fake.DeleteBucketAnalyticsConfigurationStub = nil
@@ -5231,7 +5231,7 @@ func (fake *FakeS3) DeleteBucketAnalyticsConfigurationReturns(result1 *s3a.Delet
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketAnalyticsConfigurationReturnsOnCall(i int, result1 *s3a.DeleteBucketAnalyticsConfigurationOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketAnalyticsConfigurationReturnsOnCall(i int, result1 *s3a.DeleteBucketAnalyticsConfigurationOutput, result2 error) {
 	fake.deleteBucketAnalyticsConfigurationMutex.Lock()
 	defer fake.deleteBucketAnalyticsConfigurationMutex.Unlock()
 	fake.DeleteBucketAnalyticsConfigurationStub = nil
@@ -5247,7 +5247,7 @@ func (fake *FakeS3) DeleteBucketAnalyticsConfigurationReturnsOnCall(i int, resul
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketAnalyticsConfigurationRequest(arg1 *s3a.DeleteBucketAnalyticsConfigurationInput) (*request.Request, *s3a.DeleteBucketAnalyticsConfigurationOutput) {
+func (fake *FakeClient) DeleteBucketAnalyticsConfigurationRequest(arg1 *s3a.DeleteBucketAnalyticsConfigurationInput) (*request.Request, *s3a.DeleteBucketAnalyticsConfigurationOutput) {
 	fake.deleteBucketAnalyticsConfigurationRequestMutex.Lock()
 	ret, specificReturn := fake.deleteBucketAnalyticsConfigurationRequestReturnsOnCall[len(fake.deleteBucketAnalyticsConfigurationRequestArgsForCall)]
 	fake.deleteBucketAnalyticsConfigurationRequestArgsForCall = append(fake.deleteBucketAnalyticsConfigurationRequestArgsForCall, struct {
@@ -5265,26 +5265,26 @@ func (fake *FakeS3) DeleteBucketAnalyticsConfigurationRequest(arg1 *s3a.DeleteBu
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketAnalyticsConfigurationRequestCallCount() int {
+func (fake *FakeClient) DeleteBucketAnalyticsConfigurationRequestCallCount() int {
 	fake.deleteBucketAnalyticsConfigurationRequestMutex.RLock()
 	defer fake.deleteBucketAnalyticsConfigurationRequestMutex.RUnlock()
 	return len(fake.deleteBucketAnalyticsConfigurationRequestArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketAnalyticsConfigurationRequestCalls(stub func(*s3a.DeleteBucketAnalyticsConfigurationInput) (*request.Request, *s3a.DeleteBucketAnalyticsConfigurationOutput)) {
+func (fake *FakeClient) DeleteBucketAnalyticsConfigurationRequestCalls(stub func(*s3a.DeleteBucketAnalyticsConfigurationInput) (*request.Request, *s3a.DeleteBucketAnalyticsConfigurationOutput)) {
 	fake.deleteBucketAnalyticsConfigurationRequestMutex.Lock()
 	defer fake.deleteBucketAnalyticsConfigurationRequestMutex.Unlock()
 	fake.DeleteBucketAnalyticsConfigurationRequestStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketAnalyticsConfigurationRequestArgsForCall(i int) *s3a.DeleteBucketAnalyticsConfigurationInput {
+func (fake *FakeClient) DeleteBucketAnalyticsConfigurationRequestArgsForCall(i int) *s3a.DeleteBucketAnalyticsConfigurationInput {
 	fake.deleteBucketAnalyticsConfigurationRequestMutex.RLock()
 	defer fake.deleteBucketAnalyticsConfigurationRequestMutex.RUnlock()
 	argsForCall := fake.deleteBucketAnalyticsConfigurationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketAnalyticsConfigurationRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketAnalyticsConfigurationOutput) {
+func (fake *FakeClient) DeleteBucketAnalyticsConfigurationRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketAnalyticsConfigurationOutput) {
 	fake.deleteBucketAnalyticsConfigurationRequestMutex.Lock()
 	defer fake.deleteBucketAnalyticsConfigurationRequestMutex.Unlock()
 	fake.DeleteBucketAnalyticsConfigurationRequestStub = nil
@@ -5294,7 +5294,7 @@ func (fake *FakeS3) DeleteBucketAnalyticsConfigurationRequestReturns(result1 *re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketAnalyticsConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketAnalyticsConfigurationOutput) {
+func (fake *FakeClient) DeleteBucketAnalyticsConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketAnalyticsConfigurationOutput) {
 	fake.deleteBucketAnalyticsConfigurationRequestMutex.Lock()
 	defer fake.deleteBucketAnalyticsConfigurationRequestMutex.Unlock()
 	fake.DeleteBucketAnalyticsConfigurationRequestStub = nil
@@ -5310,7 +5310,7 @@ func (fake *FakeS3) DeleteBucketAnalyticsConfigurationRequestReturnsOnCall(i int
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketAnalyticsConfigurationWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketAnalyticsConfigurationInput, arg3 ...request.Option) (*s3a.DeleteBucketAnalyticsConfigurationOutput, error) {
+func (fake *FakeClient) DeleteBucketAnalyticsConfigurationWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketAnalyticsConfigurationInput, arg3 ...request.Option) (*s3a.DeleteBucketAnalyticsConfigurationOutput, error) {
 	fake.deleteBucketAnalyticsConfigurationWithContextMutex.Lock()
 	ret, specificReturn := fake.deleteBucketAnalyticsConfigurationWithContextReturnsOnCall[len(fake.deleteBucketAnalyticsConfigurationWithContextArgsForCall)]
 	fake.deleteBucketAnalyticsConfigurationWithContextArgsForCall = append(fake.deleteBucketAnalyticsConfigurationWithContextArgsForCall, struct {
@@ -5330,26 +5330,26 @@ func (fake *FakeS3) DeleteBucketAnalyticsConfigurationWithContext(arg1 context.C
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketAnalyticsConfigurationWithContextCallCount() int {
+func (fake *FakeClient) DeleteBucketAnalyticsConfigurationWithContextCallCount() int {
 	fake.deleteBucketAnalyticsConfigurationWithContextMutex.RLock()
 	defer fake.deleteBucketAnalyticsConfigurationWithContextMutex.RUnlock()
 	return len(fake.deleteBucketAnalyticsConfigurationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketAnalyticsConfigurationWithContextCalls(stub func(context.Context, *s3a.DeleteBucketAnalyticsConfigurationInput, ...request.Option) (*s3a.DeleteBucketAnalyticsConfigurationOutput, error)) {
+func (fake *FakeClient) DeleteBucketAnalyticsConfigurationWithContextCalls(stub func(context.Context, *s3a.DeleteBucketAnalyticsConfigurationInput, ...request.Option) (*s3a.DeleteBucketAnalyticsConfigurationOutput, error)) {
 	fake.deleteBucketAnalyticsConfigurationWithContextMutex.Lock()
 	defer fake.deleteBucketAnalyticsConfigurationWithContextMutex.Unlock()
 	fake.DeleteBucketAnalyticsConfigurationWithContextStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketAnalyticsConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketAnalyticsConfigurationInput, []request.Option) {
+func (fake *FakeClient) DeleteBucketAnalyticsConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketAnalyticsConfigurationInput, []request.Option) {
 	fake.deleteBucketAnalyticsConfigurationWithContextMutex.RLock()
 	defer fake.deleteBucketAnalyticsConfigurationWithContextMutex.RUnlock()
 	argsForCall := fake.deleteBucketAnalyticsConfigurationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) DeleteBucketAnalyticsConfigurationWithContextReturns(result1 *s3a.DeleteBucketAnalyticsConfigurationOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketAnalyticsConfigurationWithContextReturns(result1 *s3a.DeleteBucketAnalyticsConfigurationOutput, result2 error) {
 	fake.deleteBucketAnalyticsConfigurationWithContextMutex.Lock()
 	defer fake.deleteBucketAnalyticsConfigurationWithContextMutex.Unlock()
 	fake.DeleteBucketAnalyticsConfigurationWithContextStub = nil
@@ -5359,7 +5359,7 @@ func (fake *FakeS3) DeleteBucketAnalyticsConfigurationWithContextReturns(result1
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketAnalyticsConfigurationWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketAnalyticsConfigurationOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketAnalyticsConfigurationWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketAnalyticsConfigurationOutput, result2 error) {
 	fake.deleteBucketAnalyticsConfigurationWithContextMutex.Lock()
 	defer fake.deleteBucketAnalyticsConfigurationWithContextMutex.Unlock()
 	fake.DeleteBucketAnalyticsConfigurationWithContextStub = nil
@@ -5375,7 +5375,7 @@ func (fake *FakeS3) DeleteBucketAnalyticsConfigurationWithContextReturnsOnCall(i
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketCors(arg1 *s3a.DeleteBucketCorsInput) (*s3a.DeleteBucketCorsOutput, error) {
+func (fake *FakeClient) DeleteBucketCors(arg1 *s3a.DeleteBucketCorsInput) (*s3a.DeleteBucketCorsOutput, error) {
 	fake.deleteBucketCorsMutex.Lock()
 	ret, specificReturn := fake.deleteBucketCorsReturnsOnCall[len(fake.deleteBucketCorsArgsForCall)]
 	fake.deleteBucketCorsArgsForCall = append(fake.deleteBucketCorsArgsForCall, struct {
@@ -5393,26 +5393,26 @@ func (fake *FakeS3) DeleteBucketCors(arg1 *s3a.DeleteBucketCorsInput) (*s3a.Dele
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketCorsCallCount() int {
+func (fake *FakeClient) DeleteBucketCorsCallCount() int {
 	fake.deleteBucketCorsMutex.RLock()
 	defer fake.deleteBucketCorsMutex.RUnlock()
 	return len(fake.deleteBucketCorsArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketCorsCalls(stub func(*s3a.DeleteBucketCorsInput) (*s3a.DeleteBucketCorsOutput, error)) {
+func (fake *FakeClient) DeleteBucketCorsCalls(stub func(*s3a.DeleteBucketCorsInput) (*s3a.DeleteBucketCorsOutput, error)) {
 	fake.deleteBucketCorsMutex.Lock()
 	defer fake.deleteBucketCorsMutex.Unlock()
 	fake.DeleteBucketCorsStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketCorsArgsForCall(i int) *s3a.DeleteBucketCorsInput {
+func (fake *FakeClient) DeleteBucketCorsArgsForCall(i int) *s3a.DeleteBucketCorsInput {
 	fake.deleteBucketCorsMutex.RLock()
 	defer fake.deleteBucketCorsMutex.RUnlock()
 	argsForCall := fake.deleteBucketCorsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketCorsReturns(result1 *s3a.DeleteBucketCorsOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketCorsReturns(result1 *s3a.DeleteBucketCorsOutput, result2 error) {
 	fake.deleteBucketCorsMutex.Lock()
 	defer fake.deleteBucketCorsMutex.Unlock()
 	fake.DeleteBucketCorsStub = nil
@@ -5422,7 +5422,7 @@ func (fake *FakeS3) DeleteBucketCorsReturns(result1 *s3a.DeleteBucketCorsOutput,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketCorsReturnsOnCall(i int, result1 *s3a.DeleteBucketCorsOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketCorsReturnsOnCall(i int, result1 *s3a.DeleteBucketCorsOutput, result2 error) {
 	fake.deleteBucketCorsMutex.Lock()
 	defer fake.deleteBucketCorsMutex.Unlock()
 	fake.DeleteBucketCorsStub = nil
@@ -5438,7 +5438,7 @@ func (fake *FakeS3) DeleteBucketCorsReturnsOnCall(i int, result1 *s3a.DeleteBuck
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketCorsRequest(arg1 *s3a.DeleteBucketCorsInput) (*request.Request, *s3a.DeleteBucketCorsOutput) {
+func (fake *FakeClient) DeleteBucketCorsRequest(arg1 *s3a.DeleteBucketCorsInput) (*request.Request, *s3a.DeleteBucketCorsOutput) {
 	fake.deleteBucketCorsRequestMutex.Lock()
 	ret, specificReturn := fake.deleteBucketCorsRequestReturnsOnCall[len(fake.deleteBucketCorsRequestArgsForCall)]
 	fake.deleteBucketCorsRequestArgsForCall = append(fake.deleteBucketCorsRequestArgsForCall, struct {
@@ -5456,26 +5456,26 @@ func (fake *FakeS3) DeleteBucketCorsRequest(arg1 *s3a.DeleteBucketCorsInput) (*r
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketCorsRequestCallCount() int {
+func (fake *FakeClient) DeleteBucketCorsRequestCallCount() int {
 	fake.deleteBucketCorsRequestMutex.RLock()
 	defer fake.deleteBucketCorsRequestMutex.RUnlock()
 	return len(fake.deleteBucketCorsRequestArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketCorsRequestCalls(stub func(*s3a.DeleteBucketCorsInput) (*request.Request, *s3a.DeleteBucketCorsOutput)) {
+func (fake *FakeClient) DeleteBucketCorsRequestCalls(stub func(*s3a.DeleteBucketCorsInput) (*request.Request, *s3a.DeleteBucketCorsOutput)) {
 	fake.deleteBucketCorsRequestMutex.Lock()
 	defer fake.deleteBucketCorsRequestMutex.Unlock()
 	fake.DeleteBucketCorsRequestStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketCorsRequestArgsForCall(i int) *s3a.DeleteBucketCorsInput {
+func (fake *FakeClient) DeleteBucketCorsRequestArgsForCall(i int) *s3a.DeleteBucketCorsInput {
 	fake.deleteBucketCorsRequestMutex.RLock()
 	defer fake.deleteBucketCorsRequestMutex.RUnlock()
 	argsForCall := fake.deleteBucketCorsRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketCorsRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketCorsOutput) {
+func (fake *FakeClient) DeleteBucketCorsRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketCorsOutput) {
 	fake.deleteBucketCorsRequestMutex.Lock()
 	defer fake.deleteBucketCorsRequestMutex.Unlock()
 	fake.DeleteBucketCorsRequestStub = nil
@@ -5485,7 +5485,7 @@ func (fake *FakeS3) DeleteBucketCorsRequestReturns(result1 *request.Request, res
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketCorsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketCorsOutput) {
+func (fake *FakeClient) DeleteBucketCorsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketCorsOutput) {
 	fake.deleteBucketCorsRequestMutex.Lock()
 	defer fake.deleteBucketCorsRequestMutex.Unlock()
 	fake.DeleteBucketCorsRequestStub = nil
@@ -5501,7 +5501,7 @@ func (fake *FakeS3) DeleteBucketCorsRequestReturnsOnCall(i int, result1 *request
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketCorsWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketCorsInput, arg3 ...request.Option) (*s3a.DeleteBucketCorsOutput, error) {
+func (fake *FakeClient) DeleteBucketCorsWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketCorsInput, arg3 ...request.Option) (*s3a.DeleteBucketCorsOutput, error) {
 	fake.deleteBucketCorsWithContextMutex.Lock()
 	ret, specificReturn := fake.deleteBucketCorsWithContextReturnsOnCall[len(fake.deleteBucketCorsWithContextArgsForCall)]
 	fake.deleteBucketCorsWithContextArgsForCall = append(fake.deleteBucketCorsWithContextArgsForCall, struct {
@@ -5521,26 +5521,26 @@ func (fake *FakeS3) DeleteBucketCorsWithContext(arg1 context.Context, arg2 *s3a.
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketCorsWithContextCallCount() int {
+func (fake *FakeClient) DeleteBucketCorsWithContextCallCount() int {
 	fake.deleteBucketCorsWithContextMutex.RLock()
 	defer fake.deleteBucketCorsWithContextMutex.RUnlock()
 	return len(fake.deleteBucketCorsWithContextArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketCorsWithContextCalls(stub func(context.Context, *s3a.DeleteBucketCorsInput, ...request.Option) (*s3a.DeleteBucketCorsOutput, error)) {
+func (fake *FakeClient) DeleteBucketCorsWithContextCalls(stub func(context.Context, *s3a.DeleteBucketCorsInput, ...request.Option) (*s3a.DeleteBucketCorsOutput, error)) {
 	fake.deleteBucketCorsWithContextMutex.Lock()
 	defer fake.deleteBucketCorsWithContextMutex.Unlock()
 	fake.DeleteBucketCorsWithContextStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketCorsWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketCorsInput, []request.Option) {
+func (fake *FakeClient) DeleteBucketCorsWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketCorsInput, []request.Option) {
 	fake.deleteBucketCorsWithContextMutex.RLock()
 	defer fake.deleteBucketCorsWithContextMutex.RUnlock()
 	argsForCall := fake.deleteBucketCorsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) DeleteBucketCorsWithContextReturns(result1 *s3a.DeleteBucketCorsOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketCorsWithContextReturns(result1 *s3a.DeleteBucketCorsOutput, result2 error) {
 	fake.deleteBucketCorsWithContextMutex.Lock()
 	defer fake.deleteBucketCorsWithContextMutex.Unlock()
 	fake.DeleteBucketCorsWithContextStub = nil
@@ -5550,7 +5550,7 @@ func (fake *FakeS3) DeleteBucketCorsWithContextReturns(result1 *s3a.DeleteBucket
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketCorsWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketCorsOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketCorsWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketCorsOutput, result2 error) {
 	fake.deleteBucketCorsWithContextMutex.Lock()
 	defer fake.deleteBucketCorsWithContextMutex.Unlock()
 	fake.DeleteBucketCorsWithContextStub = nil
@@ -5566,7 +5566,7 @@ func (fake *FakeS3) DeleteBucketCorsWithContextReturnsOnCall(i int, result1 *s3a
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketEncryption(arg1 *s3a.DeleteBucketEncryptionInput) (*s3a.DeleteBucketEncryptionOutput, error) {
+func (fake *FakeClient) DeleteBucketEncryption(arg1 *s3a.DeleteBucketEncryptionInput) (*s3a.DeleteBucketEncryptionOutput, error) {
 	fake.deleteBucketEncryptionMutex.Lock()
 	ret, specificReturn := fake.deleteBucketEncryptionReturnsOnCall[len(fake.deleteBucketEncryptionArgsForCall)]
 	fake.deleteBucketEncryptionArgsForCall = append(fake.deleteBucketEncryptionArgsForCall, struct {
@@ -5584,26 +5584,26 @@ func (fake *FakeS3) DeleteBucketEncryption(arg1 *s3a.DeleteBucketEncryptionInput
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketEncryptionCallCount() int {
+func (fake *FakeClient) DeleteBucketEncryptionCallCount() int {
 	fake.deleteBucketEncryptionMutex.RLock()
 	defer fake.deleteBucketEncryptionMutex.RUnlock()
 	return len(fake.deleteBucketEncryptionArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketEncryptionCalls(stub func(*s3a.DeleteBucketEncryptionInput) (*s3a.DeleteBucketEncryptionOutput, error)) {
+func (fake *FakeClient) DeleteBucketEncryptionCalls(stub func(*s3a.DeleteBucketEncryptionInput) (*s3a.DeleteBucketEncryptionOutput, error)) {
 	fake.deleteBucketEncryptionMutex.Lock()
 	defer fake.deleteBucketEncryptionMutex.Unlock()
 	fake.DeleteBucketEncryptionStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketEncryptionArgsForCall(i int) *s3a.DeleteBucketEncryptionInput {
+func (fake *FakeClient) DeleteBucketEncryptionArgsForCall(i int) *s3a.DeleteBucketEncryptionInput {
 	fake.deleteBucketEncryptionMutex.RLock()
 	defer fake.deleteBucketEncryptionMutex.RUnlock()
 	argsForCall := fake.deleteBucketEncryptionArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketEncryptionReturns(result1 *s3a.DeleteBucketEncryptionOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketEncryptionReturns(result1 *s3a.DeleteBucketEncryptionOutput, result2 error) {
 	fake.deleteBucketEncryptionMutex.Lock()
 	defer fake.deleteBucketEncryptionMutex.Unlock()
 	fake.DeleteBucketEncryptionStub = nil
@@ -5613,7 +5613,7 @@ func (fake *FakeS3) DeleteBucketEncryptionReturns(result1 *s3a.DeleteBucketEncry
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketEncryptionReturnsOnCall(i int, result1 *s3a.DeleteBucketEncryptionOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketEncryptionReturnsOnCall(i int, result1 *s3a.DeleteBucketEncryptionOutput, result2 error) {
 	fake.deleteBucketEncryptionMutex.Lock()
 	defer fake.deleteBucketEncryptionMutex.Unlock()
 	fake.DeleteBucketEncryptionStub = nil
@@ -5629,7 +5629,7 @@ func (fake *FakeS3) DeleteBucketEncryptionReturnsOnCall(i int, result1 *s3a.Dele
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketEncryptionRequest(arg1 *s3a.DeleteBucketEncryptionInput) (*request.Request, *s3a.DeleteBucketEncryptionOutput) {
+func (fake *FakeClient) DeleteBucketEncryptionRequest(arg1 *s3a.DeleteBucketEncryptionInput) (*request.Request, *s3a.DeleteBucketEncryptionOutput) {
 	fake.deleteBucketEncryptionRequestMutex.Lock()
 	ret, specificReturn := fake.deleteBucketEncryptionRequestReturnsOnCall[len(fake.deleteBucketEncryptionRequestArgsForCall)]
 	fake.deleteBucketEncryptionRequestArgsForCall = append(fake.deleteBucketEncryptionRequestArgsForCall, struct {
@@ -5647,26 +5647,26 @@ func (fake *FakeS3) DeleteBucketEncryptionRequest(arg1 *s3a.DeleteBucketEncrypti
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketEncryptionRequestCallCount() int {
+func (fake *FakeClient) DeleteBucketEncryptionRequestCallCount() int {
 	fake.deleteBucketEncryptionRequestMutex.RLock()
 	defer fake.deleteBucketEncryptionRequestMutex.RUnlock()
 	return len(fake.deleteBucketEncryptionRequestArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketEncryptionRequestCalls(stub func(*s3a.DeleteBucketEncryptionInput) (*request.Request, *s3a.DeleteBucketEncryptionOutput)) {
+func (fake *FakeClient) DeleteBucketEncryptionRequestCalls(stub func(*s3a.DeleteBucketEncryptionInput) (*request.Request, *s3a.DeleteBucketEncryptionOutput)) {
 	fake.deleteBucketEncryptionRequestMutex.Lock()
 	defer fake.deleteBucketEncryptionRequestMutex.Unlock()
 	fake.DeleteBucketEncryptionRequestStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketEncryptionRequestArgsForCall(i int) *s3a.DeleteBucketEncryptionInput {
+func (fake *FakeClient) DeleteBucketEncryptionRequestArgsForCall(i int) *s3a.DeleteBucketEncryptionInput {
 	fake.deleteBucketEncryptionRequestMutex.RLock()
 	defer fake.deleteBucketEncryptionRequestMutex.RUnlock()
 	argsForCall := fake.deleteBucketEncryptionRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketEncryptionRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketEncryptionOutput) {
+func (fake *FakeClient) DeleteBucketEncryptionRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketEncryptionOutput) {
 	fake.deleteBucketEncryptionRequestMutex.Lock()
 	defer fake.deleteBucketEncryptionRequestMutex.Unlock()
 	fake.DeleteBucketEncryptionRequestStub = nil
@@ -5676,7 +5676,7 @@ func (fake *FakeS3) DeleteBucketEncryptionRequestReturns(result1 *request.Reques
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketEncryptionRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketEncryptionOutput) {
+func (fake *FakeClient) DeleteBucketEncryptionRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketEncryptionOutput) {
 	fake.deleteBucketEncryptionRequestMutex.Lock()
 	defer fake.deleteBucketEncryptionRequestMutex.Unlock()
 	fake.DeleteBucketEncryptionRequestStub = nil
@@ -5692,7 +5692,7 @@ func (fake *FakeS3) DeleteBucketEncryptionRequestReturnsOnCall(i int, result1 *r
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketEncryptionWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketEncryptionInput, arg3 ...request.Option) (*s3a.DeleteBucketEncryptionOutput, error) {
+func (fake *FakeClient) DeleteBucketEncryptionWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketEncryptionInput, arg3 ...request.Option) (*s3a.DeleteBucketEncryptionOutput, error) {
 	fake.deleteBucketEncryptionWithContextMutex.Lock()
 	ret, specificReturn := fake.deleteBucketEncryptionWithContextReturnsOnCall[len(fake.deleteBucketEncryptionWithContextArgsForCall)]
 	fake.deleteBucketEncryptionWithContextArgsForCall = append(fake.deleteBucketEncryptionWithContextArgsForCall, struct {
@@ -5712,26 +5712,26 @@ func (fake *FakeS3) DeleteBucketEncryptionWithContext(arg1 context.Context, arg2
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketEncryptionWithContextCallCount() int {
+func (fake *FakeClient) DeleteBucketEncryptionWithContextCallCount() int {
 	fake.deleteBucketEncryptionWithContextMutex.RLock()
 	defer fake.deleteBucketEncryptionWithContextMutex.RUnlock()
 	return len(fake.deleteBucketEncryptionWithContextArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketEncryptionWithContextCalls(stub func(context.Context, *s3a.DeleteBucketEncryptionInput, ...request.Option) (*s3a.DeleteBucketEncryptionOutput, error)) {
+func (fake *FakeClient) DeleteBucketEncryptionWithContextCalls(stub func(context.Context, *s3a.DeleteBucketEncryptionInput, ...request.Option) (*s3a.DeleteBucketEncryptionOutput, error)) {
 	fake.deleteBucketEncryptionWithContextMutex.Lock()
 	defer fake.deleteBucketEncryptionWithContextMutex.Unlock()
 	fake.DeleteBucketEncryptionWithContextStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketEncryptionWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketEncryptionInput, []request.Option) {
+func (fake *FakeClient) DeleteBucketEncryptionWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketEncryptionInput, []request.Option) {
 	fake.deleteBucketEncryptionWithContextMutex.RLock()
 	defer fake.deleteBucketEncryptionWithContextMutex.RUnlock()
 	argsForCall := fake.deleteBucketEncryptionWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) DeleteBucketEncryptionWithContextReturns(result1 *s3a.DeleteBucketEncryptionOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketEncryptionWithContextReturns(result1 *s3a.DeleteBucketEncryptionOutput, result2 error) {
 	fake.deleteBucketEncryptionWithContextMutex.Lock()
 	defer fake.deleteBucketEncryptionWithContextMutex.Unlock()
 	fake.DeleteBucketEncryptionWithContextStub = nil
@@ -5741,7 +5741,7 @@ func (fake *FakeS3) DeleteBucketEncryptionWithContextReturns(result1 *s3a.Delete
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketEncryptionWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketEncryptionOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketEncryptionWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketEncryptionOutput, result2 error) {
 	fake.deleteBucketEncryptionWithContextMutex.Lock()
 	defer fake.deleteBucketEncryptionWithContextMutex.Unlock()
 	fake.DeleteBucketEncryptionWithContextStub = nil
@@ -5757,7 +5757,7 @@ func (fake *FakeS3) DeleteBucketEncryptionWithContextReturnsOnCall(i int, result
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketIntelligentTieringConfiguration(arg1 *s3a.DeleteBucketIntelligentTieringConfigurationInput) (*s3a.DeleteBucketIntelligentTieringConfigurationOutput, error) {
+func (fake *FakeClient) DeleteBucketIntelligentTieringConfiguration(arg1 *s3a.DeleteBucketIntelligentTieringConfigurationInput) (*s3a.DeleteBucketIntelligentTieringConfigurationOutput, error) {
 	fake.deleteBucketIntelligentTieringConfigurationMutex.Lock()
 	ret, specificReturn := fake.deleteBucketIntelligentTieringConfigurationReturnsOnCall[len(fake.deleteBucketIntelligentTieringConfigurationArgsForCall)]
 	fake.deleteBucketIntelligentTieringConfigurationArgsForCall = append(fake.deleteBucketIntelligentTieringConfigurationArgsForCall, struct {
@@ -5775,26 +5775,26 @@ func (fake *FakeS3) DeleteBucketIntelligentTieringConfiguration(arg1 *s3a.Delete
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationCallCount() int {
+func (fake *FakeClient) DeleteBucketIntelligentTieringConfigurationCallCount() int {
 	fake.deleteBucketIntelligentTieringConfigurationMutex.RLock()
 	defer fake.deleteBucketIntelligentTieringConfigurationMutex.RUnlock()
 	return len(fake.deleteBucketIntelligentTieringConfigurationArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationCalls(stub func(*s3a.DeleteBucketIntelligentTieringConfigurationInput) (*s3a.DeleteBucketIntelligentTieringConfigurationOutput, error)) {
+func (fake *FakeClient) DeleteBucketIntelligentTieringConfigurationCalls(stub func(*s3a.DeleteBucketIntelligentTieringConfigurationInput) (*s3a.DeleteBucketIntelligentTieringConfigurationOutput, error)) {
 	fake.deleteBucketIntelligentTieringConfigurationMutex.Lock()
 	defer fake.deleteBucketIntelligentTieringConfigurationMutex.Unlock()
 	fake.DeleteBucketIntelligentTieringConfigurationStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationArgsForCall(i int) *s3a.DeleteBucketIntelligentTieringConfigurationInput {
+func (fake *FakeClient) DeleteBucketIntelligentTieringConfigurationArgsForCall(i int) *s3a.DeleteBucketIntelligentTieringConfigurationInput {
 	fake.deleteBucketIntelligentTieringConfigurationMutex.RLock()
 	defer fake.deleteBucketIntelligentTieringConfigurationMutex.RUnlock()
 	argsForCall := fake.deleteBucketIntelligentTieringConfigurationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationReturns(result1 *s3a.DeleteBucketIntelligentTieringConfigurationOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketIntelligentTieringConfigurationReturns(result1 *s3a.DeleteBucketIntelligentTieringConfigurationOutput, result2 error) {
 	fake.deleteBucketIntelligentTieringConfigurationMutex.Lock()
 	defer fake.deleteBucketIntelligentTieringConfigurationMutex.Unlock()
 	fake.DeleteBucketIntelligentTieringConfigurationStub = nil
@@ -5804,7 +5804,7 @@ func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationReturns(result1 *
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationReturnsOnCall(i int, result1 *s3a.DeleteBucketIntelligentTieringConfigurationOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketIntelligentTieringConfigurationReturnsOnCall(i int, result1 *s3a.DeleteBucketIntelligentTieringConfigurationOutput, result2 error) {
 	fake.deleteBucketIntelligentTieringConfigurationMutex.Lock()
 	defer fake.deleteBucketIntelligentTieringConfigurationMutex.Unlock()
 	fake.DeleteBucketIntelligentTieringConfigurationStub = nil
@@ -5820,7 +5820,7 @@ func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationReturnsOnCall(i i
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationRequest(arg1 *s3a.DeleteBucketIntelligentTieringConfigurationInput) (*request.Request, *s3a.DeleteBucketIntelligentTieringConfigurationOutput) {
+func (fake *FakeClient) DeleteBucketIntelligentTieringConfigurationRequest(arg1 *s3a.DeleteBucketIntelligentTieringConfigurationInput) (*request.Request, *s3a.DeleteBucketIntelligentTieringConfigurationOutput) {
 	fake.deleteBucketIntelligentTieringConfigurationRequestMutex.Lock()
 	ret, specificReturn := fake.deleteBucketIntelligentTieringConfigurationRequestReturnsOnCall[len(fake.deleteBucketIntelligentTieringConfigurationRequestArgsForCall)]
 	fake.deleteBucketIntelligentTieringConfigurationRequestArgsForCall = append(fake.deleteBucketIntelligentTieringConfigurationRequestArgsForCall, struct {
@@ -5838,26 +5838,26 @@ func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationRequest(arg1 *s3a
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationRequestCallCount() int {
+func (fake *FakeClient) DeleteBucketIntelligentTieringConfigurationRequestCallCount() int {
 	fake.deleteBucketIntelligentTieringConfigurationRequestMutex.RLock()
 	defer fake.deleteBucketIntelligentTieringConfigurationRequestMutex.RUnlock()
 	return len(fake.deleteBucketIntelligentTieringConfigurationRequestArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationRequestCalls(stub func(*s3a.DeleteBucketIntelligentTieringConfigurationInput) (*request.Request, *s3a.DeleteBucketIntelligentTieringConfigurationOutput)) {
+func (fake *FakeClient) DeleteBucketIntelligentTieringConfigurationRequestCalls(stub func(*s3a.DeleteBucketIntelligentTieringConfigurationInput) (*request.Request, *s3a.DeleteBucketIntelligentTieringConfigurationOutput)) {
 	fake.deleteBucketIntelligentTieringConfigurationRequestMutex.Lock()
 	defer fake.deleteBucketIntelligentTieringConfigurationRequestMutex.Unlock()
 	fake.DeleteBucketIntelligentTieringConfigurationRequestStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationRequestArgsForCall(i int) *s3a.DeleteBucketIntelligentTieringConfigurationInput {
+func (fake *FakeClient) DeleteBucketIntelligentTieringConfigurationRequestArgsForCall(i int) *s3a.DeleteBucketIntelligentTieringConfigurationInput {
 	fake.deleteBucketIntelligentTieringConfigurationRequestMutex.RLock()
 	defer fake.deleteBucketIntelligentTieringConfigurationRequestMutex.RUnlock()
 	argsForCall := fake.deleteBucketIntelligentTieringConfigurationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketIntelligentTieringConfigurationOutput) {
+func (fake *FakeClient) DeleteBucketIntelligentTieringConfigurationRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketIntelligentTieringConfigurationOutput) {
 	fake.deleteBucketIntelligentTieringConfigurationRequestMutex.Lock()
 	defer fake.deleteBucketIntelligentTieringConfigurationRequestMutex.Unlock()
 	fake.DeleteBucketIntelligentTieringConfigurationRequestStub = nil
@@ -5867,7 +5867,7 @@ func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationRequestReturns(re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketIntelligentTieringConfigurationOutput) {
+func (fake *FakeClient) DeleteBucketIntelligentTieringConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketIntelligentTieringConfigurationOutput) {
 	fake.deleteBucketIntelligentTieringConfigurationRequestMutex.Lock()
 	defer fake.deleteBucketIntelligentTieringConfigurationRequestMutex.Unlock()
 	fake.DeleteBucketIntelligentTieringConfigurationRequestStub = nil
@@ -5883,7 +5883,7 @@ func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationRequestReturnsOnC
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketIntelligentTieringConfigurationInput, arg3 ...request.Option) (*s3a.DeleteBucketIntelligentTieringConfigurationOutput, error) {
+func (fake *FakeClient) DeleteBucketIntelligentTieringConfigurationWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketIntelligentTieringConfigurationInput, arg3 ...request.Option) (*s3a.DeleteBucketIntelligentTieringConfigurationOutput, error) {
 	fake.deleteBucketIntelligentTieringConfigurationWithContextMutex.Lock()
 	ret, specificReturn := fake.deleteBucketIntelligentTieringConfigurationWithContextReturnsOnCall[len(fake.deleteBucketIntelligentTieringConfigurationWithContextArgsForCall)]
 	fake.deleteBucketIntelligentTieringConfigurationWithContextArgsForCall = append(fake.deleteBucketIntelligentTieringConfigurationWithContextArgsForCall, struct {
@@ -5903,26 +5903,26 @@ func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationWithContext(arg1 
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationWithContextCallCount() int {
+func (fake *FakeClient) DeleteBucketIntelligentTieringConfigurationWithContextCallCount() int {
 	fake.deleteBucketIntelligentTieringConfigurationWithContextMutex.RLock()
 	defer fake.deleteBucketIntelligentTieringConfigurationWithContextMutex.RUnlock()
 	return len(fake.deleteBucketIntelligentTieringConfigurationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationWithContextCalls(stub func(context.Context, *s3a.DeleteBucketIntelligentTieringConfigurationInput, ...request.Option) (*s3a.DeleteBucketIntelligentTieringConfigurationOutput, error)) {
+func (fake *FakeClient) DeleteBucketIntelligentTieringConfigurationWithContextCalls(stub func(context.Context, *s3a.DeleteBucketIntelligentTieringConfigurationInput, ...request.Option) (*s3a.DeleteBucketIntelligentTieringConfigurationOutput, error)) {
 	fake.deleteBucketIntelligentTieringConfigurationWithContextMutex.Lock()
 	defer fake.deleteBucketIntelligentTieringConfigurationWithContextMutex.Unlock()
 	fake.DeleteBucketIntelligentTieringConfigurationWithContextStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketIntelligentTieringConfigurationInput, []request.Option) {
+func (fake *FakeClient) DeleteBucketIntelligentTieringConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketIntelligentTieringConfigurationInput, []request.Option) {
 	fake.deleteBucketIntelligentTieringConfigurationWithContextMutex.RLock()
 	defer fake.deleteBucketIntelligentTieringConfigurationWithContextMutex.RUnlock()
 	argsForCall := fake.deleteBucketIntelligentTieringConfigurationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationWithContextReturns(result1 *s3a.DeleteBucketIntelligentTieringConfigurationOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketIntelligentTieringConfigurationWithContextReturns(result1 *s3a.DeleteBucketIntelligentTieringConfigurationOutput, result2 error) {
 	fake.deleteBucketIntelligentTieringConfigurationWithContextMutex.Lock()
 	defer fake.deleteBucketIntelligentTieringConfigurationWithContextMutex.Unlock()
 	fake.DeleteBucketIntelligentTieringConfigurationWithContextStub = nil
@@ -5932,7 +5932,7 @@ func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationWithContextReturn
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketIntelligentTieringConfigurationOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketIntelligentTieringConfigurationWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketIntelligentTieringConfigurationOutput, result2 error) {
 	fake.deleteBucketIntelligentTieringConfigurationWithContextMutex.Lock()
 	defer fake.deleteBucketIntelligentTieringConfigurationWithContextMutex.Unlock()
 	fake.DeleteBucketIntelligentTieringConfigurationWithContextStub = nil
@@ -5948,7 +5948,7 @@ func (fake *FakeS3) DeleteBucketIntelligentTieringConfigurationWithContextReturn
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketInventoryConfiguration(arg1 *s3a.DeleteBucketInventoryConfigurationInput) (*s3a.DeleteBucketInventoryConfigurationOutput, error) {
+func (fake *FakeClient) DeleteBucketInventoryConfiguration(arg1 *s3a.DeleteBucketInventoryConfigurationInput) (*s3a.DeleteBucketInventoryConfigurationOutput, error) {
 	fake.deleteBucketInventoryConfigurationMutex.Lock()
 	ret, specificReturn := fake.deleteBucketInventoryConfigurationReturnsOnCall[len(fake.deleteBucketInventoryConfigurationArgsForCall)]
 	fake.deleteBucketInventoryConfigurationArgsForCall = append(fake.deleteBucketInventoryConfigurationArgsForCall, struct {
@@ -5966,26 +5966,26 @@ func (fake *FakeS3) DeleteBucketInventoryConfiguration(arg1 *s3a.DeleteBucketInv
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketInventoryConfigurationCallCount() int {
+func (fake *FakeClient) DeleteBucketInventoryConfigurationCallCount() int {
 	fake.deleteBucketInventoryConfigurationMutex.RLock()
 	defer fake.deleteBucketInventoryConfigurationMutex.RUnlock()
 	return len(fake.deleteBucketInventoryConfigurationArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketInventoryConfigurationCalls(stub func(*s3a.DeleteBucketInventoryConfigurationInput) (*s3a.DeleteBucketInventoryConfigurationOutput, error)) {
+func (fake *FakeClient) DeleteBucketInventoryConfigurationCalls(stub func(*s3a.DeleteBucketInventoryConfigurationInput) (*s3a.DeleteBucketInventoryConfigurationOutput, error)) {
 	fake.deleteBucketInventoryConfigurationMutex.Lock()
 	defer fake.deleteBucketInventoryConfigurationMutex.Unlock()
 	fake.DeleteBucketInventoryConfigurationStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketInventoryConfigurationArgsForCall(i int) *s3a.DeleteBucketInventoryConfigurationInput {
+func (fake *FakeClient) DeleteBucketInventoryConfigurationArgsForCall(i int) *s3a.DeleteBucketInventoryConfigurationInput {
 	fake.deleteBucketInventoryConfigurationMutex.RLock()
 	defer fake.deleteBucketInventoryConfigurationMutex.RUnlock()
 	argsForCall := fake.deleteBucketInventoryConfigurationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketInventoryConfigurationReturns(result1 *s3a.DeleteBucketInventoryConfigurationOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketInventoryConfigurationReturns(result1 *s3a.DeleteBucketInventoryConfigurationOutput, result2 error) {
 	fake.deleteBucketInventoryConfigurationMutex.Lock()
 	defer fake.deleteBucketInventoryConfigurationMutex.Unlock()
 	fake.DeleteBucketInventoryConfigurationStub = nil
@@ -5995,7 +5995,7 @@ func (fake *FakeS3) DeleteBucketInventoryConfigurationReturns(result1 *s3a.Delet
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketInventoryConfigurationReturnsOnCall(i int, result1 *s3a.DeleteBucketInventoryConfigurationOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketInventoryConfigurationReturnsOnCall(i int, result1 *s3a.DeleteBucketInventoryConfigurationOutput, result2 error) {
 	fake.deleteBucketInventoryConfigurationMutex.Lock()
 	defer fake.deleteBucketInventoryConfigurationMutex.Unlock()
 	fake.DeleteBucketInventoryConfigurationStub = nil
@@ -6011,7 +6011,7 @@ func (fake *FakeS3) DeleteBucketInventoryConfigurationReturnsOnCall(i int, resul
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketInventoryConfigurationRequest(arg1 *s3a.DeleteBucketInventoryConfigurationInput) (*request.Request, *s3a.DeleteBucketInventoryConfigurationOutput) {
+func (fake *FakeClient) DeleteBucketInventoryConfigurationRequest(arg1 *s3a.DeleteBucketInventoryConfigurationInput) (*request.Request, *s3a.DeleteBucketInventoryConfigurationOutput) {
 	fake.deleteBucketInventoryConfigurationRequestMutex.Lock()
 	ret, specificReturn := fake.deleteBucketInventoryConfigurationRequestReturnsOnCall[len(fake.deleteBucketInventoryConfigurationRequestArgsForCall)]
 	fake.deleteBucketInventoryConfigurationRequestArgsForCall = append(fake.deleteBucketInventoryConfigurationRequestArgsForCall, struct {
@@ -6029,26 +6029,26 @@ func (fake *FakeS3) DeleteBucketInventoryConfigurationRequest(arg1 *s3a.DeleteBu
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketInventoryConfigurationRequestCallCount() int {
+func (fake *FakeClient) DeleteBucketInventoryConfigurationRequestCallCount() int {
 	fake.deleteBucketInventoryConfigurationRequestMutex.RLock()
 	defer fake.deleteBucketInventoryConfigurationRequestMutex.RUnlock()
 	return len(fake.deleteBucketInventoryConfigurationRequestArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketInventoryConfigurationRequestCalls(stub func(*s3a.DeleteBucketInventoryConfigurationInput) (*request.Request, *s3a.DeleteBucketInventoryConfigurationOutput)) {
+func (fake *FakeClient) DeleteBucketInventoryConfigurationRequestCalls(stub func(*s3a.DeleteBucketInventoryConfigurationInput) (*request.Request, *s3a.DeleteBucketInventoryConfigurationOutput)) {
 	fake.deleteBucketInventoryConfigurationRequestMutex.Lock()
 	defer fake.deleteBucketInventoryConfigurationRequestMutex.Unlock()
 	fake.DeleteBucketInventoryConfigurationRequestStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketInventoryConfigurationRequestArgsForCall(i int) *s3a.DeleteBucketInventoryConfigurationInput {
+func (fake *FakeClient) DeleteBucketInventoryConfigurationRequestArgsForCall(i int) *s3a.DeleteBucketInventoryConfigurationInput {
 	fake.deleteBucketInventoryConfigurationRequestMutex.RLock()
 	defer fake.deleteBucketInventoryConfigurationRequestMutex.RUnlock()
 	argsForCall := fake.deleteBucketInventoryConfigurationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketInventoryConfigurationRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketInventoryConfigurationOutput) {
+func (fake *FakeClient) DeleteBucketInventoryConfigurationRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketInventoryConfigurationOutput) {
 	fake.deleteBucketInventoryConfigurationRequestMutex.Lock()
 	defer fake.deleteBucketInventoryConfigurationRequestMutex.Unlock()
 	fake.DeleteBucketInventoryConfigurationRequestStub = nil
@@ -6058,7 +6058,7 @@ func (fake *FakeS3) DeleteBucketInventoryConfigurationRequestReturns(result1 *re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketInventoryConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketInventoryConfigurationOutput) {
+func (fake *FakeClient) DeleteBucketInventoryConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketInventoryConfigurationOutput) {
 	fake.deleteBucketInventoryConfigurationRequestMutex.Lock()
 	defer fake.deleteBucketInventoryConfigurationRequestMutex.Unlock()
 	fake.DeleteBucketInventoryConfigurationRequestStub = nil
@@ -6074,7 +6074,7 @@ func (fake *FakeS3) DeleteBucketInventoryConfigurationRequestReturnsOnCall(i int
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketInventoryConfigurationWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketInventoryConfigurationInput, arg3 ...request.Option) (*s3a.DeleteBucketInventoryConfigurationOutput, error) {
+func (fake *FakeClient) DeleteBucketInventoryConfigurationWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketInventoryConfigurationInput, arg3 ...request.Option) (*s3a.DeleteBucketInventoryConfigurationOutput, error) {
 	fake.deleteBucketInventoryConfigurationWithContextMutex.Lock()
 	ret, specificReturn := fake.deleteBucketInventoryConfigurationWithContextReturnsOnCall[len(fake.deleteBucketInventoryConfigurationWithContextArgsForCall)]
 	fake.deleteBucketInventoryConfigurationWithContextArgsForCall = append(fake.deleteBucketInventoryConfigurationWithContextArgsForCall, struct {
@@ -6094,26 +6094,26 @@ func (fake *FakeS3) DeleteBucketInventoryConfigurationWithContext(arg1 context.C
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketInventoryConfigurationWithContextCallCount() int {
+func (fake *FakeClient) DeleteBucketInventoryConfigurationWithContextCallCount() int {
 	fake.deleteBucketInventoryConfigurationWithContextMutex.RLock()
 	defer fake.deleteBucketInventoryConfigurationWithContextMutex.RUnlock()
 	return len(fake.deleteBucketInventoryConfigurationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketInventoryConfigurationWithContextCalls(stub func(context.Context, *s3a.DeleteBucketInventoryConfigurationInput, ...request.Option) (*s3a.DeleteBucketInventoryConfigurationOutput, error)) {
+func (fake *FakeClient) DeleteBucketInventoryConfigurationWithContextCalls(stub func(context.Context, *s3a.DeleteBucketInventoryConfigurationInput, ...request.Option) (*s3a.DeleteBucketInventoryConfigurationOutput, error)) {
 	fake.deleteBucketInventoryConfigurationWithContextMutex.Lock()
 	defer fake.deleteBucketInventoryConfigurationWithContextMutex.Unlock()
 	fake.DeleteBucketInventoryConfigurationWithContextStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketInventoryConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketInventoryConfigurationInput, []request.Option) {
+func (fake *FakeClient) DeleteBucketInventoryConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketInventoryConfigurationInput, []request.Option) {
 	fake.deleteBucketInventoryConfigurationWithContextMutex.RLock()
 	defer fake.deleteBucketInventoryConfigurationWithContextMutex.RUnlock()
 	argsForCall := fake.deleteBucketInventoryConfigurationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) DeleteBucketInventoryConfigurationWithContextReturns(result1 *s3a.DeleteBucketInventoryConfigurationOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketInventoryConfigurationWithContextReturns(result1 *s3a.DeleteBucketInventoryConfigurationOutput, result2 error) {
 	fake.deleteBucketInventoryConfigurationWithContextMutex.Lock()
 	defer fake.deleteBucketInventoryConfigurationWithContextMutex.Unlock()
 	fake.DeleteBucketInventoryConfigurationWithContextStub = nil
@@ -6123,7 +6123,7 @@ func (fake *FakeS3) DeleteBucketInventoryConfigurationWithContextReturns(result1
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketInventoryConfigurationWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketInventoryConfigurationOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketInventoryConfigurationWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketInventoryConfigurationOutput, result2 error) {
 	fake.deleteBucketInventoryConfigurationWithContextMutex.Lock()
 	defer fake.deleteBucketInventoryConfigurationWithContextMutex.Unlock()
 	fake.DeleteBucketInventoryConfigurationWithContextStub = nil
@@ -6139,7 +6139,7 @@ func (fake *FakeS3) DeleteBucketInventoryConfigurationWithContextReturnsOnCall(i
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketLifecycle(arg1 *s3a.DeleteBucketLifecycleInput) (*s3a.DeleteBucketLifecycleOutput, error) {
+func (fake *FakeClient) DeleteBucketLifecycle(arg1 *s3a.DeleteBucketLifecycleInput) (*s3a.DeleteBucketLifecycleOutput, error) {
 	fake.deleteBucketLifecycleMutex.Lock()
 	ret, specificReturn := fake.deleteBucketLifecycleReturnsOnCall[len(fake.deleteBucketLifecycleArgsForCall)]
 	fake.deleteBucketLifecycleArgsForCall = append(fake.deleteBucketLifecycleArgsForCall, struct {
@@ -6157,26 +6157,26 @@ func (fake *FakeS3) DeleteBucketLifecycle(arg1 *s3a.DeleteBucketLifecycleInput) 
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketLifecycleCallCount() int {
+func (fake *FakeClient) DeleteBucketLifecycleCallCount() int {
 	fake.deleteBucketLifecycleMutex.RLock()
 	defer fake.deleteBucketLifecycleMutex.RUnlock()
 	return len(fake.deleteBucketLifecycleArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketLifecycleCalls(stub func(*s3a.DeleteBucketLifecycleInput) (*s3a.DeleteBucketLifecycleOutput, error)) {
+func (fake *FakeClient) DeleteBucketLifecycleCalls(stub func(*s3a.DeleteBucketLifecycleInput) (*s3a.DeleteBucketLifecycleOutput, error)) {
 	fake.deleteBucketLifecycleMutex.Lock()
 	defer fake.deleteBucketLifecycleMutex.Unlock()
 	fake.DeleteBucketLifecycleStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketLifecycleArgsForCall(i int) *s3a.DeleteBucketLifecycleInput {
+func (fake *FakeClient) DeleteBucketLifecycleArgsForCall(i int) *s3a.DeleteBucketLifecycleInput {
 	fake.deleteBucketLifecycleMutex.RLock()
 	defer fake.deleteBucketLifecycleMutex.RUnlock()
 	argsForCall := fake.deleteBucketLifecycleArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketLifecycleReturns(result1 *s3a.DeleteBucketLifecycleOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketLifecycleReturns(result1 *s3a.DeleteBucketLifecycleOutput, result2 error) {
 	fake.deleteBucketLifecycleMutex.Lock()
 	defer fake.deleteBucketLifecycleMutex.Unlock()
 	fake.DeleteBucketLifecycleStub = nil
@@ -6186,7 +6186,7 @@ func (fake *FakeS3) DeleteBucketLifecycleReturns(result1 *s3a.DeleteBucketLifecy
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketLifecycleReturnsOnCall(i int, result1 *s3a.DeleteBucketLifecycleOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketLifecycleReturnsOnCall(i int, result1 *s3a.DeleteBucketLifecycleOutput, result2 error) {
 	fake.deleteBucketLifecycleMutex.Lock()
 	defer fake.deleteBucketLifecycleMutex.Unlock()
 	fake.DeleteBucketLifecycleStub = nil
@@ -6202,7 +6202,7 @@ func (fake *FakeS3) DeleteBucketLifecycleReturnsOnCall(i int, result1 *s3a.Delet
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketLifecycleRequest(arg1 *s3a.DeleteBucketLifecycleInput) (*request.Request, *s3a.DeleteBucketLifecycleOutput) {
+func (fake *FakeClient) DeleteBucketLifecycleRequest(arg1 *s3a.DeleteBucketLifecycleInput) (*request.Request, *s3a.DeleteBucketLifecycleOutput) {
 	fake.deleteBucketLifecycleRequestMutex.Lock()
 	ret, specificReturn := fake.deleteBucketLifecycleRequestReturnsOnCall[len(fake.deleteBucketLifecycleRequestArgsForCall)]
 	fake.deleteBucketLifecycleRequestArgsForCall = append(fake.deleteBucketLifecycleRequestArgsForCall, struct {
@@ -6220,26 +6220,26 @@ func (fake *FakeS3) DeleteBucketLifecycleRequest(arg1 *s3a.DeleteBucketLifecycle
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketLifecycleRequestCallCount() int {
+func (fake *FakeClient) DeleteBucketLifecycleRequestCallCount() int {
 	fake.deleteBucketLifecycleRequestMutex.RLock()
 	defer fake.deleteBucketLifecycleRequestMutex.RUnlock()
 	return len(fake.deleteBucketLifecycleRequestArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketLifecycleRequestCalls(stub func(*s3a.DeleteBucketLifecycleInput) (*request.Request, *s3a.DeleteBucketLifecycleOutput)) {
+func (fake *FakeClient) DeleteBucketLifecycleRequestCalls(stub func(*s3a.DeleteBucketLifecycleInput) (*request.Request, *s3a.DeleteBucketLifecycleOutput)) {
 	fake.deleteBucketLifecycleRequestMutex.Lock()
 	defer fake.deleteBucketLifecycleRequestMutex.Unlock()
 	fake.DeleteBucketLifecycleRequestStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketLifecycleRequestArgsForCall(i int) *s3a.DeleteBucketLifecycleInput {
+func (fake *FakeClient) DeleteBucketLifecycleRequestArgsForCall(i int) *s3a.DeleteBucketLifecycleInput {
 	fake.deleteBucketLifecycleRequestMutex.RLock()
 	defer fake.deleteBucketLifecycleRequestMutex.RUnlock()
 	argsForCall := fake.deleteBucketLifecycleRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketLifecycleRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketLifecycleOutput) {
+func (fake *FakeClient) DeleteBucketLifecycleRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketLifecycleOutput) {
 	fake.deleteBucketLifecycleRequestMutex.Lock()
 	defer fake.deleteBucketLifecycleRequestMutex.Unlock()
 	fake.DeleteBucketLifecycleRequestStub = nil
@@ -6249,7 +6249,7 @@ func (fake *FakeS3) DeleteBucketLifecycleRequestReturns(result1 *request.Request
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketLifecycleRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketLifecycleOutput) {
+func (fake *FakeClient) DeleteBucketLifecycleRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketLifecycleOutput) {
 	fake.deleteBucketLifecycleRequestMutex.Lock()
 	defer fake.deleteBucketLifecycleRequestMutex.Unlock()
 	fake.DeleteBucketLifecycleRequestStub = nil
@@ -6265,7 +6265,7 @@ func (fake *FakeS3) DeleteBucketLifecycleRequestReturnsOnCall(i int, result1 *re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketLifecycleWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketLifecycleInput, arg3 ...request.Option) (*s3a.DeleteBucketLifecycleOutput, error) {
+func (fake *FakeClient) DeleteBucketLifecycleWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketLifecycleInput, arg3 ...request.Option) (*s3a.DeleteBucketLifecycleOutput, error) {
 	fake.deleteBucketLifecycleWithContextMutex.Lock()
 	ret, specificReturn := fake.deleteBucketLifecycleWithContextReturnsOnCall[len(fake.deleteBucketLifecycleWithContextArgsForCall)]
 	fake.deleteBucketLifecycleWithContextArgsForCall = append(fake.deleteBucketLifecycleWithContextArgsForCall, struct {
@@ -6285,26 +6285,26 @@ func (fake *FakeS3) DeleteBucketLifecycleWithContext(arg1 context.Context, arg2 
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketLifecycleWithContextCallCount() int {
+func (fake *FakeClient) DeleteBucketLifecycleWithContextCallCount() int {
 	fake.deleteBucketLifecycleWithContextMutex.RLock()
 	defer fake.deleteBucketLifecycleWithContextMutex.RUnlock()
 	return len(fake.deleteBucketLifecycleWithContextArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketLifecycleWithContextCalls(stub func(context.Context, *s3a.DeleteBucketLifecycleInput, ...request.Option) (*s3a.DeleteBucketLifecycleOutput, error)) {
+func (fake *FakeClient) DeleteBucketLifecycleWithContextCalls(stub func(context.Context, *s3a.DeleteBucketLifecycleInput, ...request.Option) (*s3a.DeleteBucketLifecycleOutput, error)) {
 	fake.deleteBucketLifecycleWithContextMutex.Lock()
 	defer fake.deleteBucketLifecycleWithContextMutex.Unlock()
 	fake.DeleteBucketLifecycleWithContextStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketLifecycleWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketLifecycleInput, []request.Option) {
+func (fake *FakeClient) DeleteBucketLifecycleWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketLifecycleInput, []request.Option) {
 	fake.deleteBucketLifecycleWithContextMutex.RLock()
 	defer fake.deleteBucketLifecycleWithContextMutex.RUnlock()
 	argsForCall := fake.deleteBucketLifecycleWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) DeleteBucketLifecycleWithContextReturns(result1 *s3a.DeleteBucketLifecycleOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketLifecycleWithContextReturns(result1 *s3a.DeleteBucketLifecycleOutput, result2 error) {
 	fake.deleteBucketLifecycleWithContextMutex.Lock()
 	defer fake.deleteBucketLifecycleWithContextMutex.Unlock()
 	fake.DeleteBucketLifecycleWithContextStub = nil
@@ -6314,7 +6314,7 @@ func (fake *FakeS3) DeleteBucketLifecycleWithContextReturns(result1 *s3a.DeleteB
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketLifecycleWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketLifecycleOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketLifecycleWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketLifecycleOutput, result2 error) {
 	fake.deleteBucketLifecycleWithContextMutex.Lock()
 	defer fake.deleteBucketLifecycleWithContextMutex.Unlock()
 	fake.DeleteBucketLifecycleWithContextStub = nil
@@ -6330,7 +6330,7 @@ func (fake *FakeS3) DeleteBucketLifecycleWithContextReturnsOnCall(i int, result1
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketMetricsConfiguration(arg1 *s3a.DeleteBucketMetricsConfigurationInput) (*s3a.DeleteBucketMetricsConfigurationOutput, error) {
+func (fake *FakeClient) DeleteBucketMetricsConfiguration(arg1 *s3a.DeleteBucketMetricsConfigurationInput) (*s3a.DeleteBucketMetricsConfigurationOutput, error) {
 	fake.deleteBucketMetricsConfigurationMutex.Lock()
 	ret, specificReturn := fake.deleteBucketMetricsConfigurationReturnsOnCall[len(fake.deleteBucketMetricsConfigurationArgsForCall)]
 	fake.deleteBucketMetricsConfigurationArgsForCall = append(fake.deleteBucketMetricsConfigurationArgsForCall, struct {
@@ -6348,26 +6348,26 @@ func (fake *FakeS3) DeleteBucketMetricsConfiguration(arg1 *s3a.DeleteBucketMetri
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketMetricsConfigurationCallCount() int {
+func (fake *FakeClient) DeleteBucketMetricsConfigurationCallCount() int {
 	fake.deleteBucketMetricsConfigurationMutex.RLock()
 	defer fake.deleteBucketMetricsConfigurationMutex.RUnlock()
 	return len(fake.deleteBucketMetricsConfigurationArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketMetricsConfigurationCalls(stub func(*s3a.DeleteBucketMetricsConfigurationInput) (*s3a.DeleteBucketMetricsConfigurationOutput, error)) {
+func (fake *FakeClient) DeleteBucketMetricsConfigurationCalls(stub func(*s3a.DeleteBucketMetricsConfigurationInput) (*s3a.DeleteBucketMetricsConfigurationOutput, error)) {
 	fake.deleteBucketMetricsConfigurationMutex.Lock()
 	defer fake.deleteBucketMetricsConfigurationMutex.Unlock()
 	fake.DeleteBucketMetricsConfigurationStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketMetricsConfigurationArgsForCall(i int) *s3a.DeleteBucketMetricsConfigurationInput {
+func (fake *FakeClient) DeleteBucketMetricsConfigurationArgsForCall(i int) *s3a.DeleteBucketMetricsConfigurationInput {
 	fake.deleteBucketMetricsConfigurationMutex.RLock()
 	defer fake.deleteBucketMetricsConfigurationMutex.RUnlock()
 	argsForCall := fake.deleteBucketMetricsConfigurationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketMetricsConfigurationReturns(result1 *s3a.DeleteBucketMetricsConfigurationOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketMetricsConfigurationReturns(result1 *s3a.DeleteBucketMetricsConfigurationOutput, result2 error) {
 	fake.deleteBucketMetricsConfigurationMutex.Lock()
 	defer fake.deleteBucketMetricsConfigurationMutex.Unlock()
 	fake.DeleteBucketMetricsConfigurationStub = nil
@@ -6377,7 +6377,7 @@ func (fake *FakeS3) DeleteBucketMetricsConfigurationReturns(result1 *s3a.DeleteB
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketMetricsConfigurationReturnsOnCall(i int, result1 *s3a.DeleteBucketMetricsConfigurationOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketMetricsConfigurationReturnsOnCall(i int, result1 *s3a.DeleteBucketMetricsConfigurationOutput, result2 error) {
 	fake.deleteBucketMetricsConfigurationMutex.Lock()
 	defer fake.deleteBucketMetricsConfigurationMutex.Unlock()
 	fake.DeleteBucketMetricsConfigurationStub = nil
@@ -6393,7 +6393,7 @@ func (fake *FakeS3) DeleteBucketMetricsConfigurationReturnsOnCall(i int, result1
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketMetricsConfigurationRequest(arg1 *s3a.DeleteBucketMetricsConfigurationInput) (*request.Request, *s3a.DeleteBucketMetricsConfigurationOutput) {
+func (fake *FakeClient) DeleteBucketMetricsConfigurationRequest(arg1 *s3a.DeleteBucketMetricsConfigurationInput) (*request.Request, *s3a.DeleteBucketMetricsConfigurationOutput) {
 	fake.deleteBucketMetricsConfigurationRequestMutex.Lock()
 	ret, specificReturn := fake.deleteBucketMetricsConfigurationRequestReturnsOnCall[len(fake.deleteBucketMetricsConfigurationRequestArgsForCall)]
 	fake.deleteBucketMetricsConfigurationRequestArgsForCall = append(fake.deleteBucketMetricsConfigurationRequestArgsForCall, struct {
@@ -6411,26 +6411,26 @@ func (fake *FakeS3) DeleteBucketMetricsConfigurationRequest(arg1 *s3a.DeleteBuck
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketMetricsConfigurationRequestCallCount() int {
+func (fake *FakeClient) DeleteBucketMetricsConfigurationRequestCallCount() int {
 	fake.deleteBucketMetricsConfigurationRequestMutex.RLock()
 	defer fake.deleteBucketMetricsConfigurationRequestMutex.RUnlock()
 	return len(fake.deleteBucketMetricsConfigurationRequestArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketMetricsConfigurationRequestCalls(stub func(*s3a.DeleteBucketMetricsConfigurationInput) (*request.Request, *s3a.DeleteBucketMetricsConfigurationOutput)) {
+func (fake *FakeClient) DeleteBucketMetricsConfigurationRequestCalls(stub func(*s3a.DeleteBucketMetricsConfigurationInput) (*request.Request, *s3a.DeleteBucketMetricsConfigurationOutput)) {
 	fake.deleteBucketMetricsConfigurationRequestMutex.Lock()
 	defer fake.deleteBucketMetricsConfigurationRequestMutex.Unlock()
 	fake.DeleteBucketMetricsConfigurationRequestStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketMetricsConfigurationRequestArgsForCall(i int) *s3a.DeleteBucketMetricsConfigurationInput {
+func (fake *FakeClient) DeleteBucketMetricsConfigurationRequestArgsForCall(i int) *s3a.DeleteBucketMetricsConfigurationInput {
 	fake.deleteBucketMetricsConfigurationRequestMutex.RLock()
 	defer fake.deleteBucketMetricsConfigurationRequestMutex.RUnlock()
 	argsForCall := fake.deleteBucketMetricsConfigurationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketMetricsConfigurationRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketMetricsConfigurationOutput) {
+func (fake *FakeClient) DeleteBucketMetricsConfigurationRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketMetricsConfigurationOutput) {
 	fake.deleteBucketMetricsConfigurationRequestMutex.Lock()
 	defer fake.deleteBucketMetricsConfigurationRequestMutex.Unlock()
 	fake.DeleteBucketMetricsConfigurationRequestStub = nil
@@ -6440,7 +6440,7 @@ func (fake *FakeS3) DeleteBucketMetricsConfigurationRequestReturns(result1 *requ
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketMetricsConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketMetricsConfigurationOutput) {
+func (fake *FakeClient) DeleteBucketMetricsConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketMetricsConfigurationOutput) {
 	fake.deleteBucketMetricsConfigurationRequestMutex.Lock()
 	defer fake.deleteBucketMetricsConfigurationRequestMutex.Unlock()
 	fake.DeleteBucketMetricsConfigurationRequestStub = nil
@@ -6456,7 +6456,7 @@ func (fake *FakeS3) DeleteBucketMetricsConfigurationRequestReturnsOnCall(i int, 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketMetricsConfigurationWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketMetricsConfigurationInput, arg3 ...request.Option) (*s3a.DeleteBucketMetricsConfigurationOutput, error) {
+func (fake *FakeClient) DeleteBucketMetricsConfigurationWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketMetricsConfigurationInput, arg3 ...request.Option) (*s3a.DeleteBucketMetricsConfigurationOutput, error) {
 	fake.deleteBucketMetricsConfigurationWithContextMutex.Lock()
 	ret, specificReturn := fake.deleteBucketMetricsConfigurationWithContextReturnsOnCall[len(fake.deleteBucketMetricsConfigurationWithContextArgsForCall)]
 	fake.deleteBucketMetricsConfigurationWithContextArgsForCall = append(fake.deleteBucketMetricsConfigurationWithContextArgsForCall, struct {
@@ -6476,26 +6476,26 @@ func (fake *FakeS3) DeleteBucketMetricsConfigurationWithContext(arg1 context.Con
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketMetricsConfigurationWithContextCallCount() int {
+func (fake *FakeClient) DeleteBucketMetricsConfigurationWithContextCallCount() int {
 	fake.deleteBucketMetricsConfigurationWithContextMutex.RLock()
 	defer fake.deleteBucketMetricsConfigurationWithContextMutex.RUnlock()
 	return len(fake.deleteBucketMetricsConfigurationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketMetricsConfigurationWithContextCalls(stub func(context.Context, *s3a.DeleteBucketMetricsConfigurationInput, ...request.Option) (*s3a.DeleteBucketMetricsConfigurationOutput, error)) {
+func (fake *FakeClient) DeleteBucketMetricsConfigurationWithContextCalls(stub func(context.Context, *s3a.DeleteBucketMetricsConfigurationInput, ...request.Option) (*s3a.DeleteBucketMetricsConfigurationOutput, error)) {
 	fake.deleteBucketMetricsConfigurationWithContextMutex.Lock()
 	defer fake.deleteBucketMetricsConfigurationWithContextMutex.Unlock()
 	fake.DeleteBucketMetricsConfigurationWithContextStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketMetricsConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketMetricsConfigurationInput, []request.Option) {
+func (fake *FakeClient) DeleteBucketMetricsConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketMetricsConfigurationInput, []request.Option) {
 	fake.deleteBucketMetricsConfigurationWithContextMutex.RLock()
 	defer fake.deleteBucketMetricsConfigurationWithContextMutex.RUnlock()
 	argsForCall := fake.deleteBucketMetricsConfigurationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) DeleteBucketMetricsConfigurationWithContextReturns(result1 *s3a.DeleteBucketMetricsConfigurationOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketMetricsConfigurationWithContextReturns(result1 *s3a.DeleteBucketMetricsConfigurationOutput, result2 error) {
 	fake.deleteBucketMetricsConfigurationWithContextMutex.Lock()
 	defer fake.deleteBucketMetricsConfigurationWithContextMutex.Unlock()
 	fake.DeleteBucketMetricsConfigurationWithContextStub = nil
@@ -6505,7 +6505,7 @@ func (fake *FakeS3) DeleteBucketMetricsConfigurationWithContextReturns(result1 *
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketMetricsConfigurationWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketMetricsConfigurationOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketMetricsConfigurationWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketMetricsConfigurationOutput, result2 error) {
 	fake.deleteBucketMetricsConfigurationWithContextMutex.Lock()
 	defer fake.deleteBucketMetricsConfigurationWithContextMutex.Unlock()
 	fake.DeleteBucketMetricsConfigurationWithContextStub = nil
@@ -6521,7 +6521,7 @@ func (fake *FakeS3) DeleteBucketMetricsConfigurationWithContextReturnsOnCall(i i
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketOwnershipControls(arg1 *s3a.DeleteBucketOwnershipControlsInput) (*s3a.DeleteBucketOwnershipControlsOutput, error) {
+func (fake *FakeClient) DeleteBucketOwnershipControls(arg1 *s3a.DeleteBucketOwnershipControlsInput) (*s3a.DeleteBucketOwnershipControlsOutput, error) {
 	fake.deleteBucketOwnershipControlsMutex.Lock()
 	ret, specificReturn := fake.deleteBucketOwnershipControlsReturnsOnCall[len(fake.deleteBucketOwnershipControlsArgsForCall)]
 	fake.deleteBucketOwnershipControlsArgsForCall = append(fake.deleteBucketOwnershipControlsArgsForCall, struct {
@@ -6539,26 +6539,26 @@ func (fake *FakeS3) DeleteBucketOwnershipControls(arg1 *s3a.DeleteBucketOwnershi
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketOwnershipControlsCallCount() int {
+func (fake *FakeClient) DeleteBucketOwnershipControlsCallCount() int {
 	fake.deleteBucketOwnershipControlsMutex.RLock()
 	defer fake.deleteBucketOwnershipControlsMutex.RUnlock()
 	return len(fake.deleteBucketOwnershipControlsArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketOwnershipControlsCalls(stub func(*s3a.DeleteBucketOwnershipControlsInput) (*s3a.DeleteBucketOwnershipControlsOutput, error)) {
+func (fake *FakeClient) DeleteBucketOwnershipControlsCalls(stub func(*s3a.DeleteBucketOwnershipControlsInput) (*s3a.DeleteBucketOwnershipControlsOutput, error)) {
 	fake.deleteBucketOwnershipControlsMutex.Lock()
 	defer fake.deleteBucketOwnershipControlsMutex.Unlock()
 	fake.DeleteBucketOwnershipControlsStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketOwnershipControlsArgsForCall(i int) *s3a.DeleteBucketOwnershipControlsInput {
+func (fake *FakeClient) DeleteBucketOwnershipControlsArgsForCall(i int) *s3a.DeleteBucketOwnershipControlsInput {
 	fake.deleteBucketOwnershipControlsMutex.RLock()
 	defer fake.deleteBucketOwnershipControlsMutex.RUnlock()
 	argsForCall := fake.deleteBucketOwnershipControlsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketOwnershipControlsReturns(result1 *s3a.DeleteBucketOwnershipControlsOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketOwnershipControlsReturns(result1 *s3a.DeleteBucketOwnershipControlsOutput, result2 error) {
 	fake.deleteBucketOwnershipControlsMutex.Lock()
 	defer fake.deleteBucketOwnershipControlsMutex.Unlock()
 	fake.DeleteBucketOwnershipControlsStub = nil
@@ -6568,7 +6568,7 @@ func (fake *FakeS3) DeleteBucketOwnershipControlsReturns(result1 *s3a.DeleteBuck
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketOwnershipControlsReturnsOnCall(i int, result1 *s3a.DeleteBucketOwnershipControlsOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketOwnershipControlsReturnsOnCall(i int, result1 *s3a.DeleteBucketOwnershipControlsOutput, result2 error) {
 	fake.deleteBucketOwnershipControlsMutex.Lock()
 	defer fake.deleteBucketOwnershipControlsMutex.Unlock()
 	fake.DeleteBucketOwnershipControlsStub = nil
@@ -6584,7 +6584,7 @@ func (fake *FakeS3) DeleteBucketOwnershipControlsReturnsOnCall(i int, result1 *s
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketOwnershipControlsRequest(arg1 *s3a.DeleteBucketOwnershipControlsInput) (*request.Request, *s3a.DeleteBucketOwnershipControlsOutput) {
+func (fake *FakeClient) DeleteBucketOwnershipControlsRequest(arg1 *s3a.DeleteBucketOwnershipControlsInput) (*request.Request, *s3a.DeleteBucketOwnershipControlsOutput) {
 	fake.deleteBucketOwnershipControlsRequestMutex.Lock()
 	ret, specificReturn := fake.deleteBucketOwnershipControlsRequestReturnsOnCall[len(fake.deleteBucketOwnershipControlsRequestArgsForCall)]
 	fake.deleteBucketOwnershipControlsRequestArgsForCall = append(fake.deleteBucketOwnershipControlsRequestArgsForCall, struct {
@@ -6602,26 +6602,26 @@ func (fake *FakeS3) DeleteBucketOwnershipControlsRequest(arg1 *s3a.DeleteBucketO
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketOwnershipControlsRequestCallCount() int {
+func (fake *FakeClient) DeleteBucketOwnershipControlsRequestCallCount() int {
 	fake.deleteBucketOwnershipControlsRequestMutex.RLock()
 	defer fake.deleteBucketOwnershipControlsRequestMutex.RUnlock()
 	return len(fake.deleteBucketOwnershipControlsRequestArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketOwnershipControlsRequestCalls(stub func(*s3a.DeleteBucketOwnershipControlsInput) (*request.Request, *s3a.DeleteBucketOwnershipControlsOutput)) {
+func (fake *FakeClient) DeleteBucketOwnershipControlsRequestCalls(stub func(*s3a.DeleteBucketOwnershipControlsInput) (*request.Request, *s3a.DeleteBucketOwnershipControlsOutput)) {
 	fake.deleteBucketOwnershipControlsRequestMutex.Lock()
 	defer fake.deleteBucketOwnershipControlsRequestMutex.Unlock()
 	fake.DeleteBucketOwnershipControlsRequestStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketOwnershipControlsRequestArgsForCall(i int) *s3a.DeleteBucketOwnershipControlsInput {
+func (fake *FakeClient) DeleteBucketOwnershipControlsRequestArgsForCall(i int) *s3a.DeleteBucketOwnershipControlsInput {
 	fake.deleteBucketOwnershipControlsRequestMutex.RLock()
 	defer fake.deleteBucketOwnershipControlsRequestMutex.RUnlock()
 	argsForCall := fake.deleteBucketOwnershipControlsRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketOwnershipControlsRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketOwnershipControlsOutput) {
+func (fake *FakeClient) DeleteBucketOwnershipControlsRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketOwnershipControlsOutput) {
 	fake.deleteBucketOwnershipControlsRequestMutex.Lock()
 	defer fake.deleteBucketOwnershipControlsRequestMutex.Unlock()
 	fake.DeleteBucketOwnershipControlsRequestStub = nil
@@ -6631,7 +6631,7 @@ func (fake *FakeS3) DeleteBucketOwnershipControlsRequestReturns(result1 *request
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketOwnershipControlsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketOwnershipControlsOutput) {
+func (fake *FakeClient) DeleteBucketOwnershipControlsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketOwnershipControlsOutput) {
 	fake.deleteBucketOwnershipControlsRequestMutex.Lock()
 	defer fake.deleteBucketOwnershipControlsRequestMutex.Unlock()
 	fake.DeleteBucketOwnershipControlsRequestStub = nil
@@ -6647,7 +6647,7 @@ func (fake *FakeS3) DeleteBucketOwnershipControlsRequestReturnsOnCall(i int, res
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketOwnershipControlsWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketOwnershipControlsInput, arg3 ...request.Option) (*s3a.DeleteBucketOwnershipControlsOutput, error) {
+func (fake *FakeClient) DeleteBucketOwnershipControlsWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketOwnershipControlsInput, arg3 ...request.Option) (*s3a.DeleteBucketOwnershipControlsOutput, error) {
 	fake.deleteBucketOwnershipControlsWithContextMutex.Lock()
 	ret, specificReturn := fake.deleteBucketOwnershipControlsWithContextReturnsOnCall[len(fake.deleteBucketOwnershipControlsWithContextArgsForCall)]
 	fake.deleteBucketOwnershipControlsWithContextArgsForCall = append(fake.deleteBucketOwnershipControlsWithContextArgsForCall, struct {
@@ -6667,26 +6667,26 @@ func (fake *FakeS3) DeleteBucketOwnershipControlsWithContext(arg1 context.Contex
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketOwnershipControlsWithContextCallCount() int {
+func (fake *FakeClient) DeleteBucketOwnershipControlsWithContextCallCount() int {
 	fake.deleteBucketOwnershipControlsWithContextMutex.RLock()
 	defer fake.deleteBucketOwnershipControlsWithContextMutex.RUnlock()
 	return len(fake.deleteBucketOwnershipControlsWithContextArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketOwnershipControlsWithContextCalls(stub func(context.Context, *s3a.DeleteBucketOwnershipControlsInput, ...request.Option) (*s3a.DeleteBucketOwnershipControlsOutput, error)) {
+func (fake *FakeClient) DeleteBucketOwnershipControlsWithContextCalls(stub func(context.Context, *s3a.DeleteBucketOwnershipControlsInput, ...request.Option) (*s3a.DeleteBucketOwnershipControlsOutput, error)) {
 	fake.deleteBucketOwnershipControlsWithContextMutex.Lock()
 	defer fake.deleteBucketOwnershipControlsWithContextMutex.Unlock()
 	fake.DeleteBucketOwnershipControlsWithContextStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketOwnershipControlsWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketOwnershipControlsInput, []request.Option) {
+func (fake *FakeClient) DeleteBucketOwnershipControlsWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketOwnershipControlsInput, []request.Option) {
 	fake.deleteBucketOwnershipControlsWithContextMutex.RLock()
 	defer fake.deleteBucketOwnershipControlsWithContextMutex.RUnlock()
 	argsForCall := fake.deleteBucketOwnershipControlsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) DeleteBucketOwnershipControlsWithContextReturns(result1 *s3a.DeleteBucketOwnershipControlsOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketOwnershipControlsWithContextReturns(result1 *s3a.DeleteBucketOwnershipControlsOutput, result2 error) {
 	fake.deleteBucketOwnershipControlsWithContextMutex.Lock()
 	defer fake.deleteBucketOwnershipControlsWithContextMutex.Unlock()
 	fake.DeleteBucketOwnershipControlsWithContextStub = nil
@@ -6696,7 +6696,7 @@ func (fake *FakeS3) DeleteBucketOwnershipControlsWithContextReturns(result1 *s3a
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketOwnershipControlsWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketOwnershipControlsOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketOwnershipControlsWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketOwnershipControlsOutput, result2 error) {
 	fake.deleteBucketOwnershipControlsWithContextMutex.Lock()
 	defer fake.deleteBucketOwnershipControlsWithContextMutex.Unlock()
 	fake.DeleteBucketOwnershipControlsWithContextStub = nil
@@ -6712,7 +6712,7 @@ func (fake *FakeS3) DeleteBucketOwnershipControlsWithContextReturnsOnCall(i int,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketPolicy(arg1 *s3a.DeleteBucketPolicyInput) (*s3a.DeleteBucketPolicyOutput, error) {
+func (fake *FakeClient) DeleteBucketPolicy(arg1 *s3a.DeleteBucketPolicyInput) (*s3a.DeleteBucketPolicyOutput, error) {
 	fake.deleteBucketPolicyMutex.Lock()
 	ret, specificReturn := fake.deleteBucketPolicyReturnsOnCall[len(fake.deleteBucketPolicyArgsForCall)]
 	fake.deleteBucketPolicyArgsForCall = append(fake.deleteBucketPolicyArgsForCall, struct {
@@ -6730,26 +6730,26 @@ func (fake *FakeS3) DeleteBucketPolicy(arg1 *s3a.DeleteBucketPolicyInput) (*s3a.
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketPolicyCallCount() int {
+func (fake *FakeClient) DeleteBucketPolicyCallCount() int {
 	fake.deleteBucketPolicyMutex.RLock()
 	defer fake.deleteBucketPolicyMutex.RUnlock()
 	return len(fake.deleteBucketPolicyArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketPolicyCalls(stub func(*s3a.DeleteBucketPolicyInput) (*s3a.DeleteBucketPolicyOutput, error)) {
+func (fake *FakeClient) DeleteBucketPolicyCalls(stub func(*s3a.DeleteBucketPolicyInput) (*s3a.DeleteBucketPolicyOutput, error)) {
 	fake.deleteBucketPolicyMutex.Lock()
 	defer fake.deleteBucketPolicyMutex.Unlock()
 	fake.DeleteBucketPolicyStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketPolicyArgsForCall(i int) *s3a.DeleteBucketPolicyInput {
+func (fake *FakeClient) DeleteBucketPolicyArgsForCall(i int) *s3a.DeleteBucketPolicyInput {
 	fake.deleteBucketPolicyMutex.RLock()
 	defer fake.deleteBucketPolicyMutex.RUnlock()
 	argsForCall := fake.deleteBucketPolicyArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketPolicyReturns(result1 *s3a.DeleteBucketPolicyOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketPolicyReturns(result1 *s3a.DeleteBucketPolicyOutput, result2 error) {
 	fake.deleteBucketPolicyMutex.Lock()
 	defer fake.deleteBucketPolicyMutex.Unlock()
 	fake.DeleteBucketPolicyStub = nil
@@ -6759,7 +6759,7 @@ func (fake *FakeS3) DeleteBucketPolicyReturns(result1 *s3a.DeleteBucketPolicyOut
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketPolicyReturnsOnCall(i int, result1 *s3a.DeleteBucketPolicyOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketPolicyReturnsOnCall(i int, result1 *s3a.DeleteBucketPolicyOutput, result2 error) {
 	fake.deleteBucketPolicyMutex.Lock()
 	defer fake.deleteBucketPolicyMutex.Unlock()
 	fake.DeleteBucketPolicyStub = nil
@@ -6775,7 +6775,7 @@ func (fake *FakeS3) DeleteBucketPolicyReturnsOnCall(i int, result1 *s3a.DeleteBu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketPolicyRequest(arg1 *s3a.DeleteBucketPolicyInput) (*request.Request, *s3a.DeleteBucketPolicyOutput) {
+func (fake *FakeClient) DeleteBucketPolicyRequest(arg1 *s3a.DeleteBucketPolicyInput) (*request.Request, *s3a.DeleteBucketPolicyOutput) {
 	fake.deleteBucketPolicyRequestMutex.Lock()
 	ret, specificReturn := fake.deleteBucketPolicyRequestReturnsOnCall[len(fake.deleteBucketPolicyRequestArgsForCall)]
 	fake.deleteBucketPolicyRequestArgsForCall = append(fake.deleteBucketPolicyRequestArgsForCall, struct {
@@ -6793,26 +6793,26 @@ func (fake *FakeS3) DeleteBucketPolicyRequest(arg1 *s3a.DeleteBucketPolicyInput)
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketPolicyRequestCallCount() int {
+func (fake *FakeClient) DeleteBucketPolicyRequestCallCount() int {
 	fake.deleteBucketPolicyRequestMutex.RLock()
 	defer fake.deleteBucketPolicyRequestMutex.RUnlock()
 	return len(fake.deleteBucketPolicyRequestArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketPolicyRequestCalls(stub func(*s3a.DeleteBucketPolicyInput) (*request.Request, *s3a.DeleteBucketPolicyOutput)) {
+func (fake *FakeClient) DeleteBucketPolicyRequestCalls(stub func(*s3a.DeleteBucketPolicyInput) (*request.Request, *s3a.DeleteBucketPolicyOutput)) {
 	fake.deleteBucketPolicyRequestMutex.Lock()
 	defer fake.deleteBucketPolicyRequestMutex.Unlock()
 	fake.DeleteBucketPolicyRequestStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketPolicyRequestArgsForCall(i int) *s3a.DeleteBucketPolicyInput {
+func (fake *FakeClient) DeleteBucketPolicyRequestArgsForCall(i int) *s3a.DeleteBucketPolicyInput {
 	fake.deleteBucketPolicyRequestMutex.RLock()
 	defer fake.deleteBucketPolicyRequestMutex.RUnlock()
 	argsForCall := fake.deleteBucketPolicyRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketPolicyRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketPolicyOutput) {
+func (fake *FakeClient) DeleteBucketPolicyRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketPolicyOutput) {
 	fake.deleteBucketPolicyRequestMutex.Lock()
 	defer fake.deleteBucketPolicyRequestMutex.Unlock()
 	fake.DeleteBucketPolicyRequestStub = nil
@@ -6822,7 +6822,7 @@ func (fake *FakeS3) DeleteBucketPolicyRequestReturns(result1 *request.Request, r
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketPolicyRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketPolicyOutput) {
+func (fake *FakeClient) DeleteBucketPolicyRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketPolicyOutput) {
 	fake.deleteBucketPolicyRequestMutex.Lock()
 	defer fake.deleteBucketPolicyRequestMutex.Unlock()
 	fake.DeleteBucketPolicyRequestStub = nil
@@ -6838,7 +6838,7 @@ func (fake *FakeS3) DeleteBucketPolicyRequestReturnsOnCall(i int, result1 *reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketPolicyWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketPolicyInput, arg3 ...request.Option) (*s3a.DeleteBucketPolicyOutput, error) {
+func (fake *FakeClient) DeleteBucketPolicyWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketPolicyInput, arg3 ...request.Option) (*s3a.DeleteBucketPolicyOutput, error) {
 	fake.deleteBucketPolicyWithContextMutex.Lock()
 	ret, specificReturn := fake.deleteBucketPolicyWithContextReturnsOnCall[len(fake.deleteBucketPolicyWithContextArgsForCall)]
 	fake.deleteBucketPolicyWithContextArgsForCall = append(fake.deleteBucketPolicyWithContextArgsForCall, struct {
@@ -6858,26 +6858,26 @@ func (fake *FakeS3) DeleteBucketPolicyWithContext(arg1 context.Context, arg2 *s3
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketPolicyWithContextCallCount() int {
+func (fake *FakeClient) DeleteBucketPolicyWithContextCallCount() int {
 	fake.deleteBucketPolicyWithContextMutex.RLock()
 	defer fake.deleteBucketPolicyWithContextMutex.RUnlock()
 	return len(fake.deleteBucketPolicyWithContextArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketPolicyWithContextCalls(stub func(context.Context, *s3a.DeleteBucketPolicyInput, ...request.Option) (*s3a.DeleteBucketPolicyOutput, error)) {
+func (fake *FakeClient) DeleteBucketPolicyWithContextCalls(stub func(context.Context, *s3a.DeleteBucketPolicyInput, ...request.Option) (*s3a.DeleteBucketPolicyOutput, error)) {
 	fake.deleteBucketPolicyWithContextMutex.Lock()
 	defer fake.deleteBucketPolicyWithContextMutex.Unlock()
 	fake.DeleteBucketPolicyWithContextStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketPolicyWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketPolicyInput, []request.Option) {
+func (fake *FakeClient) DeleteBucketPolicyWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketPolicyInput, []request.Option) {
 	fake.deleteBucketPolicyWithContextMutex.RLock()
 	defer fake.deleteBucketPolicyWithContextMutex.RUnlock()
 	argsForCall := fake.deleteBucketPolicyWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) DeleteBucketPolicyWithContextReturns(result1 *s3a.DeleteBucketPolicyOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketPolicyWithContextReturns(result1 *s3a.DeleteBucketPolicyOutput, result2 error) {
 	fake.deleteBucketPolicyWithContextMutex.Lock()
 	defer fake.deleteBucketPolicyWithContextMutex.Unlock()
 	fake.DeleteBucketPolicyWithContextStub = nil
@@ -6887,7 +6887,7 @@ func (fake *FakeS3) DeleteBucketPolicyWithContextReturns(result1 *s3a.DeleteBuck
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketPolicyWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketPolicyOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketPolicyWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketPolicyOutput, result2 error) {
 	fake.deleteBucketPolicyWithContextMutex.Lock()
 	defer fake.deleteBucketPolicyWithContextMutex.Unlock()
 	fake.DeleteBucketPolicyWithContextStub = nil
@@ -6903,7 +6903,7 @@ func (fake *FakeS3) DeleteBucketPolicyWithContextReturnsOnCall(i int, result1 *s
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketReplication(arg1 *s3a.DeleteBucketReplicationInput) (*s3a.DeleteBucketReplicationOutput, error) {
+func (fake *FakeClient) DeleteBucketReplication(arg1 *s3a.DeleteBucketReplicationInput) (*s3a.DeleteBucketReplicationOutput, error) {
 	fake.deleteBucketReplicationMutex.Lock()
 	ret, specificReturn := fake.deleteBucketReplicationReturnsOnCall[len(fake.deleteBucketReplicationArgsForCall)]
 	fake.deleteBucketReplicationArgsForCall = append(fake.deleteBucketReplicationArgsForCall, struct {
@@ -6921,26 +6921,26 @@ func (fake *FakeS3) DeleteBucketReplication(arg1 *s3a.DeleteBucketReplicationInp
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketReplicationCallCount() int {
+func (fake *FakeClient) DeleteBucketReplicationCallCount() int {
 	fake.deleteBucketReplicationMutex.RLock()
 	defer fake.deleteBucketReplicationMutex.RUnlock()
 	return len(fake.deleteBucketReplicationArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketReplicationCalls(stub func(*s3a.DeleteBucketReplicationInput) (*s3a.DeleteBucketReplicationOutput, error)) {
+func (fake *FakeClient) DeleteBucketReplicationCalls(stub func(*s3a.DeleteBucketReplicationInput) (*s3a.DeleteBucketReplicationOutput, error)) {
 	fake.deleteBucketReplicationMutex.Lock()
 	defer fake.deleteBucketReplicationMutex.Unlock()
 	fake.DeleteBucketReplicationStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketReplicationArgsForCall(i int) *s3a.DeleteBucketReplicationInput {
+func (fake *FakeClient) DeleteBucketReplicationArgsForCall(i int) *s3a.DeleteBucketReplicationInput {
 	fake.deleteBucketReplicationMutex.RLock()
 	defer fake.deleteBucketReplicationMutex.RUnlock()
 	argsForCall := fake.deleteBucketReplicationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketReplicationReturns(result1 *s3a.DeleteBucketReplicationOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketReplicationReturns(result1 *s3a.DeleteBucketReplicationOutput, result2 error) {
 	fake.deleteBucketReplicationMutex.Lock()
 	defer fake.deleteBucketReplicationMutex.Unlock()
 	fake.DeleteBucketReplicationStub = nil
@@ -6950,7 +6950,7 @@ func (fake *FakeS3) DeleteBucketReplicationReturns(result1 *s3a.DeleteBucketRepl
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketReplicationReturnsOnCall(i int, result1 *s3a.DeleteBucketReplicationOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketReplicationReturnsOnCall(i int, result1 *s3a.DeleteBucketReplicationOutput, result2 error) {
 	fake.deleteBucketReplicationMutex.Lock()
 	defer fake.deleteBucketReplicationMutex.Unlock()
 	fake.DeleteBucketReplicationStub = nil
@@ -6966,7 +6966,7 @@ func (fake *FakeS3) DeleteBucketReplicationReturnsOnCall(i int, result1 *s3a.Del
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketReplicationRequest(arg1 *s3a.DeleteBucketReplicationInput) (*request.Request, *s3a.DeleteBucketReplicationOutput) {
+func (fake *FakeClient) DeleteBucketReplicationRequest(arg1 *s3a.DeleteBucketReplicationInput) (*request.Request, *s3a.DeleteBucketReplicationOutput) {
 	fake.deleteBucketReplicationRequestMutex.Lock()
 	ret, specificReturn := fake.deleteBucketReplicationRequestReturnsOnCall[len(fake.deleteBucketReplicationRequestArgsForCall)]
 	fake.deleteBucketReplicationRequestArgsForCall = append(fake.deleteBucketReplicationRequestArgsForCall, struct {
@@ -6984,26 +6984,26 @@ func (fake *FakeS3) DeleteBucketReplicationRequest(arg1 *s3a.DeleteBucketReplica
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketReplicationRequestCallCount() int {
+func (fake *FakeClient) DeleteBucketReplicationRequestCallCount() int {
 	fake.deleteBucketReplicationRequestMutex.RLock()
 	defer fake.deleteBucketReplicationRequestMutex.RUnlock()
 	return len(fake.deleteBucketReplicationRequestArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketReplicationRequestCalls(stub func(*s3a.DeleteBucketReplicationInput) (*request.Request, *s3a.DeleteBucketReplicationOutput)) {
+func (fake *FakeClient) DeleteBucketReplicationRequestCalls(stub func(*s3a.DeleteBucketReplicationInput) (*request.Request, *s3a.DeleteBucketReplicationOutput)) {
 	fake.deleteBucketReplicationRequestMutex.Lock()
 	defer fake.deleteBucketReplicationRequestMutex.Unlock()
 	fake.DeleteBucketReplicationRequestStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketReplicationRequestArgsForCall(i int) *s3a.DeleteBucketReplicationInput {
+func (fake *FakeClient) DeleteBucketReplicationRequestArgsForCall(i int) *s3a.DeleteBucketReplicationInput {
 	fake.deleteBucketReplicationRequestMutex.RLock()
 	defer fake.deleteBucketReplicationRequestMutex.RUnlock()
 	argsForCall := fake.deleteBucketReplicationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketReplicationRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketReplicationOutput) {
+func (fake *FakeClient) DeleteBucketReplicationRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketReplicationOutput) {
 	fake.deleteBucketReplicationRequestMutex.Lock()
 	defer fake.deleteBucketReplicationRequestMutex.Unlock()
 	fake.DeleteBucketReplicationRequestStub = nil
@@ -7013,7 +7013,7 @@ func (fake *FakeS3) DeleteBucketReplicationRequestReturns(result1 *request.Reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketReplicationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketReplicationOutput) {
+func (fake *FakeClient) DeleteBucketReplicationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketReplicationOutput) {
 	fake.deleteBucketReplicationRequestMutex.Lock()
 	defer fake.deleteBucketReplicationRequestMutex.Unlock()
 	fake.DeleteBucketReplicationRequestStub = nil
@@ -7029,7 +7029,7 @@ func (fake *FakeS3) DeleteBucketReplicationRequestReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketReplicationWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketReplicationInput, arg3 ...request.Option) (*s3a.DeleteBucketReplicationOutput, error) {
+func (fake *FakeClient) DeleteBucketReplicationWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketReplicationInput, arg3 ...request.Option) (*s3a.DeleteBucketReplicationOutput, error) {
 	fake.deleteBucketReplicationWithContextMutex.Lock()
 	ret, specificReturn := fake.deleteBucketReplicationWithContextReturnsOnCall[len(fake.deleteBucketReplicationWithContextArgsForCall)]
 	fake.deleteBucketReplicationWithContextArgsForCall = append(fake.deleteBucketReplicationWithContextArgsForCall, struct {
@@ -7049,26 +7049,26 @@ func (fake *FakeS3) DeleteBucketReplicationWithContext(arg1 context.Context, arg
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketReplicationWithContextCallCount() int {
+func (fake *FakeClient) DeleteBucketReplicationWithContextCallCount() int {
 	fake.deleteBucketReplicationWithContextMutex.RLock()
 	defer fake.deleteBucketReplicationWithContextMutex.RUnlock()
 	return len(fake.deleteBucketReplicationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketReplicationWithContextCalls(stub func(context.Context, *s3a.DeleteBucketReplicationInput, ...request.Option) (*s3a.DeleteBucketReplicationOutput, error)) {
+func (fake *FakeClient) DeleteBucketReplicationWithContextCalls(stub func(context.Context, *s3a.DeleteBucketReplicationInput, ...request.Option) (*s3a.DeleteBucketReplicationOutput, error)) {
 	fake.deleteBucketReplicationWithContextMutex.Lock()
 	defer fake.deleteBucketReplicationWithContextMutex.Unlock()
 	fake.DeleteBucketReplicationWithContextStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketReplicationWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketReplicationInput, []request.Option) {
+func (fake *FakeClient) DeleteBucketReplicationWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketReplicationInput, []request.Option) {
 	fake.deleteBucketReplicationWithContextMutex.RLock()
 	defer fake.deleteBucketReplicationWithContextMutex.RUnlock()
 	argsForCall := fake.deleteBucketReplicationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) DeleteBucketReplicationWithContextReturns(result1 *s3a.DeleteBucketReplicationOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketReplicationWithContextReturns(result1 *s3a.DeleteBucketReplicationOutput, result2 error) {
 	fake.deleteBucketReplicationWithContextMutex.Lock()
 	defer fake.deleteBucketReplicationWithContextMutex.Unlock()
 	fake.DeleteBucketReplicationWithContextStub = nil
@@ -7078,7 +7078,7 @@ func (fake *FakeS3) DeleteBucketReplicationWithContextReturns(result1 *s3a.Delet
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketReplicationWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketReplicationOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketReplicationWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketReplicationOutput, result2 error) {
 	fake.deleteBucketReplicationWithContextMutex.Lock()
 	defer fake.deleteBucketReplicationWithContextMutex.Unlock()
 	fake.DeleteBucketReplicationWithContextStub = nil
@@ -7094,7 +7094,7 @@ func (fake *FakeS3) DeleteBucketReplicationWithContextReturnsOnCall(i int, resul
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketRequest(arg1 *s3a.DeleteBucketInput) (*request.Request, *s3a.DeleteBucketOutput) {
+func (fake *FakeClient) DeleteBucketRequest(arg1 *s3a.DeleteBucketInput) (*request.Request, *s3a.DeleteBucketOutput) {
 	fake.deleteBucketRequestMutex.Lock()
 	ret, specificReturn := fake.deleteBucketRequestReturnsOnCall[len(fake.deleteBucketRequestArgsForCall)]
 	fake.deleteBucketRequestArgsForCall = append(fake.deleteBucketRequestArgsForCall, struct {
@@ -7112,26 +7112,26 @@ func (fake *FakeS3) DeleteBucketRequest(arg1 *s3a.DeleteBucketInput) (*request.R
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketRequestCallCount() int {
+func (fake *FakeClient) DeleteBucketRequestCallCount() int {
 	fake.deleteBucketRequestMutex.RLock()
 	defer fake.deleteBucketRequestMutex.RUnlock()
 	return len(fake.deleteBucketRequestArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketRequestCalls(stub func(*s3a.DeleteBucketInput) (*request.Request, *s3a.DeleteBucketOutput)) {
+func (fake *FakeClient) DeleteBucketRequestCalls(stub func(*s3a.DeleteBucketInput) (*request.Request, *s3a.DeleteBucketOutput)) {
 	fake.deleteBucketRequestMutex.Lock()
 	defer fake.deleteBucketRequestMutex.Unlock()
 	fake.DeleteBucketRequestStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketRequestArgsForCall(i int) *s3a.DeleteBucketInput {
+func (fake *FakeClient) DeleteBucketRequestArgsForCall(i int) *s3a.DeleteBucketInput {
 	fake.deleteBucketRequestMutex.RLock()
 	defer fake.deleteBucketRequestMutex.RUnlock()
 	argsForCall := fake.deleteBucketRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketOutput) {
+func (fake *FakeClient) DeleteBucketRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketOutput) {
 	fake.deleteBucketRequestMutex.Lock()
 	defer fake.deleteBucketRequestMutex.Unlock()
 	fake.DeleteBucketRequestStub = nil
@@ -7141,7 +7141,7 @@ func (fake *FakeS3) DeleteBucketRequestReturns(result1 *request.Request, result2
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketOutput) {
+func (fake *FakeClient) DeleteBucketRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketOutput) {
 	fake.deleteBucketRequestMutex.Lock()
 	defer fake.deleteBucketRequestMutex.Unlock()
 	fake.DeleteBucketRequestStub = nil
@@ -7157,7 +7157,7 @@ func (fake *FakeS3) DeleteBucketRequestReturnsOnCall(i int, result1 *request.Req
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketTagging(arg1 *s3a.DeleteBucketTaggingInput) (*s3a.DeleteBucketTaggingOutput, error) {
+func (fake *FakeClient) DeleteBucketTagging(arg1 *s3a.DeleteBucketTaggingInput) (*s3a.DeleteBucketTaggingOutput, error) {
 	fake.deleteBucketTaggingMutex.Lock()
 	ret, specificReturn := fake.deleteBucketTaggingReturnsOnCall[len(fake.deleteBucketTaggingArgsForCall)]
 	fake.deleteBucketTaggingArgsForCall = append(fake.deleteBucketTaggingArgsForCall, struct {
@@ -7175,26 +7175,26 @@ func (fake *FakeS3) DeleteBucketTagging(arg1 *s3a.DeleteBucketTaggingInput) (*s3
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketTaggingCallCount() int {
+func (fake *FakeClient) DeleteBucketTaggingCallCount() int {
 	fake.deleteBucketTaggingMutex.RLock()
 	defer fake.deleteBucketTaggingMutex.RUnlock()
 	return len(fake.deleteBucketTaggingArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketTaggingCalls(stub func(*s3a.DeleteBucketTaggingInput) (*s3a.DeleteBucketTaggingOutput, error)) {
+func (fake *FakeClient) DeleteBucketTaggingCalls(stub func(*s3a.DeleteBucketTaggingInput) (*s3a.DeleteBucketTaggingOutput, error)) {
 	fake.deleteBucketTaggingMutex.Lock()
 	defer fake.deleteBucketTaggingMutex.Unlock()
 	fake.DeleteBucketTaggingStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketTaggingArgsForCall(i int) *s3a.DeleteBucketTaggingInput {
+func (fake *FakeClient) DeleteBucketTaggingArgsForCall(i int) *s3a.DeleteBucketTaggingInput {
 	fake.deleteBucketTaggingMutex.RLock()
 	defer fake.deleteBucketTaggingMutex.RUnlock()
 	argsForCall := fake.deleteBucketTaggingArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketTaggingReturns(result1 *s3a.DeleteBucketTaggingOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketTaggingReturns(result1 *s3a.DeleteBucketTaggingOutput, result2 error) {
 	fake.deleteBucketTaggingMutex.Lock()
 	defer fake.deleteBucketTaggingMutex.Unlock()
 	fake.DeleteBucketTaggingStub = nil
@@ -7204,7 +7204,7 @@ func (fake *FakeS3) DeleteBucketTaggingReturns(result1 *s3a.DeleteBucketTaggingO
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketTaggingReturnsOnCall(i int, result1 *s3a.DeleteBucketTaggingOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketTaggingReturnsOnCall(i int, result1 *s3a.DeleteBucketTaggingOutput, result2 error) {
 	fake.deleteBucketTaggingMutex.Lock()
 	defer fake.deleteBucketTaggingMutex.Unlock()
 	fake.DeleteBucketTaggingStub = nil
@@ -7220,7 +7220,7 @@ func (fake *FakeS3) DeleteBucketTaggingReturnsOnCall(i int, result1 *s3a.DeleteB
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketTaggingRequest(arg1 *s3a.DeleteBucketTaggingInput) (*request.Request, *s3a.DeleteBucketTaggingOutput) {
+func (fake *FakeClient) DeleteBucketTaggingRequest(arg1 *s3a.DeleteBucketTaggingInput) (*request.Request, *s3a.DeleteBucketTaggingOutput) {
 	fake.deleteBucketTaggingRequestMutex.Lock()
 	ret, specificReturn := fake.deleteBucketTaggingRequestReturnsOnCall[len(fake.deleteBucketTaggingRequestArgsForCall)]
 	fake.deleteBucketTaggingRequestArgsForCall = append(fake.deleteBucketTaggingRequestArgsForCall, struct {
@@ -7238,26 +7238,26 @@ func (fake *FakeS3) DeleteBucketTaggingRequest(arg1 *s3a.DeleteBucketTaggingInpu
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketTaggingRequestCallCount() int {
+func (fake *FakeClient) DeleteBucketTaggingRequestCallCount() int {
 	fake.deleteBucketTaggingRequestMutex.RLock()
 	defer fake.deleteBucketTaggingRequestMutex.RUnlock()
 	return len(fake.deleteBucketTaggingRequestArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketTaggingRequestCalls(stub func(*s3a.DeleteBucketTaggingInput) (*request.Request, *s3a.DeleteBucketTaggingOutput)) {
+func (fake *FakeClient) DeleteBucketTaggingRequestCalls(stub func(*s3a.DeleteBucketTaggingInput) (*request.Request, *s3a.DeleteBucketTaggingOutput)) {
 	fake.deleteBucketTaggingRequestMutex.Lock()
 	defer fake.deleteBucketTaggingRequestMutex.Unlock()
 	fake.DeleteBucketTaggingRequestStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketTaggingRequestArgsForCall(i int) *s3a.DeleteBucketTaggingInput {
+func (fake *FakeClient) DeleteBucketTaggingRequestArgsForCall(i int) *s3a.DeleteBucketTaggingInput {
 	fake.deleteBucketTaggingRequestMutex.RLock()
 	defer fake.deleteBucketTaggingRequestMutex.RUnlock()
 	argsForCall := fake.deleteBucketTaggingRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketTaggingRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketTaggingOutput) {
+func (fake *FakeClient) DeleteBucketTaggingRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketTaggingOutput) {
 	fake.deleteBucketTaggingRequestMutex.Lock()
 	defer fake.deleteBucketTaggingRequestMutex.Unlock()
 	fake.DeleteBucketTaggingRequestStub = nil
@@ -7267,7 +7267,7 @@ func (fake *FakeS3) DeleteBucketTaggingRequestReturns(result1 *request.Request, 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketTaggingRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketTaggingOutput) {
+func (fake *FakeClient) DeleteBucketTaggingRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketTaggingOutput) {
 	fake.deleteBucketTaggingRequestMutex.Lock()
 	defer fake.deleteBucketTaggingRequestMutex.Unlock()
 	fake.DeleteBucketTaggingRequestStub = nil
@@ -7283,7 +7283,7 @@ func (fake *FakeS3) DeleteBucketTaggingRequestReturnsOnCall(i int, result1 *requ
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketTaggingWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketTaggingInput, arg3 ...request.Option) (*s3a.DeleteBucketTaggingOutput, error) {
+func (fake *FakeClient) DeleteBucketTaggingWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketTaggingInput, arg3 ...request.Option) (*s3a.DeleteBucketTaggingOutput, error) {
 	fake.deleteBucketTaggingWithContextMutex.Lock()
 	ret, specificReturn := fake.deleteBucketTaggingWithContextReturnsOnCall[len(fake.deleteBucketTaggingWithContextArgsForCall)]
 	fake.deleteBucketTaggingWithContextArgsForCall = append(fake.deleteBucketTaggingWithContextArgsForCall, struct {
@@ -7303,26 +7303,26 @@ func (fake *FakeS3) DeleteBucketTaggingWithContext(arg1 context.Context, arg2 *s
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketTaggingWithContextCallCount() int {
+func (fake *FakeClient) DeleteBucketTaggingWithContextCallCount() int {
 	fake.deleteBucketTaggingWithContextMutex.RLock()
 	defer fake.deleteBucketTaggingWithContextMutex.RUnlock()
 	return len(fake.deleteBucketTaggingWithContextArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketTaggingWithContextCalls(stub func(context.Context, *s3a.DeleteBucketTaggingInput, ...request.Option) (*s3a.DeleteBucketTaggingOutput, error)) {
+func (fake *FakeClient) DeleteBucketTaggingWithContextCalls(stub func(context.Context, *s3a.DeleteBucketTaggingInput, ...request.Option) (*s3a.DeleteBucketTaggingOutput, error)) {
 	fake.deleteBucketTaggingWithContextMutex.Lock()
 	defer fake.deleteBucketTaggingWithContextMutex.Unlock()
 	fake.DeleteBucketTaggingWithContextStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketTaggingWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketTaggingInput, []request.Option) {
+func (fake *FakeClient) DeleteBucketTaggingWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketTaggingInput, []request.Option) {
 	fake.deleteBucketTaggingWithContextMutex.RLock()
 	defer fake.deleteBucketTaggingWithContextMutex.RUnlock()
 	argsForCall := fake.deleteBucketTaggingWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) DeleteBucketTaggingWithContextReturns(result1 *s3a.DeleteBucketTaggingOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketTaggingWithContextReturns(result1 *s3a.DeleteBucketTaggingOutput, result2 error) {
 	fake.deleteBucketTaggingWithContextMutex.Lock()
 	defer fake.deleteBucketTaggingWithContextMutex.Unlock()
 	fake.DeleteBucketTaggingWithContextStub = nil
@@ -7332,7 +7332,7 @@ func (fake *FakeS3) DeleteBucketTaggingWithContextReturns(result1 *s3a.DeleteBuc
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketTaggingWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketTaggingOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketTaggingWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketTaggingOutput, result2 error) {
 	fake.deleteBucketTaggingWithContextMutex.Lock()
 	defer fake.deleteBucketTaggingWithContextMutex.Unlock()
 	fake.DeleteBucketTaggingWithContextStub = nil
@@ -7348,7 +7348,7 @@ func (fake *FakeS3) DeleteBucketTaggingWithContextReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketWebsite(arg1 *s3a.DeleteBucketWebsiteInput) (*s3a.DeleteBucketWebsiteOutput, error) {
+func (fake *FakeClient) DeleteBucketWebsite(arg1 *s3a.DeleteBucketWebsiteInput) (*s3a.DeleteBucketWebsiteOutput, error) {
 	fake.deleteBucketWebsiteMutex.Lock()
 	ret, specificReturn := fake.deleteBucketWebsiteReturnsOnCall[len(fake.deleteBucketWebsiteArgsForCall)]
 	fake.deleteBucketWebsiteArgsForCall = append(fake.deleteBucketWebsiteArgsForCall, struct {
@@ -7366,26 +7366,26 @@ func (fake *FakeS3) DeleteBucketWebsite(arg1 *s3a.DeleteBucketWebsiteInput) (*s3
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketWebsiteCallCount() int {
+func (fake *FakeClient) DeleteBucketWebsiteCallCount() int {
 	fake.deleteBucketWebsiteMutex.RLock()
 	defer fake.deleteBucketWebsiteMutex.RUnlock()
 	return len(fake.deleteBucketWebsiteArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketWebsiteCalls(stub func(*s3a.DeleteBucketWebsiteInput) (*s3a.DeleteBucketWebsiteOutput, error)) {
+func (fake *FakeClient) DeleteBucketWebsiteCalls(stub func(*s3a.DeleteBucketWebsiteInput) (*s3a.DeleteBucketWebsiteOutput, error)) {
 	fake.deleteBucketWebsiteMutex.Lock()
 	defer fake.deleteBucketWebsiteMutex.Unlock()
 	fake.DeleteBucketWebsiteStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketWebsiteArgsForCall(i int) *s3a.DeleteBucketWebsiteInput {
+func (fake *FakeClient) DeleteBucketWebsiteArgsForCall(i int) *s3a.DeleteBucketWebsiteInput {
 	fake.deleteBucketWebsiteMutex.RLock()
 	defer fake.deleteBucketWebsiteMutex.RUnlock()
 	argsForCall := fake.deleteBucketWebsiteArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketWebsiteReturns(result1 *s3a.DeleteBucketWebsiteOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketWebsiteReturns(result1 *s3a.DeleteBucketWebsiteOutput, result2 error) {
 	fake.deleteBucketWebsiteMutex.Lock()
 	defer fake.deleteBucketWebsiteMutex.Unlock()
 	fake.DeleteBucketWebsiteStub = nil
@@ -7395,7 +7395,7 @@ func (fake *FakeS3) DeleteBucketWebsiteReturns(result1 *s3a.DeleteBucketWebsiteO
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketWebsiteReturnsOnCall(i int, result1 *s3a.DeleteBucketWebsiteOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketWebsiteReturnsOnCall(i int, result1 *s3a.DeleteBucketWebsiteOutput, result2 error) {
 	fake.deleteBucketWebsiteMutex.Lock()
 	defer fake.deleteBucketWebsiteMutex.Unlock()
 	fake.DeleteBucketWebsiteStub = nil
@@ -7411,7 +7411,7 @@ func (fake *FakeS3) DeleteBucketWebsiteReturnsOnCall(i int, result1 *s3a.DeleteB
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketWebsiteRequest(arg1 *s3a.DeleteBucketWebsiteInput) (*request.Request, *s3a.DeleteBucketWebsiteOutput) {
+func (fake *FakeClient) DeleteBucketWebsiteRequest(arg1 *s3a.DeleteBucketWebsiteInput) (*request.Request, *s3a.DeleteBucketWebsiteOutput) {
 	fake.deleteBucketWebsiteRequestMutex.Lock()
 	ret, specificReturn := fake.deleteBucketWebsiteRequestReturnsOnCall[len(fake.deleteBucketWebsiteRequestArgsForCall)]
 	fake.deleteBucketWebsiteRequestArgsForCall = append(fake.deleteBucketWebsiteRequestArgsForCall, struct {
@@ -7429,26 +7429,26 @@ func (fake *FakeS3) DeleteBucketWebsiteRequest(arg1 *s3a.DeleteBucketWebsiteInpu
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketWebsiteRequestCallCount() int {
+func (fake *FakeClient) DeleteBucketWebsiteRequestCallCount() int {
 	fake.deleteBucketWebsiteRequestMutex.RLock()
 	defer fake.deleteBucketWebsiteRequestMutex.RUnlock()
 	return len(fake.deleteBucketWebsiteRequestArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketWebsiteRequestCalls(stub func(*s3a.DeleteBucketWebsiteInput) (*request.Request, *s3a.DeleteBucketWebsiteOutput)) {
+func (fake *FakeClient) DeleteBucketWebsiteRequestCalls(stub func(*s3a.DeleteBucketWebsiteInput) (*request.Request, *s3a.DeleteBucketWebsiteOutput)) {
 	fake.deleteBucketWebsiteRequestMutex.Lock()
 	defer fake.deleteBucketWebsiteRequestMutex.Unlock()
 	fake.DeleteBucketWebsiteRequestStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketWebsiteRequestArgsForCall(i int) *s3a.DeleteBucketWebsiteInput {
+func (fake *FakeClient) DeleteBucketWebsiteRequestArgsForCall(i int) *s3a.DeleteBucketWebsiteInput {
 	fake.deleteBucketWebsiteRequestMutex.RLock()
 	defer fake.deleteBucketWebsiteRequestMutex.RUnlock()
 	argsForCall := fake.deleteBucketWebsiteRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteBucketWebsiteRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketWebsiteOutput) {
+func (fake *FakeClient) DeleteBucketWebsiteRequestReturns(result1 *request.Request, result2 *s3a.DeleteBucketWebsiteOutput) {
 	fake.deleteBucketWebsiteRequestMutex.Lock()
 	defer fake.deleteBucketWebsiteRequestMutex.Unlock()
 	fake.DeleteBucketWebsiteRequestStub = nil
@@ -7458,7 +7458,7 @@ func (fake *FakeS3) DeleteBucketWebsiteRequestReturns(result1 *request.Request, 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketWebsiteRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketWebsiteOutput) {
+func (fake *FakeClient) DeleteBucketWebsiteRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteBucketWebsiteOutput) {
 	fake.deleteBucketWebsiteRequestMutex.Lock()
 	defer fake.deleteBucketWebsiteRequestMutex.Unlock()
 	fake.DeleteBucketWebsiteRequestStub = nil
@@ -7474,7 +7474,7 @@ func (fake *FakeS3) DeleteBucketWebsiteRequestReturnsOnCall(i int, result1 *requ
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketWebsiteWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketWebsiteInput, arg3 ...request.Option) (*s3a.DeleteBucketWebsiteOutput, error) {
+func (fake *FakeClient) DeleteBucketWebsiteWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketWebsiteInput, arg3 ...request.Option) (*s3a.DeleteBucketWebsiteOutput, error) {
 	fake.deleteBucketWebsiteWithContextMutex.Lock()
 	ret, specificReturn := fake.deleteBucketWebsiteWithContextReturnsOnCall[len(fake.deleteBucketWebsiteWithContextArgsForCall)]
 	fake.deleteBucketWebsiteWithContextArgsForCall = append(fake.deleteBucketWebsiteWithContextArgsForCall, struct {
@@ -7494,26 +7494,26 @@ func (fake *FakeS3) DeleteBucketWebsiteWithContext(arg1 context.Context, arg2 *s
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketWebsiteWithContextCallCount() int {
+func (fake *FakeClient) DeleteBucketWebsiteWithContextCallCount() int {
 	fake.deleteBucketWebsiteWithContextMutex.RLock()
 	defer fake.deleteBucketWebsiteWithContextMutex.RUnlock()
 	return len(fake.deleteBucketWebsiteWithContextArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketWebsiteWithContextCalls(stub func(context.Context, *s3a.DeleteBucketWebsiteInput, ...request.Option) (*s3a.DeleteBucketWebsiteOutput, error)) {
+func (fake *FakeClient) DeleteBucketWebsiteWithContextCalls(stub func(context.Context, *s3a.DeleteBucketWebsiteInput, ...request.Option) (*s3a.DeleteBucketWebsiteOutput, error)) {
 	fake.deleteBucketWebsiteWithContextMutex.Lock()
 	defer fake.deleteBucketWebsiteWithContextMutex.Unlock()
 	fake.DeleteBucketWebsiteWithContextStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketWebsiteWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketWebsiteInput, []request.Option) {
+func (fake *FakeClient) DeleteBucketWebsiteWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketWebsiteInput, []request.Option) {
 	fake.deleteBucketWebsiteWithContextMutex.RLock()
 	defer fake.deleteBucketWebsiteWithContextMutex.RUnlock()
 	argsForCall := fake.deleteBucketWebsiteWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) DeleteBucketWebsiteWithContextReturns(result1 *s3a.DeleteBucketWebsiteOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketWebsiteWithContextReturns(result1 *s3a.DeleteBucketWebsiteOutput, result2 error) {
 	fake.deleteBucketWebsiteWithContextMutex.Lock()
 	defer fake.deleteBucketWebsiteWithContextMutex.Unlock()
 	fake.DeleteBucketWebsiteWithContextStub = nil
@@ -7523,7 +7523,7 @@ func (fake *FakeS3) DeleteBucketWebsiteWithContextReturns(result1 *s3a.DeleteBuc
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketWebsiteWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketWebsiteOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketWebsiteWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketWebsiteOutput, result2 error) {
 	fake.deleteBucketWebsiteWithContextMutex.Lock()
 	defer fake.deleteBucketWebsiteWithContextMutex.Unlock()
 	fake.DeleteBucketWebsiteWithContextStub = nil
@@ -7539,7 +7539,7 @@ func (fake *FakeS3) DeleteBucketWebsiteWithContextReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketInput, arg3 ...request.Option) (*s3a.DeleteBucketOutput, error) {
+func (fake *FakeClient) DeleteBucketWithContext(arg1 context.Context, arg2 *s3a.DeleteBucketInput, arg3 ...request.Option) (*s3a.DeleteBucketOutput, error) {
 	fake.deleteBucketWithContextMutex.Lock()
 	ret, specificReturn := fake.deleteBucketWithContextReturnsOnCall[len(fake.deleteBucketWithContextArgsForCall)]
 	fake.deleteBucketWithContextArgsForCall = append(fake.deleteBucketWithContextArgsForCall, struct {
@@ -7559,26 +7559,26 @@ func (fake *FakeS3) DeleteBucketWithContext(arg1 context.Context, arg2 *s3a.Dele
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteBucketWithContextCallCount() int {
+func (fake *FakeClient) DeleteBucketWithContextCallCount() int {
 	fake.deleteBucketWithContextMutex.RLock()
 	defer fake.deleteBucketWithContextMutex.RUnlock()
 	return len(fake.deleteBucketWithContextArgsForCall)
 }
 
-func (fake *FakeS3) DeleteBucketWithContextCalls(stub func(context.Context, *s3a.DeleteBucketInput, ...request.Option) (*s3a.DeleteBucketOutput, error)) {
+func (fake *FakeClient) DeleteBucketWithContextCalls(stub func(context.Context, *s3a.DeleteBucketInput, ...request.Option) (*s3a.DeleteBucketOutput, error)) {
 	fake.deleteBucketWithContextMutex.Lock()
 	defer fake.deleteBucketWithContextMutex.Unlock()
 	fake.DeleteBucketWithContextStub = stub
 }
 
-func (fake *FakeS3) DeleteBucketWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketInput, []request.Option) {
+func (fake *FakeClient) DeleteBucketWithContextArgsForCall(i int) (context.Context, *s3a.DeleteBucketInput, []request.Option) {
 	fake.deleteBucketWithContextMutex.RLock()
 	defer fake.deleteBucketWithContextMutex.RUnlock()
 	argsForCall := fake.deleteBucketWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) DeleteBucketWithContextReturns(result1 *s3a.DeleteBucketOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketWithContextReturns(result1 *s3a.DeleteBucketOutput, result2 error) {
 	fake.deleteBucketWithContextMutex.Lock()
 	defer fake.deleteBucketWithContextMutex.Unlock()
 	fake.DeleteBucketWithContextStub = nil
@@ -7588,7 +7588,7 @@ func (fake *FakeS3) DeleteBucketWithContextReturns(result1 *s3a.DeleteBucketOutp
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteBucketWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketOutput, result2 error) {
+func (fake *FakeClient) DeleteBucketWithContextReturnsOnCall(i int, result1 *s3a.DeleteBucketOutput, result2 error) {
 	fake.deleteBucketWithContextMutex.Lock()
 	defer fake.deleteBucketWithContextMutex.Unlock()
 	fake.DeleteBucketWithContextStub = nil
@@ -7604,7 +7604,7 @@ func (fake *FakeS3) DeleteBucketWithContextReturnsOnCall(i int, result1 *s3a.Del
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteObject(arg1 *s3a.DeleteObjectInput) (*s3a.DeleteObjectOutput, error) {
+func (fake *FakeClient) DeleteObject(arg1 *s3a.DeleteObjectInput) (*s3a.DeleteObjectOutput, error) {
 	fake.deleteObjectMutex.Lock()
 	ret, specificReturn := fake.deleteObjectReturnsOnCall[len(fake.deleteObjectArgsForCall)]
 	fake.deleteObjectArgsForCall = append(fake.deleteObjectArgsForCall, struct {
@@ -7622,26 +7622,26 @@ func (fake *FakeS3) DeleteObject(arg1 *s3a.DeleteObjectInput) (*s3a.DeleteObject
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteObjectCallCount() int {
+func (fake *FakeClient) DeleteObjectCallCount() int {
 	fake.deleteObjectMutex.RLock()
 	defer fake.deleteObjectMutex.RUnlock()
 	return len(fake.deleteObjectArgsForCall)
 }
 
-func (fake *FakeS3) DeleteObjectCalls(stub func(*s3a.DeleteObjectInput) (*s3a.DeleteObjectOutput, error)) {
+func (fake *FakeClient) DeleteObjectCalls(stub func(*s3a.DeleteObjectInput) (*s3a.DeleteObjectOutput, error)) {
 	fake.deleteObjectMutex.Lock()
 	defer fake.deleteObjectMutex.Unlock()
 	fake.DeleteObjectStub = stub
 }
 
-func (fake *FakeS3) DeleteObjectArgsForCall(i int) *s3a.DeleteObjectInput {
+func (fake *FakeClient) DeleteObjectArgsForCall(i int) *s3a.DeleteObjectInput {
 	fake.deleteObjectMutex.RLock()
 	defer fake.deleteObjectMutex.RUnlock()
 	argsForCall := fake.deleteObjectArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteObjectReturns(result1 *s3a.DeleteObjectOutput, result2 error) {
+func (fake *FakeClient) DeleteObjectReturns(result1 *s3a.DeleteObjectOutput, result2 error) {
 	fake.deleteObjectMutex.Lock()
 	defer fake.deleteObjectMutex.Unlock()
 	fake.DeleteObjectStub = nil
@@ -7651,7 +7651,7 @@ func (fake *FakeS3) DeleteObjectReturns(result1 *s3a.DeleteObjectOutput, result2
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteObjectReturnsOnCall(i int, result1 *s3a.DeleteObjectOutput, result2 error) {
+func (fake *FakeClient) DeleteObjectReturnsOnCall(i int, result1 *s3a.DeleteObjectOutput, result2 error) {
 	fake.deleteObjectMutex.Lock()
 	defer fake.deleteObjectMutex.Unlock()
 	fake.DeleteObjectStub = nil
@@ -7667,7 +7667,7 @@ func (fake *FakeS3) DeleteObjectReturnsOnCall(i int, result1 *s3a.DeleteObjectOu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteObjectRequest(arg1 *s3a.DeleteObjectInput) (*request.Request, *s3a.DeleteObjectOutput) {
+func (fake *FakeClient) DeleteObjectRequest(arg1 *s3a.DeleteObjectInput) (*request.Request, *s3a.DeleteObjectOutput) {
 	fake.deleteObjectRequestMutex.Lock()
 	ret, specificReturn := fake.deleteObjectRequestReturnsOnCall[len(fake.deleteObjectRequestArgsForCall)]
 	fake.deleteObjectRequestArgsForCall = append(fake.deleteObjectRequestArgsForCall, struct {
@@ -7685,26 +7685,26 @@ func (fake *FakeS3) DeleteObjectRequest(arg1 *s3a.DeleteObjectInput) (*request.R
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteObjectRequestCallCount() int {
+func (fake *FakeClient) DeleteObjectRequestCallCount() int {
 	fake.deleteObjectRequestMutex.RLock()
 	defer fake.deleteObjectRequestMutex.RUnlock()
 	return len(fake.deleteObjectRequestArgsForCall)
 }
 
-func (fake *FakeS3) DeleteObjectRequestCalls(stub func(*s3a.DeleteObjectInput) (*request.Request, *s3a.DeleteObjectOutput)) {
+func (fake *FakeClient) DeleteObjectRequestCalls(stub func(*s3a.DeleteObjectInput) (*request.Request, *s3a.DeleteObjectOutput)) {
 	fake.deleteObjectRequestMutex.Lock()
 	defer fake.deleteObjectRequestMutex.Unlock()
 	fake.DeleteObjectRequestStub = stub
 }
 
-func (fake *FakeS3) DeleteObjectRequestArgsForCall(i int) *s3a.DeleteObjectInput {
+func (fake *FakeClient) DeleteObjectRequestArgsForCall(i int) *s3a.DeleteObjectInput {
 	fake.deleteObjectRequestMutex.RLock()
 	defer fake.deleteObjectRequestMutex.RUnlock()
 	argsForCall := fake.deleteObjectRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteObjectRequestReturns(result1 *request.Request, result2 *s3a.DeleteObjectOutput) {
+func (fake *FakeClient) DeleteObjectRequestReturns(result1 *request.Request, result2 *s3a.DeleteObjectOutput) {
 	fake.deleteObjectRequestMutex.Lock()
 	defer fake.deleteObjectRequestMutex.Unlock()
 	fake.DeleteObjectRequestStub = nil
@@ -7714,7 +7714,7 @@ func (fake *FakeS3) DeleteObjectRequestReturns(result1 *request.Request, result2
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteObjectRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteObjectOutput) {
+func (fake *FakeClient) DeleteObjectRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteObjectOutput) {
 	fake.deleteObjectRequestMutex.Lock()
 	defer fake.deleteObjectRequestMutex.Unlock()
 	fake.DeleteObjectRequestStub = nil
@@ -7730,7 +7730,7 @@ func (fake *FakeS3) DeleteObjectRequestReturnsOnCall(i int, result1 *request.Req
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteObjectTagging(arg1 *s3a.DeleteObjectTaggingInput) (*s3a.DeleteObjectTaggingOutput, error) {
+func (fake *FakeClient) DeleteObjectTagging(arg1 *s3a.DeleteObjectTaggingInput) (*s3a.DeleteObjectTaggingOutput, error) {
 	fake.deleteObjectTaggingMutex.Lock()
 	ret, specificReturn := fake.deleteObjectTaggingReturnsOnCall[len(fake.deleteObjectTaggingArgsForCall)]
 	fake.deleteObjectTaggingArgsForCall = append(fake.deleteObjectTaggingArgsForCall, struct {
@@ -7748,26 +7748,26 @@ func (fake *FakeS3) DeleteObjectTagging(arg1 *s3a.DeleteObjectTaggingInput) (*s3
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteObjectTaggingCallCount() int {
+func (fake *FakeClient) DeleteObjectTaggingCallCount() int {
 	fake.deleteObjectTaggingMutex.RLock()
 	defer fake.deleteObjectTaggingMutex.RUnlock()
 	return len(fake.deleteObjectTaggingArgsForCall)
 }
 
-func (fake *FakeS3) DeleteObjectTaggingCalls(stub func(*s3a.DeleteObjectTaggingInput) (*s3a.DeleteObjectTaggingOutput, error)) {
+func (fake *FakeClient) DeleteObjectTaggingCalls(stub func(*s3a.DeleteObjectTaggingInput) (*s3a.DeleteObjectTaggingOutput, error)) {
 	fake.deleteObjectTaggingMutex.Lock()
 	defer fake.deleteObjectTaggingMutex.Unlock()
 	fake.DeleteObjectTaggingStub = stub
 }
 
-func (fake *FakeS3) DeleteObjectTaggingArgsForCall(i int) *s3a.DeleteObjectTaggingInput {
+func (fake *FakeClient) DeleteObjectTaggingArgsForCall(i int) *s3a.DeleteObjectTaggingInput {
 	fake.deleteObjectTaggingMutex.RLock()
 	defer fake.deleteObjectTaggingMutex.RUnlock()
 	argsForCall := fake.deleteObjectTaggingArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteObjectTaggingReturns(result1 *s3a.DeleteObjectTaggingOutput, result2 error) {
+func (fake *FakeClient) DeleteObjectTaggingReturns(result1 *s3a.DeleteObjectTaggingOutput, result2 error) {
 	fake.deleteObjectTaggingMutex.Lock()
 	defer fake.deleteObjectTaggingMutex.Unlock()
 	fake.DeleteObjectTaggingStub = nil
@@ -7777,7 +7777,7 @@ func (fake *FakeS3) DeleteObjectTaggingReturns(result1 *s3a.DeleteObjectTaggingO
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteObjectTaggingReturnsOnCall(i int, result1 *s3a.DeleteObjectTaggingOutput, result2 error) {
+func (fake *FakeClient) DeleteObjectTaggingReturnsOnCall(i int, result1 *s3a.DeleteObjectTaggingOutput, result2 error) {
 	fake.deleteObjectTaggingMutex.Lock()
 	defer fake.deleteObjectTaggingMutex.Unlock()
 	fake.DeleteObjectTaggingStub = nil
@@ -7793,7 +7793,7 @@ func (fake *FakeS3) DeleteObjectTaggingReturnsOnCall(i int, result1 *s3a.DeleteO
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteObjectTaggingRequest(arg1 *s3a.DeleteObjectTaggingInput) (*request.Request, *s3a.DeleteObjectTaggingOutput) {
+func (fake *FakeClient) DeleteObjectTaggingRequest(arg1 *s3a.DeleteObjectTaggingInput) (*request.Request, *s3a.DeleteObjectTaggingOutput) {
 	fake.deleteObjectTaggingRequestMutex.Lock()
 	ret, specificReturn := fake.deleteObjectTaggingRequestReturnsOnCall[len(fake.deleteObjectTaggingRequestArgsForCall)]
 	fake.deleteObjectTaggingRequestArgsForCall = append(fake.deleteObjectTaggingRequestArgsForCall, struct {
@@ -7811,26 +7811,26 @@ func (fake *FakeS3) DeleteObjectTaggingRequest(arg1 *s3a.DeleteObjectTaggingInpu
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteObjectTaggingRequestCallCount() int {
+func (fake *FakeClient) DeleteObjectTaggingRequestCallCount() int {
 	fake.deleteObjectTaggingRequestMutex.RLock()
 	defer fake.deleteObjectTaggingRequestMutex.RUnlock()
 	return len(fake.deleteObjectTaggingRequestArgsForCall)
 }
 
-func (fake *FakeS3) DeleteObjectTaggingRequestCalls(stub func(*s3a.DeleteObjectTaggingInput) (*request.Request, *s3a.DeleteObjectTaggingOutput)) {
+func (fake *FakeClient) DeleteObjectTaggingRequestCalls(stub func(*s3a.DeleteObjectTaggingInput) (*request.Request, *s3a.DeleteObjectTaggingOutput)) {
 	fake.deleteObjectTaggingRequestMutex.Lock()
 	defer fake.deleteObjectTaggingRequestMutex.Unlock()
 	fake.DeleteObjectTaggingRequestStub = stub
 }
 
-func (fake *FakeS3) DeleteObjectTaggingRequestArgsForCall(i int) *s3a.DeleteObjectTaggingInput {
+func (fake *FakeClient) DeleteObjectTaggingRequestArgsForCall(i int) *s3a.DeleteObjectTaggingInput {
 	fake.deleteObjectTaggingRequestMutex.RLock()
 	defer fake.deleteObjectTaggingRequestMutex.RUnlock()
 	argsForCall := fake.deleteObjectTaggingRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteObjectTaggingRequestReturns(result1 *request.Request, result2 *s3a.DeleteObjectTaggingOutput) {
+func (fake *FakeClient) DeleteObjectTaggingRequestReturns(result1 *request.Request, result2 *s3a.DeleteObjectTaggingOutput) {
 	fake.deleteObjectTaggingRequestMutex.Lock()
 	defer fake.deleteObjectTaggingRequestMutex.Unlock()
 	fake.DeleteObjectTaggingRequestStub = nil
@@ -7840,7 +7840,7 @@ func (fake *FakeS3) DeleteObjectTaggingRequestReturns(result1 *request.Request, 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteObjectTaggingRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteObjectTaggingOutput) {
+func (fake *FakeClient) DeleteObjectTaggingRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteObjectTaggingOutput) {
 	fake.deleteObjectTaggingRequestMutex.Lock()
 	defer fake.deleteObjectTaggingRequestMutex.Unlock()
 	fake.DeleteObjectTaggingRequestStub = nil
@@ -7856,7 +7856,7 @@ func (fake *FakeS3) DeleteObjectTaggingRequestReturnsOnCall(i int, result1 *requ
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteObjectTaggingWithContext(arg1 context.Context, arg2 *s3a.DeleteObjectTaggingInput, arg3 ...request.Option) (*s3a.DeleteObjectTaggingOutput, error) {
+func (fake *FakeClient) DeleteObjectTaggingWithContext(arg1 context.Context, arg2 *s3a.DeleteObjectTaggingInput, arg3 ...request.Option) (*s3a.DeleteObjectTaggingOutput, error) {
 	fake.deleteObjectTaggingWithContextMutex.Lock()
 	ret, specificReturn := fake.deleteObjectTaggingWithContextReturnsOnCall[len(fake.deleteObjectTaggingWithContextArgsForCall)]
 	fake.deleteObjectTaggingWithContextArgsForCall = append(fake.deleteObjectTaggingWithContextArgsForCall, struct {
@@ -7876,26 +7876,26 @@ func (fake *FakeS3) DeleteObjectTaggingWithContext(arg1 context.Context, arg2 *s
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteObjectTaggingWithContextCallCount() int {
+func (fake *FakeClient) DeleteObjectTaggingWithContextCallCount() int {
 	fake.deleteObjectTaggingWithContextMutex.RLock()
 	defer fake.deleteObjectTaggingWithContextMutex.RUnlock()
 	return len(fake.deleteObjectTaggingWithContextArgsForCall)
 }
 
-func (fake *FakeS3) DeleteObjectTaggingWithContextCalls(stub func(context.Context, *s3a.DeleteObjectTaggingInput, ...request.Option) (*s3a.DeleteObjectTaggingOutput, error)) {
+func (fake *FakeClient) DeleteObjectTaggingWithContextCalls(stub func(context.Context, *s3a.DeleteObjectTaggingInput, ...request.Option) (*s3a.DeleteObjectTaggingOutput, error)) {
 	fake.deleteObjectTaggingWithContextMutex.Lock()
 	defer fake.deleteObjectTaggingWithContextMutex.Unlock()
 	fake.DeleteObjectTaggingWithContextStub = stub
 }
 
-func (fake *FakeS3) DeleteObjectTaggingWithContextArgsForCall(i int) (context.Context, *s3a.DeleteObjectTaggingInput, []request.Option) {
+func (fake *FakeClient) DeleteObjectTaggingWithContextArgsForCall(i int) (context.Context, *s3a.DeleteObjectTaggingInput, []request.Option) {
 	fake.deleteObjectTaggingWithContextMutex.RLock()
 	defer fake.deleteObjectTaggingWithContextMutex.RUnlock()
 	argsForCall := fake.deleteObjectTaggingWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) DeleteObjectTaggingWithContextReturns(result1 *s3a.DeleteObjectTaggingOutput, result2 error) {
+func (fake *FakeClient) DeleteObjectTaggingWithContextReturns(result1 *s3a.DeleteObjectTaggingOutput, result2 error) {
 	fake.deleteObjectTaggingWithContextMutex.Lock()
 	defer fake.deleteObjectTaggingWithContextMutex.Unlock()
 	fake.DeleteObjectTaggingWithContextStub = nil
@@ -7905,7 +7905,7 @@ func (fake *FakeS3) DeleteObjectTaggingWithContextReturns(result1 *s3a.DeleteObj
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteObjectTaggingWithContextReturnsOnCall(i int, result1 *s3a.DeleteObjectTaggingOutput, result2 error) {
+func (fake *FakeClient) DeleteObjectTaggingWithContextReturnsOnCall(i int, result1 *s3a.DeleteObjectTaggingOutput, result2 error) {
 	fake.deleteObjectTaggingWithContextMutex.Lock()
 	defer fake.deleteObjectTaggingWithContextMutex.Unlock()
 	fake.DeleteObjectTaggingWithContextStub = nil
@@ -7921,7 +7921,7 @@ func (fake *FakeS3) DeleteObjectTaggingWithContextReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteObjectWithContext(arg1 context.Context, arg2 *s3a.DeleteObjectInput, arg3 ...request.Option) (*s3a.DeleteObjectOutput, error) {
+func (fake *FakeClient) DeleteObjectWithContext(arg1 context.Context, arg2 *s3a.DeleteObjectInput, arg3 ...request.Option) (*s3a.DeleteObjectOutput, error) {
 	fake.deleteObjectWithContextMutex.Lock()
 	ret, specificReturn := fake.deleteObjectWithContextReturnsOnCall[len(fake.deleteObjectWithContextArgsForCall)]
 	fake.deleteObjectWithContextArgsForCall = append(fake.deleteObjectWithContextArgsForCall, struct {
@@ -7941,26 +7941,26 @@ func (fake *FakeS3) DeleteObjectWithContext(arg1 context.Context, arg2 *s3a.Dele
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteObjectWithContextCallCount() int {
+func (fake *FakeClient) DeleteObjectWithContextCallCount() int {
 	fake.deleteObjectWithContextMutex.RLock()
 	defer fake.deleteObjectWithContextMutex.RUnlock()
 	return len(fake.deleteObjectWithContextArgsForCall)
 }
 
-func (fake *FakeS3) DeleteObjectWithContextCalls(stub func(context.Context, *s3a.DeleteObjectInput, ...request.Option) (*s3a.DeleteObjectOutput, error)) {
+func (fake *FakeClient) DeleteObjectWithContextCalls(stub func(context.Context, *s3a.DeleteObjectInput, ...request.Option) (*s3a.DeleteObjectOutput, error)) {
 	fake.deleteObjectWithContextMutex.Lock()
 	defer fake.deleteObjectWithContextMutex.Unlock()
 	fake.DeleteObjectWithContextStub = stub
 }
 
-func (fake *FakeS3) DeleteObjectWithContextArgsForCall(i int) (context.Context, *s3a.DeleteObjectInput, []request.Option) {
+func (fake *FakeClient) DeleteObjectWithContextArgsForCall(i int) (context.Context, *s3a.DeleteObjectInput, []request.Option) {
 	fake.deleteObjectWithContextMutex.RLock()
 	defer fake.deleteObjectWithContextMutex.RUnlock()
 	argsForCall := fake.deleteObjectWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) DeleteObjectWithContextReturns(result1 *s3a.DeleteObjectOutput, result2 error) {
+func (fake *FakeClient) DeleteObjectWithContextReturns(result1 *s3a.DeleteObjectOutput, result2 error) {
 	fake.deleteObjectWithContextMutex.Lock()
 	defer fake.deleteObjectWithContextMutex.Unlock()
 	fake.DeleteObjectWithContextStub = nil
@@ -7970,7 +7970,7 @@ func (fake *FakeS3) DeleteObjectWithContextReturns(result1 *s3a.DeleteObjectOutp
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteObjectWithContextReturnsOnCall(i int, result1 *s3a.DeleteObjectOutput, result2 error) {
+func (fake *FakeClient) DeleteObjectWithContextReturnsOnCall(i int, result1 *s3a.DeleteObjectOutput, result2 error) {
 	fake.deleteObjectWithContextMutex.Lock()
 	defer fake.deleteObjectWithContextMutex.Unlock()
 	fake.DeleteObjectWithContextStub = nil
@@ -7986,7 +7986,7 @@ func (fake *FakeS3) DeleteObjectWithContextReturnsOnCall(i int, result1 *s3a.Del
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteObjects(arg1 *s3a.DeleteObjectsInput) (*s3a.DeleteObjectsOutput, error) {
+func (fake *FakeClient) DeleteObjects(arg1 *s3a.DeleteObjectsInput) (*s3a.DeleteObjectsOutput, error) {
 	fake.deleteObjectsMutex.Lock()
 	ret, specificReturn := fake.deleteObjectsReturnsOnCall[len(fake.deleteObjectsArgsForCall)]
 	fake.deleteObjectsArgsForCall = append(fake.deleteObjectsArgsForCall, struct {
@@ -8004,26 +8004,26 @@ func (fake *FakeS3) DeleteObjects(arg1 *s3a.DeleteObjectsInput) (*s3a.DeleteObje
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteObjectsCallCount() int {
+func (fake *FakeClient) DeleteObjectsCallCount() int {
 	fake.deleteObjectsMutex.RLock()
 	defer fake.deleteObjectsMutex.RUnlock()
 	return len(fake.deleteObjectsArgsForCall)
 }
 
-func (fake *FakeS3) DeleteObjectsCalls(stub func(*s3a.DeleteObjectsInput) (*s3a.DeleteObjectsOutput, error)) {
+func (fake *FakeClient) DeleteObjectsCalls(stub func(*s3a.DeleteObjectsInput) (*s3a.DeleteObjectsOutput, error)) {
 	fake.deleteObjectsMutex.Lock()
 	defer fake.deleteObjectsMutex.Unlock()
 	fake.DeleteObjectsStub = stub
 }
 
-func (fake *FakeS3) DeleteObjectsArgsForCall(i int) *s3a.DeleteObjectsInput {
+func (fake *FakeClient) DeleteObjectsArgsForCall(i int) *s3a.DeleteObjectsInput {
 	fake.deleteObjectsMutex.RLock()
 	defer fake.deleteObjectsMutex.RUnlock()
 	argsForCall := fake.deleteObjectsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteObjectsReturns(result1 *s3a.DeleteObjectsOutput, result2 error) {
+func (fake *FakeClient) DeleteObjectsReturns(result1 *s3a.DeleteObjectsOutput, result2 error) {
 	fake.deleteObjectsMutex.Lock()
 	defer fake.deleteObjectsMutex.Unlock()
 	fake.DeleteObjectsStub = nil
@@ -8033,7 +8033,7 @@ func (fake *FakeS3) DeleteObjectsReturns(result1 *s3a.DeleteObjectsOutput, resul
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteObjectsReturnsOnCall(i int, result1 *s3a.DeleteObjectsOutput, result2 error) {
+func (fake *FakeClient) DeleteObjectsReturnsOnCall(i int, result1 *s3a.DeleteObjectsOutput, result2 error) {
 	fake.deleteObjectsMutex.Lock()
 	defer fake.deleteObjectsMutex.Unlock()
 	fake.DeleteObjectsStub = nil
@@ -8049,7 +8049,7 @@ func (fake *FakeS3) DeleteObjectsReturnsOnCall(i int, result1 *s3a.DeleteObjects
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteObjectsRequest(arg1 *s3a.DeleteObjectsInput) (*request.Request, *s3a.DeleteObjectsOutput) {
+func (fake *FakeClient) DeleteObjectsRequest(arg1 *s3a.DeleteObjectsInput) (*request.Request, *s3a.DeleteObjectsOutput) {
 	fake.deleteObjectsRequestMutex.Lock()
 	ret, specificReturn := fake.deleteObjectsRequestReturnsOnCall[len(fake.deleteObjectsRequestArgsForCall)]
 	fake.deleteObjectsRequestArgsForCall = append(fake.deleteObjectsRequestArgsForCall, struct {
@@ -8067,26 +8067,26 @@ func (fake *FakeS3) DeleteObjectsRequest(arg1 *s3a.DeleteObjectsInput) (*request
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteObjectsRequestCallCount() int {
+func (fake *FakeClient) DeleteObjectsRequestCallCount() int {
 	fake.deleteObjectsRequestMutex.RLock()
 	defer fake.deleteObjectsRequestMutex.RUnlock()
 	return len(fake.deleteObjectsRequestArgsForCall)
 }
 
-func (fake *FakeS3) DeleteObjectsRequestCalls(stub func(*s3a.DeleteObjectsInput) (*request.Request, *s3a.DeleteObjectsOutput)) {
+func (fake *FakeClient) DeleteObjectsRequestCalls(stub func(*s3a.DeleteObjectsInput) (*request.Request, *s3a.DeleteObjectsOutput)) {
 	fake.deleteObjectsRequestMutex.Lock()
 	defer fake.deleteObjectsRequestMutex.Unlock()
 	fake.DeleteObjectsRequestStub = stub
 }
 
-func (fake *FakeS3) DeleteObjectsRequestArgsForCall(i int) *s3a.DeleteObjectsInput {
+func (fake *FakeClient) DeleteObjectsRequestArgsForCall(i int) *s3a.DeleteObjectsInput {
 	fake.deleteObjectsRequestMutex.RLock()
 	defer fake.deleteObjectsRequestMutex.RUnlock()
 	argsForCall := fake.deleteObjectsRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeleteObjectsRequestReturns(result1 *request.Request, result2 *s3a.DeleteObjectsOutput) {
+func (fake *FakeClient) DeleteObjectsRequestReturns(result1 *request.Request, result2 *s3a.DeleteObjectsOutput) {
 	fake.deleteObjectsRequestMutex.Lock()
 	defer fake.deleteObjectsRequestMutex.Unlock()
 	fake.DeleteObjectsRequestStub = nil
@@ -8096,7 +8096,7 @@ func (fake *FakeS3) DeleteObjectsRequestReturns(result1 *request.Request, result
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteObjectsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteObjectsOutput) {
+func (fake *FakeClient) DeleteObjectsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeleteObjectsOutput) {
 	fake.deleteObjectsRequestMutex.Lock()
 	defer fake.deleteObjectsRequestMutex.Unlock()
 	fake.DeleteObjectsRequestStub = nil
@@ -8112,7 +8112,7 @@ func (fake *FakeS3) DeleteObjectsRequestReturnsOnCall(i int, result1 *request.Re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteObjectsWithContext(arg1 context.Context, arg2 *s3a.DeleteObjectsInput, arg3 ...request.Option) (*s3a.DeleteObjectsOutput, error) {
+func (fake *FakeClient) DeleteObjectsWithContext(arg1 context.Context, arg2 *s3a.DeleteObjectsInput, arg3 ...request.Option) (*s3a.DeleteObjectsOutput, error) {
 	fake.deleteObjectsWithContextMutex.Lock()
 	ret, specificReturn := fake.deleteObjectsWithContextReturnsOnCall[len(fake.deleteObjectsWithContextArgsForCall)]
 	fake.deleteObjectsWithContextArgsForCall = append(fake.deleteObjectsWithContextArgsForCall, struct {
@@ -8132,26 +8132,26 @@ func (fake *FakeS3) DeleteObjectsWithContext(arg1 context.Context, arg2 *s3a.Del
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeleteObjectsWithContextCallCount() int {
+func (fake *FakeClient) DeleteObjectsWithContextCallCount() int {
 	fake.deleteObjectsWithContextMutex.RLock()
 	defer fake.deleteObjectsWithContextMutex.RUnlock()
 	return len(fake.deleteObjectsWithContextArgsForCall)
 }
 
-func (fake *FakeS3) DeleteObjectsWithContextCalls(stub func(context.Context, *s3a.DeleteObjectsInput, ...request.Option) (*s3a.DeleteObjectsOutput, error)) {
+func (fake *FakeClient) DeleteObjectsWithContextCalls(stub func(context.Context, *s3a.DeleteObjectsInput, ...request.Option) (*s3a.DeleteObjectsOutput, error)) {
 	fake.deleteObjectsWithContextMutex.Lock()
 	defer fake.deleteObjectsWithContextMutex.Unlock()
 	fake.DeleteObjectsWithContextStub = stub
 }
 
-func (fake *FakeS3) DeleteObjectsWithContextArgsForCall(i int) (context.Context, *s3a.DeleteObjectsInput, []request.Option) {
+func (fake *FakeClient) DeleteObjectsWithContextArgsForCall(i int) (context.Context, *s3a.DeleteObjectsInput, []request.Option) {
 	fake.deleteObjectsWithContextMutex.RLock()
 	defer fake.deleteObjectsWithContextMutex.RUnlock()
 	argsForCall := fake.deleteObjectsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) DeleteObjectsWithContextReturns(result1 *s3a.DeleteObjectsOutput, result2 error) {
+func (fake *FakeClient) DeleteObjectsWithContextReturns(result1 *s3a.DeleteObjectsOutput, result2 error) {
 	fake.deleteObjectsWithContextMutex.Lock()
 	defer fake.deleteObjectsWithContextMutex.Unlock()
 	fake.DeleteObjectsWithContextStub = nil
@@ -8161,7 +8161,7 @@ func (fake *FakeS3) DeleteObjectsWithContextReturns(result1 *s3a.DeleteObjectsOu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeleteObjectsWithContextReturnsOnCall(i int, result1 *s3a.DeleteObjectsOutput, result2 error) {
+func (fake *FakeClient) DeleteObjectsWithContextReturnsOnCall(i int, result1 *s3a.DeleteObjectsOutput, result2 error) {
 	fake.deleteObjectsWithContextMutex.Lock()
 	defer fake.deleteObjectsWithContextMutex.Unlock()
 	fake.DeleteObjectsWithContextStub = nil
@@ -8177,7 +8177,7 @@ func (fake *FakeS3) DeleteObjectsWithContextReturnsOnCall(i int, result1 *s3a.De
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeletePublicAccessBlock(arg1 *s3a.DeletePublicAccessBlockInput) (*s3a.DeletePublicAccessBlockOutput, error) {
+func (fake *FakeClient) DeletePublicAccessBlock(arg1 *s3a.DeletePublicAccessBlockInput) (*s3a.DeletePublicAccessBlockOutput, error) {
 	fake.deletePublicAccessBlockMutex.Lock()
 	ret, specificReturn := fake.deletePublicAccessBlockReturnsOnCall[len(fake.deletePublicAccessBlockArgsForCall)]
 	fake.deletePublicAccessBlockArgsForCall = append(fake.deletePublicAccessBlockArgsForCall, struct {
@@ -8195,26 +8195,26 @@ func (fake *FakeS3) DeletePublicAccessBlock(arg1 *s3a.DeletePublicAccessBlockInp
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeletePublicAccessBlockCallCount() int {
+func (fake *FakeClient) DeletePublicAccessBlockCallCount() int {
 	fake.deletePublicAccessBlockMutex.RLock()
 	defer fake.deletePublicAccessBlockMutex.RUnlock()
 	return len(fake.deletePublicAccessBlockArgsForCall)
 }
 
-func (fake *FakeS3) DeletePublicAccessBlockCalls(stub func(*s3a.DeletePublicAccessBlockInput) (*s3a.DeletePublicAccessBlockOutput, error)) {
+func (fake *FakeClient) DeletePublicAccessBlockCalls(stub func(*s3a.DeletePublicAccessBlockInput) (*s3a.DeletePublicAccessBlockOutput, error)) {
 	fake.deletePublicAccessBlockMutex.Lock()
 	defer fake.deletePublicAccessBlockMutex.Unlock()
 	fake.DeletePublicAccessBlockStub = stub
 }
 
-func (fake *FakeS3) DeletePublicAccessBlockArgsForCall(i int) *s3a.DeletePublicAccessBlockInput {
+func (fake *FakeClient) DeletePublicAccessBlockArgsForCall(i int) *s3a.DeletePublicAccessBlockInput {
 	fake.deletePublicAccessBlockMutex.RLock()
 	defer fake.deletePublicAccessBlockMutex.RUnlock()
 	argsForCall := fake.deletePublicAccessBlockArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeletePublicAccessBlockReturns(result1 *s3a.DeletePublicAccessBlockOutput, result2 error) {
+func (fake *FakeClient) DeletePublicAccessBlockReturns(result1 *s3a.DeletePublicAccessBlockOutput, result2 error) {
 	fake.deletePublicAccessBlockMutex.Lock()
 	defer fake.deletePublicAccessBlockMutex.Unlock()
 	fake.DeletePublicAccessBlockStub = nil
@@ -8224,7 +8224,7 @@ func (fake *FakeS3) DeletePublicAccessBlockReturns(result1 *s3a.DeletePublicAcce
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeletePublicAccessBlockReturnsOnCall(i int, result1 *s3a.DeletePublicAccessBlockOutput, result2 error) {
+func (fake *FakeClient) DeletePublicAccessBlockReturnsOnCall(i int, result1 *s3a.DeletePublicAccessBlockOutput, result2 error) {
 	fake.deletePublicAccessBlockMutex.Lock()
 	defer fake.deletePublicAccessBlockMutex.Unlock()
 	fake.DeletePublicAccessBlockStub = nil
@@ -8240,7 +8240,7 @@ func (fake *FakeS3) DeletePublicAccessBlockReturnsOnCall(i int, result1 *s3a.Del
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeletePublicAccessBlockRequest(arg1 *s3a.DeletePublicAccessBlockInput) (*request.Request, *s3a.DeletePublicAccessBlockOutput) {
+func (fake *FakeClient) DeletePublicAccessBlockRequest(arg1 *s3a.DeletePublicAccessBlockInput) (*request.Request, *s3a.DeletePublicAccessBlockOutput) {
 	fake.deletePublicAccessBlockRequestMutex.Lock()
 	ret, specificReturn := fake.deletePublicAccessBlockRequestReturnsOnCall[len(fake.deletePublicAccessBlockRequestArgsForCall)]
 	fake.deletePublicAccessBlockRequestArgsForCall = append(fake.deletePublicAccessBlockRequestArgsForCall, struct {
@@ -8258,26 +8258,26 @@ func (fake *FakeS3) DeletePublicAccessBlockRequest(arg1 *s3a.DeletePublicAccessB
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeletePublicAccessBlockRequestCallCount() int {
+func (fake *FakeClient) DeletePublicAccessBlockRequestCallCount() int {
 	fake.deletePublicAccessBlockRequestMutex.RLock()
 	defer fake.deletePublicAccessBlockRequestMutex.RUnlock()
 	return len(fake.deletePublicAccessBlockRequestArgsForCall)
 }
 
-func (fake *FakeS3) DeletePublicAccessBlockRequestCalls(stub func(*s3a.DeletePublicAccessBlockInput) (*request.Request, *s3a.DeletePublicAccessBlockOutput)) {
+func (fake *FakeClient) DeletePublicAccessBlockRequestCalls(stub func(*s3a.DeletePublicAccessBlockInput) (*request.Request, *s3a.DeletePublicAccessBlockOutput)) {
 	fake.deletePublicAccessBlockRequestMutex.Lock()
 	defer fake.deletePublicAccessBlockRequestMutex.Unlock()
 	fake.DeletePublicAccessBlockRequestStub = stub
 }
 
-func (fake *FakeS3) DeletePublicAccessBlockRequestArgsForCall(i int) *s3a.DeletePublicAccessBlockInput {
+func (fake *FakeClient) DeletePublicAccessBlockRequestArgsForCall(i int) *s3a.DeletePublicAccessBlockInput {
 	fake.deletePublicAccessBlockRequestMutex.RLock()
 	defer fake.deletePublicAccessBlockRequestMutex.RUnlock()
 	argsForCall := fake.deletePublicAccessBlockRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) DeletePublicAccessBlockRequestReturns(result1 *request.Request, result2 *s3a.DeletePublicAccessBlockOutput) {
+func (fake *FakeClient) DeletePublicAccessBlockRequestReturns(result1 *request.Request, result2 *s3a.DeletePublicAccessBlockOutput) {
 	fake.deletePublicAccessBlockRequestMutex.Lock()
 	defer fake.deletePublicAccessBlockRequestMutex.Unlock()
 	fake.DeletePublicAccessBlockRequestStub = nil
@@ -8287,7 +8287,7 @@ func (fake *FakeS3) DeletePublicAccessBlockRequestReturns(result1 *request.Reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeletePublicAccessBlockRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeletePublicAccessBlockOutput) {
+func (fake *FakeClient) DeletePublicAccessBlockRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.DeletePublicAccessBlockOutput) {
 	fake.deletePublicAccessBlockRequestMutex.Lock()
 	defer fake.deletePublicAccessBlockRequestMutex.Unlock()
 	fake.DeletePublicAccessBlockRequestStub = nil
@@ -8303,7 +8303,7 @@ func (fake *FakeS3) DeletePublicAccessBlockRequestReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeletePublicAccessBlockWithContext(arg1 context.Context, arg2 *s3a.DeletePublicAccessBlockInput, arg3 ...request.Option) (*s3a.DeletePublicAccessBlockOutput, error) {
+func (fake *FakeClient) DeletePublicAccessBlockWithContext(arg1 context.Context, arg2 *s3a.DeletePublicAccessBlockInput, arg3 ...request.Option) (*s3a.DeletePublicAccessBlockOutput, error) {
 	fake.deletePublicAccessBlockWithContextMutex.Lock()
 	ret, specificReturn := fake.deletePublicAccessBlockWithContextReturnsOnCall[len(fake.deletePublicAccessBlockWithContextArgsForCall)]
 	fake.deletePublicAccessBlockWithContextArgsForCall = append(fake.deletePublicAccessBlockWithContextArgsForCall, struct {
@@ -8323,26 +8323,26 @@ func (fake *FakeS3) DeletePublicAccessBlockWithContext(arg1 context.Context, arg
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) DeletePublicAccessBlockWithContextCallCount() int {
+func (fake *FakeClient) DeletePublicAccessBlockWithContextCallCount() int {
 	fake.deletePublicAccessBlockWithContextMutex.RLock()
 	defer fake.deletePublicAccessBlockWithContextMutex.RUnlock()
 	return len(fake.deletePublicAccessBlockWithContextArgsForCall)
 }
 
-func (fake *FakeS3) DeletePublicAccessBlockWithContextCalls(stub func(context.Context, *s3a.DeletePublicAccessBlockInput, ...request.Option) (*s3a.DeletePublicAccessBlockOutput, error)) {
+func (fake *FakeClient) DeletePublicAccessBlockWithContextCalls(stub func(context.Context, *s3a.DeletePublicAccessBlockInput, ...request.Option) (*s3a.DeletePublicAccessBlockOutput, error)) {
 	fake.deletePublicAccessBlockWithContextMutex.Lock()
 	defer fake.deletePublicAccessBlockWithContextMutex.Unlock()
 	fake.DeletePublicAccessBlockWithContextStub = stub
 }
 
-func (fake *FakeS3) DeletePublicAccessBlockWithContextArgsForCall(i int) (context.Context, *s3a.DeletePublicAccessBlockInput, []request.Option) {
+func (fake *FakeClient) DeletePublicAccessBlockWithContextArgsForCall(i int) (context.Context, *s3a.DeletePublicAccessBlockInput, []request.Option) {
 	fake.deletePublicAccessBlockWithContextMutex.RLock()
 	defer fake.deletePublicAccessBlockWithContextMutex.RUnlock()
 	argsForCall := fake.deletePublicAccessBlockWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) DeletePublicAccessBlockWithContextReturns(result1 *s3a.DeletePublicAccessBlockOutput, result2 error) {
+func (fake *FakeClient) DeletePublicAccessBlockWithContextReturns(result1 *s3a.DeletePublicAccessBlockOutput, result2 error) {
 	fake.deletePublicAccessBlockWithContextMutex.Lock()
 	defer fake.deletePublicAccessBlockWithContextMutex.Unlock()
 	fake.DeletePublicAccessBlockWithContextStub = nil
@@ -8352,7 +8352,7 @@ func (fake *FakeS3) DeletePublicAccessBlockWithContextReturns(result1 *s3a.Delet
 	}{result1, result2}
 }
 
-func (fake *FakeS3) DeletePublicAccessBlockWithContextReturnsOnCall(i int, result1 *s3a.DeletePublicAccessBlockOutput, result2 error) {
+func (fake *FakeClient) DeletePublicAccessBlockWithContextReturnsOnCall(i int, result1 *s3a.DeletePublicAccessBlockOutput, result2 error) {
 	fake.deletePublicAccessBlockWithContextMutex.Lock()
 	defer fake.deletePublicAccessBlockWithContextMutex.Unlock()
 	fake.DeletePublicAccessBlockWithContextStub = nil
@@ -8368,7 +8368,7 @@ func (fake *FakeS3) DeletePublicAccessBlockWithContextReturnsOnCall(i int, resul
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketAccelerateConfiguration(arg1 *s3a.GetBucketAccelerateConfigurationInput) (*s3a.GetBucketAccelerateConfigurationOutput, error) {
+func (fake *FakeClient) GetBucketAccelerateConfiguration(arg1 *s3a.GetBucketAccelerateConfigurationInput) (*s3a.GetBucketAccelerateConfigurationOutput, error) {
 	fake.getBucketAccelerateConfigurationMutex.Lock()
 	ret, specificReturn := fake.getBucketAccelerateConfigurationReturnsOnCall[len(fake.getBucketAccelerateConfigurationArgsForCall)]
 	fake.getBucketAccelerateConfigurationArgsForCall = append(fake.getBucketAccelerateConfigurationArgsForCall, struct {
@@ -8386,26 +8386,26 @@ func (fake *FakeS3) GetBucketAccelerateConfiguration(arg1 *s3a.GetBucketAccelera
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketAccelerateConfigurationCallCount() int {
+func (fake *FakeClient) GetBucketAccelerateConfigurationCallCount() int {
 	fake.getBucketAccelerateConfigurationMutex.RLock()
 	defer fake.getBucketAccelerateConfigurationMutex.RUnlock()
 	return len(fake.getBucketAccelerateConfigurationArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketAccelerateConfigurationCalls(stub func(*s3a.GetBucketAccelerateConfigurationInput) (*s3a.GetBucketAccelerateConfigurationOutput, error)) {
+func (fake *FakeClient) GetBucketAccelerateConfigurationCalls(stub func(*s3a.GetBucketAccelerateConfigurationInput) (*s3a.GetBucketAccelerateConfigurationOutput, error)) {
 	fake.getBucketAccelerateConfigurationMutex.Lock()
 	defer fake.getBucketAccelerateConfigurationMutex.Unlock()
 	fake.GetBucketAccelerateConfigurationStub = stub
 }
 
-func (fake *FakeS3) GetBucketAccelerateConfigurationArgsForCall(i int) *s3a.GetBucketAccelerateConfigurationInput {
+func (fake *FakeClient) GetBucketAccelerateConfigurationArgsForCall(i int) *s3a.GetBucketAccelerateConfigurationInput {
 	fake.getBucketAccelerateConfigurationMutex.RLock()
 	defer fake.getBucketAccelerateConfigurationMutex.RUnlock()
 	argsForCall := fake.getBucketAccelerateConfigurationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketAccelerateConfigurationReturns(result1 *s3a.GetBucketAccelerateConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketAccelerateConfigurationReturns(result1 *s3a.GetBucketAccelerateConfigurationOutput, result2 error) {
 	fake.getBucketAccelerateConfigurationMutex.Lock()
 	defer fake.getBucketAccelerateConfigurationMutex.Unlock()
 	fake.GetBucketAccelerateConfigurationStub = nil
@@ -8415,7 +8415,7 @@ func (fake *FakeS3) GetBucketAccelerateConfigurationReturns(result1 *s3a.GetBuck
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketAccelerateConfigurationReturnsOnCall(i int, result1 *s3a.GetBucketAccelerateConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketAccelerateConfigurationReturnsOnCall(i int, result1 *s3a.GetBucketAccelerateConfigurationOutput, result2 error) {
 	fake.getBucketAccelerateConfigurationMutex.Lock()
 	defer fake.getBucketAccelerateConfigurationMutex.Unlock()
 	fake.GetBucketAccelerateConfigurationStub = nil
@@ -8431,7 +8431,7 @@ func (fake *FakeS3) GetBucketAccelerateConfigurationReturnsOnCall(i int, result1
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketAccelerateConfigurationRequest(arg1 *s3a.GetBucketAccelerateConfigurationInput) (*request.Request, *s3a.GetBucketAccelerateConfigurationOutput) {
+func (fake *FakeClient) GetBucketAccelerateConfigurationRequest(arg1 *s3a.GetBucketAccelerateConfigurationInput) (*request.Request, *s3a.GetBucketAccelerateConfigurationOutput) {
 	fake.getBucketAccelerateConfigurationRequestMutex.Lock()
 	ret, specificReturn := fake.getBucketAccelerateConfigurationRequestReturnsOnCall[len(fake.getBucketAccelerateConfigurationRequestArgsForCall)]
 	fake.getBucketAccelerateConfigurationRequestArgsForCall = append(fake.getBucketAccelerateConfigurationRequestArgsForCall, struct {
@@ -8449,26 +8449,26 @@ func (fake *FakeS3) GetBucketAccelerateConfigurationRequest(arg1 *s3a.GetBucketA
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketAccelerateConfigurationRequestCallCount() int {
+func (fake *FakeClient) GetBucketAccelerateConfigurationRequestCallCount() int {
 	fake.getBucketAccelerateConfigurationRequestMutex.RLock()
 	defer fake.getBucketAccelerateConfigurationRequestMutex.RUnlock()
 	return len(fake.getBucketAccelerateConfigurationRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketAccelerateConfigurationRequestCalls(stub func(*s3a.GetBucketAccelerateConfigurationInput) (*request.Request, *s3a.GetBucketAccelerateConfigurationOutput)) {
+func (fake *FakeClient) GetBucketAccelerateConfigurationRequestCalls(stub func(*s3a.GetBucketAccelerateConfigurationInput) (*request.Request, *s3a.GetBucketAccelerateConfigurationOutput)) {
 	fake.getBucketAccelerateConfigurationRequestMutex.Lock()
 	defer fake.getBucketAccelerateConfigurationRequestMutex.Unlock()
 	fake.GetBucketAccelerateConfigurationRequestStub = stub
 }
 
-func (fake *FakeS3) GetBucketAccelerateConfigurationRequestArgsForCall(i int) *s3a.GetBucketAccelerateConfigurationInput {
+func (fake *FakeClient) GetBucketAccelerateConfigurationRequestArgsForCall(i int) *s3a.GetBucketAccelerateConfigurationInput {
 	fake.getBucketAccelerateConfigurationRequestMutex.RLock()
 	defer fake.getBucketAccelerateConfigurationRequestMutex.RUnlock()
 	argsForCall := fake.getBucketAccelerateConfigurationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketAccelerateConfigurationRequestReturns(result1 *request.Request, result2 *s3a.GetBucketAccelerateConfigurationOutput) {
+func (fake *FakeClient) GetBucketAccelerateConfigurationRequestReturns(result1 *request.Request, result2 *s3a.GetBucketAccelerateConfigurationOutput) {
 	fake.getBucketAccelerateConfigurationRequestMutex.Lock()
 	defer fake.getBucketAccelerateConfigurationRequestMutex.Unlock()
 	fake.GetBucketAccelerateConfigurationRequestStub = nil
@@ -8478,7 +8478,7 @@ func (fake *FakeS3) GetBucketAccelerateConfigurationRequestReturns(result1 *requ
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketAccelerateConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketAccelerateConfigurationOutput) {
+func (fake *FakeClient) GetBucketAccelerateConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketAccelerateConfigurationOutput) {
 	fake.getBucketAccelerateConfigurationRequestMutex.Lock()
 	defer fake.getBucketAccelerateConfigurationRequestMutex.Unlock()
 	fake.GetBucketAccelerateConfigurationRequestStub = nil
@@ -8494,7 +8494,7 @@ func (fake *FakeS3) GetBucketAccelerateConfigurationRequestReturnsOnCall(i int, 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketAccelerateConfigurationWithContext(arg1 context.Context, arg2 *s3a.GetBucketAccelerateConfigurationInput, arg3 ...request.Option) (*s3a.GetBucketAccelerateConfigurationOutput, error) {
+func (fake *FakeClient) GetBucketAccelerateConfigurationWithContext(arg1 context.Context, arg2 *s3a.GetBucketAccelerateConfigurationInput, arg3 ...request.Option) (*s3a.GetBucketAccelerateConfigurationOutput, error) {
 	fake.getBucketAccelerateConfigurationWithContextMutex.Lock()
 	ret, specificReturn := fake.getBucketAccelerateConfigurationWithContextReturnsOnCall[len(fake.getBucketAccelerateConfigurationWithContextArgsForCall)]
 	fake.getBucketAccelerateConfigurationWithContextArgsForCall = append(fake.getBucketAccelerateConfigurationWithContextArgsForCall, struct {
@@ -8514,26 +8514,26 @@ func (fake *FakeS3) GetBucketAccelerateConfigurationWithContext(arg1 context.Con
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketAccelerateConfigurationWithContextCallCount() int {
+func (fake *FakeClient) GetBucketAccelerateConfigurationWithContextCallCount() int {
 	fake.getBucketAccelerateConfigurationWithContextMutex.RLock()
 	defer fake.getBucketAccelerateConfigurationWithContextMutex.RUnlock()
 	return len(fake.getBucketAccelerateConfigurationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketAccelerateConfigurationWithContextCalls(stub func(context.Context, *s3a.GetBucketAccelerateConfigurationInput, ...request.Option) (*s3a.GetBucketAccelerateConfigurationOutput, error)) {
+func (fake *FakeClient) GetBucketAccelerateConfigurationWithContextCalls(stub func(context.Context, *s3a.GetBucketAccelerateConfigurationInput, ...request.Option) (*s3a.GetBucketAccelerateConfigurationOutput, error)) {
 	fake.getBucketAccelerateConfigurationWithContextMutex.Lock()
 	defer fake.getBucketAccelerateConfigurationWithContextMutex.Unlock()
 	fake.GetBucketAccelerateConfigurationWithContextStub = stub
 }
 
-func (fake *FakeS3) GetBucketAccelerateConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketAccelerateConfigurationInput, []request.Option) {
+func (fake *FakeClient) GetBucketAccelerateConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketAccelerateConfigurationInput, []request.Option) {
 	fake.getBucketAccelerateConfigurationWithContextMutex.RLock()
 	defer fake.getBucketAccelerateConfigurationWithContextMutex.RUnlock()
 	argsForCall := fake.getBucketAccelerateConfigurationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetBucketAccelerateConfigurationWithContextReturns(result1 *s3a.GetBucketAccelerateConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketAccelerateConfigurationWithContextReturns(result1 *s3a.GetBucketAccelerateConfigurationOutput, result2 error) {
 	fake.getBucketAccelerateConfigurationWithContextMutex.Lock()
 	defer fake.getBucketAccelerateConfigurationWithContextMutex.Unlock()
 	fake.GetBucketAccelerateConfigurationWithContextStub = nil
@@ -8543,7 +8543,7 @@ func (fake *FakeS3) GetBucketAccelerateConfigurationWithContextReturns(result1 *
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketAccelerateConfigurationWithContextReturnsOnCall(i int, result1 *s3a.GetBucketAccelerateConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketAccelerateConfigurationWithContextReturnsOnCall(i int, result1 *s3a.GetBucketAccelerateConfigurationOutput, result2 error) {
 	fake.getBucketAccelerateConfigurationWithContextMutex.Lock()
 	defer fake.getBucketAccelerateConfigurationWithContextMutex.Unlock()
 	fake.GetBucketAccelerateConfigurationWithContextStub = nil
@@ -8559,7 +8559,7 @@ func (fake *FakeS3) GetBucketAccelerateConfigurationWithContextReturnsOnCall(i i
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketAcl(arg1 *s3a.GetBucketAclInput) (*s3a.GetBucketAclOutput, error) {
+func (fake *FakeClient) GetBucketAcl(arg1 *s3a.GetBucketAclInput) (*s3a.GetBucketAclOutput, error) {
 	fake.getBucketAclMutex.Lock()
 	ret, specificReturn := fake.getBucketAclReturnsOnCall[len(fake.getBucketAclArgsForCall)]
 	fake.getBucketAclArgsForCall = append(fake.getBucketAclArgsForCall, struct {
@@ -8577,26 +8577,26 @@ func (fake *FakeS3) GetBucketAcl(arg1 *s3a.GetBucketAclInput) (*s3a.GetBucketAcl
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketAclCallCount() int {
+func (fake *FakeClient) GetBucketAclCallCount() int {
 	fake.getBucketAclMutex.RLock()
 	defer fake.getBucketAclMutex.RUnlock()
 	return len(fake.getBucketAclArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketAclCalls(stub func(*s3a.GetBucketAclInput) (*s3a.GetBucketAclOutput, error)) {
+func (fake *FakeClient) GetBucketAclCalls(stub func(*s3a.GetBucketAclInput) (*s3a.GetBucketAclOutput, error)) {
 	fake.getBucketAclMutex.Lock()
 	defer fake.getBucketAclMutex.Unlock()
 	fake.GetBucketAclStub = stub
 }
 
-func (fake *FakeS3) GetBucketAclArgsForCall(i int) *s3a.GetBucketAclInput {
+func (fake *FakeClient) GetBucketAclArgsForCall(i int) *s3a.GetBucketAclInput {
 	fake.getBucketAclMutex.RLock()
 	defer fake.getBucketAclMutex.RUnlock()
 	argsForCall := fake.getBucketAclArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketAclReturns(result1 *s3a.GetBucketAclOutput, result2 error) {
+func (fake *FakeClient) GetBucketAclReturns(result1 *s3a.GetBucketAclOutput, result2 error) {
 	fake.getBucketAclMutex.Lock()
 	defer fake.getBucketAclMutex.Unlock()
 	fake.GetBucketAclStub = nil
@@ -8606,7 +8606,7 @@ func (fake *FakeS3) GetBucketAclReturns(result1 *s3a.GetBucketAclOutput, result2
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketAclReturnsOnCall(i int, result1 *s3a.GetBucketAclOutput, result2 error) {
+func (fake *FakeClient) GetBucketAclReturnsOnCall(i int, result1 *s3a.GetBucketAclOutput, result2 error) {
 	fake.getBucketAclMutex.Lock()
 	defer fake.getBucketAclMutex.Unlock()
 	fake.GetBucketAclStub = nil
@@ -8622,7 +8622,7 @@ func (fake *FakeS3) GetBucketAclReturnsOnCall(i int, result1 *s3a.GetBucketAclOu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketAclRequest(arg1 *s3a.GetBucketAclInput) (*request.Request, *s3a.GetBucketAclOutput) {
+func (fake *FakeClient) GetBucketAclRequest(arg1 *s3a.GetBucketAclInput) (*request.Request, *s3a.GetBucketAclOutput) {
 	fake.getBucketAclRequestMutex.Lock()
 	ret, specificReturn := fake.getBucketAclRequestReturnsOnCall[len(fake.getBucketAclRequestArgsForCall)]
 	fake.getBucketAclRequestArgsForCall = append(fake.getBucketAclRequestArgsForCall, struct {
@@ -8640,26 +8640,26 @@ func (fake *FakeS3) GetBucketAclRequest(arg1 *s3a.GetBucketAclInput) (*request.R
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketAclRequestCallCount() int {
+func (fake *FakeClient) GetBucketAclRequestCallCount() int {
 	fake.getBucketAclRequestMutex.RLock()
 	defer fake.getBucketAclRequestMutex.RUnlock()
 	return len(fake.getBucketAclRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketAclRequestCalls(stub func(*s3a.GetBucketAclInput) (*request.Request, *s3a.GetBucketAclOutput)) {
+func (fake *FakeClient) GetBucketAclRequestCalls(stub func(*s3a.GetBucketAclInput) (*request.Request, *s3a.GetBucketAclOutput)) {
 	fake.getBucketAclRequestMutex.Lock()
 	defer fake.getBucketAclRequestMutex.Unlock()
 	fake.GetBucketAclRequestStub = stub
 }
 
-func (fake *FakeS3) GetBucketAclRequestArgsForCall(i int) *s3a.GetBucketAclInput {
+func (fake *FakeClient) GetBucketAclRequestArgsForCall(i int) *s3a.GetBucketAclInput {
 	fake.getBucketAclRequestMutex.RLock()
 	defer fake.getBucketAclRequestMutex.RUnlock()
 	argsForCall := fake.getBucketAclRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketAclRequestReturns(result1 *request.Request, result2 *s3a.GetBucketAclOutput) {
+func (fake *FakeClient) GetBucketAclRequestReturns(result1 *request.Request, result2 *s3a.GetBucketAclOutput) {
 	fake.getBucketAclRequestMutex.Lock()
 	defer fake.getBucketAclRequestMutex.Unlock()
 	fake.GetBucketAclRequestStub = nil
@@ -8669,7 +8669,7 @@ func (fake *FakeS3) GetBucketAclRequestReturns(result1 *request.Request, result2
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketAclRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketAclOutput) {
+func (fake *FakeClient) GetBucketAclRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketAclOutput) {
 	fake.getBucketAclRequestMutex.Lock()
 	defer fake.getBucketAclRequestMutex.Unlock()
 	fake.GetBucketAclRequestStub = nil
@@ -8685,7 +8685,7 @@ func (fake *FakeS3) GetBucketAclRequestReturnsOnCall(i int, result1 *request.Req
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketAclWithContext(arg1 context.Context, arg2 *s3a.GetBucketAclInput, arg3 ...request.Option) (*s3a.GetBucketAclOutput, error) {
+func (fake *FakeClient) GetBucketAclWithContext(arg1 context.Context, arg2 *s3a.GetBucketAclInput, arg3 ...request.Option) (*s3a.GetBucketAclOutput, error) {
 	fake.getBucketAclWithContextMutex.Lock()
 	ret, specificReturn := fake.getBucketAclWithContextReturnsOnCall[len(fake.getBucketAclWithContextArgsForCall)]
 	fake.getBucketAclWithContextArgsForCall = append(fake.getBucketAclWithContextArgsForCall, struct {
@@ -8705,26 +8705,26 @@ func (fake *FakeS3) GetBucketAclWithContext(arg1 context.Context, arg2 *s3a.GetB
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketAclWithContextCallCount() int {
+func (fake *FakeClient) GetBucketAclWithContextCallCount() int {
 	fake.getBucketAclWithContextMutex.RLock()
 	defer fake.getBucketAclWithContextMutex.RUnlock()
 	return len(fake.getBucketAclWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketAclWithContextCalls(stub func(context.Context, *s3a.GetBucketAclInput, ...request.Option) (*s3a.GetBucketAclOutput, error)) {
+func (fake *FakeClient) GetBucketAclWithContextCalls(stub func(context.Context, *s3a.GetBucketAclInput, ...request.Option) (*s3a.GetBucketAclOutput, error)) {
 	fake.getBucketAclWithContextMutex.Lock()
 	defer fake.getBucketAclWithContextMutex.Unlock()
 	fake.GetBucketAclWithContextStub = stub
 }
 
-func (fake *FakeS3) GetBucketAclWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketAclInput, []request.Option) {
+func (fake *FakeClient) GetBucketAclWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketAclInput, []request.Option) {
 	fake.getBucketAclWithContextMutex.RLock()
 	defer fake.getBucketAclWithContextMutex.RUnlock()
 	argsForCall := fake.getBucketAclWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetBucketAclWithContextReturns(result1 *s3a.GetBucketAclOutput, result2 error) {
+func (fake *FakeClient) GetBucketAclWithContextReturns(result1 *s3a.GetBucketAclOutput, result2 error) {
 	fake.getBucketAclWithContextMutex.Lock()
 	defer fake.getBucketAclWithContextMutex.Unlock()
 	fake.GetBucketAclWithContextStub = nil
@@ -8734,7 +8734,7 @@ func (fake *FakeS3) GetBucketAclWithContextReturns(result1 *s3a.GetBucketAclOutp
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketAclWithContextReturnsOnCall(i int, result1 *s3a.GetBucketAclOutput, result2 error) {
+func (fake *FakeClient) GetBucketAclWithContextReturnsOnCall(i int, result1 *s3a.GetBucketAclOutput, result2 error) {
 	fake.getBucketAclWithContextMutex.Lock()
 	defer fake.getBucketAclWithContextMutex.Unlock()
 	fake.GetBucketAclWithContextStub = nil
@@ -8750,7 +8750,7 @@ func (fake *FakeS3) GetBucketAclWithContextReturnsOnCall(i int, result1 *s3a.Get
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketAnalyticsConfiguration(arg1 *s3a.GetBucketAnalyticsConfigurationInput) (*s3a.GetBucketAnalyticsConfigurationOutput, error) {
+func (fake *FakeClient) GetBucketAnalyticsConfiguration(arg1 *s3a.GetBucketAnalyticsConfigurationInput) (*s3a.GetBucketAnalyticsConfigurationOutput, error) {
 	fake.getBucketAnalyticsConfigurationMutex.Lock()
 	ret, specificReturn := fake.getBucketAnalyticsConfigurationReturnsOnCall[len(fake.getBucketAnalyticsConfigurationArgsForCall)]
 	fake.getBucketAnalyticsConfigurationArgsForCall = append(fake.getBucketAnalyticsConfigurationArgsForCall, struct {
@@ -8768,26 +8768,26 @@ func (fake *FakeS3) GetBucketAnalyticsConfiguration(arg1 *s3a.GetBucketAnalytics
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketAnalyticsConfigurationCallCount() int {
+func (fake *FakeClient) GetBucketAnalyticsConfigurationCallCount() int {
 	fake.getBucketAnalyticsConfigurationMutex.RLock()
 	defer fake.getBucketAnalyticsConfigurationMutex.RUnlock()
 	return len(fake.getBucketAnalyticsConfigurationArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketAnalyticsConfigurationCalls(stub func(*s3a.GetBucketAnalyticsConfigurationInput) (*s3a.GetBucketAnalyticsConfigurationOutput, error)) {
+func (fake *FakeClient) GetBucketAnalyticsConfigurationCalls(stub func(*s3a.GetBucketAnalyticsConfigurationInput) (*s3a.GetBucketAnalyticsConfigurationOutput, error)) {
 	fake.getBucketAnalyticsConfigurationMutex.Lock()
 	defer fake.getBucketAnalyticsConfigurationMutex.Unlock()
 	fake.GetBucketAnalyticsConfigurationStub = stub
 }
 
-func (fake *FakeS3) GetBucketAnalyticsConfigurationArgsForCall(i int) *s3a.GetBucketAnalyticsConfigurationInput {
+func (fake *FakeClient) GetBucketAnalyticsConfigurationArgsForCall(i int) *s3a.GetBucketAnalyticsConfigurationInput {
 	fake.getBucketAnalyticsConfigurationMutex.RLock()
 	defer fake.getBucketAnalyticsConfigurationMutex.RUnlock()
 	argsForCall := fake.getBucketAnalyticsConfigurationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketAnalyticsConfigurationReturns(result1 *s3a.GetBucketAnalyticsConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketAnalyticsConfigurationReturns(result1 *s3a.GetBucketAnalyticsConfigurationOutput, result2 error) {
 	fake.getBucketAnalyticsConfigurationMutex.Lock()
 	defer fake.getBucketAnalyticsConfigurationMutex.Unlock()
 	fake.GetBucketAnalyticsConfigurationStub = nil
@@ -8797,7 +8797,7 @@ func (fake *FakeS3) GetBucketAnalyticsConfigurationReturns(result1 *s3a.GetBucke
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketAnalyticsConfigurationReturnsOnCall(i int, result1 *s3a.GetBucketAnalyticsConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketAnalyticsConfigurationReturnsOnCall(i int, result1 *s3a.GetBucketAnalyticsConfigurationOutput, result2 error) {
 	fake.getBucketAnalyticsConfigurationMutex.Lock()
 	defer fake.getBucketAnalyticsConfigurationMutex.Unlock()
 	fake.GetBucketAnalyticsConfigurationStub = nil
@@ -8813,7 +8813,7 @@ func (fake *FakeS3) GetBucketAnalyticsConfigurationReturnsOnCall(i int, result1 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketAnalyticsConfigurationRequest(arg1 *s3a.GetBucketAnalyticsConfigurationInput) (*request.Request, *s3a.GetBucketAnalyticsConfigurationOutput) {
+func (fake *FakeClient) GetBucketAnalyticsConfigurationRequest(arg1 *s3a.GetBucketAnalyticsConfigurationInput) (*request.Request, *s3a.GetBucketAnalyticsConfigurationOutput) {
 	fake.getBucketAnalyticsConfigurationRequestMutex.Lock()
 	ret, specificReturn := fake.getBucketAnalyticsConfigurationRequestReturnsOnCall[len(fake.getBucketAnalyticsConfigurationRequestArgsForCall)]
 	fake.getBucketAnalyticsConfigurationRequestArgsForCall = append(fake.getBucketAnalyticsConfigurationRequestArgsForCall, struct {
@@ -8831,26 +8831,26 @@ func (fake *FakeS3) GetBucketAnalyticsConfigurationRequest(arg1 *s3a.GetBucketAn
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketAnalyticsConfigurationRequestCallCount() int {
+func (fake *FakeClient) GetBucketAnalyticsConfigurationRequestCallCount() int {
 	fake.getBucketAnalyticsConfigurationRequestMutex.RLock()
 	defer fake.getBucketAnalyticsConfigurationRequestMutex.RUnlock()
 	return len(fake.getBucketAnalyticsConfigurationRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketAnalyticsConfigurationRequestCalls(stub func(*s3a.GetBucketAnalyticsConfigurationInput) (*request.Request, *s3a.GetBucketAnalyticsConfigurationOutput)) {
+func (fake *FakeClient) GetBucketAnalyticsConfigurationRequestCalls(stub func(*s3a.GetBucketAnalyticsConfigurationInput) (*request.Request, *s3a.GetBucketAnalyticsConfigurationOutput)) {
 	fake.getBucketAnalyticsConfigurationRequestMutex.Lock()
 	defer fake.getBucketAnalyticsConfigurationRequestMutex.Unlock()
 	fake.GetBucketAnalyticsConfigurationRequestStub = stub
 }
 
-func (fake *FakeS3) GetBucketAnalyticsConfigurationRequestArgsForCall(i int) *s3a.GetBucketAnalyticsConfigurationInput {
+func (fake *FakeClient) GetBucketAnalyticsConfigurationRequestArgsForCall(i int) *s3a.GetBucketAnalyticsConfigurationInput {
 	fake.getBucketAnalyticsConfigurationRequestMutex.RLock()
 	defer fake.getBucketAnalyticsConfigurationRequestMutex.RUnlock()
 	argsForCall := fake.getBucketAnalyticsConfigurationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketAnalyticsConfigurationRequestReturns(result1 *request.Request, result2 *s3a.GetBucketAnalyticsConfigurationOutput) {
+func (fake *FakeClient) GetBucketAnalyticsConfigurationRequestReturns(result1 *request.Request, result2 *s3a.GetBucketAnalyticsConfigurationOutput) {
 	fake.getBucketAnalyticsConfigurationRequestMutex.Lock()
 	defer fake.getBucketAnalyticsConfigurationRequestMutex.Unlock()
 	fake.GetBucketAnalyticsConfigurationRequestStub = nil
@@ -8860,7 +8860,7 @@ func (fake *FakeS3) GetBucketAnalyticsConfigurationRequestReturns(result1 *reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketAnalyticsConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketAnalyticsConfigurationOutput) {
+func (fake *FakeClient) GetBucketAnalyticsConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketAnalyticsConfigurationOutput) {
 	fake.getBucketAnalyticsConfigurationRequestMutex.Lock()
 	defer fake.getBucketAnalyticsConfigurationRequestMutex.Unlock()
 	fake.GetBucketAnalyticsConfigurationRequestStub = nil
@@ -8876,7 +8876,7 @@ func (fake *FakeS3) GetBucketAnalyticsConfigurationRequestReturnsOnCall(i int, r
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketAnalyticsConfigurationWithContext(arg1 context.Context, arg2 *s3a.GetBucketAnalyticsConfigurationInput, arg3 ...request.Option) (*s3a.GetBucketAnalyticsConfigurationOutput, error) {
+func (fake *FakeClient) GetBucketAnalyticsConfigurationWithContext(arg1 context.Context, arg2 *s3a.GetBucketAnalyticsConfigurationInput, arg3 ...request.Option) (*s3a.GetBucketAnalyticsConfigurationOutput, error) {
 	fake.getBucketAnalyticsConfigurationWithContextMutex.Lock()
 	ret, specificReturn := fake.getBucketAnalyticsConfigurationWithContextReturnsOnCall[len(fake.getBucketAnalyticsConfigurationWithContextArgsForCall)]
 	fake.getBucketAnalyticsConfigurationWithContextArgsForCall = append(fake.getBucketAnalyticsConfigurationWithContextArgsForCall, struct {
@@ -8896,26 +8896,26 @@ func (fake *FakeS3) GetBucketAnalyticsConfigurationWithContext(arg1 context.Cont
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketAnalyticsConfigurationWithContextCallCount() int {
+func (fake *FakeClient) GetBucketAnalyticsConfigurationWithContextCallCount() int {
 	fake.getBucketAnalyticsConfigurationWithContextMutex.RLock()
 	defer fake.getBucketAnalyticsConfigurationWithContextMutex.RUnlock()
 	return len(fake.getBucketAnalyticsConfigurationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketAnalyticsConfigurationWithContextCalls(stub func(context.Context, *s3a.GetBucketAnalyticsConfigurationInput, ...request.Option) (*s3a.GetBucketAnalyticsConfigurationOutput, error)) {
+func (fake *FakeClient) GetBucketAnalyticsConfigurationWithContextCalls(stub func(context.Context, *s3a.GetBucketAnalyticsConfigurationInput, ...request.Option) (*s3a.GetBucketAnalyticsConfigurationOutput, error)) {
 	fake.getBucketAnalyticsConfigurationWithContextMutex.Lock()
 	defer fake.getBucketAnalyticsConfigurationWithContextMutex.Unlock()
 	fake.GetBucketAnalyticsConfigurationWithContextStub = stub
 }
 
-func (fake *FakeS3) GetBucketAnalyticsConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketAnalyticsConfigurationInput, []request.Option) {
+func (fake *FakeClient) GetBucketAnalyticsConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketAnalyticsConfigurationInput, []request.Option) {
 	fake.getBucketAnalyticsConfigurationWithContextMutex.RLock()
 	defer fake.getBucketAnalyticsConfigurationWithContextMutex.RUnlock()
 	argsForCall := fake.getBucketAnalyticsConfigurationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetBucketAnalyticsConfigurationWithContextReturns(result1 *s3a.GetBucketAnalyticsConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketAnalyticsConfigurationWithContextReturns(result1 *s3a.GetBucketAnalyticsConfigurationOutput, result2 error) {
 	fake.getBucketAnalyticsConfigurationWithContextMutex.Lock()
 	defer fake.getBucketAnalyticsConfigurationWithContextMutex.Unlock()
 	fake.GetBucketAnalyticsConfigurationWithContextStub = nil
@@ -8925,7 +8925,7 @@ func (fake *FakeS3) GetBucketAnalyticsConfigurationWithContextReturns(result1 *s
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketAnalyticsConfigurationWithContextReturnsOnCall(i int, result1 *s3a.GetBucketAnalyticsConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketAnalyticsConfigurationWithContextReturnsOnCall(i int, result1 *s3a.GetBucketAnalyticsConfigurationOutput, result2 error) {
 	fake.getBucketAnalyticsConfigurationWithContextMutex.Lock()
 	defer fake.getBucketAnalyticsConfigurationWithContextMutex.Unlock()
 	fake.GetBucketAnalyticsConfigurationWithContextStub = nil
@@ -8941,7 +8941,7 @@ func (fake *FakeS3) GetBucketAnalyticsConfigurationWithContextReturnsOnCall(i in
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketCors(arg1 *s3a.GetBucketCorsInput) (*s3a.GetBucketCorsOutput, error) {
+func (fake *FakeClient) GetBucketCors(arg1 *s3a.GetBucketCorsInput) (*s3a.GetBucketCorsOutput, error) {
 	fake.getBucketCorsMutex.Lock()
 	ret, specificReturn := fake.getBucketCorsReturnsOnCall[len(fake.getBucketCorsArgsForCall)]
 	fake.getBucketCorsArgsForCall = append(fake.getBucketCorsArgsForCall, struct {
@@ -8959,26 +8959,26 @@ func (fake *FakeS3) GetBucketCors(arg1 *s3a.GetBucketCorsInput) (*s3a.GetBucketC
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketCorsCallCount() int {
+func (fake *FakeClient) GetBucketCorsCallCount() int {
 	fake.getBucketCorsMutex.RLock()
 	defer fake.getBucketCorsMutex.RUnlock()
 	return len(fake.getBucketCorsArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketCorsCalls(stub func(*s3a.GetBucketCorsInput) (*s3a.GetBucketCorsOutput, error)) {
+func (fake *FakeClient) GetBucketCorsCalls(stub func(*s3a.GetBucketCorsInput) (*s3a.GetBucketCorsOutput, error)) {
 	fake.getBucketCorsMutex.Lock()
 	defer fake.getBucketCorsMutex.Unlock()
 	fake.GetBucketCorsStub = stub
 }
 
-func (fake *FakeS3) GetBucketCorsArgsForCall(i int) *s3a.GetBucketCorsInput {
+func (fake *FakeClient) GetBucketCorsArgsForCall(i int) *s3a.GetBucketCorsInput {
 	fake.getBucketCorsMutex.RLock()
 	defer fake.getBucketCorsMutex.RUnlock()
 	argsForCall := fake.getBucketCorsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketCorsReturns(result1 *s3a.GetBucketCorsOutput, result2 error) {
+func (fake *FakeClient) GetBucketCorsReturns(result1 *s3a.GetBucketCorsOutput, result2 error) {
 	fake.getBucketCorsMutex.Lock()
 	defer fake.getBucketCorsMutex.Unlock()
 	fake.GetBucketCorsStub = nil
@@ -8988,7 +8988,7 @@ func (fake *FakeS3) GetBucketCorsReturns(result1 *s3a.GetBucketCorsOutput, resul
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketCorsReturnsOnCall(i int, result1 *s3a.GetBucketCorsOutput, result2 error) {
+func (fake *FakeClient) GetBucketCorsReturnsOnCall(i int, result1 *s3a.GetBucketCorsOutput, result2 error) {
 	fake.getBucketCorsMutex.Lock()
 	defer fake.getBucketCorsMutex.Unlock()
 	fake.GetBucketCorsStub = nil
@@ -9004,7 +9004,7 @@ func (fake *FakeS3) GetBucketCorsReturnsOnCall(i int, result1 *s3a.GetBucketCors
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketCorsRequest(arg1 *s3a.GetBucketCorsInput) (*request.Request, *s3a.GetBucketCorsOutput) {
+func (fake *FakeClient) GetBucketCorsRequest(arg1 *s3a.GetBucketCorsInput) (*request.Request, *s3a.GetBucketCorsOutput) {
 	fake.getBucketCorsRequestMutex.Lock()
 	ret, specificReturn := fake.getBucketCorsRequestReturnsOnCall[len(fake.getBucketCorsRequestArgsForCall)]
 	fake.getBucketCorsRequestArgsForCall = append(fake.getBucketCorsRequestArgsForCall, struct {
@@ -9022,26 +9022,26 @@ func (fake *FakeS3) GetBucketCorsRequest(arg1 *s3a.GetBucketCorsInput) (*request
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketCorsRequestCallCount() int {
+func (fake *FakeClient) GetBucketCorsRequestCallCount() int {
 	fake.getBucketCorsRequestMutex.RLock()
 	defer fake.getBucketCorsRequestMutex.RUnlock()
 	return len(fake.getBucketCorsRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketCorsRequestCalls(stub func(*s3a.GetBucketCorsInput) (*request.Request, *s3a.GetBucketCorsOutput)) {
+func (fake *FakeClient) GetBucketCorsRequestCalls(stub func(*s3a.GetBucketCorsInput) (*request.Request, *s3a.GetBucketCorsOutput)) {
 	fake.getBucketCorsRequestMutex.Lock()
 	defer fake.getBucketCorsRequestMutex.Unlock()
 	fake.GetBucketCorsRequestStub = stub
 }
 
-func (fake *FakeS3) GetBucketCorsRequestArgsForCall(i int) *s3a.GetBucketCorsInput {
+func (fake *FakeClient) GetBucketCorsRequestArgsForCall(i int) *s3a.GetBucketCorsInput {
 	fake.getBucketCorsRequestMutex.RLock()
 	defer fake.getBucketCorsRequestMutex.RUnlock()
 	argsForCall := fake.getBucketCorsRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketCorsRequestReturns(result1 *request.Request, result2 *s3a.GetBucketCorsOutput) {
+func (fake *FakeClient) GetBucketCorsRequestReturns(result1 *request.Request, result2 *s3a.GetBucketCorsOutput) {
 	fake.getBucketCorsRequestMutex.Lock()
 	defer fake.getBucketCorsRequestMutex.Unlock()
 	fake.GetBucketCorsRequestStub = nil
@@ -9051,7 +9051,7 @@ func (fake *FakeS3) GetBucketCorsRequestReturns(result1 *request.Request, result
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketCorsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketCorsOutput) {
+func (fake *FakeClient) GetBucketCorsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketCorsOutput) {
 	fake.getBucketCorsRequestMutex.Lock()
 	defer fake.getBucketCorsRequestMutex.Unlock()
 	fake.GetBucketCorsRequestStub = nil
@@ -9067,7 +9067,7 @@ func (fake *FakeS3) GetBucketCorsRequestReturnsOnCall(i int, result1 *request.Re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketCorsWithContext(arg1 context.Context, arg2 *s3a.GetBucketCorsInput, arg3 ...request.Option) (*s3a.GetBucketCorsOutput, error) {
+func (fake *FakeClient) GetBucketCorsWithContext(arg1 context.Context, arg2 *s3a.GetBucketCorsInput, arg3 ...request.Option) (*s3a.GetBucketCorsOutput, error) {
 	fake.getBucketCorsWithContextMutex.Lock()
 	ret, specificReturn := fake.getBucketCorsWithContextReturnsOnCall[len(fake.getBucketCorsWithContextArgsForCall)]
 	fake.getBucketCorsWithContextArgsForCall = append(fake.getBucketCorsWithContextArgsForCall, struct {
@@ -9087,26 +9087,26 @@ func (fake *FakeS3) GetBucketCorsWithContext(arg1 context.Context, arg2 *s3a.Get
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketCorsWithContextCallCount() int {
+func (fake *FakeClient) GetBucketCorsWithContextCallCount() int {
 	fake.getBucketCorsWithContextMutex.RLock()
 	defer fake.getBucketCorsWithContextMutex.RUnlock()
 	return len(fake.getBucketCorsWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketCorsWithContextCalls(stub func(context.Context, *s3a.GetBucketCorsInput, ...request.Option) (*s3a.GetBucketCorsOutput, error)) {
+func (fake *FakeClient) GetBucketCorsWithContextCalls(stub func(context.Context, *s3a.GetBucketCorsInput, ...request.Option) (*s3a.GetBucketCorsOutput, error)) {
 	fake.getBucketCorsWithContextMutex.Lock()
 	defer fake.getBucketCorsWithContextMutex.Unlock()
 	fake.GetBucketCorsWithContextStub = stub
 }
 
-func (fake *FakeS3) GetBucketCorsWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketCorsInput, []request.Option) {
+func (fake *FakeClient) GetBucketCorsWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketCorsInput, []request.Option) {
 	fake.getBucketCorsWithContextMutex.RLock()
 	defer fake.getBucketCorsWithContextMutex.RUnlock()
 	argsForCall := fake.getBucketCorsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetBucketCorsWithContextReturns(result1 *s3a.GetBucketCorsOutput, result2 error) {
+func (fake *FakeClient) GetBucketCorsWithContextReturns(result1 *s3a.GetBucketCorsOutput, result2 error) {
 	fake.getBucketCorsWithContextMutex.Lock()
 	defer fake.getBucketCorsWithContextMutex.Unlock()
 	fake.GetBucketCorsWithContextStub = nil
@@ -9116,7 +9116,7 @@ func (fake *FakeS3) GetBucketCorsWithContextReturns(result1 *s3a.GetBucketCorsOu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketCorsWithContextReturnsOnCall(i int, result1 *s3a.GetBucketCorsOutput, result2 error) {
+func (fake *FakeClient) GetBucketCorsWithContextReturnsOnCall(i int, result1 *s3a.GetBucketCorsOutput, result2 error) {
 	fake.getBucketCorsWithContextMutex.Lock()
 	defer fake.getBucketCorsWithContextMutex.Unlock()
 	fake.GetBucketCorsWithContextStub = nil
@@ -9132,7 +9132,7 @@ func (fake *FakeS3) GetBucketCorsWithContextReturnsOnCall(i int, result1 *s3a.Ge
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketEncryption(arg1 *s3a.GetBucketEncryptionInput) (*s3a.GetBucketEncryptionOutput, error) {
+func (fake *FakeClient) GetBucketEncryption(arg1 *s3a.GetBucketEncryptionInput) (*s3a.GetBucketEncryptionOutput, error) {
 	fake.getBucketEncryptionMutex.Lock()
 	ret, specificReturn := fake.getBucketEncryptionReturnsOnCall[len(fake.getBucketEncryptionArgsForCall)]
 	fake.getBucketEncryptionArgsForCall = append(fake.getBucketEncryptionArgsForCall, struct {
@@ -9150,26 +9150,26 @@ func (fake *FakeS3) GetBucketEncryption(arg1 *s3a.GetBucketEncryptionInput) (*s3
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketEncryptionCallCount() int {
+func (fake *FakeClient) GetBucketEncryptionCallCount() int {
 	fake.getBucketEncryptionMutex.RLock()
 	defer fake.getBucketEncryptionMutex.RUnlock()
 	return len(fake.getBucketEncryptionArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketEncryptionCalls(stub func(*s3a.GetBucketEncryptionInput) (*s3a.GetBucketEncryptionOutput, error)) {
+func (fake *FakeClient) GetBucketEncryptionCalls(stub func(*s3a.GetBucketEncryptionInput) (*s3a.GetBucketEncryptionOutput, error)) {
 	fake.getBucketEncryptionMutex.Lock()
 	defer fake.getBucketEncryptionMutex.Unlock()
 	fake.GetBucketEncryptionStub = stub
 }
 
-func (fake *FakeS3) GetBucketEncryptionArgsForCall(i int) *s3a.GetBucketEncryptionInput {
+func (fake *FakeClient) GetBucketEncryptionArgsForCall(i int) *s3a.GetBucketEncryptionInput {
 	fake.getBucketEncryptionMutex.RLock()
 	defer fake.getBucketEncryptionMutex.RUnlock()
 	argsForCall := fake.getBucketEncryptionArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketEncryptionReturns(result1 *s3a.GetBucketEncryptionOutput, result2 error) {
+func (fake *FakeClient) GetBucketEncryptionReturns(result1 *s3a.GetBucketEncryptionOutput, result2 error) {
 	fake.getBucketEncryptionMutex.Lock()
 	defer fake.getBucketEncryptionMutex.Unlock()
 	fake.GetBucketEncryptionStub = nil
@@ -9179,7 +9179,7 @@ func (fake *FakeS3) GetBucketEncryptionReturns(result1 *s3a.GetBucketEncryptionO
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketEncryptionReturnsOnCall(i int, result1 *s3a.GetBucketEncryptionOutput, result2 error) {
+func (fake *FakeClient) GetBucketEncryptionReturnsOnCall(i int, result1 *s3a.GetBucketEncryptionOutput, result2 error) {
 	fake.getBucketEncryptionMutex.Lock()
 	defer fake.getBucketEncryptionMutex.Unlock()
 	fake.GetBucketEncryptionStub = nil
@@ -9195,7 +9195,7 @@ func (fake *FakeS3) GetBucketEncryptionReturnsOnCall(i int, result1 *s3a.GetBuck
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketEncryptionRequest(arg1 *s3a.GetBucketEncryptionInput) (*request.Request, *s3a.GetBucketEncryptionOutput) {
+func (fake *FakeClient) GetBucketEncryptionRequest(arg1 *s3a.GetBucketEncryptionInput) (*request.Request, *s3a.GetBucketEncryptionOutput) {
 	fake.getBucketEncryptionRequestMutex.Lock()
 	ret, specificReturn := fake.getBucketEncryptionRequestReturnsOnCall[len(fake.getBucketEncryptionRequestArgsForCall)]
 	fake.getBucketEncryptionRequestArgsForCall = append(fake.getBucketEncryptionRequestArgsForCall, struct {
@@ -9213,26 +9213,26 @@ func (fake *FakeS3) GetBucketEncryptionRequest(arg1 *s3a.GetBucketEncryptionInpu
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketEncryptionRequestCallCount() int {
+func (fake *FakeClient) GetBucketEncryptionRequestCallCount() int {
 	fake.getBucketEncryptionRequestMutex.RLock()
 	defer fake.getBucketEncryptionRequestMutex.RUnlock()
 	return len(fake.getBucketEncryptionRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketEncryptionRequestCalls(stub func(*s3a.GetBucketEncryptionInput) (*request.Request, *s3a.GetBucketEncryptionOutput)) {
+func (fake *FakeClient) GetBucketEncryptionRequestCalls(stub func(*s3a.GetBucketEncryptionInput) (*request.Request, *s3a.GetBucketEncryptionOutput)) {
 	fake.getBucketEncryptionRequestMutex.Lock()
 	defer fake.getBucketEncryptionRequestMutex.Unlock()
 	fake.GetBucketEncryptionRequestStub = stub
 }
 
-func (fake *FakeS3) GetBucketEncryptionRequestArgsForCall(i int) *s3a.GetBucketEncryptionInput {
+func (fake *FakeClient) GetBucketEncryptionRequestArgsForCall(i int) *s3a.GetBucketEncryptionInput {
 	fake.getBucketEncryptionRequestMutex.RLock()
 	defer fake.getBucketEncryptionRequestMutex.RUnlock()
 	argsForCall := fake.getBucketEncryptionRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketEncryptionRequestReturns(result1 *request.Request, result2 *s3a.GetBucketEncryptionOutput) {
+func (fake *FakeClient) GetBucketEncryptionRequestReturns(result1 *request.Request, result2 *s3a.GetBucketEncryptionOutput) {
 	fake.getBucketEncryptionRequestMutex.Lock()
 	defer fake.getBucketEncryptionRequestMutex.Unlock()
 	fake.GetBucketEncryptionRequestStub = nil
@@ -9242,7 +9242,7 @@ func (fake *FakeS3) GetBucketEncryptionRequestReturns(result1 *request.Request, 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketEncryptionRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketEncryptionOutput) {
+func (fake *FakeClient) GetBucketEncryptionRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketEncryptionOutput) {
 	fake.getBucketEncryptionRequestMutex.Lock()
 	defer fake.getBucketEncryptionRequestMutex.Unlock()
 	fake.GetBucketEncryptionRequestStub = nil
@@ -9258,7 +9258,7 @@ func (fake *FakeS3) GetBucketEncryptionRequestReturnsOnCall(i int, result1 *requ
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketEncryptionWithContext(arg1 context.Context, arg2 *s3a.GetBucketEncryptionInput, arg3 ...request.Option) (*s3a.GetBucketEncryptionOutput, error) {
+func (fake *FakeClient) GetBucketEncryptionWithContext(arg1 context.Context, arg2 *s3a.GetBucketEncryptionInput, arg3 ...request.Option) (*s3a.GetBucketEncryptionOutput, error) {
 	fake.getBucketEncryptionWithContextMutex.Lock()
 	ret, specificReturn := fake.getBucketEncryptionWithContextReturnsOnCall[len(fake.getBucketEncryptionWithContextArgsForCall)]
 	fake.getBucketEncryptionWithContextArgsForCall = append(fake.getBucketEncryptionWithContextArgsForCall, struct {
@@ -9278,26 +9278,26 @@ func (fake *FakeS3) GetBucketEncryptionWithContext(arg1 context.Context, arg2 *s
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketEncryptionWithContextCallCount() int {
+func (fake *FakeClient) GetBucketEncryptionWithContextCallCount() int {
 	fake.getBucketEncryptionWithContextMutex.RLock()
 	defer fake.getBucketEncryptionWithContextMutex.RUnlock()
 	return len(fake.getBucketEncryptionWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketEncryptionWithContextCalls(stub func(context.Context, *s3a.GetBucketEncryptionInput, ...request.Option) (*s3a.GetBucketEncryptionOutput, error)) {
+func (fake *FakeClient) GetBucketEncryptionWithContextCalls(stub func(context.Context, *s3a.GetBucketEncryptionInput, ...request.Option) (*s3a.GetBucketEncryptionOutput, error)) {
 	fake.getBucketEncryptionWithContextMutex.Lock()
 	defer fake.getBucketEncryptionWithContextMutex.Unlock()
 	fake.GetBucketEncryptionWithContextStub = stub
 }
 
-func (fake *FakeS3) GetBucketEncryptionWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketEncryptionInput, []request.Option) {
+func (fake *FakeClient) GetBucketEncryptionWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketEncryptionInput, []request.Option) {
 	fake.getBucketEncryptionWithContextMutex.RLock()
 	defer fake.getBucketEncryptionWithContextMutex.RUnlock()
 	argsForCall := fake.getBucketEncryptionWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetBucketEncryptionWithContextReturns(result1 *s3a.GetBucketEncryptionOutput, result2 error) {
+func (fake *FakeClient) GetBucketEncryptionWithContextReturns(result1 *s3a.GetBucketEncryptionOutput, result2 error) {
 	fake.getBucketEncryptionWithContextMutex.Lock()
 	defer fake.getBucketEncryptionWithContextMutex.Unlock()
 	fake.GetBucketEncryptionWithContextStub = nil
@@ -9307,7 +9307,7 @@ func (fake *FakeS3) GetBucketEncryptionWithContextReturns(result1 *s3a.GetBucket
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketEncryptionWithContextReturnsOnCall(i int, result1 *s3a.GetBucketEncryptionOutput, result2 error) {
+func (fake *FakeClient) GetBucketEncryptionWithContextReturnsOnCall(i int, result1 *s3a.GetBucketEncryptionOutput, result2 error) {
 	fake.getBucketEncryptionWithContextMutex.Lock()
 	defer fake.getBucketEncryptionWithContextMutex.Unlock()
 	fake.GetBucketEncryptionWithContextStub = nil
@@ -9323,7 +9323,7 @@ func (fake *FakeS3) GetBucketEncryptionWithContextReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketIntelligentTieringConfiguration(arg1 *s3a.GetBucketIntelligentTieringConfigurationInput) (*s3a.GetBucketIntelligentTieringConfigurationOutput, error) {
+func (fake *FakeClient) GetBucketIntelligentTieringConfiguration(arg1 *s3a.GetBucketIntelligentTieringConfigurationInput) (*s3a.GetBucketIntelligentTieringConfigurationOutput, error) {
 	fake.getBucketIntelligentTieringConfigurationMutex.Lock()
 	ret, specificReturn := fake.getBucketIntelligentTieringConfigurationReturnsOnCall[len(fake.getBucketIntelligentTieringConfigurationArgsForCall)]
 	fake.getBucketIntelligentTieringConfigurationArgsForCall = append(fake.getBucketIntelligentTieringConfigurationArgsForCall, struct {
@@ -9341,26 +9341,26 @@ func (fake *FakeS3) GetBucketIntelligentTieringConfiguration(arg1 *s3a.GetBucket
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketIntelligentTieringConfigurationCallCount() int {
+func (fake *FakeClient) GetBucketIntelligentTieringConfigurationCallCount() int {
 	fake.getBucketIntelligentTieringConfigurationMutex.RLock()
 	defer fake.getBucketIntelligentTieringConfigurationMutex.RUnlock()
 	return len(fake.getBucketIntelligentTieringConfigurationArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketIntelligentTieringConfigurationCalls(stub func(*s3a.GetBucketIntelligentTieringConfigurationInput) (*s3a.GetBucketIntelligentTieringConfigurationOutput, error)) {
+func (fake *FakeClient) GetBucketIntelligentTieringConfigurationCalls(stub func(*s3a.GetBucketIntelligentTieringConfigurationInput) (*s3a.GetBucketIntelligentTieringConfigurationOutput, error)) {
 	fake.getBucketIntelligentTieringConfigurationMutex.Lock()
 	defer fake.getBucketIntelligentTieringConfigurationMutex.Unlock()
 	fake.GetBucketIntelligentTieringConfigurationStub = stub
 }
 
-func (fake *FakeS3) GetBucketIntelligentTieringConfigurationArgsForCall(i int) *s3a.GetBucketIntelligentTieringConfigurationInput {
+func (fake *FakeClient) GetBucketIntelligentTieringConfigurationArgsForCall(i int) *s3a.GetBucketIntelligentTieringConfigurationInput {
 	fake.getBucketIntelligentTieringConfigurationMutex.RLock()
 	defer fake.getBucketIntelligentTieringConfigurationMutex.RUnlock()
 	argsForCall := fake.getBucketIntelligentTieringConfigurationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketIntelligentTieringConfigurationReturns(result1 *s3a.GetBucketIntelligentTieringConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketIntelligentTieringConfigurationReturns(result1 *s3a.GetBucketIntelligentTieringConfigurationOutput, result2 error) {
 	fake.getBucketIntelligentTieringConfigurationMutex.Lock()
 	defer fake.getBucketIntelligentTieringConfigurationMutex.Unlock()
 	fake.GetBucketIntelligentTieringConfigurationStub = nil
@@ -9370,7 +9370,7 @@ func (fake *FakeS3) GetBucketIntelligentTieringConfigurationReturns(result1 *s3a
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketIntelligentTieringConfigurationReturnsOnCall(i int, result1 *s3a.GetBucketIntelligentTieringConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketIntelligentTieringConfigurationReturnsOnCall(i int, result1 *s3a.GetBucketIntelligentTieringConfigurationOutput, result2 error) {
 	fake.getBucketIntelligentTieringConfigurationMutex.Lock()
 	defer fake.getBucketIntelligentTieringConfigurationMutex.Unlock()
 	fake.GetBucketIntelligentTieringConfigurationStub = nil
@@ -9386,7 +9386,7 @@ func (fake *FakeS3) GetBucketIntelligentTieringConfigurationReturnsOnCall(i int,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketIntelligentTieringConfigurationRequest(arg1 *s3a.GetBucketIntelligentTieringConfigurationInput) (*request.Request, *s3a.GetBucketIntelligentTieringConfigurationOutput) {
+func (fake *FakeClient) GetBucketIntelligentTieringConfigurationRequest(arg1 *s3a.GetBucketIntelligentTieringConfigurationInput) (*request.Request, *s3a.GetBucketIntelligentTieringConfigurationOutput) {
 	fake.getBucketIntelligentTieringConfigurationRequestMutex.Lock()
 	ret, specificReturn := fake.getBucketIntelligentTieringConfigurationRequestReturnsOnCall[len(fake.getBucketIntelligentTieringConfigurationRequestArgsForCall)]
 	fake.getBucketIntelligentTieringConfigurationRequestArgsForCall = append(fake.getBucketIntelligentTieringConfigurationRequestArgsForCall, struct {
@@ -9404,26 +9404,26 @@ func (fake *FakeS3) GetBucketIntelligentTieringConfigurationRequest(arg1 *s3a.Ge
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketIntelligentTieringConfigurationRequestCallCount() int {
+func (fake *FakeClient) GetBucketIntelligentTieringConfigurationRequestCallCount() int {
 	fake.getBucketIntelligentTieringConfigurationRequestMutex.RLock()
 	defer fake.getBucketIntelligentTieringConfigurationRequestMutex.RUnlock()
 	return len(fake.getBucketIntelligentTieringConfigurationRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketIntelligentTieringConfigurationRequestCalls(stub func(*s3a.GetBucketIntelligentTieringConfigurationInput) (*request.Request, *s3a.GetBucketIntelligentTieringConfigurationOutput)) {
+func (fake *FakeClient) GetBucketIntelligentTieringConfigurationRequestCalls(stub func(*s3a.GetBucketIntelligentTieringConfigurationInput) (*request.Request, *s3a.GetBucketIntelligentTieringConfigurationOutput)) {
 	fake.getBucketIntelligentTieringConfigurationRequestMutex.Lock()
 	defer fake.getBucketIntelligentTieringConfigurationRequestMutex.Unlock()
 	fake.GetBucketIntelligentTieringConfigurationRequestStub = stub
 }
 
-func (fake *FakeS3) GetBucketIntelligentTieringConfigurationRequestArgsForCall(i int) *s3a.GetBucketIntelligentTieringConfigurationInput {
+func (fake *FakeClient) GetBucketIntelligentTieringConfigurationRequestArgsForCall(i int) *s3a.GetBucketIntelligentTieringConfigurationInput {
 	fake.getBucketIntelligentTieringConfigurationRequestMutex.RLock()
 	defer fake.getBucketIntelligentTieringConfigurationRequestMutex.RUnlock()
 	argsForCall := fake.getBucketIntelligentTieringConfigurationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketIntelligentTieringConfigurationRequestReturns(result1 *request.Request, result2 *s3a.GetBucketIntelligentTieringConfigurationOutput) {
+func (fake *FakeClient) GetBucketIntelligentTieringConfigurationRequestReturns(result1 *request.Request, result2 *s3a.GetBucketIntelligentTieringConfigurationOutput) {
 	fake.getBucketIntelligentTieringConfigurationRequestMutex.Lock()
 	defer fake.getBucketIntelligentTieringConfigurationRequestMutex.Unlock()
 	fake.GetBucketIntelligentTieringConfigurationRequestStub = nil
@@ -9433,7 +9433,7 @@ func (fake *FakeS3) GetBucketIntelligentTieringConfigurationRequestReturns(resul
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketIntelligentTieringConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketIntelligentTieringConfigurationOutput) {
+func (fake *FakeClient) GetBucketIntelligentTieringConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketIntelligentTieringConfigurationOutput) {
 	fake.getBucketIntelligentTieringConfigurationRequestMutex.Lock()
 	defer fake.getBucketIntelligentTieringConfigurationRequestMutex.Unlock()
 	fake.GetBucketIntelligentTieringConfigurationRequestStub = nil
@@ -9449,7 +9449,7 @@ func (fake *FakeS3) GetBucketIntelligentTieringConfigurationRequestReturnsOnCall
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketIntelligentTieringConfigurationWithContext(arg1 context.Context, arg2 *s3a.GetBucketIntelligentTieringConfigurationInput, arg3 ...request.Option) (*s3a.GetBucketIntelligentTieringConfigurationOutput, error) {
+func (fake *FakeClient) GetBucketIntelligentTieringConfigurationWithContext(arg1 context.Context, arg2 *s3a.GetBucketIntelligentTieringConfigurationInput, arg3 ...request.Option) (*s3a.GetBucketIntelligentTieringConfigurationOutput, error) {
 	fake.getBucketIntelligentTieringConfigurationWithContextMutex.Lock()
 	ret, specificReturn := fake.getBucketIntelligentTieringConfigurationWithContextReturnsOnCall[len(fake.getBucketIntelligentTieringConfigurationWithContextArgsForCall)]
 	fake.getBucketIntelligentTieringConfigurationWithContextArgsForCall = append(fake.getBucketIntelligentTieringConfigurationWithContextArgsForCall, struct {
@@ -9469,26 +9469,26 @@ func (fake *FakeS3) GetBucketIntelligentTieringConfigurationWithContext(arg1 con
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketIntelligentTieringConfigurationWithContextCallCount() int {
+func (fake *FakeClient) GetBucketIntelligentTieringConfigurationWithContextCallCount() int {
 	fake.getBucketIntelligentTieringConfigurationWithContextMutex.RLock()
 	defer fake.getBucketIntelligentTieringConfigurationWithContextMutex.RUnlock()
 	return len(fake.getBucketIntelligentTieringConfigurationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketIntelligentTieringConfigurationWithContextCalls(stub func(context.Context, *s3a.GetBucketIntelligentTieringConfigurationInput, ...request.Option) (*s3a.GetBucketIntelligentTieringConfigurationOutput, error)) {
+func (fake *FakeClient) GetBucketIntelligentTieringConfigurationWithContextCalls(stub func(context.Context, *s3a.GetBucketIntelligentTieringConfigurationInput, ...request.Option) (*s3a.GetBucketIntelligentTieringConfigurationOutput, error)) {
 	fake.getBucketIntelligentTieringConfigurationWithContextMutex.Lock()
 	defer fake.getBucketIntelligentTieringConfigurationWithContextMutex.Unlock()
 	fake.GetBucketIntelligentTieringConfigurationWithContextStub = stub
 }
 
-func (fake *FakeS3) GetBucketIntelligentTieringConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketIntelligentTieringConfigurationInput, []request.Option) {
+func (fake *FakeClient) GetBucketIntelligentTieringConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketIntelligentTieringConfigurationInput, []request.Option) {
 	fake.getBucketIntelligentTieringConfigurationWithContextMutex.RLock()
 	defer fake.getBucketIntelligentTieringConfigurationWithContextMutex.RUnlock()
 	argsForCall := fake.getBucketIntelligentTieringConfigurationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetBucketIntelligentTieringConfigurationWithContextReturns(result1 *s3a.GetBucketIntelligentTieringConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketIntelligentTieringConfigurationWithContextReturns(result1 *s3a.GetBucketIntelligentTieringConfigurationOutput, result2 error) {
 	fake.getBucketIntelligentTieringConfigurationWithContextMutex.Lock()
 	defer fake.getBucketIntelligentTieringConfigurationWithContextMutex.Unlock()
 	fake.GetBucketIntelligentTieringConfigurationWithContextStub = nil
@@ -9498,7 +9498,7 @@ func (fake *FakeS3) GetBucketIntelligentTieringConfigurationWithContextReturns(r
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketIntelligentTieringConfigurationWithContextReturnsOnCall(i int, result1 *s3a.GetBucketIntelligentTieringConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketIntelligentTieringConfigurationWithContextReturnsOnCall(i int, result1 *s3a.GetBucketIntelligentTieringConfigurationOutput, result2 error) {
 	fake.getBucketIntelligentTieringConfigurationWithContextMutex.Lock()
 	defer fake.getBucketIntelligentTieringConfigurationWithContextMutex.Unlock()
 	fake.GetBucketIntelligentTieringConfigurationWithContextStub = nil
@@ -9514,7 +9514,7 @@ func (fake *FakeS3) GetBucketIntelligentTieringConfigurationWithContextReturnsOn
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketInventoryConfiguration(arg1 *s3a.GetBucketInventoryConfigurationInput) (*s3a.GetBucketInventoryConfigurationOutput, error) {
+func (fake *FakeClient) GetBucketInventoryConfiguration(arg1 *s3a.GetBucketInventoryConfigurationInput) (*s3a.GetBucketInventoryConfigurationOutput, error) {
 	fake.getBucketInventoryConfigurationMutex.Lock()
 	ret, specificReturn := fake.getBucketInventoryConfigurationReturnsOnCall[len(fake.getBucketInventoryConfigurationArgsForCall)]
 	fake.getBucketInventoryConfigurationArgsForCall = append(fake.getBucketInventoryConfigurationArgsForCall, struct {
@@ -9532,26 +9532,26 @@ func (fake *FakeS3) GetBucketInventoryConfiguration(arg1 *s3a.GetBucketInventory
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketInventoryConfigurationCallCount() int {
+func (fake *FakeClient) GetBucketInventoryConfigurationCallCount() int {
 	fake.getBucketInventoryConfigurationMutex.RLock()
 	defer fake.getBucketInventoryConfigurationMutex.RUnlock()
 	return len(fake.getBucketInventoryConfigurationArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketInventoryConfigurationCalls(stub func(*s3a.GetBucketInventoryConfigurationInput) (*s3a.GetBucketInventoryConfigurationOutput, error)) {
+func (fake *FakeClient) GetBucketInventoryConfigurationCalls(stub func(*s3a.GetBucketInventoryConfigurationInput) (*s3a.GetBucketInventoryConfigurationOutput, error)) {
 	fake.getBucketInventoryConfigurationMutex.Lock()
 	defer fake.getBucketInventoryConfigurationMutex.Unlock()
 	fake.GetBucketInventoryConfigurationStub = stub
 }
 
-func (fake *FakeS3) GetBucketInventoryConfigurationArgsForCall(i int) *s3a.GetBucketInventoryConfigurationInput {
+func (fake *FakeClient) GetBucketInventoryConfigurationArgsForCall(i int) *s3a.GetBucketInventoryConfigurationInput {
 	fake.getBucketInventoryConfigurationMutex.RLock()
 	defer fake.getBucketInventoryConfigurationMutex.RUnlock()
 	argsForCall := fake.getBucketInventoryConfigurationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketInventoryConfigurationReturns(result1 *s3a.GetBucketInventoryConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketInventoryConfigurationReturns(result1 *s3a.GetBucketInventoryConfigurationOutput, result2 error) {
 	fake.getBucketInventoryConfigurationMutex.Lock()
 	defer fake.getBucketInventoryConfigurationMutex.Unlock()
 	fake.GetBucketInventoryConfigurationStub = nil
@@ -9561,7 +9561,7 @@ func (fake *FakeS3) GetBucketInventoryConfigurationReturns(result1 *s3a.GetBucke
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketInventoryConfigurationReturnsOnCall(i int, result1 *s3a.GetBucketInventoryConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketInventoryConfigurationReturnsOnCall(i int, result1 *s3a.GetBucketInventoryConfigurationOutput, result2 error) {
 	fake.getBucketInventoryConfigurationMutex.Lock()
 	defer fake.getBucketInventoryConfigurationMutex.Unlock()
 	fake.GetBucketInventoryConfigurationStub = nil
@@ -9577,7 +9577,7 @@ func (fake *FakeS3) GetBucketInventoryConfigurationReturnsOnCall(i int, result1 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketInventoryConfigurationRequest(arg1 *s3a.GetBucketInventoryConfigurationInput) (*request.Request, *s3a.GetBucketInventoryConfigurationOutput) {
+func (fake *FakeClient) GetBucketInventoryConfigurationRequest(arg1 *s3a.GetBucketInventoryConfigurationInput) (*request.Request, *s3a.GetBucketInventoryConfigurationOutput) {
 	fake.getBucketInventoryConfigurationRequestMutex.Lock()
 	ret, specificReturn := fake.getBucketInventoryConfigurationRequestReturnsOnCall[len(fake.getBucketInventoryConfigurationRequestArgsForCall)]
 	fake.getBucketInventoryConfigurationRequestArgsForCall = append(fake.getBucketInventoryConfigurationRequestArgsForCall, struct {
@@ -9595,26 +9595,26 @@ func (fake *FakeS3) GetBucketInventoryConfigurationRequest(arg1 *s3a.GetBucketIn
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketInventoryConfigurationRequestCallCount() int {
+func (fake *FakeClient) GetBucketInventoryConfigurationRequestCallCount() int {
 	fake.getBucketInventoryConfigurationRequestMutex.RLock()
 	defer fake.getBucketInventoryConfigurationRequestMutex.RUnlock()
 	return len(fake.getBucketInventoryConfigurationRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketInventoryConfigurationRequestCalls(stub func(*s3a.GetBucketInventoryConfigurationInput) (*request.Request, *s3a.GetBucketInventoryConfigurationOutput)) {
+func (fake *FakeClient) GetBucketInventoryConfigurationRequestCalls(stub func(*s3a.GetBucketInventoryConfigurationInput) (*request.Request, *s3a.GetBucketInventoryConfigurationOutput)) {
 	fake.getBucketInventoryConfigurationRequestMutex.Lock()
 	defer fake.getBucketInventoryConfigurationRequestMutex.Unlock()
 	fake.GetBucketInventoryConfigurationRequestStub = stub
 }
 
-func (fake *FakeS3) GetBucketInventoryConfigurationRequestArgsForCall(i int) *s3a.GetBucketInventoryConfigurationInput {
+func (fake *FakeClient) GetBucketInventoryConfigurationRequestArgsForCall(i int) *s3a.GetBucketInventoryConfigurationInput {
 	fake.getBucketInventoryConfigurationRequestMutex.RLock()
 	defer fake.getBucketInventoryConfigurationRequestMutex.RUnlock()
 	argsForCall := fake.getBucketInventoryConfigurationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketInventoryConfigurationRequestReturns(result1 *request.Request, result2 *s3a.GetBucketInventoryConfigurationOutput) {
+func (fake *FakeClient) GetBucketInventoryConfigurationRequestReturns(result1 *request.Request, result2 *s3a.GetBucketInventoryConfigurationOutput) {
 	fake.getBucketInventoryConfigurationRequestMutex.Lock()
 	defer fake.getBucketInventoryConfigurationRequestMutex.Unlock()
 	fake.GetBucketInventoryConfigurationRequestStub = nil
@@ -9624,7 +9624,7 @@ func (fake *FakeS3) GetBucketInventoryConfigurationRequestReturns(result1 *reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketInventoryConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketInventoryConfigurationOutput) {
+func (fake *FakeClient) GetBucketInventoryConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketInventoryConfigurationOutput) {
 	fake.getBucketInventoryConfigurationRequestMutex.Lock()
 	defer fake.getBucketInventoryConfigurationRequestMutex.Unlock()
 	fake.GetBucketInventoryConfigurationRequestStub = nil
@@ -9640,7 +9640,7 @@ func (fake *FakeS3) GetBucketInventoryConfigurationRequestReturnsOnCall(i int, r
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketInventoryConfigurationWithContext(arg1 context.Context, arg2 *s3a.GetBucketInventoryConfigurationInput, arg3 ...request.Option) (*s3a.GetBucketInventoryConfigurationOutput, error) {
+func (fake *FakeClient) GetBucketInventoryConfigurationWithContext(arg1 context.Context, arg2 *s3a.GetBucketInventoryConfigurationInput, arg3 ...request.Option) (*s3a.GetBucketInventoryConfigurationOutput, error) {
 	fake.getBucketInventoryConfigurationWithContextMutex.Lock()
 	ret, specificReturn := fake.getBucketInventoryConfigurationWithContextReturnsOnCall[len(fake.getBucketInventoryConfigurationWithContextArgsForCall)]
 	fake.getBucketInventoryConfigurationWithContextArgsForCall = append(fake.getBucketInventoryConfigurationWithContextArgsForCall, struct {
@@ -9660,26 +9660,26 @@ func (fake *FakeS3) GetBucketInventoryConfigurationWithContext(arg1 context.Cont
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketInventoryConfigurationWithContextCallCount() int {
+func (fake *FakeClient) GetBucketInventoryConfigurationWithContextCallCount() int {
 	fake.getBucketInventoryConfigurationWithContextMutex.RLock()
 	defer fake.getBucketInventoryConfigurationWithContextMutex.RUnlock()
 	return len(fake.getBucketInventoryConfigurationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketInventoryConfigurationWithContextCalls(stub func(context.Context, *s3a.GetBucketInventoryConfigurationInput, ...request.Option) (*s3a.GetBucketInventoryConfigurationOutput, error)) {
+func (fake *FakeClient) GetBucketInventoryConfigurationWithContextCalls(stub func(context.Context, *s3a.GetBucketInventoryConfigurationInput, ...request.Option) (*s3a.GetBucketInventoryConfigurationOutput, error)) {
 	fake.getBucketInventoryConfigurationWithContextMutex.Lock()
 	defer fake.getBucketInventoryConfigurationWithContextMutex.Unlock()
 	fake.GetBucketInventoryConfigurationWithContextStub = stub
 }
 
-func (fake *FakeS3) GetBucketInventoryConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketInventoryConfigurationInput, []request.Option) {
+func (fake *FakeClient) GetBucketInventoryConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketInventoryConfigurationInput, []request.Option) {
 	fake.getBucketInventoryConfigurationWithContextMutex.RLock()
 	defer fake.getBucketInventoryConfigurationWithContextMutex.RUnlock()
 	argsForCall := fake.getBucketInventoryConfigurationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetBucketInventoryConfigurationWithContextReturns(result1 *s3a.GetBucketInventoryConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketInventoryConfigurationWithContextReturns(result1 *s3a.GetBucketInventoryConfigurationOutput, result2 error) {
 	fake.getBucketInventoryConfigurationWithContextMutex.Lock()
 	defer fake.getBucketInventoryConfigurationWithContextMutex.Unlock()
 	fake.GetBucketInventoryConfigurationWithContextStub = nil
@@ -9689,7 +9689,7 @@ func (fake *FakeS3) GetBucketInventoryConfigurationWithContextReturns(result1 *s
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketInventoryConfigurationWithContextReturnsOnCall(i int, result1 *s3a.GetBucketInventoryConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketInventoryConfigurationWithContextReturnsOnCall(i int, result1 *s3a.GetBucketInventoryConfigurationOutput, result2 error) {
 	fake.getBucketInventoryConfigurationWithContextMutex.Lock()
 	defer fake.getBucketInventoryConfigurationWithContextMutex.Unlock()
 	fake.GetBucketInventoryConfigurationWithContextStub = nil
@@ -9705,7 +9705,7 @@ func (fake *FakeS3) GetBucketInventoryConfigurationWithContextReturnsOnCall(i in
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLifecycle(arg1 *s3a.GetBucketLifecycleInput) (*s3a.GetBucketLifecycleOutput, error) {
+func (fake *FakeClient) GetBucketLifecycle(arg1 *s3a.GetBucketLifecycleInput) (*s3a.GetBucketLifecycleOutput, error) {
 	fake.getBucketLifecycleMutex.Lock()
 	ret, specificReturn := fake.getBucketLifecycleReturnsOnCall[len(fake.getBucketLifecycleArgsForCall)]
 	fake.getBucketLifecycleArgsForCall = append(fake.getBucketLifecycleArgsForCall, struct {
@@ -9723,26 +9723,26 @@ func (fake *FakeS3) GetBucketLifecycle(arg1 *s3a.GetBucketLifecycleInput) (*s3a.
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketLifecycleCallCount() int {
+func (fake *FakeClient) GetBucketLifecycleCallCount() int {
 	fake.getBucketLifecycleMutex.RLock()
 	defer fake.getBucketLifecycleMutex.RUnlock()
 	return len(fake.getBucketLifecycleArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketLifecycleCalls(stub func(*s3a.GetBucketLifecycleInput) (*s3a.GetBucketLifecycleOutput, error)) {
+func (fake *FakeClient) GetBucketLifecycleCalls(stub func(*s3a.GetBucketLifecycleInput) (*s3a.GetBucketLifecycleOutput, error)) {
 	fake.getBucketLifecycleMutex.Lock()
 	defer fake.getBucketLifecycleMutex.Unlock()
 	fake.GetBucketLifecycleStub = stub
 }
 
-func (fake *FakeS3) GetBucketLifecycleArgsForCall(i int) *s3a.GetBucketLifecycleInput {
+func (fake *FakeClient) GetBucketLifecycleArgsForCall(i int) *s3a.GetBucketLifecycleInput {
 	fake.getBucketLifecycleMutex.RLock()
 	defer fake.getBucketLifecycleMutex.RUnlock()
 	argsForCall := fake.getBucketLifecycleArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketLifecycleReturns(result1 *s3a.GetBucketLifecycleOutput, result2 error) {
+func (fake *FakeClient) GetBucketLifecycleReturns(result1 *s3a.GetBucketLifecycleOutput, result2 error) {
 	fake.getBucketLifecycleMutex.Lock()
 	defer fake.getBucketLifecycleMutex.Unlock()
 	fake.GetBucketLifecycleStub = nil
@@ -9752,7 +9752,7 @@ func (fake *FakeS3) GetBucketLifecycleReturns(result1 *s3a.GetBucketLifecycleOut
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLifecycleReturnsOnCall(i int, result1 *s3a.GetBucketLifecycleOutput, result2 error) {
+func (fake *FakeClient) GetBucketLifecycleReturnsOnCall(i int, result1 *s3a.GetBucketLifecycleOutput, result2 error) {
 	fake.getBucketLifecycleMutex.Lock()
 	defer fake.getBucketLifecycleMutex.Unlock()
 	fake.GetBucketLifecycleStub = nil
@@ -9768,7 +9768,7 @@ func (fake *FakeS3) GetBucketLifecycleReturnsOnCall(i int, result1 *s3a.GetBucke
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLifecycleConfiguration(arg1 *s3a.GetBucketLifecycleConfigurationInput) (*s3a.GetBucketLifecycleConfigurationOutput, error) {
+func (fake *FakeClient) GetBucketLifecycleConfiguration(arg1 *s3a.GetBucketLifecycleConfigurationInput) (*s3a.GetBucketLifecycleConfigurationOutput, error) {
 	fake.getBucketLifecycleConfigurationMutex.Lock()
 	ret, specificReturn := fake.getBucketLifecycleConfigurationReturnsOnCall[len(fake.getBucketLifecycleConfigurationArgsForCall)]
 	fake.getBucketLifecycleConfigurationArgsForCall = append(fake.getBucketLifecycleConfigurationArgsForCall, struct {
@@ -9786,26 +9786,26 @@ func (fake *FakeS3) GetBucketLifecycleConfiguration(arg1 *s3a.GetBucketLifecycle
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketLifecycleConfigurationCallCount() int {
+func (fake *FakeClient) GetBucketLifecycleConfigurationCallCount() int {
 	fake.getBucketLifecycleConfigurationMutex.RLock()
 	defer fake.getBucketLifecycleConfigurationMutex.RUnlock()
 	return len(fake.getBucketLifecycleConfigurationArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketLifecycleConfigurationCalls(stub func(*s3a.GetBucketLifecycleConfigurationInput) (*s3a.GetBucketLifecycleConfigurationOutput, error)) {
+func (fake *FakeClient) GetBucketLifecycleConfigurationCalls(stub func(*s3a.GetBucketLifecycleConfigurationInput) (*s3a.GetBucketLifecycleConfigurationOutput, error)) {
 	fake.getBucketLifecycleConfigurationMutex.Lock()
 	defer fake.getBucketLifecycleConfigurationMutex.Unlock()
 	fake.GetBucketLifecycleConfigurationStub = stub
 }
 
-func (fake *FakeS3) GetBucketLifecycleConfigurationArgsForCall(i int) *s3a.GetBucketLifecycleConfigurationInput {
+func (fake *FakeClient) GetBucketLifecycleConfigurationArgsForCall(i int) *s3a.GetBucketLifecycleConfigurationInput {
 	fake.getBucketLifecycleConfigurationMutex.RLock()
 	defer fake.getBucketLifecycleConfigurationMutex.RUnlock()
 	argsForCall := fake.getBucketLifecycleConfigurationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketLifecycleConfigurationReturns(result1 *s3a.GetBucketLifecycleConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketLifecycleConfigurationReturns(result1 *s3a.GetBucketLifecycleConfigurationOutput, result2 error) {
 	fake.getBucketLifecycleConfigurationMutex.Lock()
 	defer fake.getBucketLifecycleConfigurationMutex.Unlock()
 	fake.GetBucketLifecycleConfigurationStub = nil
@@ -9815,7 +9815,7 @@ func (fake *FakeS3) GetBucketLifecycleConfigurationReturns(result1 *s3a.GetBucke
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLifecycleConfigurationReturnsOnCall(i int, result1 *s3a.GetBucketLifecycleConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketLifecycleConfigurationReturnsOnCall(i int, result1 *s3a.GetBucketLifecycleConfigurationOutput, result2 error) {
 	fake.getBucketLifecycleConfigurationMutex.Lock()
 	defer fake.getBucketLifecycleConfigurationMutex.Unlock()
 	fake.GetBucketLifecycleConfigurationStub = nil
@@ -9831,7 +9831,7 @@ func (fake *FakeS3) GetBucketLifecycleConfigurationReturnsOnCall(i int, result1 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLifecycleConfigurationRequest(arg1 *s3a.GetBucketLifecycleConfigurationInput) (*request.Request, *s3a.GetBucketLifecycleConfigurationOutput) {
+func (fake *FakeClient) GetBucketLifecycleConfigurationRequest(arg1 *s3a.GetBucketLifecycleConfigurationInput) (*request.Request, *s3a.GetBucketLifecycleConfigurationOutput) {
 	fake.getBucketLifecycleConfigurationRequestMutex.Lock()
 	ret, specificReturn := fake.getBucketLifecycleConfigurationRequestReturnsOnCall[len(fake.getBucketLifecycleConfigurationRequestArgsForCall)]
 	fake.getBucketLifecycleConfigurationRequestArgsForCall = append(fake.getBucketLifecycleConfigurationRequestArgsForCall, struct {
@@ -9849,26 +9849,26 @@ func (fake *FakeS3) GetBucketLifecycleConfigurationRequest(arg1 *s3a.GetBucketLi
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketLifecycleConfigurationRequestCallCount() int {
+func (fake *FakeClient) GetBucketLifecycleConfigurationRequestCallCount() int {
 	fake.getBucketLifecycleConfigurationRequestMutex.RLock()
 	defer fake.getBucketLifecycleConfigurationRequestMutex.RUnlock()
 	return len(fake.getBucketLifecycleConfigurationRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketLifecycleConfigurationRequestCalls(stub func(*s3a.GetBucketLifecycleConfigurationInput) (*request.Request, *s3a.GetBucketLifecycleConfigurationOutput)) {
+func (fake *FakeClient) GetBucketLifecycleConfigurationRequestCalls(stub func(*s3a.GetBucketLifecycleConfigurationInput) (*request.Request, *s3a.GetBucketLifecycleConfigurationOutput)) {
 	fake.getBucketLifecycleConfigurationRequestMutex.Lock()
 	defer fake.getBucketLifecycleConfigurationRequestMutex.Unlock()
 	fake.GetBucketLifecycleConfigurationRequestStub = stub
 }
 
-func (fake *FakeS3) GetBucketLifecycleConfigurationRequestArgsForCall(i int) *s3a.GetBucketLifecycleConfigurationInput {
+func (fake *FakeClient) GetBucketLifecycleConfigurationRequestArgsForCall(i int) *s3a.GetBucketLifecycleConfigurationInput {
 	fake.getBucketLifecycleConfigurationRequestMutex.RLock()
 	defer fake.getBucketLifecycleConfigurationRequestMutex.RUnlock()
 	argsForCall := fake.getBucketLifecycleConfigurationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketLifecycleConfigurationRequestReturns(result1 *request.Request, result2 *s3a.GetBucketLifecycleConfigurationOutput) {
+func (fake *FakeClient) GetBucketLifecycleConfigurationRequestReturns(result1 *request.Request, result2 *s3a.GetBucketLifecycleConfigurationOutput) {
 	fake.getBucketLifecycleConfigurationRequestMutex.Lock()
 	defer fake.getBucketLifecycleConfigurationRequestMutex.Unlock()
 	fake.GetBucketLifecycleConfigurationRequestStub = nil
@@ -9878,7 +9878,7 @@ func (fake *FakeS3) GetBucketLifecycleConfigurationRequestReturns(result1 *reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLifecycleConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketLifecycleConfigurationOutput) {
+func (fake *FakeClient) GetBucketLifecycleConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketLifecycleConfigurationOutput) {
 	fake.getBucketLifecycleConfigurationRequestMutex.Lock()
 	defer fake.getBucketLifecycleConfigurationRequestMutex.Unlock()
 	fake.GetBucketLifecycleConfigurationRequestStub = nil
@@ -9894,7 +9894,7 @@ func (fake *FakeS3) GetBucketLifecycleConfigurationRequestReturnsOnCall(i int, r
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLifecycleConfigurationWithContext(arg1 context.Context, arg2 *s3a.GetBucketLifecycleConfigurationInput, arg3 ...request.Option) (*s3a.GetBucketLifecycleConfigurationOutput, error) {
+func (fake *FakeClient) GetBucketLifecycleConfigurationWithContext(arg1 context.Context, arg2 *s3a.GetBucketLifecycleConfigurationInput, arg3 ...request.Option) (*s3a.GetBucketLifecycleConfigurationOutput, error) {
 	fake.getBucketLifecycleConfigurationWithContextMutex.Lock()
 	ret, specificReturn := fake.getBucketLifecycleConfigurationWithContextReturnsOnCall[len(fake.getBucketLifecycleConfigurationWithContextArgsForCall)]
 	fake.getBucketLifecycleConfigurationWithContextArgsForCall = append(fake.getBucketLifecycleConfigurationWithContextArgsForCall, struct {
@@ -9914,26 +9914,26 @@ func (fake *FakeS3) GetBucketLifecycleConfigurationWithContext(arg1 context.Cont
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketLifecycleConfigurationWithContextCallCount() int {
+func (fake *FakeClient) GetBucketLifecycleConfigurationWithContextCallCount() int {
 	fake.getBucketLifecycleConfigurationWithContextMutex.RLock()
 	defer fake.getBucketLifecycleConfigurationWithContextMutex.RUnlock()
 	return len(fake.getBucketLifecycleConfigurationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketLifecycleConfigurationWithContextCalls(stub func(context.Context, *s3a.GetBucketLifecycleConfigurationInput, ...request.Option) (*s3a.GetBucketLifecycleConfigurationOutput, error)) {
+func (fake *FakeClient) GetBucketLifecycleConfigurationWithContextCalls(stub func(context.Context, *s3a.GetBucketLifecycleConfigurationInput, ...request.Option) (*s3a.GetBucketLifecycleConfigurationOutput, error)) {
 	fake.getBucketLifecycleConfigurationWithContextMutex.Lock()
 	defer fake.getBucketLifecycleConfigurationWithContextMutex.Unlock()
 	fake.GetBucketLifecycleConfigurationWithContextStub = stub
 }
 
-func (fake *FakeS3) GetBucketLifecycleConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketLifecycleConfigurationInput, []request.Option) {
+func (fake *FakeClient) GetBucketLifecycleConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketLifecycleConfigurationInput, []request.Option) {
 	fake.getBucketLifecycleConfigurationWithContextMutex.RLock()
 	defer fake.getBucketLifecycleConfigurationWithContextMutex.RUnlock()
 	argsForCall := fake.getBucketLifecycleConfigurationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetBucketLifecycleConfigurationWithContextReturns(result1 *s3a.GetBucketLifecycleConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketLifecycleConfigurationWithContextReturns(result1 *s3a.GetBucketLifecycleConfigurationOutput, result2 error) {
 	fake.getBucketLifecycleConfigurationWithContextMutex.Lock()
 	defer fake.getBucketLifecycleConfigurationWithContextMutex.Unlock()
 	fake.GetBucketLifecycleConfigurationWithContextStub = nil
@@ -9943,7 +9943,7 @@ func (fake *FakeS3) GetBucketLifecycleConfigurationWithContextReturns(result1 *s
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLifecycleConfigurationWithContextReturnsOnCall(i int, result1 *s3a.GetBucketLifecycleConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketLifecycleConfigurationWithContextReturnsOnCall(i int, result1 *s3a.GetBucketLifecycleConfigurationOutput, result2 error) {
 	fake.getBucketLifecycleConfigurationWithContextMutex.Lock()
 	defer fake.getBucketLifecycleConfigurationWithContextMutex.Unlock()
 	fake.GetBucketLifecycleConfigurationWithContextStub = nil
@@ -9959,7 +9959,7 @@ func (fake *FakeS3) GetBucketLifecycleConfigurationWithContextReturnsOnCall(i in
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLifecycleRequest(arg1 *s3a.GetBucketLifecycleInput) (*request.Request, *s3a.GetBucketLifecycleOutput) {
+func (fake *FakeClient) GetBucketLifecycleRequest(arg1 *s3a.GetBucketLifecycleInput) (*request.Request, *s3a.GetBucketLifecycleOutput) {
 	fake.getBucketLifecycleRequestMutex.Lock()
 	ret, specificReturn := fake.getBucketLifecycleRequestReturnsOnCall[len(fake.getBucketLifecycleRequestArgsForCall)]
 	fake.getBucketLifecycleRequestArgsForCall = append(fake.getBucketLifecycleRequestArgsForCall, struct {
@@ -9977,26 +9977,26 @@ func (fake *FakeS3) GetBucketLifecycleRequest(arg1 *s3a.GetBucketLifecycleInput)
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketLifecycleRequestCallCount() int {
+func (fake *FakeClient) GetBucketLifecycleRequestCallCount() int {
 	fake.getBucketLifecycleRequestMutex.RLock()
 	defer fake.getBucketLifecycleRequestMutex.RUnlock()
 	return len(fake.getBucketLifecycleRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketLifecycleRequestCalls(stub func(*s3a.GetBucketLifecycleInput) (*request.Request, *s3a.GetBucketLifecycleOutput)) {
+func (fake *FakeClient) GetBucketLifecycleRequestCalls(stub func(*s3a.GetBucketLifecycleInput) (*request.Request, *s3a.GetBucketLifecycleOutput)) {
 	fake.getBucketLifecycleRequestMutex.Lock()
 	defer fake.getBucketLifecycleRequestMutex.Unlock()
 	fake.GetBucketLifecycleRequestStub = stub
 }
 
-func (fake *FakeS3) GetBucketLifecycleRequestArgsForCall(i int) *s3a.GetBucketLifecycleInput {
+func (fake *FakeClient) GetBucketLifecycleRequestArgsForCall(i int) *s3a.GetBucketLifecycleInput {
 	fake.getBucketLifecycleRequestMutex.RLock()
 	defer fake.getBucketLifecycleRequestMutex.RUnlock()
 	argsForCall := fake.getBucketLifecycleRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketLifecycleRequestReturns(result1 *request.Request, result2 *s3a.GetBucketLifecycleOutput) {
+func (fake *FakeClient) GetBucketLifecycleRequestReturns(result1 *request.Request, result2 *s3a.GetBucketLifecycleOutput) {
 	fake.getBucketLifecycleRequestMutex.Lock()
 	defer fake.getBucketLifecycleRequestMutex.Unlock()
 	fake.GetBucketLifecycleRequestStub = nil
@@ -10006,7 +10006,7 @@ func (fake *FakeS3) GetBucketLifecycleRequestReturns(result1 *request.Request, r
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLifecycleRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketLifecycleOutput) {
+func (fake *FakeClient) GetBucketLifecycleRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketLifecycleOutput) {
 	fake.getBucketLifecycleRequestMutex.Lock()
 	defer fake.getBucketLifecycleRequestMutex.Unlock()
 	fake.GetBucketLifecycleRequestStub = nil
@@ -10022,7 +10022,7 @@ func (fake *FakeS3) GetBucketLifecycleRequestReturnsOnCall(i int, result1 *reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLifecycleWithContext(arg1 context.Context, arg2 *s3a.GetBucketLifecycleInput, arg3 ...request.Option) (*s3a.GetBucketLifecycleOutput, error) {
+func (fake *FakeClient) GetBucketLifecycleWithContext(arg1 context.Context, arg2 *s3a.GetBucketLifecycleInput, arg3 ...request.Option) (*s3a.GetBucketLifecycleOutput, error) {
 	fake.getBucketLifecycleWithContextMutex.Lock()
 	ret, specificReturn := fake.getBucketLifecycleWithContextReturnsOnCall[len(fake.getBucketLifecycleWithContextArgsForCall)]
 	fake.getBucketLifecycleWithContextArgsForCall = append(fake.getBucketLifecycleWithContextArgsForCall, struct {
@@ -10042,26 +10042,26 @@ func (fake *FakeS3) GetBucketLifecycleWithContext(arg1 context.Context, arg2 *s3
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketLifecycleWithContextCallCount() int {
+func (fake *FakeClient) GetBucketLifecycleWithContextCallCount() int {
 	fake.getBucketLifecycleWithContextMutex.RLock()
 	defer fake.getBucketLifecycleWithContextMutex.RUnlock()
 	return len(fake.getBucketLifecycleWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketLifecycleWithContextCalls(stub func(context.Context, *s3a.GetBucketLifecycleInput, ...request.Option) (*s3a.GetBucketLifecycleOutput, error)) {
+func (fake *FakeClient) GetBucketLifecycleWithContextCalls(stub func(context.Context, *s3a.GetBucketLifecycleInput, ...request.Option) (*s3a.GetBucketLifecycleOutput, error)) {
 	fake.getBucketLifecycleWithContextMutex.Lock()
 	defer fake.getBucketLifecycleWithContextMutex.Unlock()
 	fake.GetBucketLifecycleWithContextStub = stub
 }
 
-func (fake *FakeS3) GetBucketLifecycleWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketLifecycleInput, []request.Option) {
+func (fake *FakeClient) GetBucketLifecycleWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketLifecycleInput, []request.Option) {
 	fake.getBucketLifecycleWithContextMutex.RLock()
 	defer fake.getBucketLifecycleWithContextMutex.RUnlock()
 	argsForCall := fake.getBucketLifecycleWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetBucketLifecycleWithContextReturns(result1 *s3a.GetBucketLifecycleOutput, result2 error) {
+func (fake *FakeClient) GetBucketLifecycleWithContextReturns(result1 *s3a.GetBucketLifecycleOutput, result2 error) {
 	fake.getBucketLifecycleWithContextMutex.Lock()
 	defer fake.getBucketLifecycleWithContextMutex.Unlock()
 	fake.GetBucketLifecycleWithContextStub = nil
@@ -10071,7 +10071,7 @@ func (fake *FakeS3) GetBucketLifecycleWithContextReturns(result1 *s3a.GetBucketL
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLifecycleWithContextReturnsOnCall(i int, result1 *s3a.GetBucketLifecycleOutput, result2 error) {
+func (fake *FakeClient) GetBucketLifecycleWithContextReturnsOnCall(i int, result1 *s3a.GetBucketLifecycleOutput, result2 error) {
 	fake.getBucketLifecycleWithContextMutex.Lock()
 	defer fake.getBucketLifecycleWithContextMutex.Unlock()
 	fake.GetBucketLifecycleWithContextStub = nil
@@ -10087,7 +10087,7 @@ func (fake *FakeS3) GetBucketLifecycleWithContextReturnsOnCall(i int, result1 *s
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLocation(arg1 *s3a.GetBucketLocationInput) (*s3a.GetBucketLocationOutput, error) {
+func (fake *FakeClient) GetBucketLocation(arg1 *s3a.GetBucketLocationInput) (*s3a.GetBucketLocationOutput, error) {
 	fake.getBucketLocationMutex.Lock()
 	ret, specificReturn := fake.getBucketLocationReturnsOnCall[len(fake.getBucketLocationArgsForCall)]
 	fake.getBucketLocationArgsForCall = append(fake.getBucketLocationArgsForCall, struct {
@@ -10105,26 +10105,26 @@ func (fake *FakeS3) GetBucketLocation(arg1 *s3a.GetBucketLocationInput) (*s3a.Ge
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketLocationCallCount() int {
+func (fake *FakeClient) GetBucketLocationCallCount() int {
 	fake.getBucketLocationMutex.RLock()
 	defer fake.getBucketLocationMutex.RUnlock()
 	return len(fake.getBucketLocationArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketLocationCalls(stub func(*s3a.GetBucketLocationInput) (*s3a.GetBucketLocationOutput, error)) {
+func (fake *FakeClient) GetBucketLocationCalls(stub func(*s3a.GetBucketLocationInput) (*s3a.GetBucketLocationOutput, error)) {
 	fake.getBucketLocationMutex.Lock()
 	defer fake.getBucketLocationMutex.Unlock()
 	fake.GetBucketLocationStub = stub
 }
 
-func (fake *FakeS3) GetBucketLocationArgsForCall(i int) *s3a.GetBucketLocationInput {
+func (fake *FakeClient) GetBucketLocationArgsForCall(i int) *s3a.GetBucketLocationInput {
 	fake.getBucketLocationMutex.RLock()
 	defer fake.getBucketLocationMutex.RUnlock()
 	argsForCall := fake.getBucketLocationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketLocationReturns(result1 *s3a.GetBucketLocationOutput, result2 error) {
+func (fake *FakeClient) GetBucketLocationReturns(result1 *s3a.GetBucketLocationOutput, result2 error) {
 	fake.getBucketLocationMutex.Lock()
 	defer fake.getBucketLocationMutex.Unlock()
 	fake.GetBucketLocationStub = nil
@@ -10134,7 +10134,7 @@ func (fake *FakeS3) GetBucketLocationReturns(result1 *s3a.GetBucketLocationOutpu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLocationReturnsOnCall(i int, result1 *s3a.GetBucketLocationOutput, result2 error) {
+func (fake *FakeClient) GetBucketLocationReturnsOnCall(i int, result1 *s3a.GetBucketLocationOutput, result2 error) {
 	fake.getBucketLocationMutex.Lock()
 	defer fake.getBucketLocationMutex.Unlock()
 	fake.GetBucketLocationStub = nil
@@ -10150,7 +10150,7 @@ func (fake *FakeS3) GetBucketLocationReturnsOnCall(i int, result1 *s3a.GetBucket
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLocationRequest(arg1 *s3a.GetBucketLocationInput) (*request.Request, *s3a.GetBucketLocationOutput) {
+func (fake *FakeClient) GetBucketLocationRequest(arg1 *s3a.GetBucketLocationInput) (*request.Request, *s3a.GetBucketLocationOutput) {
 	fake.getBucketLocationRequestMutex.Lock()
 	ret, specificReturn := fake.getBucketLocationRequestReturnsOnCall[len(fake.getBucketLocationRequestArgsForCall)]
 	fake.getBucketLocationRequestArgsForCall = append(fake.getBucketLocationRequestArgsForCall, struct {
@@ -10168,26 +10168,26 @@ func (fake *FakeS3) GetBucketLocationRequest(arg1 *s3a.GetBucketLocationInput) (
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketLocationRequestCallCount() int {
+func (fake *FakeClient) GetBucketLocationRequestCallCount() int {
 	fake.getBucketLocationRequestMutex.RLock()
 	defer fake.getBucketLocationRequestMutex.RUnlock()
 	return len(fake.getBucketLocationRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketLocationRequestCalls(stub func(*s3a.GetBucketLocationInput) (*request.Request, *s3a.GetBucketLocationOutput)) {
+func (fake *FakeClient) GetBucketLocationRequestCalls(stub func(*s3a.GetBucketLocationInput) (*request.Request, *s3a.GetBucketLocationOutput)) {
 	fake.getBucketLocationRequestMutex.Lock()
 	defer fake.getBucketLocationRequestMutex.Unlock()
 	fake.GetBucketLocationRequestStub = stub
 }
 
-func (fake *FakeS3) GetBucketLocationRequestArgsForCall(i int) *s3a.GetBucketLocationInput {
+func (fake *FakeClient) GetBucketLocationRequestArgsForCall(i int) *s3a.GetBucketLocationInput {
 	fake.getBucketLocationRequestMutex.RLock()
 	defer fake.getBucketLocationRequestMutex.RUnlock()
 	argsForCall := fake.getBucketLocationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketLocationRequestReturns(result1 *request.Request, result2 *s3a.GetBucketLocationOutput) {
+func (fake *FakeClient) GetBucketLocationRequestReturns(result1 *request.Request, result2 *s3a.GetBucketLocationOutput) {
 	fake.getBucketLocationRequestMutex.Lock()
 	defer fake.getBucketLocationRequestMutex.Unlock()
 	fake.GetBucketLocationRequestStub = nil
@@ -10197,7 +10197,7 @@ func (fake *FakeS3) GetBucketLocationRequestReturns(result1 *request.Request, re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLocationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketLocationOutput) {
+func (fake *FakeClient) GetBucketLocationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketLocationOutput) {
 	fake.getBucketLocationRequestMutex.Lock()
 	defer fake.getBucketLocationRequestMutex.Unlock()
 	fake.GetBucketLocationRequestStub = nil
@@ -10213,7 +10213,7 @@ func (fake *FakeS3) GetBucketLocationRequestReturnsOnCall(i int, result1 *reques
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLocationWithContext(arg1 context.Context, arg2 *s3a.GetBucketLocationInput, arg3 ...request.Option) (*s3a.GetBucketLocationOutput, error) {
+func (fake *FakeClient) GetBucketLocationWithContext(arg1 context.Context, arg2 *s3a.GetBucketLocationInput, arg3 ...request.Option) (*s3a.GetBucketLocationOutput, error) {
 	fake.getBucketLocationWithContextMutex.Lock()
 	ret, specificReturn := fake.getBucketLocationWithContextReturnsOnCall[len(fake.getBucketLocationWithContextArgsForCall)]
 	fake.getBucketLocationWithContextArgsForCall = append(fake.getBucketLocationWithContextArgsForCall, struct {
@@ -10233,26 +10233,26 @@ func (fake *FakeS3) GetBucketLocationWithContext(arg1 context.Context, arg2 *s3a
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketLocationWithContextCallCount() int {
+func (fake *FakeClient) GetBucketLocationWithContextCallCount() int {
 	fake.getBucketLocationWithContextMutex.RLock()
 	defer fake.getBucketLocationWithContextMutex.RUnlock()
 	return len(fake.getBucketLocationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketLocationWithContextCalls(stub func(context.Context, *s3a.GetBucketLocationInput, ...request.Option) (*s3a.GetBucketLocationOutput, error)) {
+func (fake *FakeClient) GetBucketLocationWithContextCalls(stub func(context.Context, *s3a.GetBucketLocationInput, ...request.Option) (*s3a.GetBucketLocationOutput, error)) {
 	fake.getBucketLocationWithContextMutex.Lock()
 	defer fake.getBucketLocationWithContextMutex.Unlock()
 	fake.GetBucketLocationWithContextStub = stub
 }
 
-func (fake *FakeS3) GetBucketLocationWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketLocationInput, []request.Option) {
+func (fake *FakeClient) GetBucketLocationWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketLocationInput, []request.Option) {
 	fake.getBucketLocationWithContextMutex.RLock()
 	defer fake.getBucketLocationWithContextMutex.RUnlock()
 	argsForCall := fake.getBucketLocationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetBucketLocationWithContextReturns(result1 *s3a.GetBucketLocationOutput, result2 error) {
+func (fake *FakeClient) GetBucketLocationWithContextReturns(result1 *s3a.GetBucketLocationOutput, result2 error) {
 	fake.getBucketLocationWithContextMutex.Lock()
 	defer fake.getBucketLocationWithContextMutex.Unlock()
 	fake.GetBucketLocationWithContextStub = nil
@@ -10262,7 +10262,7 @@ func (fake *FakeS3) GetBucketLocationWithContextReturns(result1 *s3a.GetBucketLo
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLocationWithContextReturnsOnCall(i int, result1 *s3a.GetBucketLocationOutput, result2 error) {
+func (fake *FakeClient) GetBucketLocationWithContextReturnsOnCall(i int, result1 *s3a.GetBucketLocationOutput, result2 error) {
 	fake.getBucketLocationWithContextMutex.Lock()
 	defer fake.getBucketLocationWithContextMutex.Unlock()
 	fake.GetBucketLocationWithContextStub = nil
@@ -10278,7 +10278,7 @@ func (fake *FakeS3) GetBucketLocationWithContextReturnsOnCall(i int, result1 *s3
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLogging(arg1 *s3a.GetBucketLoggingInput) (*s3a.GetBucketLoggingOutput, error) {
+func (fake *FakeClient) GetBucketLogging(arg1 *s3a.GetBucketLoggingInput) (*s3a.GetBucketLoggingOutput, error) {
 	fake.getBucketLoggingMutex.Lock()
 	ret, specificReturn := fake.getBucketLoggingReturnsOnCall[len(fake.getBucketLoggingArgsForCall)]
 	fake.getBucketLoggingArgsForCall = append(fake.getBucketLoggingArgsForCall, struct {
@@ -10296,26 +10296,26 @@ func (fake *FakeS3) GetBucketLogging(arg1 *s3a.GetBucketLoggingInput) (*s3a.GetB
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketLoggingCallCount() int {
+func (fake *FakeClient) GetBucketLoggingCallCount() int {
 	fake.getBucketLoggingMutex.RLock()
 	defer fake.getBucketLoggingMutex.RUnlock()
 	return len(fake.getBucketLoggingArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketLoggingCalls(stub func(*s3a.GetBucketLoggingInput) (*s3a.GetBucketLoggingOutput, error)) {
+func (fake *FakeClient) GetBucketLoggingCalls(stub func(*s3a.GetBucketLoggingInput) (*s3a.GetBucketLoggingOutput, error)) {
 	fake.getBucketLoggingMutex.Lock()
 	defer fake.getBucketLoggingMutex.Unlock()
 	fake.GetBucketLoggingStub = stub
 }
 
-func (fake *FakeS3) GetBucketLoggingArgsForCall(i int) *s3a.GetBucketLoggingInput {
+func (fake *FakeClient) GetBucketLoggingArgsForCall(i int) *s3a.GetBucketLoggingInput {
 	fake.getBucketLoggingMutex.RLock()
 	defer fake.getBucketLoggingMutex.RUnlock()
 	argsForCall := fake.getBucketLoggingArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketLoggingReturns(result1 *s3a.GetBucketLoggingOutput, result2 error) {
+func (fake *FakeClient) GetBucketLoggingReturns(result1 *s3a.GetBucketLoggingOutput, result2 error) {
 	fake.getBucketLoggingMutex.Lock()
 	defer fake.getBucketLoggingMutex.Unlock()
 	fake.GetBucketLoggingStub = nil
@@ -10325,7 +10325,7 @@ func (fake *FakeS3) GetBucketLoggingReturns(result1 *s3a.GetBucketLoggingOutput,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLoggingReturnsOnCall(i int, result1 *s3a.GetBucketLoggingOutput, result2 error) {
+func (fake *FakeClient) GetBucketLoggingReturnsOnCall(i int, result1 *s3a.GetBucketLoggingOutput, result2 error) {
 	fake.getBucketLoggingMutex.Lock()
 	defer fake.getBucketLoggingMutex.Unlock()
 	fake.GetBucketLoggingStub = nil
@@ -10341,7 +10341,7 @@ func (fake *FakeS3) GetBucketLoggingReturnsOnCall(i int, result1 *s3a.GetBucketL
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLoggingRequest(arg1 *s3a.GetBucketLoggingInput) (*request.Request, *s3a.GetBucketLoggingOutput) {
+func (fake *FakeClient) GetBucketLoggingRequest(arg1 *s3a.GetBucketLoggingInput) (*request.Request, *s3a.GetBucketLoggingOutput) {
 	fake.getBucketLoggingRequestMutex.Lock()
 	ret, specificReturn := fake.getBucketLoggingRequestReturnsOnCall[len(fake.getBucketLoggingRequestArgsForCall)]
 	fake.getBucketLoggingRequestArgsForCall = append(fake.getBucketLoggingRequestArgsForCall, struct {
@@ -10359,26 +10359,26 @@ func (fake *FakeS3) GetBucketLoggingRequest(arg1 *s3a.GetBucketLoggingInput) (*r
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketLoggingRequestCallCount() int {
+func (fake *FakeClient) GetBucketLoggingRequestCallCount() int {
 	fake.getBucketLoggingRequestMutex.RLock()
 	defer fake.getBucketLoggingRequestMutex.RUnlock()
 	return len(fake.getBucketLoggingRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketLoggingRequestCalls(stub func(*s3a.GetBucketLoggingInput) (*request.Request, *s3a.GetBucketLoggingOutput)) {
+func (fake *FakeClient) GetBucketLoggingRequestCalls(stub func(*s3a.GetBucketLoggingInput) (*request.Request, *s3a.GetBucketLoggingOutput)) {
 	fake.getBucketLoggingRequestMutex.Lock()
 	defer fake.getBucketLoggingRequestMutex.Unlock()
 	fake.GetBucketLoggingRequestStub = stub
 }
 
-func (fake *FakeS3) GetBucketLoggingRequestArgsForCall(i int) *s3a.GetBucketLoggingInput {
+func (fake *FakeClient) GetBucketLoggingRequestArgsForCall(i int) *s3a.GetBucketLoggingInput {
 	fake.getBucketLoggingRequestMutex.RLock()
 	defer fake.getBucketLoggingRequestMutex.RUnlock()
 	argsForCall := fake.getBucketLoggingRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketLoggingRequestReturns(result1 *request.Request, result2 *s3a.GetBucketLoggingOutput) {
+func (fake *FakeClient) GetBucketLoggingRequestReturns(result1 *request.Request, result2 *s3a.GetBucketLoggingOutput) {
 	fake.getBucketLoggingRequestMutex.Lock()
 	defer fake.getBucketLoggingRequestMutex.Unlock()
 	fake.GetBucketLoggingRequestStub = nil
@@ -10388,7 +10388,7 @@ func (fake *FakeS3) GetBucketLoggingRequestReturns(result1 *request.Request, res
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLoggingRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketLoggingOutput) {
+func (fake *FakeClient) GetBucketLoggingRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketLoggingOutput) {
 	fake.getBucketLoggingRequestMutex.Lock()
 	defer fake.getBucketLoggingRequestMutex.Unlock()
 	fake.GetBucketLoggingRequestStub = nil
@@ -10404,7 +10404,7 @@ func (fake *FakeS3) GetBucketLoggingRequestReturnsOnCall(i int, result1 *request
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLoggingWithContext(arg1 context.Context, arg2 *s3a.GetBucketLoggingInput, arg3 ...request.Option) (*s3a.GetBucketLoggingOutput, error) {
+func (fake *FakeClient) GetBucketLoggingWithContext(arg1 context.Context, arg2 *s3a.GetBucketLoggingInput, arg3 ...request.Option) (*s3a.GetBucketLoggingOutput, error) {
 	fake.getBucketLoggingWithContextMutex.Lock()
 	ret, specificReturn := fake.getBucketLoggingWithContextReturnsOnCall[len(fake.getBucketLoggingWithContextArgsForCall)]
 	fake.getBucketLoggingWithContextArgsForCall = append(fake.getBucketLoggingWithContextArgsForCall, struct {
@@ -10424,26 +10424,26 @@ func (fake *FakeS3) GetBucketLoggingWithContext(arg1 context.Context, arg2 *s3a.
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketLoggingWithContextCallCount() int {
+func (fake *FakeClient) GetBucketLoggingWithContextCallCount() int {
 	fake.getBucketLoggingWithContextMutex.RLock()
 	defer fake.getBucketLoggingWithContextMutex.RUnlock()
 	return len(fake.getBucketLoggingWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketLoggingWithContextCalls(stub func(context.Context, *s3a.GetBucketLoggingInput, ...request.Option) (*s3a.GetBucketLoggingOutput, error)) {
+func (fake *FakeClient) GetBucketLoggingWithContextCalls(stub func(context.Context, *s3a.GetBucketLoggingInput, ...request.Option) (*s3a.GetBucketLoggingOutput, error)) {
 	fake.getBucketLoggingWithContextMutex.Lock()
 	defer fake.getBucketLoggingWithContextMutex.Unlock()
 	fake.GetBucketLoggingWithContextStub = stub
 }
 
-func (fake *FakeS3) GetBucketLoggingWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketLoggingInput, []request.Option) {
+func (fake *FakeClient) GetBucketLoggingWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketLoggingInput, []request.Option) {
 	fake.getBucketLoggingWithContextMutex.RLock()
 	defer fake.getBucketLoggingWithContextMutex.RUnlock()
 	argsForCall := fake.getBucketLoggingWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetBucketLoggingWithContextReturns(result1 *s3a.GetBucketLoggingOutput, result2 error) {
+func (fake *FakeClient) GetBucketLoggingWithContextReturns(result1 *s3a.GetBucketLoggingOutput, result2 error) {
 	fake.getBucketLoggingWithContextMutex.Lock()
 	defer fake.getBucketLoggingWithContextMutex.Unlock()
 	fake.GetBucketLoggingWithContextStub = nil
@@ -10453,7 +10453,7 @@ func (fake *FakeS3) GetBucketLoggingWithContextReturns(result1 *s3a.GetBucketLog
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketLoggingWithContextReturnsOnCall(i int, result1 *s3a.GetBucketLoggingOutput, result2 error) {
+func (fake *FakeClient) GetBucketLoggingWithContextReturnsOnCall(i int, result1 *s3a.GetBucketLoggingOutput, result2 error) {
 	fake.getBucketLoggingWithContextMutex.Lock()
 	defer fake.getBucketLoggingWithContextMutex.Unlock()
 	fake.GetBucketLoggingWithContextStub = nil
@@ -10469,7 +10469,7 @@ func (fake *FakeS3) GetBucketLoggingWithContextReturnsOnCall(i int, result1 *s3a
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketMetricsConfiguration(arg1 *s3a.GetBucketMetricsConfigurationInput) (*s3a.GetBucketMetricsConfigurationOutput, error) {
+func (fake *FakeClient) GetBucketMetricsConfiguration(arg1 *s3a.GetBucketMetricsConfigurationInput) (*s3a.GetBucketMetricsConfigurationOutput, error) {
 	fake.getBucketMetricsConfigurationMutex.Lock()
 	ret, specificReturn := fake.getBucketMetricsConfigurationReturnsOnCall[len(fake.getBucketMetricsConfigurationArgsForCall)]
 	fake.getBucketMetricsConfigurationArgsForCall = append(fake.getBucketMetricsConfigurationArgsForCall, struct {
@@ -10487,26 +10487,26 @@ func (fake *FakeS3) GetBucketMetricsConfiguration(arg1 *s3a.GetBucketMetricsConf
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketMetricsConfigurationCallCount() int {
+func (fake *FakeClient) GetBucketMetricsConfigurationCallCount() int {
 	fake.getBucketMetricsConfigurationMutex.RLock()
 	defer fake.getBucketMetricsConfigurationMutex.RUnlock()
 	return len(fake.getBucketMetricsConfigurationArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketMetricsConfigurationCalls(stub func(*s3a.GetBucketMetricsConfigurationInput) (*s3a.GetBucketMetricsConfigurationOutput, error)) {
+func (fake *FakeClient) GetBucketMetricsConfigurationCalls(stub func(*s3a.GetBucketMetricsConfigurationInput) (*s3a.GetBucketMetricsConfigurationOutput, error)) {
 	fake.getBucketMetricsConfigurationMutex.Lock()
 	defer fake.getBucketMetricsConfigurationMutex.Unlock()
 	fake.GetBucketMetricsConfigurationStub = stub
 }
 
-func (fake *FakeS3) GetBucketMetricsConfigurationArgsForCall(i int) *s3a.GetBucketMetricsConfigurationInput {
+func (fake *FakeClient) GetBucketMetricsConfigurationArgsForCall(i int) *s3a.GetBucketMetricsConfigurationInput {
 	fake.getBucketMetricsConfigurationMutex.RLock()
 	defer fake.getBucketMetricsConfigurationMutex.RUnlock()
 	argsForCall := fake.getBucketMetricsConfigurationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketMetricsConfigurationReturns(result1 *s3a.GetBucketMetricsConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketMetricsConfigurationReturns(result1 *s3a.GetBucketMetricsConfigurationOutput, result2 error) {
 	fake.getBucketMetricsConfigurationMutex.Lock()
 	defer fake.getBucketMetricsConfigurationMutex.Unlock()
 	fake.GetBucketMetricsConfigurationStub = nil
@@ -10516,7 +10516,7 @@ func (fake *FakeS3) GetBucketMetricsConfigurationReturns(result1 *s3a.GetBucketM
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketMetricsConfigurationReturnsOnCall(i int, result1 *s3a.GetBucketMetricsConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketMetricsConfigurationReturnsOnCall(i int, result1 *s3a.GetBucketMetricsConfigurationOutput, result2 error) {
 	fake.getBucketMetricsConfigurationMutex.Lock()
 	defer fake.getBucketMetricsConfigurationMutex.Unlock()
 	fake.GetBucketMetricsConfigurationStub = nil
@@ -10532,7 +10532,7 @@ func (fake *FakeS3) GetBucketMetricsConfigurationReturnsOnCall(i int, result1 *s
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketMetricsConfigurationRequest(arg1 *s3a.GetBucketMetricsConfigurationInput) (*request.Request, *s3a.GetBucketMetricsConfigurationOutput) {
+func (fake *FakeClient) GetBucketMetricsConfigurationRequest(arg1 *s3a.GetBucketMetricsConfigurationInput) (*request.Request, *s3a.GetBucketMetricsConfigurationOutput) {
 	fake.getBucketMetricsConfigurationRequestMutex.Lock()
 	ret, specificReturn := fake.getBucketMetricsConfigurationRequestReturnsOnCall[len(fake.getBucketMetricsConfigurationRequestArgsForCall)]
 	fake.getBucketMetricsConfigurationRequestArgsForCall = append(fake.getBucketMetricsConfigurationRequestArgsForCall, struct {
@@ -10550,26 +10550,26 @@ func (fake *FakeS3) GetBucketMetricsConfigurationRequest(arg1 *s3a.GetBucketMetr
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketMetricsConfigurationRequestCallCount() int {
+func (fake *FakeClient) GetBucketMetricsConfigurationRequestCallCount() int {
 	fake.getBucketMetricsConfigurationRequestMutex.RLock()
 	defer fake.getBucketMetricsConfigurationRequestMutex.RUnlock()
 	return len(fake.getBucketMetricsConfigurationRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketMetricsConfigurationRequestCalls(stub func(*s3a.GetBucketMetricsConfigurationInput) (*request.Request, *s3a.GetBucketMetricsConfigurationOutput)) {
+func (fake *FakeClient) GetBucketMetricsConfigurationRequestCalls(stub func(*s3a.GetBucketMetricsConfigurationInput) (*request.Request, *s3a.GetBucketMetricsConfigurationOutput)) {
 	fake.getBucketMetricsConfigurationRequestMutex.Lock()
 	defer fake.getBucketMetricsConfigurationRequestMutex.Unlock()
 	fake.GetBucketMetricsConfigurationRequestStub = stub
 }
 
-func (fake *FakeS3) GetBucketMetricsConfigurationRequestArgsForCall(i int) *s3a.GetBucketMetricsConfigurationInput {
+func (fake *FakeClient) GetBucketMetricsConfigurationRequestArgsForCall(i int) *s3a.GetBucketMetricsConfigurationInput {
 	fake.getBucketMetricsConfigurationRequestMutex.RLock()
 	defer fake.getBucketMetricsConfigurationRequestMutex.RUnlock()
 	argsForCall := fake.getBucketMetricsConfigurationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketMetricsConfigurationRequestReturns(result1 *request.Request, result2 *s3a.GetBucketMetricsConfigurationOutput) {
+func (fake *FakeClient) GetBucketMetricsConfigurationRequestReturns(result1 *request.Request, result2 *s3a.GetBucketMetricsConfigurationOutput) {
 	fake.getBucketMetricsConfigurationRequestMutex.Lock()
 	defer fake.getBucketMetricsConfigurationRequestMutex.Unlock()
 	fake.GetBucketMetricsConfigurationRequestStub = nil
@@ -10579,7 +10579,7 @@ func (fake *FakeS3) GetBucketMetricsConfigurationRequestReturns(result1 *request
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketMetricsConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketMetricsConfigurationOutput) {
+func (fake *FakeClient) GetBucketMetricsConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketMetricsConfigurationOutput) {
 	fake.getBucketMetricsConfigurationRequestMutex.Lock()
 	defer fake.getBucketMetricsConfigurationRequestMutex.Unlock()
 	fake.GetBucketMetricsConfigurationRequestStub = nil
@@ -10595,7 +10595,7 @@ func (fake *FakeS3) GetBucketMetricsConfigurationRequestReturnsOnCall(i int, res
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketMetricsConfigurationWithContext(arg1 context.Context, arg2 *s3a.GetBucketMetricsConfigurationInput, arg3 ...request.Option) (*s3a.GetBucketMetricsConfigurationOutput, error) {
+func (fake *FakeClient) GetBucketMetricsConfigurationWithContext(arg1 context.Context, arg2 *s3a.GetBucketMetricsConfigurationInput, arg3 ...request.Option) (*s3a.GetBucketMetricsConfigurationOutput, error) {
 	fake.getBucketMetricsConfigurationWithContextMutex.Lock()
 	ret, specificReturn := fake.getBucketMetricsConfigurationWithContextReturnsOnCall[len(fake.getBucketMetricsConfigurationWithContextArgsForCall)]
 	fake.getBucketMetricsConfigurationWithContextArgsForCall = append(fake.getBucketMetricsConfigurationWithContextArgsForCall, struct {
@@ -10615,26 +10615,26 @@ func (fake *FakeS3) GetBucketMetricsConfigurationWithContext(arg1 context.Contex
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketMetricsConfigurationWithContextCallCount() int {
+func (fake *FakeClient) GetBucketMetricsConfigurationWithContextCallCount() int {
 	fake.getBucketMetricsConfigurationWithContextMutex.RLock()
 	defer fake.getBucketMetricsConfigurationWithContextMutex.RUnlock()
 	return len(fake.getBucketMetricsConfigurationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketMetricsConfigurationWithContextCalls(stub func(context.Context, *s3a.GetBucketMetricsConfigurationInput, ...request.Option) (*s3a.GetBucketMetricsConfigurationOutput, error)) {
+func (fake *FakeClient) GetBucketMetricsConfigurationWithContextCalls(stub func(context.Context, *s3a.GetBucketMetricsConfigurationInput, ...request.Option) (*s3a.GetBucketMetricsConfigurationOutput, error)) {
 	fake.getBucketMetricsConfigurationWithContextMutex.Lock()
 	defer fake.getBucketMetricsConfigurationWithContextMutex.Unlock()
 	fake.GetBucketMetricsConfigurationWithContextStub = stub
 }
 
-func (fake *FakeS3) GetBucketMetricsConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketMetricsConfigurationInput, []request.Option) {
+func (fake *FakeClient) GetBucketMetricsConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketMetricsConfigurationInput, []request.Option) {
 	fake.getBucketMetricsConfigurationWithContextMutex.RLock()
 	defer fake.getBucketMetricsConfigurationWithContextMutex.RUnlock()
 	argsForCall := fake.getBucketMetricsConfigurationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetBucketMetricsConfigurationWithContextReturns(result1 *s3a.GetBucketMetricsConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketMetricsConfigurationWithContextReturns(result1 *s3a.GetBucketMetricsConfigurationOutput, result2 error) {
 	fake.getBucketMetricsConfigurationWithContextMutex.Lock()
 	defer fake.getBucketMetricsConfigurationWithContextMutex.Unlock()
 	fake.GetBucketMetricsConfigurationWithContextStub = nil
@@ -10644,7 +10644,7 @@ func (fake *FakeS3) GetBucketMetricsConfigurationWithContextReturns(result1 *s3a
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketMetricsConfigurationWithContextReturnsOnCall(i int, result1 *s3a.GetBucketMetricsConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetBucketMetricsConfigurationWithContextReturnsOnCall(i int, result1 *s3a.GetBucketMetricsConfigurationOutput, result2 error) {
 	fake.getBucketMetricsConfigurationWithContextMutex.Lock()
 	defer fake.getBucketMetricsConfigurationWithContextMutex.Unlock()
 	fake.GetBucketMetricsConfigurationWithContextStub = nil
@@ -10660,7 +10660,7 @@ func (fake *FakeS3) GetBucketMetricsConfigurationWithContextReturnsOnCall(i int,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketNotification(arg1 *s3a.GetBucketNotificationConfigurationRequest) (*s3a.NotificationConfigurationDeprecated, error) {
+func (fake *FakeClient) GetBucketNotification(arg1 *s3a.GetBucketNotificationConfigurationRequest) (*s3a.NotificationConfigurationDeprecated, error) {
 	fake.getBucketNotificationMutex.Lock()
 	ret, specificReturn := fake.getBucketNotificationReturnsOnCall[len(fake.getBucketNotificationArgsForCall)]
 	fake.getBucketNotificationArgsForCall = append(fake.getBucketNotificationArgsForCall, struct {
@@ -10678,26 +10678,26 @@ func (fake *FakeS3) GetBucketNotification(arg1 *s3a.GetBucketNotificationConfigu
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketNotificationCallCount() int {
+func (fake *FakeClient) GetBucketNotificationCallCount() int {
 	fake.getBucketNotificationMutex.RLock()
 	defer fake.getBucketNotificationMutex.RUnlock()
 	return len(fake.getBucketNotificationArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketNotificationCalls(stub func(*s3a.GetBucketNotificationConfigurationRequest) (*s3a.NotificationConfigurationDeprecated, error)) {
+func (fake *FakeClient) GetBucketNotificationCalls(stub func(*s3a.GetBucketNotificationConfigurationRequest) (*s3a.NotificationConfigurationDeprecated, error)) {
 	fake.getBucketNotificationMutex.Lock()
 	defer fake.getBucketNotificationMutex.Unlock()
 	fake.GetBucketNotificationStub = stub
 }
 
-func (fake *FakeS3) GetBucketNotificationArgsForCall(i int) *s3a.GetBucketNotificationConfigurationRequest {
+func (fake *FakeClient) GetBucketNotificationArgsForCall(i int) *s3a.GetBucketNotificationConfigurationRequest {
 	fake.getBucketNotificationMutex.RLock()
 	defer fake.getBucketNotificationMutex.RUnlock()
 	argsForCall := fake.getBucketNotificationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketNotificationReturns(result1 *s3a.NotificationConfigurationDeprecated, result2 error) {
+func (fake *FakeClient) GetBucketNotificationReturns(result1 *s3a.NotificationConfigurationDeprecated, result2 error) {
 	fake.getBucketNotificationMutex.Lock()
 	defer fake.getBucketNotificationMutex.Unlock()
 	fake.GetBucketNotificationStub = nil
@@ -10707,7 +10707,7 @@ func (fake *FakeS3) GetBucketNotificationReturns(result1 *s3a.NotificationConfig
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketNotificationReturnsOnCall(i int, result1 *s3a.NotificationConfigurationDeprecated, result2 error) {
+func (fake *FakeClient) GetBucketNotificationReturnsOnCall(i int, result1 *s3a.NotificationConfigurationDeprecated, result2 error) {
 	fake.getBucketNotificationMutex.Lock()
 	defer fake.getBucketNotificationMutex.Unlock()
 	fake.GetBucketNotificationStub = nil
@@ -10723,7 +10723,7 @@ func (fake *FakeS3) GetBucketNotificationReturnsOnCall(i int, result1 *s3a.Notif
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketNotificationConfiguration(arg1 *s3a.GetBucketNotificationConfigurationRequest) (*s3a.NotificationConfiguration, error) {
+func (fake *FakeClient) GetBucketNotificationConfiguration(arg1 *s3a.GetBucketNotificationConfigurationRequest) (*s3a.NotificationConfiguration, error) {
 	fake.getBucketNotificationConfigurationMutex.Lock()
 	ret, specificReturn := fake.getBucketNotificationConfigurationReturnsOnCall[len(fake.getBucketNotificationConfigurationArgsForCall)]
 	fake.getBucketNotificationConfigurationArgsForCall = append(fake.getBucketNotificationConfigurationArgsForCall, struct {
@@ -10741,26 +10741,26 @@ func (fake *FakeS3) GetBucketNotificationConfiguration(arg1 *s3a.GetBucketNotifi
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketNotificationConfigurationCallCount() int {
+func (fake *FakeClient) GetBucketNotificationConfigurationCallCount() int {
 	fake.getBucketNotificationConfigurationMutex.RLock()
 	defer fake.getBucketNotificationConfigurationMutex.RUnlock()
 	return len(fake.getBucketNotificationConfigurationArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketNotificationConfigurationCalls(stub func(*s3a.GetBucketNotificationConfigurationRequest) (*s3a.NotificationConfiguration, error)) {
+func (fake *FakeClient) GetBucketNotificationConfigurationCalls(stub func(*s3a.GetBucketNotificationConfigurationRequest) (*s3a.NotificationConfiguration, error)) {
 	fake.getBucketNotificationConfigurationMutex.Lock()
 	defer fake.getBucketNotificationConfigurationMutex.Unlock()
 	fake.GetBucketNotificationConfigurationStub = stub
 }
 
-func (fake *FakeS3) GetBucketNotificationConfigurationArgsForCall(i int) *s3a.GetBucketNotificationConfigurationRequest {
+func (fake *FakeClient) GetBucketNotificationConfigurationArgsForCall(i int) *s3a.GetBucketNotificationConfigurationRequest {
 	fake.getBucketNotificationConfigurationMutex.RLock()
 	defer fake.getBucketNotificationConfigurationMutex.RUnlock()
 	argsForCall := fake.getBucketNotificationConfigurationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketNotificationConfigurationReturns(result1 *s3a.NotificationConfiguration, result2 error) {
+func (fake *FakeClient) GetBucketNotificationConfigurationReturns(result1 *s3a.NotificationConfiguration, result2 error) {
 	fake.getBucketNotificationConfigurationMutex.Lock()
 	defer fake.getBucketNotificationConfigurationMutex.Unlock()
 	fake.GetBucketNotificationConfigurationStub = nil
@@ -10770,7 +10770,7 @@ func (fake *FakeS3) GetBucketNotificationConfigurationReturns(result1 *s3a.Notif
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketNotificationConfigurationReturnsOnCall(i int, result1 *s3a.NotificationConfiguration, result2 error) {
+func (fake *FakeClient) GetBucketNotificationConfigurationReturnsOnCall(i int, result1 *s3a.NotificationConfiguration, result2 error) {
 	fake.getBucketNotificationConfigurationMutex.Lock()
 	defer fake.getBucketNotificationConfigurationMutex.Unlock()
 	fake.GetBucketNotificationConfigurationStub = nil
@@ -10786,7 +10786,7 @@ func (fake *FakeS3) GetBucketNotificationConfigurationReturnsOnCall(i int, resul
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketNotificationConfigurationRequest(arg1 *s3a.GetBucketNotificationConfigurationRequest) (*request.Request, *s3a.NotificationConfiguration) {
+func (fake *FakeClient) GetBucketNotificationConfigurationRequest(arg1 *s3a.GetBucketNotificationConfigurationRequest) (*request.Request, *s3a.NotificationConfiguration) {
 	fake.getBucketNotificationConfigurationRequestMutex.Lock()
 	ret, specificReturn := fake.getBucketNotificationConfigurationRequestReturnsOnCall[len(fake.getBucketNotificationConfigurationRequestArgsForCall)]
 	fake.getBucketNotificationConfigurationRequestArgsForCall = append(fake.getBucketNotificationConfigurationRequestArgsForCall, struct {
@@ -10804,26 +10804,26 @@ func (fake *FakeS3) GetBucketNotificationConfigurationRequest(arg1 *s3a.GetBucke
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketNotificationConfigurationRequestCallCount() int {
+func (fake *FakeClient) GetBucketNotificationConfigurationRequestCallCount() int {
 	fake.getBucketNotificationConfigurationRequestMutex.RLock()
 	defer fake.getBucketNotificationConfigurationRequestMutex.RUnlock()
 	return len(fake.getBucketNotificationConfigurationRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketNotificationConfigurationRequestCalls(stub func(*s3a.GetBucketNotificationConfigurationRequest) (*request.Request, *s3a.NotificationConfiguration)) {
+func (fake *FakeClient) GetBucketNotificationConfigurationRequestCalls(stub func(*s3a.GetBucketNotificationConfigurationRequest) (*request.Request, *s3a.NotificationConfiguration)) {
 	fake.getBucketNotificationConfigurationRequestMutex.Lock()
 	defer fake.getBucketNotificationConfigurationRequestMutex.Unlock()
 	fake.GetBucketNotificationConfigurationRequestStub = stub
 }
 
-func (fake *FakeS3) GetBucketNotificationConfigurationRequestArgsForCall(i int) *s3a.GetBucketNotificationConfigurationRequest {
+func (fake *FakeClient) GetBucketNotificationConfigurationRequestArgsForCall(i int) *s3a.GetBucketNotificationConfigurationRequest {
 	fake.getBucketNotificationConfigurationRequestMutex.RLock()
 	defer fake.getBucketNotificationConfigurationRequestMutex.RUnlock()
 	argsForCall := fake.getBucketNotificationConfigurationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketNotificationConfigurationRequestReturns(result1 *request.Request, result2 *s3a.NotificationConfiguration) {
+func (fake *FakeClient) GetBucketNotificationConfigurationRequestReturns(result1 *request.Request, result2 *s3a.NotificationConfiguration) {
 	fake.getBucketNotificationConfigurationRequestMutex.Lock()
 	defer fake.getBucketNotificationConfigurationRequestMutex.Unlock()
 	fake.GetBucketNotificationConfigurationRequestStub = nil
@@ -10833,7 +10833,7 @@ func (fake *FakeS3) GetBucketNotificationConfigurationRequestReturns(result1 *re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketNotificationConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.NotificationConfiguration) {
+func (fake *FakeClient) GetBucketNotificationConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.NotificationConfiguration) {
 	fake.getBucketNotificationConfigurationRequestMutex.Lock()
 	defer fake.getBucketNotificationConfigurationRequestMutex.Unlock()
 	fake.GetBucketNotificationConfigurationRequestStub = nil
@@ -10849,7 +10849,7 @@ func (fake *FakeS3) GetBucketNotificationConfigurationRequestReturnsOnCall(i int
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketNotificationConfigurationWithContext(arg1 context.Context, arg2 *s3a.GetBucketNotificationConfigurationRequest, arg3 ...request.Option) (*s3a.NotificationConfiguration, error) {
+func (fake *FakeClient) GetBucketNotificationConfigurationWithContext(arg1 context.Context, arg2 *s3a.GetBucketNotificationConfigurationRequest, arg3 ...request.Option) (*s3a.NotificationConfiguration, error) {
 	fake.getBucketNotificationConfigurationWithContextMutex.Lock()
 	ret, specificReturn := fake.getBucketNotificationConfigurationWithContextReturnsOnCall[len(fake.getBucketNotificationConfigurationWithContextArgsForCall)]
 	fake.getBucketNotificationConfigurationWithContextArgsForCall = append(fake.getBucketNotificationConfigurationWithContextArgsForCall, struct {
@@ -10869,26 +10869,26 @@ func (fake *FakeS3) GetBucketNotificationConfigurationWithContext(arg1 context.C
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketNotificationConfigurationWithContextCallCount() int {
+func (fake *FakeClient) GetBucketNotificationConfigurationWithContextCallCount() int {
 	fake.getBucketNotificationConfigurationWithContextMutex.RLock()
 	defer fake.getBucketNotificationConfigurationWithContextMutex.RUnlock()
 	return len(fake.getBucketNotificationConfigurationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketNotificationConfigurationWithContextCalls(stub func(context.Context, *s3a.GetBucketNotificationConfigurationRequest, ...request.Option) (*s3a.NotificationConfiguration, error)) {
+func (fake *FakeClient) GetBucketNotificationConfigurationWithContextCalls(stub func(context.Context, *s3a.GetBucketNotificationConfigurationRequest, ...request.Option) (*s3a.NotificationConfiguration, error)) {
 	fake.getBucketNotificationConfigurationWithContextMutex.Lock()
 	defer fake.getBucketNotificationConfigurationWithContextMutex.Unlock()
 	fake.GetBucketNotificationConfigurationWithContextStub = stub
 }
 
-func (fake *FakeS3) GetBucketNotificationConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketNotificationConfigurationRequest, []request.Option) {
+func (fake *FakeClient) GetBucketNotificationConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketNotificationConfigurationRequest, []request.Option) {
 	fake.getBucketNotificationConfigurationWithContextMutex.RLock()
 	defer fake.getBucketNotificationConfigurationWithContextMutex.RUnlock()
 	argsForCall := fake.getBucketNotificationConfigurationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetBucketNotificationConfigurationWithContextReturns(result1 *s3a.NotificationConfiguration, result2 error) {
+func (fake *FakeClient) GetBucketNotificationConfigurationWithContextReturns(result1 *s3a.NotificationConfiguration, result2 error) {
 	fake.getBucketNotificationConfigurationWithContextMutex.Lock()
 	defer fake.getBucketNotificationConfigurationWithContextMutex.Unlock()
 	fake.GetBucketNotificationConfigurationWithContextStub = nil
@@ -10898,7 +10898,7 @@ func (fake *FakeS3) GetBucketNotificationConfigurationWithContextReturns(result1
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketNotificationConfigurationWithContextReturnsOnCall(i int, result1 *s3a.NotificationConfiguration, result2 error) {
+func (fake *FakeClient) GetBucketNotificationConfigurationWithContextReturnsOnCall(i int, result1 *s3a.NotificationConfiguration, result2 error) {
 	fake.getBucketNotificationConfigurationWithContextMutex.Lock()
 	defer fake.getBucketNotificationConfigurationWithContextMutex.Unlock()
 	fake.GetBucketNotificationConfigurationWithContextStub = nil
@@ -10914,7 +10914,7 @@ func (fake *FakeS3) GetBucketNotificationConfigurationWithContextReturnsOnCall(i
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketNotificationRequest(arg1 *s3a.GetBucketNotificationConfigurationRequest) (*request.Request, *s3a.NotificationConfigurationDeprecated) {
+func (fake *FakeClient) GetBucketNotificationRequest(arg1 *s3a.GetBucketNotificationConfigurationRequest) (*request.Request, *s3a.NotificationConfigurationDeprecated) {
 	fake.getBucketNotificationRequestMutex.Lock()
 	ret, specificReturn := fake.getBucketNotificationRequestReturnsOnCall[len(fake.getBucketNotificationRequestArgsForCall)]
 	fake.getBucketNotificationRequestArgsForCall = append(fake.getBucketNotificationRequestArgsForCall, struct {
@@ -10932,26 +10932,26 @@ func (fake *FakeS3) GetBucketNotificationRequest(arg1 *s3a.GetBucketNotification
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketNotificationRequestCallCount() int {
+func (fake *FakeClient) GetBucketNotificationRequestCallCount() int {
 	fake.getBucketNotificationRequestMutex.RLock()
 	defer fake.getBucketNotificationRequestMutex.RUnlock()
 	return len(fake.getBucketNotificationRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketNotificationRequestCalls(stub func(*s3a.GetBucketNotificationConfigurationRequest) (*request.Request, *s3a.NotificationConfigurationDeprecated)) {
+func (fake *FakeClient) GetBucketNotificationRequestCalls(stub func(*s3a.GetBucketNotificationConfigurationRequest) (*request.Request, *s3a.NotificationConfigurationDeprecated)) {
 	fake.getBucketNotificationRequestMutex.Lock()
 	defer fake.getBucketNotificationRequestMutex.Unlock()
 	fake.GetBucketNotificationRequestStub = stub
 }
 
-func (fake *FakeS3) GetBucketNotificationRequestArgsForCall(i int) *s3a.GetBucketNotificationConfigurationRequest {
+func (fake *FakeClient) GetBucketNotificationRequestArgsForCall(i int) *s3a.GetBucketNotificationConfigurationRequest {
 	fake.getBucketNotificationRequestMutex.RLock()
 	defer fake.getBucketNotificationRequestMutex.RUnlock()
 	argsForCall := fake.getBucketNotificationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketNotificationRequestReturns(result1 *request.Request, result2 *s3a.NotificationConfigurationDeprecated) {
+func (fake *FakeClient) GetBucketNotificationRequestReturns(result1 *request.Request, result2 *s3a.NotificationConfigurationDeprecated) {
 	fake.getBucketNotificationRequestMutex.Lock()
 	defer fake.getBucketNotificationRequestMutex.Unlock()
 	fake.GetBucketNotificationRequestStub = nil
@@ -10961,7 +10961,7 @@ func (fake *FakeS3) GetBucketNotificationRequestReturns(result1 *request.Request
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketNotificationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.NotificationConfigurationDeprecated) {
+func (fake *FakeClient) GetBucketNotificationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.NotificationConfigurationDeprecated) {
 	fake.getBucketNotificationRequestMutex.Lock()
 	defer fake.getBucketNotificationRequestMutex.Unlock()
 	fake.GetBucketNotificationRequestStub = nil
@@ -10977,7 +10977,7 @@ func (fake *FakeS3) GetBucketNotificationRequestReturnsOnCall(i int, result1 *re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketNotificationWithContext(arg1 context.Context, arg2 *s3a.GetBucketNotificationConfigurationRequest, arg3 ...request.Option) (*s3a.NotificationConfigurationDeprecated, error) {
+func (fake *FakeClient) GetBucketNotificationWithContext(arg1 context.Context, arg2 *s3a.GetBucketNotificationConfigurationRequest, arg3 ...request.Option) (*s3a.NotificationConfigurationDeprecated, error) {
 	fake.getBucketNotificationWithContextMutex.Lock()
 	ret, specificReturn := fake.getBucketNotificationWithContextReturnsOnCall[len(fake.getBucketNotificationWithContextArgsForCall)]
 	fake.getBucketNotificationWithContextArgsForCall = append(fake.getBucketNotificationWithContextArgsForCall, struct {
@@ -10997,26 +10997,26 @@ func (fake *FakeS3) GetBucketNotificationWithContext(arg1 context.Context, arg2 
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketNotificationWithContextCallCount() int {
+func (fake *FakeClient) GetBucketNotificationWithContextCallCount() int {
 	fake.getBucketNotificationWithContextMutex.RLock()
 	defer fake.getBucketNotificationWithContextMutex.RUnlock()
 	return len(fake.getBucketNotificationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketNotificationWithContextCalls(stub func(context.Context, *s3a.GetBucketNotificationConfigurationRequest, ...request.Option) (*s3a.NotificationConfigurationDeprecated, error)) {
+func (fake *FakeClient) GetBucketNotificationWithContextCalls(stub func(context.Context, *s3a.GetBucketNotificationConfigurationRequest, ...request.Option) (*s3a.NotificationConfigurationDeprecated, error)) {
 	fake.getBucketNotificationWithContextMutex.Lock()
 	defer fake.getBucketNotificationWithContextMutex.Unlock()
 	fake.GetBucketNotificationWithContextStub = stub
 }
 
-func (fake *FakeS3) GetBucketNotificationWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketNotificationConfigurationRequest, []request.Option) {
+func (fake *FakeClient) GetBucketNotificationWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketNotificationConfigurationRequest, []request.Option) {
 	fake.getBucketNotificationWithContextMutex.RLock()
 	defer fake.getBucketNotificationWithContextMutex.RUnlock()
 	argsForCall := fake.getBucketNotificationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetBucketNotificationWithContextReturns(result1 *s3a.NotificationConfigurationDeprecated, result2 error) {
+func (fake *FakeClient) GetBucketNotificationWithContextReturns(result1 *s3a.NotificationConfigurationDeprecated, result2 error) {
 	fake.getBucketNotificationWithContextMutex.Lock()
 	defer fake.getBucketNotificationWithContextMutex.Unlock()
 	fake.GetBucketNotificationWithContextStub = nil
@@ -11026,7 +11026,7 @@ func (fake *FakeS3) GetBucketNotificationWithContextReturns(result1 *s3a.Notific
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketNotificationWithContextReturnsOnCall(i int, result1 *s3a.NotificationConfigurationDeprecated, result2 error) {
+func (fake *FakeClient) GetBucketNotificationWithContextReturnsOnCall(i int, result1 *s3a.NotificationConfigurationDeprecated, result2 error) {
 	fake.getBucketNotificationWithContextMutex.Lock()
 	defer fake.getBucketNotificationWithContextMutex.Unlock()
 	fake.GetBucketNotificationWithContextStub = nil
@@ -11042,7 +11042,7 @@ func (fake *FakeS3) GetBucketNotificationWithContextReturnsOnCall(i int, result1
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketOwnershipControls(arg1 *s3a.GetBucketOwnershipControlsInput) (*s3a.GetBucketOwnershipControlsOutput, error) {
+func (fake *FakeClient) GetBucketOwnershipControls(arg1 *s3a.GetBucketOwnershipControlsInput) (*s3a.GetBucketOwnershipControlsOutput, error) {
 	fake.getBucketOwnershipControlsMutex.Lock()
 	ret, specificReturn := fake.getBucketOwnershipControlsReturnsOnCall[len(fake.getBucketOwnershipControlsArgsForCall)]
 	fake.getBucketOwnershipControlsArgsForCall = append(fake.getBucketOwnershipControlsArgsForCall, struct {
@@ -11060,26 +11060,26 @@ func (fake *FakeS3) GetBucketOwnershipControls(arg1 *s3a.GetBucketOwnershipContr
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketOwnershipControlsCallCount() int {
+func (fake *FakeClient) GetBucketOwnershipControlsCallCount() int {
 	fake.getBucketOwnershipControlsMutex.RLock()
 	defer fake.getBucketOwnershipControlsMutex.RUnlock()
 	return len(fake.getBucketOwnershipControlsArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketOwnershipControlsCalls(stub func(*s3a.GetBucketOwnershipControlsInput) (*s3a.GetBucketOwnershipControlsOutput, error)) {
+func (fake *FakeClient) GetBucketOwnershipControlsCalls(stub func(*s3a.GetBucketOwnershipControlsInput) (*s3a.GetBucketOwnershipControlsOutput, error)) {
 	fake.getBucketOwnershipControlsMutex.Lock()
 	defer fake.getBucketOwnershipControlsMutex.Unlock()
 	fake.GetBucketOwnershipControlsStub = stub
 }
 
-func (fake *FakeS3) GetBucketOwnershipControlsArgsForCall(i int) *s3a.GetBucketOwnershipControlsInput {
+func (fake *FakeClient) GetBucketOwnershipControlsArgsForCall(i int) *s3a.GetBucketOwnershipControlsInput {
 	fake.getBucketOwnershipControlsMutex.RLock()
 	defer fake.getBucketOwnershipControlsMutex.RUnlock()
 	argsForCall := fake.getBucketOwnershipControlsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketOwnershipControlsReturns(result1 *s3a.GetBucketOwnershipControlsOutput, result2 error) {
+func (fake *FakeClient) GetBucketOwnershipControlsReturns(result1 *s3a.GetBucketOwnershipControlsOutput, result2 error) {
 	fake.getBucketOwnershipControlsMutex.Lock()
 	defer fake.getBucketOwnershipControlsMutex.Unlock()
 	fake.GetBucketOwnershipControlsStub = nil
@@ -11089,7 +11089,7 @@ func (fake *FakeS3) GetBucketOwnershipControlsReturns(result1 *s3a.GetBucketOwne
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketOwnershipControlsReturnsOnCall(i int, result1 *s3a.GetBucketOwnershipControlsOutput, result2 error) {
+func (fake *FakeClient) GetBucketOwnershipControlsReturnsOnCall(i int, result1 *s3a.GetBucketOwnershipControlsOutput, result2 error) {
 	fake.getBucketOwnershipControlsMutex.Lock()
 	defer fake.getBucketOwnershipControlsMutex.Unlock()
 	fake.GetBucketOwnershipControlsStub = nil
@@ -11105,7 +11105,7 @@ func (fake *FakeS3) GetBucketOwnershipControlsReturnsOnCall(i int, result1 *s3a.
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketOwnershipControlsRequest(arg1 *s3a.GetBucketOwnershipControlsInput) (*request.Request, *s3a.GetBucketOwnershipControlsOutput) {
+func (fake *FakeClient) GetBucketOwnershipControlsRequest(arg1 *s3a.GetBucketOwnershipControlsInput) (*request.Request, *s3a.GetBucketOwnershipControlsOutput) {
 	fake.getBucketOwnershipControlsRequestMutex.Lock()
 	ret, specificReturn := fake.getBucketOwnershipControlsRequestReturnsOnCall[len(fake.getBucketOwnershipControlsRequestArgsForCall)]
 	fake.getBucketOwnershipControlsRequestArgsForCall = append(fake.getBucketOwnershipControlsRequestArgsForCall, struct {
@@ -11123,26 +11123,26 @@ func (fake *FakeS3) GetBucketOwnershipControlsRequest(arg1 *s3a.GetBucketOwnersh
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketOwnershipControlsRequestCallCount() int {
+func (fake *FakeClient) GetBucketOwnershipControlsRequestCallCount() int {
 	fake.getBucketOwnershipControlsRequestMutex.RLock()
 	defer fake.getBucketOwnershipControlsRequestMutex.RUnlock()
 	return len(fake.getBucketOwnershipControlsRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketOwnershipControlsRequestCalls(stub func(*s3a.GetBucketOwnershipControlsInput) (*request.Request, *s3a.GetBucketOwnershipControlsOutput)) {
+func (fake *FakeClient) GetBucketOwnershipControlsRequestCalls(stub func(*s3a.GetBucketOwnershipControlsInput) (*request.Request, *s3a.GetBucketOwnershipControlsOutput)) {
 	fake.getBucketOwnershipControlsRequestMutex.Lock()
 	defer fake.getBucketOwnershipControlsRequestMutex.Unlock()
 	fake.GetBucketOwnershipControlsRequestStub = stub
 }
 
-func (fake *FakeS3) GetBucketOwnershipControlsRequestArgsForCall(i int) *s3a.GetBucketOwnershipControlsInput {
+func (fake *FakeClient) GetBucketOwnershipControlsRequestArgsForCall(i int) *s3a.GetBucketOwnershipControlsInput {
 	fake.getBucketOwnershipControlsRequestMutex.RLock()
 	defer fake.getBucketOwnershipControlsRequestMutex.RUnlock()
 	argsForCall := fake.getBucketOwnershipControlsRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketOwnershipControlsRequestReturns(result1 *request.Request, result2 *s3a.GetBucketOwnershipControlsOutput) {
+func (fake *FakeClient) GetBucketOwnershipControlsRequestReturns(result1 *request.Request, result2 *s3a.GetBucketOwnershipControlsOutput) {
 	fake.getBucketOwnershipControlsRequestMutex.Lock()
 	defer fake.getBucketOwnershipControlsRequestMutex.Unlock()
 	fake.GetBucketOwnershipControlsRequestStub = nil
@@ -11152,7 +11152,7 @@ func (fake *FakeS3) GetBucketOwnershipControlsRequestReturns(result1 *request.Re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketOwnershipControlsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketOwnershipControlsOutput) {
+func (fake *FakeClient) GetBucketOwnershipControlsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketOwnershipControlsOutput) {
 	fake.getBucketOwnershipControlsRequestMutex.Lock()
 	defer fake.getBucketOwnershipControlsRequestMutex.Unlock()
 	fake.GetBucketOwnershipControlsRequestStub = nil
@@ -11168,7 +11168,7 @@ func (fake *FakeS3) GetBucketOwnershipControlsRequestReturnsOnCall(i int, result
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketOwnershipControlsWithContext(arg1 context.Context, arg2 *s3a.GetBucketOwnershipControlsInput, arg3 ...request.Option) (*s3a.GetBucketOwnershipControlsOutput, error) {
+func (fake *FakeClient) GetBucketOwnershipControlsWithContext(arg1 context.Context, arg2 *s3a.GetBucketOwnershipControlsInput, arg3 ...request.Option) (*s3a.GetBucketOwnershipControlsOutput, error) {
 	fake.getBucketOwnershipControlsWithContextMutex.Lock()
 	ret, specificReturn := fake.getBucketOwnershipControlsWithContextReturnsOnCall[len(fake.getBucketOwnershipControlsWithContextArgsForCall)]
 	fake.getBucketOwnershipControlsWithContextArgsForCall = append(fake.getBucketOwnershipControlsWithContextArgsForCall, struct {
@@ -11188,26 +11188,26 @@ func (fake *FakeS3) GetBucketOwnershipControlsWithContext(arg1 context.Context, 
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketOwnershipControlsWithContextCallCount() int {
+func (fake *FakeClient) GetBucketOwnershipControlsWithContextCallCount() int {
 	fake.getBucketOwnershipControlsWithContextMutex.RLock()
 	defer fake.getBucketOwnershipControlsWithContextMutex.RUnlock()
 	return len(fake.getBucketOwnershipControlsWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketOwnershipControlsWithContextCalls(stub func(context.Context, *s3a.GetBucketOwnershipControlsInput, ...request.Option) (*s3a.GetBucketOwnershipControlsOutput, error)) {
+func (fake *FakeClient) GetBucketOwnershipControlsWithContextCalls(stub func(context.Context, *s3a.GetBucketOwnershipControlsInput, ...request.Option) (*s3a.GetBucketOwnershipControlsOutput, error)) {
 	fake.getBucketOwnershipControlsWithContextMutex.Lock()
 	defer fake.getBucketOwnershipControlsWithContextMutex.Unlock()
 	fake.GetBucketOwnershipControlsWithContextStub = stub
 }
 
-func (fake *FakeS3) GetBucketOwnershipControlsWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketOwnershipControlsInput, []request.Option) {
+func (fake *FakeClient) GetBucketOwnershipControlsWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketOwnershipControlsInput, []request.Option) {
 	fake.getBucketOwnershipControlsWithContextMutex.RLock()
 	defer fake.getBucketOwnershipControlsWithContextMutex.RUnlock()
 	argsForCall := fake.getBucketOwnershipControlsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetBucketOwnershipControlsWithContextReturns(result1 *s3a.GetBucketOwnershipControlsOutput, result2 error) {
+func (fake *FakeClient) GetBucketOwnershipControlsWithContextReturns(result1 *s3a.GetBucketOwnershipControlsOutput, result2 error) {
 	fake.getBucketOwnershipControlsWithContextMutex.Lock()
 	defer fake.getBucketOwnershipControlsWithContextMutex.Unlock()
 	fake.GetBucketOwnershipControlsWithContextStub = nil
@@ -11217,7 +11217,7 @@ func (fake *FakeS3) GetBucketOwnershipControlsWithContextReturns(result1 *s3a.Ge
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketOwnershipControlsWithContextReturnsOnCall(i int, result1 *s3a.GetBucketOwnershipControlsOutput, result2 error) {
+func (fake *FakeClient) GetBucketOwnershipControlsWithContextReturnsOnCall(i int, result1 *s3a.GetBucketOwnershipControlsOutput, result2 error) {
 	fake.getBucketOwnershipControlsWithContextMutex.Lock()
 	defer fake.getBucketOwnershipControlsWithContextMutex.Unlock()
 	fake.GetBucketOwnershipControlsWithContextStub = nil
@@ -11233,7 +11233,7 @@ func (fake *FakeS3) GetBucketOwnershipControlsWithContextReturnsOnCall(i int, re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketPolicy(arg1 *s3a.GetBucketPolicyInput) (*s3a.GetBucketPolicyOutput, error) {
+func (fake *FakeClient) GetBucketPolicy(arg1 *s3a.GetBucketPolicyInput) (*s3a.GetBucketPolicyOutput, error) {
 	fake.getBucketPolicyMutex.Lock()
 	ret, specificReturn := fake.getBucketPolicyReturnsOnCall[len(fake.getBucketPolicyArgsForCall)]
 	fake.getBucketPolicyArgsForCall = append(fake.getBucketPolicyArgsForCall, struct {
@@ -11251,26 +11251,26 @@ func (fake *FakeS3) GetBucketPolicy(arg1 *s3a.GetBucketPolicyInput) (*s3a.GetBuc
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketPolicyCallCount() int {
+func (fake *FakeClient) GetBucketPolicyCallCount() int {
 	fake.getBucketPolicyMutex.RLock()
 	defer fake.getBucketPolicyMutex.RUnlock()
 	return len(fake.getBucketPolicyArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketPolicyCalls(stub func(*s3a.GetBucketPolicyInput) (*s3a.GetBucketPolicyOutput, error)) {
+func (fake *FakeClient) GetBucketPolicyCalls(stub func(*s3a.GetBucketPolicyInput) (*s3a.GetBucketPolicyOutput, error)) {
 	fake.getBucketPolicyMutex.Lock()
 	defer fake.getBucketPolicyMutex.Unlock()
 	fake.GetBucketPolicyStub = stub
 }
 
-func (fake *FakeS3) GetBucketPolicyArgsForCall(i int) *s3a.GetBucketPolicyInput {
+func (fake *FakeClient) GetBucketPolicyArgsForCall(i int) *s3a.GetBucketPolicyInput {
 	fake.getBucketPolicyMutex.RLock()
 	defer fake.getBucketPolicyMutex.RUnlock()
 	argsForCall := fake.getBucketPolicyArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketPolicyReturns(result1 *s3a.GetBucketPolicyOutput, result2 error) {
+func (fake *FakeClient) GetBucketPolicyReturns(result1 *s3a.GetBucketPolicyOutput, result2 error) {
 	fake.getBucketPolicyMutex.Lock()
 	defer fake.getBucketPolicyMutex.Unlock()
 	fake.GetBucketPolicyStub = nil
@@ -11280,7 +11280,7 @@ func (fake *FakeS3) GetBucketPolicyReturns(result1 *s3a.GetBucketPolicyOutput, r
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketPolicyReturnsOnCall(i int, result1 *s3a.GetBucketPolicyOutput, result2 error) {
+func (fake *FakeClient) GetBucketPolicyReturnsOnCall(i int, result1 *s3a.GetBucketPolicyOutput, result2 error) {
 	fake.getBucketPolicyMutex.Lock()
 	defer fake.getBucketPolicyMutex.Unlock()
 	fake.GetBucketPolicyStub = nil
@@ -11296,7 +11296,7 @@ func (fake *FakeS3) GetBucketPolicyReturnsOnCall(i int, result1 *s3a.GetBucketPo
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketPolicyRequest(arg1 *s3a.GetBucketPolicyInput) (*request.Request, *s3a.GetBucketPolicyOutput) {
+func (fake *FakeClient) GetBucketPolicyRequest(arg1 *s3a.GetBucketPolicyInput) (*request.Request, *s3a.GetBucketPolicyOutput) {
 	fake.getBucketPolicyRequestMutex.Lock()
 	ret, specificReturn := fake.getBucketPolicyRequestReturnsOnCall[len(fake.getBucketPolicyRequestArgsForCall)]
 	fake.getBucketPolicyRequestArgsForCall = append(fake.getBucketPolicyRequestArgsForCall, struct {
@@ -11314,26 +11314,26 @@ func (fake *FakeS3) GetBucketPolicyRequest(arg1 *s3a.GetBucketPolicyInput) (*req
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketPolicyRequestCallCount() int {
+func (fake *FakeClient) GetBucketPolicyRequestCallCount() int {
 	fake.getBucketPolicyRequestMutex.RLock()
 	defer fake.getBucketPolicyRequestMutex.RUnlock()
 	return len(fake.getBucketPolicyRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketPolicyRequestCalls(stub func(*s3a.GetBucketPolicyInput) (*request.Request, *s3a.GetBucketPolicyOutput)) {
+func (fake *FakeClient) GetBucketPolicyRequestCalls(stub func(*s3a.GetBucketPolicyInput) (*request.Request, *s3a.GetBucketPolicyOutput)) {
 	fake.getBucketPolicyRequestMutex.Lock()
 	defer fake.getBucketPolicyRequestMutex.Unlock()
 	fake.GetBucketPolicyRequestStub = stub
 }
 
-func (fake *FakeS3) GetBucketPolicyRequestArgsForCall(i int) *s3a.GetBucketPolicyInput {
+func (fake *FakeClient) GetBucketPolicyRequestArgsForCall(i int) *s3a.GetBucketPolicyInput {
 	fake.getBucketPolicyRequestMutex.RLock()
 	defer fake.getBucketPolicyRequestMutex.RUnlock()
 	argsForCall := fake.getBucketPolicyRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketPolicyRequestReturns(result1 *request.Request, result2 *s3a.GetBucketPolicyOutput) {
+func (fake *FakeClient) GetBucketPolicyRequestReturns(result1 *request.Request, result2 *s3a.GetBucketPolicyOutput) {
 	fake.getBucketPolicyRequestMutex.Lock()
 	defer fake.getBucketPolicyRequestMutex.Unlock()
 	fake.GetBucketPolicyRequestStub = nil
@@ -11343,7 +11343,7 @@ func (fake *FakeS3) GetBucketPolicyRequestReturns(result1 *request.Request, resu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketPolicyRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketPolicyOutput) {
+func (fake *FakeClient) GetBucketPolicyRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketPolicyOutput) {
 	fake.getBucketPolicyRequestMutex.Lock()
 	defer fake.getBucketPolicyRequestMutex.Unlock()
 	fake.GetBucketPolicyRequestStub = nil
@@ -11359,7 +11359,7 @@ func (fake *FakeS3) GetBucketPolicyRequestReturnsOnCall(i int, result1 *request.
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketPolicyStatus(arg1 *s3a.GetBucketPolicyStatusInput) (*s3a.GetBucketPolicyStatusOutput, error) {
+func (fake *FakeClient) GetBucketPolicyStatus(arg1 *s3a.GetBucketPolicyStatusInput) (*s3a.GetBucketPolicyStatusOutput, error) {
 	fake.getBucketPolicyStatusMutex.Lock()
 	ret, specificReturn := fake.getBucketPolicyStatusReturnsOnCall[len(fake.getBucketPolicyStatusArgsForCall)]
 	fake.getBucketPolicyStatusArgsForCall = append(fake.getBucketPolicyStatusArgsForCall, struct {
@@ -11377,26 +11377,26 @@ func (fake *FakeS3) GetBucketPolicyStatus(arg1 *s3a.GetBucketPolicyStatusInput) 
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketPolicyStatusCallCount() int {
+func (fake *FakeClient) GetBucketPolicyStatusCallCount() int {
 	fake.getBucketPolicyStatusMutex.RLock()
 	defer fake.getBucketPolicyStatusMutex.RUnlock()
 	return len(fake.getBucketPolicyStatusArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketPolicyStatusCalls(stub func(*s3a.GetBucketPolicyStatusInput) (*s3a.GetBucketPolicyStatusOutput, error)) {
+func (fake *FakeClient) GetBucketPolicyStatusCalls(stub func(*s3a.GetBucketPolicyStatusInput) (*s3a.GetBucketPolicyStatusOutput, error)) {
 	fake.getBucketPolicyStatusMutex.Lock()
 	defer fake.getBucketPolicyStatusMutex.Unlock()
 	fake.GetBucketPolicyStatusStub = stub
 }
 
-func (fake *FakeS3) GetBucketPolicyStatusArgsForCall(i int) *s3a.GetBucketPolicyStatusInput {
+func (fake *FakeClient) GetBucketPolicyStatusArgsForCall(i int) *s3a.GetBucketPolicyStatusInput {
 	fake.getBucketPolicyStatusMutex.RLock()
 	defer fake.getBucketPolicyStatusMutex.RUnlock()
 	argsForCall := fake.getBucketPolicyStatusArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketPolicyStatusReturns(result1 *s3a.GetBucketPolicyStatusOutput, result2 error) {
+func (fake *FakeClient) GetBucketPolicyStatusReturns(result1 *s3a.GetBucketPolicyStatusOutput, result2 error) {
 	fake.getBucketPolicyStatusMutex.Lock()
 	defer fake.getBucketPolicyStatusMutex.Unlock()
 	fake.GetBucketPolicyStatusStub = nil
@@ -11406,7 +11406,7 @@ func (fake *FakeS3) GetBucketPolicyStatusReturns(result1 *s3a.GetBucketPolicySta
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketPolicyStatusReturnsOnCall(i int, result1 *s3a.GetBucketPolicyStatusOutput, result2 error) {
+func (fake *FakeClient) GetBucketPolicyStatusReturnsOnCall(i int, result1 *s3a.GetBucketPolicyStatusOutput, result2 error) {
 	fake.getBucketPolicyStatusMutex.Lock()
 	defer fake.getBucketPolicyStatusMutex.Unlock()
 	fake.GetBucketPolicyStatusStub = nil
@@ -11422,7 +11422,7 @@ func (fake *FakeS3) GetBucketPolicyStatusReturnsOnCall(i int, result1 *s3a.GetBu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketPolicyStatusRequest(arg1 *s3a.GetBucketPolicyStatusInput) (*request.Request, *s3a.GetBucketPolicyStatusOutput) {
+func (fake *FakeClient) GetBucketPolicyStatusRequest(arg1 *s3a.GetBucketPolicyStatusInput) (*request.Request, *s3a.GetBucketPolicyStatusOutput) {
 	fake.getBucketPolicyStatusRequestMutex.Lock()
 	ret, specificReturn := fake.getBucketPolicyStatusRequestReturnsOnCall[len(fake.getBucketPolicyStatusRequestArgsForCall)]
 	fake.getBucketPolicyStatusRequestArgsForCall = append(fake.getBucketPolicyStatusRequestArgsForCall, struct {
@@ -11440,26 +11440,26 @@ func (fake *FakeS3) GetBucketPolicyStatusRequest(arg1 *s3a.GetBucketPolicyStatus
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketPolicyStatusRequestCallCount() int {
+func (fake *FakeClient) GetBucketPolicyStatusRequestCallCount() int {
 	fake.getBucketPolicyStatusRequestMutex.RLock()
 	defer fake.getBucketPolicyStatusRequestMutex.RUnlock()
 	return len(fake.getBucketPolicyStatusRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketPolicyStatusRequestCalls(stub func(*s3a.GetBucketPolicyStatusInput) (*request.Request, *s3a.GetBucketPolicyStatusOutput)) {
+func (fake *FakeClient) GetBucketPolicyStatusRequestCalls(stub func(*s3a.GetBucketPolicyStatusInput) (*request.Request, *s3a.GetBucketPolicyStatusOutput)) {
 	fake.getBucketPolicyStatusRequestMutex.Lock()
 	defer fake.getBucketPolicyStatusRequestMutex.Unlock()
 	fake.GetBucketPolicyStatusRequestStub = stub
 }
 
-func (fake *FakeS3) GetBucketPolicyStatusRequestArgsForCall(i int) *s3a.GetBucketPolicyStatusInput {
+func (fake *FakeClient) GetBucketPolicyStatusRequestArgsForCall(i int) *s3a.GetBucketPolicyStatusInput {
 	fake.getBucketPolicyStatusRequestMutex.RLock()
 	defer fake.getBucketPolicyStatusRequestMutex.RUnlock()
 	argsForCall := fake.getBucketPolicyStatusRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketPolicyStatusRequestReturns(result1 *request.Request, result2 *s3a.GetBucketPolicyStatusOutput) {
+func (fake *FakeClient) GetBucketPolicyStatusRequestReturns(result1 *request.Request, result2 *s3a.GetBucketPolicyStatusOutput) {
 	fake.getBucketPolicyStatusRequestMutex.Lock()
 	defer fake.getBucketPolicyStatusRequestMutex.Unlock()
 	fake.GetBucketPolicyStatusRequestStub = nil
@@ -11469,7 +11469,7 @@ func (fake *FakeS3) GetBucketPolicyStatusRequestReturns(result1 *request.Request
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketPolicyStatusRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketPolicyStatusOutput) {
+func (fake *FakeClient) GetBucketPolicyStatusRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketPolicyStatusOutput) {
 	fake.getBucketPolicyStatusRequestMutex.Lock()
 	defer fake.getBucketPolicyStatusRequestMutex.Unlock()
 	fake.GetBucketPolicyStatusRequestStub = nil
@@ -11485,7 +11485,7 @@ func (fake *FakeS3) GetBucketPolicyStatusRequestReturnsOnCall(i int, result1 *re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketPolicyStatusWithContext(arg1 context.Context, arg2 *s3a.GetBucketPolicyStatusInput, arg3 ...request.Option) (*s3a.GetBucketPolicyStatusOutput, error) {
+func (fake *FakeClient) GetBucketPolicyStatusWithContext(arg1 context.Context, arg2 *s3a.GetBucketPolicyStatusInput, arg3 ...request.Option) (*s3a.GetBucketPolicyStatusOutput, error) {
 	fake.getBucketPolicyStatusWithContextMutex.Lock()
 	ret, specificReturn := fake.getBucketPolicyStatusWithContextReturnsOnCall[len(fake.getBucketPolicyStatusWithContextArgsForCall)]
 	fake.getBucketPolicyStatusWithContextArgsForCall = append(fake.getBucketPolicyStatusWithContextArgsForCall, struct {
@@ -11505,26 +11505,26 @@ func (fake *FakeS3) GetBucketPolicyStatusWithContext(arg1 context.Context, arg2 
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketPolicyStatusWithContextCallCount() int {
+func (fake *FakeClient) GetBucketPolicyStatusWithContextCallCount() int {
 	fake.getBucketPolicyStatusWithContextMutex.RLock()
 	defer fake.getBucketPolicyStatusWithContextMutex.RUnlock()
 	return len(fake.getBucketPolicyStatusWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketPolicyStatusWithContextCalls(stub func(context.Context, *s3a.GetBucketPolicyStatusInput, ...request.Option) (*s3a.GetBucketPolicyStatusOutput, error)) {
+func (fake *FakeClient) GetBucketPolicyStatusWithContextCalls(stub func(context.Context, *s3a.GetBucketPolicyStatusInput, ...request.Option) (*s3a.GetBucketPolicyStatusOutput, error)) {
 	fake.getBucketPolicyStatusWithContextMutex.Lock()
 	defer fake.getBucketPolicyStatusWithContextMutex.Unlock()
 	fake.GetBucketPolicyStatusWithContextStub = stub
 }
 
-func (fake *FakeS3) GetBucketPolicyStatusWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketPolicyStatusInput, []request.Option) {
+func (fake *FakeClient) GetBucketPolicyStatusWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketPolicyStatusInput, []request.Option) {
 	fake.getBucketPolicyStatusWithContextMutex.RLock()
 	defer fake.getBucketPolicyStatusWithContextMutex.RUnlock()
 	argsForCall := fake.getBucketPolicyStatusWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetBucketPolicyStatusWithContextReturns(result1 *s3a.GetBucketPolicyStatusOutput, result2 error) {
+func (fake *FakeClient) GetBucketPolicyStatusWithContextReturns(result1 *s3a.GetBucketPolicyStatusOutput, result2 error) {
 	fake.getBucketPolicyStatusWithContextMutex.Lock()
 	defer fake.getBucketPolicyStatusWithContextMutex.Unlock()
 	fake.GetBucketPolicyStatusWithContextStub = nil
@@ -11534,7 +11534,7 @@ func (fake *FakeS3) GetBucketPolicyStatusWithContextReturns(result1 *s3a.GetBuck
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketPolicyStatusWithContextReturnsOnCall(i int, result1 *s3a.GetBucketPolicyStatusOutput, result2 error) {
+func (fake *FakeClient) GetBucketPolicyStatusWithContextReturnsOnCall(i int, result1 *s3a.GetBucketPolicyStatusOutput, result2 error) {
 	fake.getBucketPolicyStatusWithContextMutex.Lock()
 	defer fake.getBucketPolicyStatusWithContextMutex.Unlock()
 	fake.GetBucketPolicyStatusWithContextStub = nil
@@ -11550,7 +11550,7 @@ func (fake *FakeS3) GetBucketPolicyStatusWithContextReturnsOnCall(i int, result1
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketPolicyWithContext(arg1 context.Context, arg2 *s3a.GetBucketPolicyInput, arg3 ...request.Option) (*s3a.GetBucketPolicyOutput, error) {
+func (fake *FakeClient) GetBucketPolicyWithContext(arg1 context.Context, arg2 *s3a.GetBucketPolicyInput, arg3 ...request.Option) (*s3a.GetBucketPolicyOutput, error) {
 	fake.getBucketPolicyWithContextMutex.Lock()
 	ret, specificReturn := fake.getBucketPolicyWithContextReturnsOnCall[len(fake.getBucketPolicyWithContextArgsForCall)]
 	fake.getBucketPolicyWithContextArgsForCall = append(fake.getBucketPolicyWithContextArgsForCall, struct {
@@ -11570,26 +11570,26 @@ func (fake *FakeS3) GetBucketPolicyWithContext(arg1 context.Context, arg2 *s3a.G
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketPolicyWithContextCallCount() int {
+func (fake *FakeClient) GetBucketPolicyWithContextCallCount() int {
 	fake.getBucketPolicyWithContextMutex.RLock()
 	defer fake.getBucketPolicyWithContextMutex.RUnlock()
 	return len(fake.getBucketPolicyWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketPolicyWithContextCalls(stub func(context.Context, *s3a.GetBucketPolicyInput, ...request.Option) (*s3a.GetBucketPolicyOutput, error)) {
+func (fake *FakeClient) GetBucketPolicyWithContextCalls(stub func(context.Context, *s3a.GetBucketPolicyInput, ...request.Option) (*s3a.GetBucketPolicyOutput, error)) {
 	fake.getBucketPolicyWithContextMutex.Lock()
 	defer fake.getBucketPolicyWithContextMutex.Unlock()
 	fake.GetBucketPolicyWithContextStub = stub
 }
 
-func (fake *FakeS3) GetBucketPolicyWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketPolicyInput, []request.Option) {
+func (fake *FakeClient) GetBucketPolicyWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketPolicyInput, []request.Option) {
 	fake.getBucketPolicyWithContextMutex.RLock()
 	defer fake.getBucketPolicyWithContextMutex.RUnlock()
 	argsForCall := fake.getBucketPolicyWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetBucketPolicyWithContextReturns(result1 *s3a.GetBucketPolicyOutput, result2 error) {
+func (fake *FakeClient) GetBucketPolicyWithContextReturns(result1 *s3a.GetBucketPolicyOutput, result2 error) {
 	fake.getBucketPolicyWithContextMutex.Lock()
 	defer fake.getBucketPolicyWithContextMutex.Unlock()
 	fake.GetBucketPolicyWithContextStub = nil
@@ -11599,7 +11599,7 @@ func (fake *FakeS3) GetBucketPolicyWithContextReturns(result1 *s3a.GetBucketPoli
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketPolicyWithContextReturnsOnCall(i int, result1 *s3a.GetBucketPolicyOutput, result2 error) {
+func (fake *FakeClient) GetBucketPolicyWithContextReturnsOnCall(i int, result1 *s3a.GetBucketPolicyOutput, result2 error) {
 	fake.getBucketPolicyWithContextMutex.Lock()
 	defer fake.getBucketPolicyWithContextMutex.Unlock()
 	fake.GetBucketPolicyWithContextStub = nil
@@ -11615,7 +11615,7 @@ func (fake *FakeS3) GetBucketPolicyWithContextReturnsOnCall(i int, result1 *s3a.
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketReplication(arg1 *s3a.GetBucketReplicationInput) (*s3a.GetBucketReplicationOutput, error) {
+func (fake *FakeClient) GetBucketReplication(arg1 *s3a.GetBucketReplicationInput) (*s3a.GetBucketReplicationOutput, error) {
 	fake.getBucketReplicationMutex.Lock()
 	ret, specificReturn := fake.getBucketReplicationReturnsOnCall[len(fake.getBucketReplicationArgsForCall)]
 	fake.getBucketReplicationArgsForCall = append(fake.getBucketReplicationArgsForCall, struct {
@@ -11633,26 +11633,26 @@ func (fake *FakeS3) GetBucketReplication(arg1 *s3a.GetBucketReplicationInput) (*
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketReplicationCallCount() int {
+func (fake *FakeClient) GetBucketReplicationCallCount() int {
 	fake.getBucketReplicationMutex.RLock()
 	defer fake.getBucketReplicationMutex.RUnlock()
 	return len(fake.getBucketReplicationArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketReplicationCalls(stub func(*s3a.GetBucketReplicationInput) (*s3a.GetBucketReplicationOutput, error)) {
+func (fake *FakeClient) GetBucketReplicationCalls(stub func(*s3a.GetBucketReplicationInput) (*s3a.GetBucketReplicationOutput, error)) {
 	fake.getBucketReplicationMutex.Lock()
 	defer fake.getBucketReplicationMutex.Unlock()
 	fake.GetBucketReplicationStub = stub
 }
 
-func (fake *FakeS3) GetBucketReplicationArgsForCall(i int) *s3a.GetBucketReplicationInput {
+func (fake *FakeClient) GetBucketReplicationArgsForCall(i int) *s3a.GetBucketReplicationInput {
 	fake.getBucketReplicationMutex.RLock()
 	defer fake.getBucketReplicationMutex.RUnlock()
 	argsForCall := fake.getBucketReplicationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketReplicationReturns(result1 *s3a.GetBucketReplicationOutput, result2 error) {
+func (fake *FakeClient) GetBucketReplicationReturns(result1 *s3a.GetBucketReplicationOutput, result2 error) {
 	fake.getBucketReplicationMutex.Lock()
 	defer fake.getBucketReplicationMutex.Unlock()
 	fake.GetBucketReplicationStub = nil
@@ -11662,7 +11662,7 @@ func (fake *FakeS3) GetBucketReplicationReturns(result1 *s3a.GetBucketReplicatio
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketReplicationReturnsOnCall(i int, result1 *s3a.GetBucketReplicationOutput, result2 error) {
+func (fake *FakeClient) GetBucketReplicationReturnsOnCall(i int, result1 *s3a.GetBucketReplicationOutput, result2 error) {
 	fake.getBucketReplicationMutex.Lock()
 	defer fake.getBucketReplicationMutex.Unlock()
 	fake.GetBucketReplicationStub = nil
@@ -11678,7 +11678,7 @@ func (fake *FakeS3) GetBucketReplicationReturnsOnCall(i int, result1 *s3a.GetBuc
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketReplicationRequest(arg1 *s3a.GetBucketReplicationInput) (*request.Request, *s3a.GetBucketReplicationOutput) {
+func (fake *FakeClient) GetBucketReplicationRequest(arg1 *s3a.GetBucketReplicationInput) (*request.Request, *s3a.GetBucketReplicationOutput) {
 	fake.getBucketReplicationRequestMutex.Lock()
 	ret, specificReturn := fake.getBucketReplicationRequestReturnsOnCall[len(fake.getBucketReplicationRequestArgsForCall)]
 	fake.getBucketReplicationRequestArgsForCall = append(fake.getBucketReplicationRequestArgsForCall, struct {
@@ -11696,26 +11696,26 @@ func (fake *FakeS3) GetBucketReplicationRequest(arg1 *s3a.GetBucketReplicationIn
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketReplicationRequestCallCount() int {
+func (fake *FakeClient) GetBucketReplicationRequestCallCount() int {
 	fake.getBucketReplicationRequestMutex.RLock()
 	defer fake.getBucketReplicationRequestMutex.RUnlock()
 	return len(fake.getBucketReplicationRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketReplicationRequestCalls(stub func(*s3a.GetBucketReplicationInput) (*request.Request, *s3a.GetBucketReplicationOutput)) {
+func (fake *FakeClient) GetBucketReplicationRequestCalls(stub func(*s3a.GetBucketReplicationInput) (*request.Request, *s3a.GetBucketReplicationOutput)) {
 	fake.getBucketReplicationRequestMutex.Lock()
 	defer fake.getBucketReplicationRequestMutex.Unlock()
 	fake.GetBucketReplicationRequestStub = stub
 }
 
-func (fake *FakeS3) GetBucketReplicationRequestArgsForCall(i int) *s3a.GetBucketReplicationInput {
+func (fake *FakeClient) GetBucketReplicationRequestArgsForCall(i int) *s3a.GetBucketReplicationInput {
 	fake.getBucketReplicationRequestMutex.RLock()
 	defer fake.getBucketReplicationRequestMutex.RUnlock()
 	argsForCall := fake.getBucketReplicationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketReplicationRequestReturns(result1 *request.Request, result2 *s3a.GetBucketReplicationOutput) {
+func (fake *FakeClient) GetBucketReplicationRequestReturns(result1 *request.Request, result2 *s3a.GetBucketReplicationOutput) {
 	fake.getBucketReplicationRequestMutex.Lock()
 	defer fake.getBucketReplicationRequestMutex.Unlock()
 	fake.GetBucketReplicationRequestStub = nil
@@ -11725,7 +11725,7 @@ func (fake *FakeS3) GetBucketReplicationRequestReturns(result1 *request.Request,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketReplicationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketReplicationOutput) {
+func (fake *FakeClient) GetBucketReplicationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketReplicationOutput) {
 	fake.getBucketReplicationRequestMutex.Lock()
 	defer fake.getBucketReplicationRequestMutex.Unlock()
 	fake.GetBucketReplicationRequestStub = nil
@@ -11741,7 +11741,7 @@ func (fake *FakeS3) GetBucketReplicationRequestReturnsOnCall(i int, result1 *req
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketReplicationWithContext(arg1 context.Context, arg2 *s3a.GetBucketReplicationInput, arg3 ...request.Option) (*s3a.GetBucketReplicationOutput, error) {
+func (fake *FakeClient) GetBucketReplicationWithContext(arg1 context.Context, arg2 *s3a.GetBucketReplicationInput, arg3 ...request.Option) (*s3a.GetBucketReplicationOutput, error) {
 	fake.getBucketReplicationWithContextMutex.Lock()
 	ret, specificReturn := fake.getBucketReplicationWithContextReturnsOnCall[len(fake.getBucketReplicationWithContextArgsForCall)]
 	fake.getBucketReplicationWithContextArgsForCall = append(fake.getBucketReplicationWithContextArgsForCall, struct {
@@ -11761,26 +11761,26 @@ func (fake *FakeS3) GetBucketReplicationWithContext(arg1 context.Context, arg2 *
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketReplicationWithContextCallCount() int {
+func (fake *FakeClient) GetBucketReplicationWithContextCallCount() int {
 	fake.getBucketReplicationWithContextMutex.RLock()
 	defer fake.getBucketReplicationWithContextMutex.RUnlock()
 	return len(fake.getBucketReplicationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketReplicationWithContextCalls(stub func(context.Context, *s3a.GetBucketReplicationInput, ...request.Option) (*s3a.GetBucketReplicationOutput, error)) {
+func (fake *FakeClient) GetBucketReplicationWithContextCalls(stub func(context.Context, *s3a.GetBucketReplicationInput, ...request.Option) (*s3a.GetBucketReplicationOutput, error)) {
 	fake.getBucketReplicationWithContextMutex.Lock()
 	defer fake.getBucketReplicationWithContextMutex.Unlock()
 	fake.GetBucketReplicationWithContextStub = stub
 }
 
-func (fake *FakeS3) GetBucketReplicationWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketReplicationInput, []request.Option) {
+func (fake *FakeClient) GetBucketReplicationWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketReplicationInput, []request.Option) {
 	fake.getBucketReplicationWithContextMutex.RLock()
 	defer fake.getBucketReplicationWithContextMutex.RUnlock()
 	argsForCall := fake.getBucketReplicationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetBucketReplicationWithContextReturns(result1 *s3a.GetBucketReplicationOutput, result2 error) {
+func (fake *FakeClient) GetBucketReplicationWithContextReturns(result1 *s3a.GetBucketReplicationOutput, result2 error) {
 	fake.getBucketReplicationWithContextMutex.Lock()
 	defer fake.getBucketReplicationWithContextMutex.Unlock()
 	fake.GetBucketReplicationWithContextStub = nil
@@ -11790,7 +11790,7 @@ func (fake *FakeS3) GetBucketReplicationWithContextReturns(result1 *s3a.GetBucke
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketReplicationWithContextReturnsOnCall(i int, result1 *s3a.GetBucketReplicationOutput, result2 error) {
+func (fake *FakeClient) GetBucketReplicationWithContextReturnsOnCall(i int, result1 *s3a.GetBucketReplicationOutput, result2 error) {
 	fake.getBucketReplicationWithContextMutex.Lock()
 	defer fake.getBucketReplicationWithContextMutex.Unlock()
 	fake.GetBucketReplicationWithContextStub = nil
@@ -11806,7 +11806,7 @@ func (fake *FakeS3) GetBucketReplicationWithContextReturnsOnCall(i int, result1 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketRequestPayment(arg1 *s3a.GetBucketRequestPaymentInput) (*s3a.GetBucketRequestPaymentOutput, error) {
+func (fake *FakeClient) GetBucketRequestPayment(arg1 *s3a.GetBucketRequestPaymentInput) (*s3a.GetBucketRequestPaymentOutput, error) {
 	fake.getBucketRequestPaymentMutex.Lock()
 	ret, specificReturn := fake.getBucketRequestPaymentReturnsOnCall[len(fake.getBucketRequestPaymentArgsForCall)]
 	fake.getBucketRequestPaymentArgsForCall = append(fake.getBucketRequestPaymentArgsForCall, struct {
@@ -11824,26 +11824,26 @@ func (fake *FakeS3) GetBucketRequestPayment(arg1 *s3a.GetBucketRequestPaymentInp
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketRequestPaymentCallCount() int {
+func (fake *FakeClient) GetBucketRequestPaymentCallCount() int {
 	fake.getBucketRequestPaymentMutex.RLock()
 	defer fake.getBucketRequestPaymentMutex.RUnlock()
 	return len(fake.getBucketRequestPaymentArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketRequestPaymentCalls(stub func(*s3a.GetBucketRequestPaymentInput) (*s3a.GetBucketRequestPaymentOutput, error)) {
+func (fake *FakeClient) GetBucketRequestPaymentCalls(stub func(*s3a.GetBucketRequestPaymentInput) (*s3a.GetBucketRequestPaymentOutput, error)) {
 	fake.getBucketRequestPaymentMutex.Lock()
 	defer fake.getBucketRequestPaymentMutex.Unlock()
 	fake.GetBucketRequestPaymentStub = stub
 }
 
-func (fake *FakeS3) GetBucketRequestPaymentArgsForCall(i int) *s3a.GetBucketRequestPaymentInput {
+func (fake *FakeClient) GetBucketRequestPaymentArgsForCall(i int) *s3a.GetBucketRequestPaymentInput {
 	fake.getBucketRequestPaymentMutex.RLock()
 	defer fake.getBucketRequestPaymentMutex.RUnlock()
 	argsForCall := fake.getBucketRequestPaymentArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketRequestPaymentReturns(result1 *s3a.GetBucketRequestPaymentOutput, result2 error) {
+func (fake *FakeClient) GetBucketRequestPaymentReturns(result1 *s3a.GetBucketRequestPaymentOutput, result2 error) {
 	fake.getBucketRequestPaymentMutex.Lock()
 	defer fake.getBucketRequestPaymentMutex.Unlock()
 	fake.GetBucketRequestPaymentStub = nil
@@ -11853,7 +11853,7 @@ func (fake *FakeS3) GetBucketRequestPaymentReturns(result1 *s3a.GetBucketRequest
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketRequestPaymentReturnsOnCall(i int, result1 *s3a.GetBucketRequestPaymentOutput, result2 error) {
+func (fake *FakeClient) GetBucketRequestPaymentReturnsOnCall(i int, result1 *s3a.GetBucketRequestPaymentOutput, result2 error) {
 	fake.getBucketRequestPaymentMutex.Lock()
 	defer fake.getBucketRequestPaymentMutex.Unlock()
 	fake.GetBucketRequestPaymentStub = nil
@@ -11869,7 +11869,7 @@ func (fake *FakeS3) GetBucketRequestPaymentReturnsOnCall(i int, result1 *s3a.Get
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketRequestPaymentRequest(arg1 *s3a.GetBucketRequestPaymentInput) (*request.Request, *s3a.GetBucketRequestPaymentOutput) {
+func (fake *FakeClient) GetBucketRequestPaymentRequest(arg1 *s3a.GetBucketRequestPaymentInput) (*request.Request, *s3a.GetBucketRequestPaymentOutput) {
 	fake.getBucketRequestPaymentRequestMutex.Lock()
 	ret, specificReturn := fake.getBucketRequestPaymentRequestReturnsOnCall[len(fake.getBucketRequestPaymentRequestArgsForCall)]
 	fake.getBucketRequestPaymentRequestArgsForCall = append(fake.getBucketRequestPaymentRequestArgsForCall, struct {
@@ -11887,26 +11887,26 @@ func (fake *FakeS3) GetBucketRequestPaymentRequest(arg1 *s3a.GetBucketRequestPay
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketRequestPaymentRequestCallCount() int {
+func (fake *FakeClient) GetBucketRequestPaymentRequestCallCount() int {
 	fake.getBucketRequestPaymentRequestMutex.RLock()
 	defer fake.getBucketRequestPaymentRequestMutex.RUnlock()
 	return len(fake.getBucketRequestPaymentRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketRequestPaymentRequestCalls(stub func(*s3a.GetBucketRequestPaymentInput) (*request.Request, *s3a.GetBucketRequestPaymentOutput)) {
+func (fake *FakeClient) GetBucketRequestPaymentRequestCalls(stub func(*s3a.GetBucketRequestPaymentInput) (*request.Request, *s3a.GetBucketRequestPaymentOutput)) {
 	fake.getBucketRequestPaymentRequestMutex.Lock()
 	defer fake.getBucketRequestPaymentRequestMutex.Unlock()
 	fake.GetBucketRequestPaymentRequestStub = stub
 }
 
-func (fake *FakeS3) GetBucketRequestPaymentRequestArgsForCall(i int) *s3a.GetBucketRequestPaymentInput {
+func (fake *FakeClient) GetBucketRequestPaymentRequestArgsForCall(i int) *s3a.GetBucketRequestPaymentInput {
 	fake.getBucketRequestPaymentRequestMutex.RLock()
 	defer fake.getBucketRequestPaymentRequestMutex.RUnlock()
 	argsForCall := fake.getBucketRequestPaymentRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketRequestPaymentRequestReturns(result1 *request.Request, result2 *s3a.GetBucketRequestPaymentOutput) {
+func (fake *FakeClient) GetBucketRequestPaymentRequestReturns(result1 *request.Request, result2 *s3a.GetBucketRequestPaymentOutput) {
 	fake.getBucketRequestPaymentRequestMutex.Lock()
 	defer fake.getBucketRequestPaymentRequestMutex.Unlock()
 	fake.GetBucketRequestPaymentRequestStub = nil
@@ -11916,7 +11916,7 @@ func (fake *FakeS3) GetBucketRequestPaymentRequestReturns(result1 *request.Reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketRequestPaymentRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketRequestPaymentOutput) {
+func (fake *FakeClient) GetBucketRequestPaymentRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketRequestPaymentOutput) {
 	fake.getBucketRequestPaymentRequestMutex.Lock()
 	defer fake.getBucketRequestPaymentRequestMutex.Unlock()
 	fake.GetBucketRequestPaymentRequestStub = nil
@@ -11932,7 +11932,7 @@ func (fake *FakeS3) GetBucketRequestPaymentRequestReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketRequestPaymentWithContext(arg1 context.Context, arg2 *s3a.GetBucketRequestPaymentInput, arg3 ...request.Option) (*s3a.GetBucketRequestPaymentOutput, error) {
+func (fake *FakeClient) GetBucketRequestPaymentWithContext(arg1 context.Context, arg2 *s3a.GetBucketRequestPaymentInput, arg3 ...request.Option) (*s3a.GetBucketRequestPaymentOutput, error) {
 	fake.getBucketRequestPaymentWithContextMutex.Lock()
 	ret, specificReturn := fake.getBucketRequestPaymentWithContextReturnsOnCall[len(fake.getBucketRequestPaymentWithContextArgsForCall)]
 	fake.getBucketRequestPaymentWithContextArgsForCall = append(fake.getBucketRequestPaymentWithContextArgsForCall, struct {
@@ -11952,26 +11952,26 @@ func (fake *FakeS3) GetBucketRequestPaymentWithContext(arg1 context.Context, arg
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketRequestPaymentWithContextCallCount() int {
+func (fake *FakeClient) GetBucketRequestPaymentWithContextCallCount() int {
 	fake.getBucketRequestPaymentWithContextMutex.RLock()
 	defer fake.getBucketRequestPaymentWithContextMutex.RUnlock()
 	return len(fake.getBucketRequestPaymentWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketRequestPaymentWithContextCalls(stub func(context.Context, *s3a.GetBucketRequestPaymentInput, ...request.Option) (*s3a.GetBucketRequestPaymentOutput, error)) {
+func (fake *FakeClient) GetBucketRequestPaymentWithContextCalls(stub func(context.Context, *s3a.GetBucketRequestPaymentInput, ...request.Option) (*s3a.GetBucketRequestPaymentOutput, error)) {
 	fake.getBucketRequestPaymentWithContextMutex.Lock()
 	defer fake.getBucketRequestPaymentWithContextMutex.Unlock()
 	fake.GetBucketRequestPaymentWithContextStub = stub
 }
 
-func (fake *FakeS3) GetBucketRequestPaymentWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketRequestPaymentInput, []request.Option) {
+func (fake *FakeClient) GetBucketRequestPaymentWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketRequestPaymentInput, []request.Option) {
 	fake.getBucketRequestPaymentWithContextMutex.RLock()
 	defer fake.getBucketRequestPaymentWithContextMutex.RUnlock()
 	argsForCall := fake.getBucketRequestPaymentWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetBucketRequestPaymentWithContextReturns(result1 *s3a.GetBucketRequestPaymentOutput, result2 error) {
+func (fake *FakeClient) GetBucketRequestPaymentWithContextReturns(result1 *s3a.GetBucketRequestPaymentOutput, result2 error) {
 	fake.getBucketRequestPaymentWithContextMutex.Lock()
 	defer fake.getBucketRequestPaymentWithContextMutex.Unlock()
 	fake.GetBucketRequestPaymentWithContextStub = nil
@@ -11981,7 +11981,7 @@ func (fake *FakeS3) GetBucketRequestPaymentWithContextReturns(result1 *s3a.GetBu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketRequestPaymentWithContextReturnsOnCall(i int, result1 *s3a.GetBucketRequestPaymentOutput, result2 error) {
+func (fake *FakeClient) GetBucketRequestPaymentWithContextReturnsOnCall(i int, result1 *s3a.GetBucketRequestPaymentOutput, result2 error) {
 	fake.getBucketRequestPaymentWithContextMutex.Lock()
 	defer fake.getBucketRequestPaymentWithContextMutex.Unlock()
 	fake.GetBucketRequestPaymentWithContextStub = nil
@@ -11997,7 +11997,7 @@ func (fake *FakeS3) GetBucketRequestPaymentWithContextReturnsOnCall(i int, resul
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketTagging(arg1 *s3a.GetBucketTaggingInput) (*s3a.GetBucketTaggingOutput, error) {
+func (fake *FakeClient) GetBucketTagging(arg1 *s3a.GetBucketTaggingInput) (*s3a.GetBucketTaggingOutput, error) {
 	fake.getBucketTaggingMutex.Lock()
 	ret, specificReturn := fake.getBucketTaggingReturnsOnCall[len(fake.getBucketTaggingArgsForCall)]
 	fake.getBucketTaggingArgsForCall = append(fake.getBucketTaggingArgsForCall, struct {
@@ -12015,26 +12015,26 @@ func (fake *FakeS3) GetBucketTagging(arg1 *s3a.GetBucketTaggingInput) (*s3a.GetB
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketTaggingCallCount() int {
+func (fake *FakeClient) GetBucketTaggingCallCount() int {
 	fake.getBucketTaggingMutex.RLock()
 	defer fake.getBucketTaggingMutex.RUnlock()
 	return len(fake.getBucketTaggingArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketTaggingCalls(stub func(*s3a.GetBucketTaggingInput) (*s3a.GetBucketTaggingOutput, error)) {
+func (fake *FakeClient) GetBucketTaggingCalls(stub func(*s3a.GetBucketTaggingInput) (*s3a.GetBucketTaggingOutput, error)) {
 	fake.getBucketTaggingMutex.Lock()
 	defer fake.getBucketTaggingMutex.Unlock()
 	fake.GetBucketTaggingStub = stub
 }
 
-func (fake *FakeS3) GetBucketTaggingArgsForCall(i int) *s3a.GetBucketTaggingInput {
+func (fake *FakeClient) GetBucketTaggingArgsForCall(i int) *s3a.GetBucketTaggingInput {
 	fake.getBucketTaggingMutex.RLock()
 	defer fake.getBucketTaggingMutex.RUnlock()
 	argsForCall := fake.getBucketTaggingArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketTaggingReturns(result1 *s3a.GetBucketTaggingOutput, result2 error) {
+func (fake *FakeClient) GetBucketTaggingReturns(result1 *s3a.GetBucketTaggingOutput, result2 error) {
 	fake.getBucketTaggingMutex.Lock()
 	defer fake.getBucketTaggingMutex.Unlock()
 	fake.GetBucketTaggingStub = nil
@@ -12044,7 +12044,7 @@ func (fake *FakeS3) GetBucketTaggingReturns(result1 *s3a.GetBucketTaggingOutput,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketTaggingReturnsOnCall(i int, result1 *s3a.GetBucketTaggingOutput, result2 error) {
+func (fake *FakeClient) GetBucketTaggingReturnsOnCall(i int, result1 *s3a.GetBucketTaggingOutput, result2 error) {
 	fake.getBucketTaggingMutex.Lock()
 	defer fake.getBucketTaggingMutex.Unlock()
 	fake.GetBucketTaggingStub = nil
@@ -12060,7 +12060,7 @@ func (fake *FakeS3) GetBucketTaggingReturnsOnCall(i int, result1 *s3a.GetBucketT
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketTaggingRequest(arg1 *s3a.GetBucketTaggingInput) (*request.Request, *s3a.GetBucketTaggingOutput) {
+func (fake *FakeClient) GetBucketTaggingRequest(arg1 *s3a.GetBucketTaggingInput) (*request.Request, *s3a.GetBucketTaggingOutput) {
 	fake.getBucketTaggingRequestMutex.Lock()
 	ret, specificReturn := fake.getBucketTaggingRequestReturnsOnCall[len(fake.getBucketTaggingRequestArgsForCall)]
 	fake.getBucketTaggingRequestArgsForCall = append(fake.getBucketTaggingRequestArgsForCall, struct {
@@ -12078,26 +12078,26 @@ func (fake *FakeS3) GetBucketTaggingRequest(arg1 *s3a.GetBucketTaggingInput) (*r
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketTaggingRequestCallCount() int {
+func (fake *FakeClient) GetBucketTaggingRequestCallCount() int {
 	fake.getBucketTaggingRequestMutex.RLock()
 	defer fake.getBucketTaggingRequestMutex.RUnlock()
 	return len(fake.getBucketTaggingRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketTaggingRequestCalls(stub func(*s3a.GetBucketTaggingInput) (*request.Request, *s3a.GetBucketTaggingOutput)) {
+func (fake *FakeClient) GetBucketTaggingRequestCalls(stub func(*s3a.GetBucketTaggingInput) (*request.Request, *s3a.GetBucketTaggingOutput)) {
 	fake.getBucketTaggingRequestMutex.Lock()
 	defer fake.getBucketTaggingRequestMutex.Unlock()
 	fake.GetBucketTaggingRequestStub = stub
 }
 
-func (fake *FakeS3) GetBucketTaggingRequestArgsForCall(i int) *s3a.GetBucketTaggingInput {
+func (fake *FakeClient) GetBucketTaggingRequestArgsForCall(i int) *s3a.GetBucketTaggingInput {
 	fake.getBucketTaggingRequestMutex.RLock()
 	defer fake.getBucketTaggingRequestMutex.RUnlock()
 	argsForCall := fake.getBucketTaggingRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketTaggingRequestReturns(result1 *request.Request, result2 *s3a.GetBucketTaggingOutput) {
+func (fake *FakeClient) GetBucketTaggingRequestReturns(result1 *request.Request, result2 *s3a.GetBucketTaggingOutput) {
 	fake.getBucketTaggingRequestMutex.Lock()
 	defer fake.getBucketTaggingRequestMutex.Unlock()
 	fake.GetBucketTaggingRequestStub = nil
@@ -12107,7 +12107,7 @@ func (fake *FakeS3) GetBucketTaggingRequestReturns(result1 *request.Request, res
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketTaggingRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketTaggingOutput) {
+func (fake *FakeClient) GetBucketTaggingRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketTaggingOutput) {
 	fake.getBucketTaggingRequestMutex.Lock()
 	defer fake.getBucketTaggingRequestMutex.Unlock()
 	fake.GetBucketTaggingRequestStub = nil
@@ -12123,7 +12123,7 @@ func (fake *FakeS3) GetBucketTaggingRequestReturnsOnCall(i int, result1 *request
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketTaggingWithContext(arg1 context.Context, arg2 *s3a.GetBucketTaggingInput, arg3 ...request.Option) (*s3a.GetBucketTaggingOutput, error) {
+func (fake *FakeClient) GetBucketTaggingWithContext(arg1 context.Context, arg2 *s3a.GetBucketTaggingInput, arg3 ...request.Option) (*s3a.GetBucketTaggingOutput, error) {
 	fake.getBucketTaggingWithContextMutex.Lock()
 	ret, specificReturn := fake.getBucketTaggingWithContextReturnsOnCall[len(fake.getBucketTaggingWithContextArgsForCall)]
 	fake.getBucketTaggingWithContextArgsForCall = append(fake.getBucketTaggingWithContextArgsForCall, struct {
@@ -12143,26 +12143,26 @@ func (fake *FakeS3) GetBucketTaggingWithContext(arg1 context.Context, arg2 *s3a.
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketTaggingWithContextCallCount() int {
+func (fake *FakeClient) GetBucketTaggingWithContextCallCount() int {
 	fake.getBucketTaggingWithContextMutex.RLock()
 	defer fake.getBucketTaggingWithContextMutex.RUnlock()
 	return len(fake.getBucketTaggingWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketTaggingWithContextCalls(stub func(context.Context, *s3a.GetBucketTaggingInput, ...request.Option) (*s3a.GetBucketTaggingOutput, error)) {
+func (fake *FakeClient) GetBucketTaggingWithContextCalls(stub func(context.Context, *s3a.GetBucketTaggingInput, ...request.Option) (*s3a.GetBucketTaggingOutput, error)) {
 	fake.getBucketTaggingWithContextMutex.Lock()
 	defer fake.getBucketTaggingWithContextMutex.Unlock()
 	fake.GetBucketTaggingWithContextStub = stub
 }
 
-func (fake *FakeS3) GetBucketTaggingWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketTaggingInput, []request.Option) {
+func (fake *FakeClient) GetBucketTaggingWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketTaggingInput, []request.Option) {
 	fake.getBucketTaggingWithContextMutex.RLock()
 	defer fake.getBucketTaggingWithContextMutex.RUnlock()
 	argsForCall := fake.getBucketTaggingWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetBucketTaggingWithContextReturns(result1 *s3a.GetBucketTaggingOutput, result2 error) {
+func (fake *FakeClient) GetBucketTaggingWithContextReturns(result1 *s3a.GetBucketTaggingOutput, result2 error) {
 	fake.getBucketTaggingWithContextMutex.Lock()
 	defer fake.getBucketTaggingWithContextMutex.Unlock()
 	fake.GetBucketTaggingWithContextStub = nil
@@ -12172,7 +12172,7 @@ func (fake *FakeS3) GetBucketTaggingWithContextReturns(result1 *s3a.GetBucketTag
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketTaggingWithContextReturnsOnCall(i int, result1 *s3a.GetBucketTaggingOutput, result2 error) {
+func (fake *FakeClient) GetBucketTaggingWithContextReturnsOnCall(i int, result1 *s3a.GetBucketTaggingOutput, result2 error) {
 	fake.getBucketTaggingWithContextMutex.Lock()
 	defer fake.getBucketTaggingWithContextMutex.Unlock()
 	fake.GetBucketTaggingWithContextStub = nil
@@ -12188,7 +12188,7 @@ func (fake *FakeS3) GetBucketTaggingWithContextReturnsOnCall(i int, result1 *s3a
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketVersioning(arg1 *s3a.GetBucketVersioningInput) (*s3a.GetBucketVersioningOutput, error) {
+func (fake *FakeClient) GetBucketVersioning(arg1 *s3a.GetBucketVersioningInput) (*s3a.GetBucketVersioningOutput, error) {
 	fake.getBucketVersioningMutex.Lock()
 	ret, specificReturn := fake.getBucketVersioningReturnsOnCall[len(fake.getBucketVersioningArgsForCall)]
 	fake.getBucketVersioningArgsForCall = append(fake.getBucketVersioningArgsForCall, struct {
@@ -12206,26 +12206,26 @@ func (fake *FakeS3) GetBucketVersioning(arg1 *s3a.GetBucketVersioningInput) (*s3
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketVersioningCallCount() int {
+func (fake *FakeClient) GetBucketVersioningCallCount() int {
 	fake.getBucketVersioningMutex.RLock()
 	defer fake.getBucketVersioningMutex.RUnlock()
 	return len(fake.getBucketVersioningArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketVersioningCalls(stub func(*s3a.GetBucketVersioningInput) (*s3a.GetBucketVersioningOutput, error)) {
+func (fake *FakeClient) GetBucketVersioningCalls(stub func(*s3a.GetBucketVersioningInput) (*s3a.GetBucketVersioningOutput, error)) {
 	fake.getBucketVersioningMutex.Lock()
 	defer fake.getBucketVersioningMutex.Unlock()
 	fake.GetBucketVersioningStub = stub
 }
 
-func (fake *FakeS3) GetBucketVersioningArgsForCall(i int) *s3a.GetBucketVersioningInput {
+func (fake *FakeClient) GetBucketVersioningArgsForCall(i int) *s3a.GetBucketVersioningInput {
 	fake.getBucketVersioningMutex.RLock()
 	defer fake.getBucketVersioningMutex.RUnlock()
 	argsForCall := fake.getBucketVersioningArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketVersioningReturns(result1 *s3a.GetBucketVersioningOutput, result2 error) {
+func (fake *FakeClient) GetBucketVersioningReturns(result1 *s3a.GetBucketVersioningOutput, result2 error) {
 	fake.getBucketVersioningMutex.Lock()
 	defer fake.getBucketVersioningMutex.Unlock()
 	fake.GetBucketVersioningStub = nil
@@ -12235,7 +12235,7 @@ func (fake *FakeS3) GetBucketVersioningReturns(result1 *s3a.GetBucketVersioningO
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketVersioningReturnsOnCall(i int, result1 *s3a.GetBucketVersioningOutput, result2 error) {
+func (fake *FakeClient) GetBucketVersioningReturnsOnCall(i int, result1 *s3a.GetBucketVersioningOutput, result2 error) {
 	fake.getBucketVersioningMutex.Lock()
 	defer fake.getBucketVersioningMutex.Unlock()
 	fake.GetBucketVersioningStub = nil
@@ -12251,7 +12251,7 @@ func (fake *FakeS3) GetBucketVersioningReturnsOnCall(i int, result1 *s3a.GetBuck
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketVersioningRequest(arg1 *s3a.GetBucketVersioningInput) (*request.Request, *s3a.GetBucketVersioningOutput) {
+func (fake *FakeClient) GetBucketVersioningRequest(arg1 *s3a.GetBucketVersioningInput) (*request.Request, *s3a.GetBucketVersioningOutput) {
 	fake.getBucketVersioningRequestMutex.Lock()
 	ret, specificReturn := fake.getBucketVersioningRequestReturnsOnCall[len(fake.getBucketVersioningRequestArgsForCall)]
 	fake.getBucketVersioningRequestArgsForCall = append(fake.getBucketVersioningRequestArgsForCall, struct {
@@ -12269,26 +12269,26 @@ func (fake *FakeS3) GetBucketVersioningRequest(arg1 *s3a.GetBucketVersioningInpu
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketVersioningRequestCallCount() int {
+func (fake *FakeClient) GetBucketVersioningRequestCallCount() int {
 	fake.getBucketVersioningRequestMutex.RLock()
 	defer fake.getBucketVersioningRequestMutex.RUnlock()
 	return len(fake.getBucketVersioningRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketVersioningRequestCalls(stub func(*s3a.GetBucketVersioningInput) (*request.Request, *s3a.GetBucketVersioningOutput)) {
+func (fake *FakeClient) GetBucketVersioningRequestCalls(stub func(*s3a.GetBucketVersioningInput) (*request.Request, *s3a.GetBucketVersioningOutput)) {
 	fake.getBucketVersioningRequestMutex.Lock()
 	defer fake.getBucketVersioningRequestMutex.Unlock()
 	fake.GetBucketVersioningRequestStub = stub
 }
 
-func (fake *FakeS3) GetBucketVersioningRequestArgsForCall(i int) *s3a.GetBucketVersioningInput {
+func (fake *FakeClient) GetBucketVersioningRequestArgsForCall(i int) *s3a.GetBucketVersioningInput {
 	fake.getBucketVersioningRequestMutex.RLock()
 	defer fake.getBucketVersioningRequestMutex.RUnlock()
 	argsForCall := fake.getBucketVersioningRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketVersioningRequestReturns(result1 *request.Request, result2 *s3a.GetBucketVersioningOutput) {
+func (fake *FakeClient) GetBucketVersioningRequestReturns(result1 *request.Request, result2 *s3a.GetBucketVersioningOutput) {
 	fake.getBucketVersioningRequestMutex.Lock()
 	defer fake.getBucketVersioningRequestMutex.Unlock()
 	fake.GetBucketVersioningRequestStub = nil
@@ -12298,7 +12298,7 @@ func (fake *FakeS3) GetBucketVersioningRequestReturns(result1 *request.Request, 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketVersioningRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketVersioningOutput) {
+func (fake *FakeClient) GetBucketVersioningRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketVersioningOutput) {
 	fake.getBucketVersioningRequestMutex.Lock()
 	defer fake.getBucketVersioningRequestMutex.Unlock()
 	fake.GetBucketVersioningRequestStub = nil
@@ -12314,7 +12314,7 @@ func (fake *FakeS3) GetBucketVersioningRequestReturnsOnCall(i int, result1 *requ
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketVersioningWithContext(arg1 context.Context, arg2 *s3a.GetBucketVersioningInput, arg3 ...request.Option) (*s3a.GetBucketVersioningOutput, error) {
+func (fake *FakeClient) GetBucketVersioningWithContext(arg1 context.Context, arg2 *s3a.GetBucketVersioningInput, arg3 ...request.Option) (*s3a.GetBucketVersioningOutput, error) {
 	fake.getBucketVersioningWithContextMutex.Lock()
 	ret, specificReturn := fake.getBucketVersioningWithContextReturnsOnCall[len(fake.getBucketVersioningWithContextArgsForCall)]
 	fake.getBucketVersioningWithContextArgsForCall = append(fake.getBucketVersioningWithContextArgsForCall, struct {
@@ -12334,26 +12334,26 @@ func (fake *FakeS3) GetBucketVersioningWithContext(arg1 context.Context, arg2 *s
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketVersioningWithContextCallCount() int {
+func (fake *FakeClient) GetBucketVersioningWithContextCallCount() int {
 	fake.getBucketVersioningWithContextMutex.RLock()
 	defer fake.getBucketVersioningWithContextMutex.RUnlock()
 	return len(fake.getBucketVersioningWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketVersioningWithContextCalls(stub func(context.Context, *s3a.GetBucketVersioningInput, ...request.Option) (*s3a.GetBucketVersioningOutput, error)) {
+func (fake *FakeClient) GetBucketVersioningWithContextCalls(stub func(context.Context, *s3a.GetBucketVersioningInput, ...request.Option) (*s3a.GetBucketVersioningOutput, error)) {
 	fake.getBucketVersioningWithContextMutex.Lock()
 	defer fake.getBucketVersioningWithContextMutex.Unlock()
 	fake.GetBucketVersioningWithContextStub = stub
 }
 
-func (fake *FakeS3) GetBucketVersioningWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketVersioningInput, []request.Option) {
+func (fake *FakeClient) GetBucketVersioningWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketVersioningInput, []request.Option) {
 	fake.getBucketVersioningWithContextMutex.RLock()
 	defer fake.getBucketVersioningWithContextMutex.RUnlock()
 	argsForCall := fake.getBucketVersioningWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetBucketVersioningWithContextReturns(result1 *s3a.GetBucketVersioningOutput, result2 error) {
+func (fake *FakeClient) GetBucketVersioningWithContextReturns(result1 *s3a.GetBucketVersioningOutput, result2 error) {
 	fake.getBucketVersioningWithContextMutex.Lock()
 	defer fake.getBucketVersioningWithContextMutex.Unlock()
 	fake.GetBucketVersioningWithContextStub = nil
@@ -12363,7 +12363,7 @@ func (fake *FakeS3) GetBucketVersioningWithContextReturns(result1 *s3a.GetBucket
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketVersioningWithContextReturnsOnCall(i int, result1 *s3a.GetBucketVersioningOutput, result2 error) {
+func (fake *FakeClient) GetBucketVersioningWithContextReturnsOnCall(i int, result1 *s3a.GetBucketVersioningOutput, result2 error) {
 	fake.getBucketVersioningWithContextMutex.Lock()
 	defer fake.getBucketVersioningWithContextMutex.Unlock()
 	fake.GetBucketVersioningWithContextStub = nil
@@ -12379,7 +12379,7 @@ func (fake *FakeS3) GetBucketVersioningWithContextReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketWebsite(arg1 *s3a.GetBucketWebsiteInput) (*s3a.GetBucketWebsiteOutput, error) {
+func (fake *FakeClient) GetBucketWebsite(arg1 *s3a.GetBucketWebsiteInput) (*s3a.GetBucketWebsiteOutput, error) {
 	fake.getBucketWebsiteMutex.Lock()
 	ret, specificReturn := fake.getBucketWebsiteReturnsOnCall[len(fake.getBucketWebsiteArgsForCall)]
 	fake.getBucketWebsiteArgsForCall = append(fake.getBucketWebsiteArgsForCall, struct {
@@ -12397,26 +12397,26 @@ func (fake *FakeS3) GetBucketWebsite(arg1 *s3a.GetBucketWebsiteInput) (*s3a.GetB
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketWebsiteCallCount() int {
+func (fake *FakeClient) GetBucketWebsiteCallCount() int {
 	fake.getBucketWebsiteMutex.RLock()
 	defer fake.getBucketWebsiteMutex.RUnlock()
 	return len(fake.getBucketWebsiteArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketWebsiteCalls(stub func(*s3a.GetBucketWebsiteInput) (*s3a.GetBucketWebsiteOutput, error)) {
+func (fake *FakeClient) GetBucketWebsiteCalls(stub func(*s3a.GetBucketWebsiteInput) (*s3a.GetBucketWebsiteOutput, error)) {
 	fake.getBucketWebsiteMutex.Lock()
 	defer fake.getBucketWebsiteMutex.Unlock()
 	fake.GetBucketWebsiteStub = stub
 }
 
-func (fake *FakeS3) GetBucketWebsiteArgsForCall(i int) *s3a.GetBucketWebsiteInput {
+func (fake *FakeClient) GetBucketWebsiteArgsForCall(i int) *s3a.GetBucketWebsiteInput {
 	fake.getBucketWebsiteMutex.RLock()
 	defer fake.getBucketWebsiteMutex.RUnlock()
 	argsForCall := fake.getBucketWebsiteArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketWebsiteReturns(result1 *s3a.GetBucketWebsiteOutput, result2 error) {
+func (fake *FakeClient) GetBucketWebsiteReturns(result1 *s3a.GetBucketWebsiteOutput, result2 error) {
 	fake.getBucketWebsiteMutex.Lock()
 	defer fake.getBucketWebsiteMutex.Unlock()
 	fake.GetBucketWebsiteStub = nil
@@ -12426,7 +12426,7 @@ func (fake *FakeS3) GetBucketWebsiteReturns(result1 *s3a.GetBucketWebsiteOutput,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketWebsiteReturnsOnCall(i int, result1 *s3a.GetBucketWebsiteOutput, result2 error) {
+func (fake *FakeClient) GetBucketWebsiteReturnsOnCall(i int, result1 *s3a.GetBucketWebsiteOutput, result2 error) {
 	fake.getBucketWebsiteMutex.Lock()
 	defer fake.getBucketWebsiteMutex.Unlock()
 	fake.GetBucketWebsiteStub = nil
@@ -12442,7 +12442,7 @@ func (fake *FakeS3) GetBucketWebsiteReturnsOnCall(i int, result1 *s3a.GetBucketW
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketWebsiteRequest(arg1 *s3a.GetBucketWebsiteInput) (*request.Request, *s3a.GetBucketWebsiteOutput) {
+func (fake *FakeClient) GetBucketWebsiteRequest(arg1 *s3a.GetBucketWebsiteInput) (*request.Request, *s3a.GetBucketWebsiteOutput) {
 	fake.getBucketWebsiteRequestMutex.Lock()
 	ret, specificReturn := fake.getBucketWebsiteRequestReturnsOnCall[len(fake.getBucketWebsiteRequestArgsForCall)]
 	fake.getBucketWebsiteRequestArgsForCall = append(fake.getBucketWebsiteRequestArgsForCall, struct {
@@ -12460,26 +12460,26 @@ func (fake *FakeS3) GetBucketWebsiteRequest(arg1 *s3a.GetBucketWebsiteInput) (*r
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketWebsiteRequestCallCount() int {
+func (fake *FakeClient) GetBucketWebsiteRequestCallCount() int {
 	fake.getBucketWebsiteRequestMutex.RLock()
 	defer fake.getBucketWebsiteRequestMutex.RUnlock()
 	return len(fake.getBucketWebsiteRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketWebsiteRequestCalls(stub func(*s3a.GetBucketWebsiteInput) (*request.Request, *s3a.GetBucketWebsiteOutput)) {
+func (fake *FakeClient) GetBucketWebsiteRequestCalls(stub func(*s3a.GetBucketWebsiteInput) (*request.Request, *s3a.GetBucketWebsiteOutput)) {
 	fake.getBucketWebsiteRequestMutex.Lock()
 	defer fake.getBucketWebsiteRequestMutex.Unlock()
 	fake.GetBucketWebsiteRequestStub = stub
 }
 
-func (fake *FakeS3) GetBucketWebsiteRequestArgsForCall(i int) *s3a.GetBucketWebsiteInput {
+func (fake *FakeClient) GetBucketWebsiteRequestArgsForCall(i int) *s3a.GetBucketWebsiteInput {
 	fake.getBucketWebsiteRequestMutex.RLock()
 	defer fake.getBucketWebsiteRequestMutex.RUnlock()
 	argsForCall := fake.getBucketWebsiteRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetBucketWebsiteRequestReturns(result1 *request.Request, result2 *s3a.GetBucketWebsiteOutput) {
+func (fake *FakeClient) GetBucketWebsiteRequestReturns(result1 *request.Request, result2 *s3a.GetBucketWebsiteOutput) {
 	fake.getBucketWebsiteRequestMutex.Lock()
 	defer fake.getBucketWebsiteRequestMutex.Unlock()
 	fake.GetBucketWebsiteRequestStub = nil
@@ -12489,7 +12489,7 @@ func (fake *FakeS3) GetBucketWebsiteRequestReturns(result1 *request.Request, res
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketWebsiteRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketWebsiteOutput) {
+func (fake *FakeClient) GetBucketWebsiteRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetBucketWebsiteOutput) {
 	fake.getBucketWebsiteRequestMutex.Lock()
 	defer fake.getBucketWebsiteRequestMutex.Unlock()
 	fake.GetBucketWebsiteRequestStub = nil
@@ -12505,7 +12505,7 @@ func (fake *FakeS3) GetBucketWebsiteRequestReturnsOnCall(i int, result1 *request
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketWebsiteWithContext(arg1 context.Context, arg2 *s3a.GetBucketWebsiteInput, arg3 ...request.Option) (*s3a.GetBucketWebsiteOutput, error) {
+func (fake *FakeClient) GetBucketWebsiteWithContext(arg1 context.Context, arg2 *s3a.GetBucketWebsiteInput, arg3 ...request.Option) (*s3a.GetBucketWebsiteOutput, error) {
 	fake.getBucketWebsiteWithContextMutex.Lock()
 	ret, specificReturn := fake.getBucketWebsiteWithContextReturnsOnCall[len(fake.getBucketWebsiteWithContextArgsForCall)]
 	fake.getBucketWebsiteWithContextArgsForCall = append(fake.getBucketWebsiteWithContextArgsForCall, struct {
@@ -12525,26 +12525,26 @@ func (fake *FakeS3) GetBucketWebsiteWithContext(arg1 context.Context, arg2 *s3a.
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetBucketWebsiteWithContextCallCount() int {
+func (fake *FakeClient) GetBucketWebsiteWithContextCallCount() int {
 	fake.getBucketWebsiteWithContextMutex.RLock()
 	defer fake.getBucketWebsiteWithContextMutex.RUnlock()
 	return len(fake.getBucketWebsiteWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetBucketWebsiteWithContextCalls(stub func(context.Context, *s3a.GetBucketWebsiteInput, ...request.Option) (*s3a.GetBucketWebsiteOutput, error)) {
+func (fake *FakeClient) GetBucketWebsiteWithContextCalls(stub func(context.Context, *s3a.GetBucketWebsiteInput, ...request.Option) (*s3a.GetBucketWebsiteOutput, error)) {
 	fake.getBucketWebsiteWithContextMutex.Lock()
 	defer fake.getBucketWebsiteWithContextMutex.Unlock()
 	fake.GetBucketWebsiteWithContextStub = stub
 }
 
-func (fake *FakeS3) GetBucketWebsiteWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketWebsiteInput, []request.Option) {
+func (fake *FakeClient) GetBucketWebsiteWithContextArgsForCall(i int) (context.Context, *s3a.GetBucketWebsiteInput, []request.Option) {
 	fake.getBucketWebsiteWithContextMutex.RLock()
 	defer fake.getBucketWebsiteWithContextMutex.RUnlock()
 	argsForCall := fake.getBucketWebsiteWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetBucketWebsiteWithContextReturns(result1 *s3a.GetBucketWebsiteOutput, result2 error) {
+func (fake *FakeClient) GetBucketWebsiteWithContextReturns(result1 *s3a.GetBucketWebsiteOutput, result2 error) {
 	fake.getBucketWebsiteWithContextMutex.Lock()
 	defer fake.getBucketWebsiteWithContextMutex.Unlock()
 	fake.GetBucketWebsiteWithContextStub = nil
@@ -12554,7 +12554,7 @@ func (fake *FakeS3) GetBucketWebsiteWithContextReturns(result1 *s3a.GetBucketWeb
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetBucketWebsiteWithContextReturnsOnCall(i int, result1 *s3a.GetBucketWebsiteOutput, result2 error) {
+func (fake *FakeClient) GetBucketWebsiteWithContextReturnsOnCall(i int, result1 *s3a.GetBucketWebsiteOutput, result2 error) {
 	fake.getBucketWebsiteWithContextMutex.Lock()
 	defer fake.getBucketWebsiteWithContextMutex.Unlock()
 	fake.GetBucketWebsiteWithContextStub = nil
@@ -12570,7 +12570,7 @@ func (fake *FakeS3) GetBucketWebsiteWithContextReturnsOnCall(i int, result1 *s3a
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObject(arg1 *s3a.GetObjectInput) (*s3a.GetObjectOutput, error) {
+func (fake *FakeClient) GetObject(arg1 *s3a.GetObjectInput) (*s3a.GetObjectOutput, error) {
 	fake.getObjectMutex.Lock()
 	ret, specificReturn := fake.getObjectReturnsOnCall[len(fake.getObjectArgsForCall)]
 	fake.getObjectArgsForCall = append(fake.getObjectArgsForCall, struct {
@@ -12588,26 +12588,26 @@ func (fake *FakeS3) GetObject(arg1 *s3a.GetObjectInput) (*s3a.GetObjectOutput, e
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetObjectCallCount() int {
+func (fake *FakeClient) GetObjectCallCount() int {
 	fake.getObjectMutex.RLock()
 	defer fake.getObjectMutex.RUnlock()
 	return len(fake.getObjectArgsForCall)
 }
 
-func (fake *FakeS3) GetObjectCalls(stub func(*s3a.GetObjectInput) (*s3a.GetObjectOutput, error)) {
+func (fake *FakeClient) GetObjectCalls(stub func(*s3a.GetObjectInput) (*s3a.GetObjectOutput, error)) {
 	fake.getObjectMutex.Lock()
 	defer fake.getObjectMutex.Unlock()
 	fake.GetObjectStub = stub
 }
 
-func (fake *FakeS3) GetObjectArgsForCall(i int) *s3a.GetObjectInput {
+func (fake *FakeClient) GetObjectArgsForCall(i int) *s3a.GetObjectInput {
 	fake.getObjectMutex.RLock()
 	defer fake.getObjectMutex.RUnlock()
 	argsForCall := fake.getObjectArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetObjectReturns(result1 *s3a.GetObjectOutput, result2 error) {
+func (fake *FakeClient) GetObjectReturns(result1 *s3a.GetObjectOutput, result2 error) {
 	fake.getObjectMutex.Lock()
 	defer fake.getObjectMutex.Unlock()
 	fake.GetObjectStub = nil
@@ -12617,7 +12617,7 @@ func (fake *FakeS3) GetObjectReturns(result1 *s3a.GetObjectOutput, result2 error
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectReturnsOnCall(i int, result1 *s3a.GetObjectOutput, result2 error) {
+func (fake *FakeClient) GetObjectReturnsOnCall(i int, result1 *s3a.GetObjectOutput, result2 error) {
 	fake.getObjectMutex.Lock()
 	defer fake.getObjectMutex.Unlock()
 	fake.GetObjectStub = nil
@@ -12633,7 +12633,7 @@ func (fake *FakeS3) GetObjectReturnsOnCall(i int, result1 *s3a.GetObjectOutput, 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectAcl(arg1 *s3a.GetObjectAclInput) (*s3a.GetObjectAclOutput, error) {
+func (fake *FakeClient) GetObjectAcl(arg1 *s3a.GetObjectAclInput) (*s3a.GetObjectAclOutput, error) {
 	fake.getObjectAclMutex.Lock()
 	ret, specificReturn := fake.getObjectAclReturnsOnCall[len(fake.getObjectAclArgsForCall)]
 	fake.getObjectAclArgsForCall = append(fake.getObjectAclArgsForCall, struct {
@@ -12651,26 +12651,26 @@ func (fake *FakeS3) GetObjectAcl(arg1 *s3a.GetObjectAclInput) (*s3a.GetObjectAcl
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetObjectAclCallCount() int {
+func (fake *FakeClient) GetObjectAclCallCount() int {
 	fake.getObjectAclMutex.RLock()
 	defer fake.getObjectAclMutex.RUnlock()
 	return len(fake.getObjectAclArgsForCall)
 }
 
-func (fake *FakeS3) GetObjectAclCalls(stub func(*s3a.GetObjectAclInput) (*s3a.GetObjectAclOutput, error)) {
+func (fake *FakeClient) GetObjectAclCalls(stub func(*s3a.GetObjectAclInput) (*s3a.GetObjectAclOutput, error)) {
 	fake.getObjectAclMutex.Lock()
 	defer fake.getObjectAclMutex.Unlock()
 	fake.GetObjectAclStub = stub
 }
 
-func (fake *FakeS3) GetObjectAclArgsForCall(i int) *s3a.GetObjectAclInput {
+func (fake *FakeClient) GetObjectAclArgsForCall(i int) *s3a.GetObjectAclInput {
 	fake.getObjectAclMutex.RLock()
 	defer fake.getObjectAclMutex.RUnlock()
 	argsForCall := fake.getObjectAclArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetObjectAclReturns(result1 *s3a.GetObjectAclOutput, result2 error) {
+func (fake *FakeClient) GetObjectAclReturns(result1 *s3a.GetObjectAclOutput, result2 error) {
 	fake.getObjectAclMutex.Lock()
 	defer fake.getObjectAclMutex.Unlock()
 	fake.GetObjectAclStub = nil
@@ -12680,7 +12680,7 @@ func (fake *FakeS3) GetObjectAclReturns(result1 *s3a.GetObjectAclOutput, result2
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectAclReturnsOnCall(i int, result1 *s3a.GetObjectAclOutput, result2 error) {
+func (fake *FakeClient) GetObjectAclReturnsOnCall(i int, result1 *s3a.GetObjectAclOutput, result2 error) {
 	fake.getObjectAclMutex.Lock()
 	defer fake.getObjectAclMutex.Unlock()
 	fake.GetObjectAclStub = nil
@@ -12696,7 +12696,7 @@ func (fake *FakeS3) GetObjectAclReturnsOnCall(i int, result1 *s3a.GetObjectAclOu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectAclRequest(arg1 *s3a.GetObjectAclInput) (*request.Request, *s3a.GetObjectAclOutput) {
+func (fake *FakeClient) GetObjectAclRequest(arg1 *s3a.GetObjectAclInput) (*request.Request, *s3a.GetObjectAclOutput) {
 	fake.getObjectAclRequestMutex.Lock()
 	ret, specificReturn := fake.getObjectAclRequestReturnsOnCall[len(fake.getObjectAclRequestArgsForCall)]
 	fake.getObjectAclRequestArgsForCall = append(fake.getObjectAclRequestArgsForCall, struct {
@@ -12714,26 +12714,26 @@ func (fake *FakeS3) GetObjectAclRequest(arg1 *s3a.GetObjectAclInput) (*request.R
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetObjectAclRequestCallCount() int {
+func (fake *FakeClient) GetObjectAclRequestCallCount() int {
 	fake.getObjectAclRequestMutex.RLock()
 	defer fake.getObjectAclRequestMutex.RUnlock()
 	return len(fake.getObjectAclRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetObjectAclRequestCalls(stub func(*s3a.GetObjectAclInput) (*request.Request, *s3a.GetObjectAclOutput)) {
+func (fake *FakeClient) GetObjectAclRequestCalls(stub func(*s3a.GetObjectAclInput) (*request.Request, *s3a.GetObjectAclOutput)) {
 	fake.getObjectAclRequestMutex.Lock()
 	defer fake.getObjectAclRequestMutex.Unlock()
 	fake.GetObjectAclRequestStub = stub
 }
 
-func (fake *FakeS3) GetObjectAclRequestArgsForCall(i int) *s3a.GetObjectAclInput {
+func (fake *FakeClient) GetObjectAclRequestArgsForCall(i int) *s3a.GetObjectAclInput {
 	fake.getObjectAclRequestMutex.RLock()
 	defer fake.getObjectAclRequestMutex.RUnlock()
 	argsForCall := fake.getObjectAclRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetObjectAclRequestReturns(result1 *request.Request, result2 *s3a.GetObjectAclOutput) {
+func (fake *FakeClient) GetObjectAclRequestReturns(result1 *request.Request, result2 *s3a.GetObjectAclOutput) {
 	fake.getObjectAclRequestMutex.Lock()
 	defer fake.getObjectAclRequestMutex.Unlock()
 	fake.GetObjectAclRequestStub = nil
@@ -12743,7 +12743,7 @@ func (fake *FakeS3) GetObjectAclRequestReturns(result1 *request.Request, result2
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectAclRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetObjectAclOutput) {
+func (fake *FakeClient) GetObjectAclRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetObjectAclOutput) {
 	fake.getObjectAclRequestMutex.Lock()
 	defer fake.getObjectAclRequestMutex.Unlock()
 	fake.GetObjectAclRequestStub = nil
@@ -12759,7 +12759,7 @@ func (fake *FakeS3) GetObjectAclRequestReturnsOnCall(i int, result1 *request.Req
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectAclWithContext(arg1 context.Context, arg2 *s3a.GetObjectAclInput, arg3 ...request.Option) (*s3a.GetObjectAclOutput, error) {
+func (fake *FakeClient) GetObjectAclWithContext(arg1 context.Context, arg2 *s3a.GetObjectAclInput, arg3 ...request.Option) (*s3a.GetObjectAclOutput, error) {
 	fake.getObjectAclWithContextMutex.Lock()
 	ret, specificReturn := fake.getObjectAclWithContextReturnsOnCall[len(fake.getObjectAclWithContextArgsForCall)]
 	fake.getObjectAclWithContextArgsForCall = append(fake.getObjectAclWithContextArgsForCall, struct {
@@ -12779,26 +12779,26 @@ func (fake *FakeS3) GetObjectAclWithContext(arg1 context.Context, arg2 *s3a.GetO
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetObjectAclWithContextCallCount() int {
+func (fake *FakeClient) GetObjectAclWithContextCallCount() int {
 	fake.getObjectAclWithContextMutex.RLock()
 	defer fake.getObjectAclWithContextMutex.RUnlock()
 	return len(fake.getObjectAclWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetObjectAclWithContextCalls(stub func(context.Context, *s3a.GetObjectAclInput, ...request.Option) (*s3a.GetObjectAclOutput, error)) {
+func (fake *FakeClient) GetObjectAclWithContextCalls(stub func(context.Context, *s3a.GetObjectAclInput, ...request.Option) (*s3a.GetObjectAclOutput, error)) {
 	fake.getObjectAclWithContextMutex.Lock()
 	defer fake.getObjectAclWithContextMutex.Unlock()
 	fake.GetObjectAclWithContextStub = stub
 }
 
-func (fake *FakeS3) GetObjectAclWithContextArgsForCall(i int) (context.Context, *s3a.GetObjectAclInput, []request.Option) {
+func (fake *FakeClient) GetObjectAclWithContextArgsForCall(i int) (context.Context, *s3a.GetObjectAclInput, []request.Option) {
 	fake.getObjectAclWithContextMutex.RLock()
 	defer fake.getObjectAclWithContextMutex.RUnlock()
 	argsForCall := fake.getObjectAclWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetObjectAclWithContextReturns(result1 *s3a.GetObjectAclOutput, result2 error) {
+func (fake *FakeClient) GetObjectAclWithContextReturns(result1 *s3a.GetObjectAclOutput, result2 error) {
 	fake.getObjectAclWithContextMutex.Lock()
 	defer fake.getObjectAclWithContextMutex.Unlock()
 	fake.GetObjectAclWithContextStub = nil
@@ -12808,7 +12808,7 @@ func (fake *FakeS3) GetObjectAclWithContextReturns(result1 *s3a.GetObjectAclOutp
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectAclWithContextReturnsOnCall(i int, result1 *s3a.GetObjectAclOutput, result2 error) {
+func (fake *FakeClient) GetObjectAclWithContextReturnsOnCall(i int, result1 *s3a.GetObjectAclOutput, result2 error) {
 	fake.getObjectAclWithContextMutex.Lock()
 	defer fake.getObjectAclWithContextMutex.Unlock()
 	fake.GetObjectAclWithContextStub = nil
@@ -12824,7 +12824,7 @@ func (fake *FakeS3) GetObjectAclWithContextReturnsOnCall(i int, result1 *s3a.Get
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectLegalHold(arg1 *s3a.GetObjectLegalHoldInput) (*s3a.GetObjectLegalHoldOutput, error) {
+func (fake *FakeClient) GetObjectLegalHold(arg1 *s3a.GetObjectLegalHoldInput) (*s3a.GetObjectLegalHoldOutput, error) {
 	fake.getObjectLegalHoldMutex.Lock()
 	ret, specificReturn := fake.getObjectLegalHoldReturnsOnCall[len(fake.getObjectLegalHoldArgsForCall)]
 	fake.getObjectLegalHoldArgsForCall = append(fake.getObjectLegalHoldArgsForCall, struct {
@@ -12842,26 +12842,26 @@ func (fake *FakeS3) GetObjectLegalHold(arg1 *s3a.GetObjectLegalHoldInput) (*s3a.
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetObjectLegalHoldCallCount() int {
+func (fake *FakeClient) GetObjectLegalHoldCallCount() int {
 	fake.getObjectLegalHoldMutex.RLock()
 	defer fake.getObjectLegalHoldMutex.RUnlock()
 	return len(fake.getObjectLegalHoldArgsForCall)
 }
 
-func (fake *FakeS3) GetObjectLegalHoldCalls(stub func(*s3a.GetObjectLegalHoldInput) (*s3a.GetObjectLegalHoldOutput, error)) {
+func (fake *FakeClient) GetObjectLegalHoldCalls(stub func(*s3a.GetObjectLegalHoldInput) (*s3a.GetObjectLegalHoldOutput, error)) {
 	fake.getObjectLegalHoldMutex.Lock()
 	defer fake.getObjectLegalHoldMutex.Unlock()
 	fake.GetObjectLegalHoldStub = stub
 }
 
-func (fake *FakeS3) GetObjectLegalHoldArgsForCall(i int) *s3a.GetObjectLegalHoldInput {
+func (fake *FakeClient) GetObjectLegalHoldArgsForCall(i int) *s3a.GetObjectLegalHoldInput {
 	fake.getObjectLegalHoldMutex.RLock()
 	defer fake.getObjectLegalHoldMutex.RUnlock()
 	argsForCall := fake.getObjectLegalHoldArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetObjectLegalHoldReturns(result1 *s3a.GetObjectLegalHoldOutput, result2 error) {
+func (fake *FakeClient) GetObjectLegalHoldReturns(result1 *s3a.GetObjectLegalHoldOutput, result2 error) {
 	fake.getObjectLegalHoldMutex.Lock()
 	defer fake.getObjectLegalHoldMutex.Unlock()
 	fake.GetObjectLegalHoldStub = nil
@@ -12871,7 +12871,7 @@ func (fake *FakeS3) GetObjectLegalHoldReturns(result1 *s3a.GetObjectLegalHoldOut
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectLegalHoldReturnsOnCall(i int, result1 *s3a.GetObjectLegalHoldOutput, result2 error) {
+func (fake *FakeClient) GetObjectLegalHoldReturnsOnCall(i int, result1 *s3a.GetObjectLegalHoldOutput, result2 error) {
 	fake.getObjectLegalHoldMutex.Lock()
 	defer fake.getObjectLegalHoldMutex.Unlock()
 	fake.GetObjectLegalHoldStub = nil
@@ -12887,7 +12887,7 @@ func (fake *FakeS3) GetObjectLegalHoldReturnsOnCall(i int, result1 *s3a.GetObjec
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectLegalHoldRequest(arg1 *s3a.GetObjectLegalHoldInput) (*request.Request, *s3a.GetObjectLegalHoldOutput) {
+func (fake *FakeClient) GetObjectLegalHoldRequest(arg1 *s3a.GetObjectLegalHoldInput) (*request.Request, *s3a.GetObjectLegalHoldOutput) {
 	fake.getObjectLegalHoldRequestMutex.Lock()
 	ret, specificReturn := fake.getObjectLegalHoldRequestReturnsOnCall[len(fake.getObjectLegalHoldRequestArgsForCall)]
 	fake.getObjectLegalHoldRequestArgsForCall = append(fake.getObjectLegalHoldRequestArgsForCall, struct {
@@ -12905,26 +12905,26 @@ func (fake *FakeS3) GetObjectLegalHoldRequest(arg1 *s3a.GetObjectLegalHoldInput)
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetObjectLegalHoldRequestCallCount() int {
+func (fake *FakeClient) GetObjectLegalHoldRequestCallCount() int {
 	fake.getObjectLegalHoldRequestMutex.RLock()
 	defer fake.getObjectLegalHoldRequestMutex.RUnlock()
 	return len(fake.getObjectLegalHoldRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetObjectLegalHoldRequestCalls(stub func(*s3a.GetObjectLegalHoldInput) (*request.Request, *s3a.GetObjectLegalHoldOutput)) {
+func (fake *FakeClient) GetObjectLegalHoldRequestCalls(stub func(*s3a.GetObjectLegalHoldInput) (*request.Request, *s3a.GetObjectLegalHoldOutput)) {
 	fake.getObjectLegalHoldRequestMutex.Lock()
 	defer fake.getObjectLegalHoldRequestMutex.Unlock()
 	fake.GetObjectLegalHoldRequestStub = stub
 }
 
-func (fake *FakeS3) GetObjectLegalHoldRequestArgsForCall(i int) *s3a.GetObjectLegalHoldInput {
+func (fake *FakeClient) GetObjectLegalHoldRequestArgsForCall(i int) *s3a.GetObjectLegalHoldInput {
 	fake.getObjectLegalHoldRequestMutex.RLock()
 	defer fake.getObjectLegalHoldRequestMutex.RUnlock()
 	argsForCall := fake.getObjectLegalHoldRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetObjectLegalHoldRequestReturns(result1 *request.Request, result2 *s3a.GetObjectLegalHoldOutput) {
+func (fake *FakeClient) GetObjectLegalHoldRequestReturns(result1 *request.Request, result2 *s3a.GetObjectLegalHoldOutput) {
 	fake.getObjectLegalHoldRequestMutex.Lock()
 	defer fake.getObjectLegalHoldRequestMutex.Unlock()
 	fake.GetObjectLegalHoldRequestStub = nil
@@ -12934,7 +12934,7 @@ func (fake *FakeS3) GetObjectLegalHoldRequestReturns(result1 *request.Request, r
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectLegalHoldRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetObjectLegalHoldOutput) {
+func (fake *FakeClient) GetObjectLegalHoldRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetObjectLegalHoldOutput) {
 	fake.getObjectLegalHoldRequestMutex.Lock()
 	defer fake.getObjectLegalHoldRequestMutex.Unlock()
 	fake.GetObjectLegalHoldRequestStub = nil
@@ -12950,7 +12950,7 @@ func (fake *FakeS3) GetObjectLegalHoldRequestReturnsOnCall(i int, result1 *reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectLegalHoldWithContext(arg1 context.Context, arg2 *s3a.GetObjectLegalHoldInput, arg3 ...request.Option) (*s3a.GetObjectLegalHoldOutput, error) {
+func (fake *FakeClient) GetObjectLegalHoldWithContext(arg1 context.Context, arg2 *s3a.GetObjectLegalHoldInput, arg3 ...request.Option) (*s3a.GetObjectLegalHoldOutput, error) {
 	fake.getObjectLegalHoldWithContextMutex.Lock()
 	ret, specificReturn := fake.getObjectLegalHoldWithContextReturnsOnCall[len(fake.getObjectLegalHoldWithContextArgsForCall)]
 	fake.getObjectLegalHoldWithContextArgsForCall = append(fake.getObjectLegalHoldWithContextArgsForCall, struct {
@@ -12970,26 +12970,26 @@ func (fake *FakeS3) GetObjectLegalHoldWithContext(arg1 context.Context, arg2 *s3
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetObjectLegalHoldWithContextCallCount() int {
+func (fake *FakeClient) GetObjectLegalHoldWithContextCallCount() int {
 	fake.getObjectLegalHoldWithContextMutex.RLock()
 	defer fake.getObjectLegalHoldWithContextMutex.RUnlock()
 	return len(fake.getObjectLegalHoldWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetObjectLegalHoldWithContextCalls(stub func(context.Context, *s3a.GetObjectLegalHoldInput, ...request.Option) (*s3a.GetObjectLegalHoldOutput, error)) {
+func (fake *FakeClient) GetObjectLegalHoldWithContextCalls(stub func(context.Context, *s3a.GetObjectLegalHoldInput, ...request.Option) (*s3a.GetObjectLegalHoldOutput, error)) {
 	fake.getObjectLegalHoldWithContextMutex.Lock()
 	defer fake.getObjectLegalHoldWithContextMutex.Unlock()
 	fake.GetObjectLegalHoldWithContextStub = stub
 }
 
-func (fake *FakeS3) GetObjectLegalHoldWithContextArgsForCall(i int) (context.Context, *s3a.GetObjectLegalHoldInput, []request.Option) {
+func (fake *FakeClient) GetObjectLegalHoldWithContextArgsForCall(i int) (context.Context, *s3a.GetObjectLegalHoldInput, []request.Option) {
 	fake.getObjectLegalHoldWithContextMutex.RLock()
 	defer fake.getObjectLegalHoldWithContextMutex.RUnlock()
 	argsForCall := fake.getObjectLegalHoldWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetObjectLegalHoldWithContextReturns(result1 *s3a.GetObjectLegalHoldOutput, result2 error) {
+func (fake *FakeClient) GetObjectLegalHoldWithContextReturns(result1 *s3a.GetObjectLegalHoldOutput, result2 error) {
 	fake.getObjectLegalHoldWithContextMutex.Lock()
 	defer fake.getObjectLegalHoldWithContextMutex.Unlock()
 	fake.GetObjectLegalHoldWithContextStub = nil
@@ -12999,7 +12999,7 @@ func (fake *FakeS3) GetObjectLegalHoldWithContextReturns(result1 *s3a.GetObjectL
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectLegalHoldWithContextReturnsOnCall(i int, result1 *s3a.GetObjectLegalHoldOutput, result2 error) {
+func (fake *FakeClient) GetObjectLegalHoldWithContextReturnsOnCall(i int, result1 *s3a.GetObjectLegalHoldOutput, result2 error) {
 	fake.getObjectLegalHoldWithContextMutex.Lock()
 	defer fake.getObjectLegalHoldWithContextMutex.Unlock()
 	fake.GetObjectLegalHoldWithContextStub = nil
@@ -13015,7 +13015,7 @@ func (fake *FakeS3) GetObjectLegalHoldWithContextReturnsOnCall(i int, result1 *s
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectLockConfiguration(arg1 *s3a.GetObjectLockConfigurationInput) (*s3a.GetObjectLockConfigurationOutput, error) {
+func (fake *FakeClient) GetObjectLockConfiguration(arg1 *s3a.GetObjectLockConfigurationInput) (*s3a.GetObjectLockConfigurationOutput, error) {
 	fake.getObjectLockConfigurationMutex.Lock()
 	ret, specificReturn := fake.getObjectLockConfigurationReturnsOnCall[len(fake.getObjectLockConfigurationArgsForCall)]
 	fake.getObjectLockConfigurationArgsForCall = append(fake.getObjectLockConfigurationArgsForCall, struct {
@@ -13033,26 +13033,26 @@ func (fake *FakeS3) GetObjectLockConfiguration(arg1 *s3a.GetObjectLockConfigurat
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetObjectLockConfigurationCallCount() int {
+func (fake *FakeClient) GetObjectLockConfigurationCallCount() int {
 	fake.getObjectLockConfigurationMutex.RLock()
 	defer fake.getObjectLockConfigurationMutex.RUnlock()
 	return len(fake.getObjectLockConfigurationArgsForCall)
 }
 
-func (fake *FakeS3) GetObjectLockConfigurationCalls(stub func(*s3a.GetObjectLockConfigurationInput) (*s3a.GetObjectLockConfigurationOutput, error)) {
+func (fake *FakeClient) GetObjectLockConfigurationCalls(stub func(*s3a.GetObjectLockConfigurationInput) (*s3a.GetObjectLockConfigurationOutput, error)) {
 	fake.getObjectLockConfigurationMutex.Lock()
 	defer fake.getObjectLockConfigurationMutex.Unlock()
 	fake.GetObjectLockConfigurationStub = stub
 }
 
-func (fake *FakeS3) GetObjectLockConfigurationArgsForCall(i int) *s3a.GetObjectLockConfigurationInput {
+func (fake *FakeClient) GetObjectLockConfigurationArgsForCall(i int) *s3a.GetObjectLockConfigurationInput {
 	fake.getObjectLockConfigurationMutex.RLock()
 	defer fake.getObjectLockConfigurationMutex.RUnlock()
 	argsForCall := fake.getObjectLockConfigurationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetObjectLockConfigurationReturns(result1 *s3a.GetObjectLockConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetObjectLockConfigurationReturns(result1 *s3a.GetObjectLockConfigurationOutput, result2 error) {
 	fake.getObjectLockConfigurationMutex.Lock()
 	defer fake.getObjectLockConfigurationMutex.Unlock()
 	fake.GetObjectLockConfigurationStub = nil
@@ -13062,7 +13062,7 @@ func (fake *FakeS3) GetObjectLockConfigurationReturns(result1 *s3a.GetObjectLock
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectLockConfigurationReturnsOnCall(i int, result1 *s3a.GetObjectLockConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetObjectLockConfigurationReturnsOnCall(i int, result1 *s3a.GetObjectLockConfigurationOutput, result2 error) {
 	fake.getObjectLockConfigurationMutex.Lock()
 	defer fake.getObjectLockConfigurationMutex.Unlock()
 	fake.GetObjectLockConfigurationStub = nil
@@ -13078,7 +13078,7 @@ func (fake *FakeS3) GetObjectLockConfigurationReturnsOnCall(i int, result1 *s3a.
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectLockConfigurationRequest(arg1 *s3a.GetObjectLockConfigurationInput) (*request.Request, *s3a.GetObjectLockConfigurationOutput) {
+func (fake *FakeClient) GetObjectLockConfigurationRequest(arg1 *s3a.GetObjectLockConfigurationInput) (*request.Request, *s3a.GetObjectLockConfigurationOutput) {
 	fake.getObjectLockConfigurationRequestMutex.Lock()
 	ret, specificReturn := fake.getObjectLockConfigurationRequestReturnsOnCall[len(fake.getObjectLockConfigurationRequestArgsForCall)]
 	fake.getObjectLockConfigurationRequestArgsForCall = append(fake.getObjectLockConfigurationRequestArgsForCall, struct {
@@ -13096,26 +13096,26 @@ func (fake *FakeS3) GetObjectLockConfigurationRequest(arg1 *s3a.GetObjectLockCon
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetObjectLockConfigurationRequestCallCount() int {
+func (fake *FakeClient) GetObjectLockConfigurationRequestCallCount() int {
 	fake.getObjectLockConfigurationRequestMutex.RLock()
 	defer fake.getObjectLockConfigurationRequestMutex.RUnlock()
 	return len(fake.getObjectLockConfigurationRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetObjectLockConfigurationRequestCalls(stub func(*s3a.GetObjectLockConfigurationInput) (*request.Request, *s3a.GetObjectLockConfigurationOutput)) {
+func (fake *FakeClient) GetObjectLockConfigurationRequestCalls(stub func(*s3a.GetObjectLockConfigurationInput) (*request.Request, *s3a.GetObjectLockConfigurationOutput)) {
 	fake.getObjectLockConfigurationRequestMutex.Lock()
 	defer fake.getObjectLockConfigurationRequestMutex.Unlock()
 	fake.GetObjectLockConfigurationRequestStub = stub
 }
 
-func (fake *FakeS3) GetObjectLockConfigurationRequestArgsForCall(i int) *s3a.GetObjectLockConfigurationInput {
+func (fake *FakeClient) GetObjectLockConfigurationRequestArgsForCall(i int) *s3a.GetObjectLockConfigurationInput {
 	fake.getObjectLockConfigurationRequestMutex.RLock()
 	defer fake.getObjectLockConfigurationRequestMutex.RUnlock()
 	argsForCall := fake.getObjectLockConfigurationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetObjectLockConfigurationRequestReturns(result1 *request.Request, result2 *s3a.GetObjectLockConfigurationOutput) {
+func (fake *FakeClient) GetObjectLockConfigurationRequestReturns(result1 *request.Request, result2 *s3a.GetObjectLockConfigurationOutput) {
 	fake.getObjectLockConfigurationRequestMutex.Lock()
 	defer fake.getObjectLockConfigurationRequestMutex.Unlock()
 	fake.GetObjectLockConfigurationRequestStub = nil
@@ -13125,7 +13125,7 @@ func (fake *FakeS3) GetObjectLockConfigurationRequestReturns(result1 *request.Re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectLockConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetObjectLockConfigurationOutput) {
+func (fake *FakeClient) GetObjectLockConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetObjectLockConfigurationOutput) {
 	fake.getObjectLockConfigurationRequestMutex.Lock()
 	defer fake.getObjectLockConfigurationRequestMutex.Unlock()
 	fake.GetObjectLockConfigurationRequestStub = nil
@@ -13141,7 +13141,7 @@ func (fake *FakeS3) GetObjectLockConfigurationRequestReturnsOnCall(i int, result
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectLockConfigurationWithContext(arg1 context.Context, arg2 *s3a.GetObjectLockConfigurationInput, arg3 ...request.Option) (*s3a.GetObjectLockConfigurationOutput, error) {
+func (fake *FakeClient) GetObjectLockConfigurationWithContext(arg1 context.Context, arg2 *s3a.GetObjectLockConfigurationInput, arg3 ...request.Option) (*s3a.GetObjectLockConfigurationOutput, error) {
 	fake.getObjectLockConfigurationWithContextMutex.Lock()
 	ret, specificReturn := fake.getObjectLockConfigurationWithContextReturnsOnCall[len(fake.getObjectLockConfigurationWithContextArgsForCall)]
 	fake.getObjectLockConfigurationWithContextArgsForCall = append(fake.getObjectLockConfigurationWithContextArgsForCall, struct {
@@ -13161,26 +13161,26 @@ func (fake *FakeS3) GetObjectLockConfigurationWithContext(arg1 context.Context, 
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetObjectLockConfigurationWithContextCallCount() int {
+func (fake *FakeClient) GetObjectLockConfigurationWithContextCallCount() int {
 	fake.getObjectLockConfigurationWithContextMutex.RLock()
 	defer fake.getObjectLockConfigurationWithContextMutex.RUnlock()
 	return len(fake.getObjectLockConfigurationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetObjectLockConfigurationWithContextCalls(stub func(context.Context, *s3a.GetObjectLockConfigurationInput, ...request.Option) (*s3a.GetObjectLockConfigurationOutput, error)) {
+func (fake *FakeClient) GetObjectLockConfigurationWithContextCalls(stub func(context.Context, *s3a.GetObjectLockConfigurationInput, ...request.Option) (*s3a.GetObjectLockConfigurationOutput, error)) {
 	fake.getObjectLockConfigurationWithContextMutex.Lock()
 	defer fake.getObjectLockConfigurationWithContextMutex.Unlock()
 	fake.GetObjectLockConfigurationWithContextStub = stub
 }
 
-func (fake *FakeS3) GetObjectLockConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.GetObjectLockConfigurationInput, []request.Option) {
+func (fake *FakeClient) GetObjectLockConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.GetObjectLockConfigurationInput, []request.Option) {
 	fake.getObjectLockConfigurationWithContextMutex.RLock()
 	defer fake.getObjectLockConfigurationWithContextMutex.RUnlock()
 	argsForCall := fake.getObjectLockConfigurationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetObjectLockConfigurationWithContextReturns(result1 *s3a.GetObjectLockConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetObjectLockConfigurationWithContextReturns(result1 *s3a.GetObjectLockConfigurationOutput, result2 error) {
 	fake.getObjectLockConfigurationWithContextMutex.Lock()
 	defer fake.getObjectLockConfigurationWithContextMutex.Unlock()
 	fake.GetObjectLockConfigurationWithContextStub = nil
@@ -13190,7 +13190,7 @@ func (fake *FakeS3) GetObjectLockConfigurationWithContextReturns(result1 *s3a.Ge
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectLockConfigurationWithContextReturnsOnCall(i int, result1 *s3a.GetObjectLockConfigurationOutput, result2 error) {
+func (fake *FakeClient) GetObjectLockConfigurationWithContextReturnsOnCall(i int, result1 *s3a.GetObjectLockConfigurationOutput, result2 error) {
 	fake.getObjectLockConfigurationWithContextMutex.Lock()
 	defer fake.getObjectLockConfigurationWithContextMutex.Unlock()
 	fake.GetObjectLockConfigurationWithContextStub = nil
@@ -13206,7 +13206,7 @@ func (fake *FakeS3) GetObjectLockConfigurationWithContextReturnsOnCall(i int, re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectRequest(arg1 *s3a.GetObjectInput) (*request.Request, *s3a.GetObjectOutput) {
+func (fake *FakeClient) GetObjectRequest(arg1 *s3a.GetObjectInput) (*request.Request, *s3a.GetObjectOutput) {
 	fake.getObjectRequestMutex.Lock()
 	ret, specificReturn := fake.getObjectRequestReturnsOnCall[len(fake.getObjectRequestArgsForCall)]
 	fake.getObjectRequestArgsForCall = append(fake.getObjectRequestArgsForCall, struct {
@@ -13224,26 +13224,26 @@ func (fake *FakeS3) GetObjectRequest(arg1 *s3a.GetObjectInput) (*request.Request
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetObjectRequestCallCount() int {
+func (fake *FakeClient) GetObjectRequestCallCount() int {
 	fake.getObjectRequestMutex.RLock()
 	defer fake.getObjectRequestMutex.RUnlock()
 	return len(fake.getObjectRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetObjectRequestCalls(stub func(*s3a.GetObjectInput) (*request.Request, *s3a.GetObjectOutput)) {
+func (fake *FakeClient) GetObjectRequestCalls(stub func(*s3a.GetObjectInput) (*request.Request, *s3a.GetObjectOutput)) {
 	fake.getObjectRequestMutex.Lock()
 	defer fake.getObjectRequestMutex.Unlock()
 	fake.GetObjectRequestStub = stub
 }
 
-func (fake *FakeS3) GetObjectRequestArgsForCall(i int) *s3a.GetObjectInput {
+func (fake *FakeClient) GetObjectRequestArgsForCall(i int) *s3a.GetObjectInput {
 	fake.getObjectRequestMutex.RLock()
 	defer fake.getObjectRequestMutex.RUnlock()
 	argsForCall := fake.getObjectRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetObjectRequestReturns(result1 *request.Request, result2 *s3a.GetObjectOutput) {
+func (fake *FakeClient) GetObjectRequestReturns(result1 *request.Request, result2 *s3a.GetObjectOutput) {
 	fake.getObjectRequestMutex.Lock()
 	defer fake.getObjectRequestMutex.Unlock()
 	fake.GetObjectRequestStub = nil
@@ -13253,7 +13253,7 @@ func (fake *FakeS3) GetObjectRequestReturns(result1 *request.Request, result2 *s
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetObjectOutput) {
+func (fake *FakeClient) GetObjectRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetObjectOutput) {
 	fake.getObjectRequestMutex.Lock()
 	defer fake.getObjectRequestMutex.Unlock()
 	fake.GetObjectRequestStub = nil
@@ -13269,7 +13269,7 @@ func (fake *FakeS3) GetObjectRequestReturnsOnCall(i int, result1 *request.Reques
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectRetention(arg1 *s3a.GetObjectRetentionInput) (*s3a.GetObjectRetentionOutput, error) {
+func (fake *FakeClient) GetObjectRetention(arg1 *s3a.GetObjectRetentionInput) (*s3a.GetObjectRetentionOutput, error) {
 	fake.getObjectRetentionMutex.Lock()
 	ret, specificReturn := fake.getObjectRetentionReturnsOnCall[len(fake.getObjectRetentionArgsForCall)]
 	fake.getObjectRetentionArgsForCall = append(fake.getObjectRetentionArgsForCall, struct {
@@ -13287,26 +13287,26 @@ func (fake *FakeS3) GetObjectRetention(arg1 *s3a.GetObjectRetentionInput) (*s3a.
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetObjectRetentionCallCount() int {
+func (fake *FakeClient) GetObjectRetentionCallCount() int {
 	fake.getObjectRetentionMutex.RLock()
 	defer fake.getObjectRetentionMutex.RUnlock()
 	return len(fake.getObjectRetentionArgsForCall)
 }
 
-func (fake *FakeS3) GetObjectRetentionCalls(stub func(*s3a.GetObjectRetentionInput) (*s3a.GetObjectRetentionOutput, error)) {
+func (fake *FakeClient) GetObjectRetentionCalls(stub func(*s3a.GetObjectRetentionInput) (*s3a.GetObjectRetentionOutput, error)) {
 	fake.getObjectRetentionMutex.Lock()
 	defer fake.getObjectRetentionMutex.Unlock()
 	fake.GetObjectRetentionStub = stub
 }
 
-func (fake *FakeS3) GetObjectRetentionArgsForCall(i int) *s3a.GetObjectRetentionInput {
+func (fake *FakeClient) GetObjectRetentionArgsForCall(i int) *s3a.GetObjectRetentionInput {
 	fake.getObjectRetentionMutex.RLock()
 	defer fake.getObjectRetentionMutex.RUnlock()
 	argsForCall := fake.getObjectRetentionArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetObjectRetentionReturns(result1 *s3a.GetObjectRetentionOutput, result2 error) {
+func (fake *FakeClient) GetObjectRetentionReturns(result1 *s3a.GetObjectRetentionOutput, result2 error) {
 	fake.getObjectRetentionMutex.Lock()
 	defer fake.getObjectRetentionMutex.Unlock()
 	fake.GetObjectRetentionStub = nil
@@ -13316,7 +13316,7 @@ func (fake *FakeS3) GetObjectRetentionReturns(result1 *s3a.GetObjectRetentionOut
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectRetentionReturnsOnCall(i int, result1 *s3a.GetObjectRetentionOutput, result2 error) {
+func (fake *FakeClient) GetObjectRetentionReturnsOnCall(i int, result1 *s3a.GetObjectRetentionOutput, result2 error) {
 	fake.getObjectRetentionMutex.Lock()
 	defer fake.getObjectRetentionMutex.Unlock()
 	fake.GetObjectRetentionStub = nil
@@ -13332,7 +13332,7 @@ func (fake *FakeS3) GetObjectRetentionReturnsOnCall(i int, result1 *s3a.GetObjec
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectRetentionRequest(arg1 *s3a.GetObjectRetentionInput) (*request.Request, *s3a.GetObjectRetentionOutput) {
+func (fake *FakeClient) GetObjectRetentionRequest(arg1 *s3a.GetObjectRetentionInput) (*request.Request, *s3a.GetObjectRetentionOutput) {
 	fake.getObjectRetentionRequestMutex.Lock()
 	ret, specificReturn := fake.getObjectRetentionRequestReturnsOnCall[len(fake.getObjectRetentionRequestArgsForCall)]
 	fake.getObjectRetentionRequestArgsForCall = append(fake.getObjectRetentionRequestArgsForCall, struct {
@@ -13350,26 +13350,26 @@ func (fake *FakeS3) GetObjectRetentionRequest(arg1 *s3a.GetObjectRetentionInput)
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetObjectRetentionRequestCallCount() int {
+func (fake *FakeClient) GetObjectRetentionRequestCallCount() int {
 	fake.getObjectRetentionRequestMutex.RLock()
 	defer fake.getObjectRetentionRequestMutex.RUnlock()
 	return len(fake.getObjectRetentionRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetObjectRetentionRequestCalls(stub func(*s3a.GetObjectRetentionInput) (*request.Request, *s3a.GetObjectRetentionOutput)) {
+func (fake *FakeClient) GetObjectRetentionRequestCalls(stub func(*s3a.GetObjectRetentionInput) (*request.Request, *s3a.GetObjectRetentionOutput)) {
 	fake.getObjectRetentionRequestMutex.Lock()
 	defer fake.getObjectRetentionRequestMutex.Unlock()
 	fake.GetObjectRetentionRequestStub = stub
 }
 
-func (fake *FakeS3) GetObjectRetentionRequestArgsForCall(i int) *s3a.GetObjectRetentionInput {
+func (fake *FakeClient) GetObjectRetentionRequestArgsForCall(i int) *s3a.GetObjectRetentionInput {
 	fake.getObjectRetentionRequestMutex.RLock()
 	defer fake.getObjectRetentionRequestMutex.RUnlock()
 	argsForCall := fake.getObjectRetentionRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetObjectRetentionRequestReturns(result1 *request.Request, result2 *s3a.GetObjectRetentionOutput) {
+func (fake *FakeClient) GetObjectRetentionRequestReturns(result1 *request.Request, result2 *s3a.GetObjectRetentionOutput) {
 	fake.getObjectRetentionRequestMutex.Lock()
 	defer fake.getObjectRetentionRequestMutex.Unlock()
 	fake.GetObjectRetentionRequestStub = nil
@@ -13379,7 +13379,7 @@ func (fake *FakeS3) GetObjectRetentionRequestReturns(result1 *request.Request, r
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectRetentionRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetObjectRetentionOutput) {
+func (fake *FakeClient) GetObjectRetentionRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetObjectRetentionOutput) {
 	fake.getObjectRetentionRequestMutex.Lock()
 	defer fake.getObjectRetentionRequestMutex.Unlock()
 	fake.GetObjectRetentionRequestStub = nil
@@ -13395,7 +13395,7 @@ func (fake *FakeS3) GetObjectRetentionRequestReturnsOnCall(i int, result1 *reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectRetentionWithContext(arg1 context.Context, arg2 *s3a.GetObjectRetentionInput, arg3 ...request.Option) (*s3a.GetObjectRetentionOutput, error) {
+func (fake *FakeClient) GetObjectRetentionWithContext(arg1 context.Context, arg2 *s3a.GetObjectRetentionInput, arg3 ...request.Option) (*s3a.GetObjectRetentionOutput, error) {
 	fake.getObjectRetentionWithContextMutex.Lock()
 	ret, specificReturn := fake.getObjectRetentionWithContextReturnsOnCall[len(fake.getObjectRetentionWithContextArgsForCall)]
 	fake.getObjectRetentionWithContextArgsForCall = append(fake.getObjectRetentionWithContextArgsForCall, struct {
@@ -13415,26 +13415,26 @@ func (fake *FakeS3) GetObjectRetentionWithContext(arg1 context.Context, arg2 *s3
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetObjectRetentionWithContextCallCount() int {
+func (fake *FakeClient) GetObjectRetentionWithContextCallCount() int {
 	fake.getObjectRetentionWithContextMutex.RLock()
 	defer fake.getObjectRetentionWithContextMutex.RUnlock()
 	return len(fake.getObjectRetentionWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetObjectRetentionWithContextCalls(stub func(context.Context, *s3a.GetObjectRetentionInput, ...request.Option) (*s3a.GetObjectRetentionOutput, error)) {
+func (fake *FakeClient) GetObjectRetentionWithContextCalls(stub func(context.Context, *s3a.GetObjectRetentionInput, ...request.Option) (*s3a.GetObjectRetentionOutput, error)) {
 	fake.getObjectRetentionWithContextMutex.Lock()
 	defer fake.getObjectRetentionWithContextMutex.Unlock()
 	fake.GetObjectRetentionWithContextStub = stub
 }
 
-func (fake *FakeS3) GetObjectRetentionWithContextArgsForCall(i int) (context.Context, *s3a.GetObjectRetentionInput, []request.Option) {
+func (fake *FakeClient) GetObjectRetentionWithContextArgsForCall(i int) (context.Context, *s3a.GetObjectRetentionInput, []request.Option) {
 	fake.getObjectRetentionWithContextMutex.RLock()
 	defer fake.getObjectRetentionWithContextMutex.RUnlock()
 	argsForCall := fake.getObjectRetentionWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetObjectRetentionWithContextReturns(result1 *s3a.GetObjectRetentionOutput, result2 error) {
+func (fake *FakeClient) GetObjectRetentionWithContextReturns(result1 *s3a.GetObjectRetentionOutput, result2 error) {
 	fake.getObjectRetentionWithContextMutex.Lock()
 	defer fake.getObjectRetentionWithContextMutex.Unlock()
 	fake.GetObjectRetentionWithContextStub = nil
@@ -13444,7 +13444,7 @@ func (fake *FakeS3) GetObjectRetentionWithContextReturns(result1 *s3a.GetObjectR
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectRetentionWithContextReturnsOnCall(i int, result1 *s3a.GetObjectRetentionOutput, result2 error) {
+func (fake *FakeClient) GetObjectRetentionWithContextReturnsOnCall(i int, result1 *s3a.GetObjectRetentionOutput, result2 error) {
 	fake.getObjectRetentionWithContextMutex.Lock()
 	defer fake.getObjectRetentionWithContextMutex.Unlock()
 	fake.GetObjectRetentionWithContextStub = nil
@@ -13460,7 +13460,7 @@ func (fake *FakeS3) GetObjectRetentionWithContextReturnsOnCall(i int, result1 *s
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectTagging(arg1 *s3a.GetObjectTaggingInput) (*s3a.GetObjectTaggingOutput, error) {
+func (fake *FakeClient) GetObjectTagging(arg1 *s3a.GetObjectTaggingInput) (*s3a.GetObjectTaggingOutput, error) {
 	fake.getObjectTaggingMutex.Lock()
 	ret, specificReturn := fake.getObjectTaggingReturnsOnCall[len(fake.getObjectTaggingArgsForCall)]
 	fake.getObjectTaggingArgsForCall = append(fake.getObjectTaggingArgsForCall, struct {
@@ -13478,26 +13478,26 @@ func (fake *FakeS3) GetObjectTagging(arg1 *s3a.GetObjectTaggingInput) (*s3a.GetO
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetObjectTaggingCallCount() int {
+func (fake *FakeClient) GetObjectTaggingCallCount() int {
 	fake.getObjectTaggingMutex.RLock()
 	defer fake.getObjectTaggingMutex.RUnlock()
 	return len(fake.getObjectTaggingArgsForCall)
 }
 
-func (fake *FakeS3) GetObjectTaggingCalls(stub func(*s3a.GetObjectTaggingInput) (*s3a.GetObjectTaggingOutput, error)) {
+func (fake *FakeClient) GetObjectTaggingCalls(stub func(*s3a.GetObjectTaggingInput) (*s3a.GetObjectTaggingOutput, error)) {
 	fake.getObjectTaggingMutex.Lock()
 	defer fake.getObjectTaggingMutex.Unlock()
 	fake.GetObjectTaggingStub = stub
 }
 
-func (fake *FakeS3) GetObjectTaggingArgsForCall(i int) *s3a.GetObjectTaggingInput {
+func (fake *FakeClient) GetObjectTaggingArgsForCall(i int) *s3a.GetObjectTaggingInput {
 	fake.getObjectTaggingMutex.RLock()
 	defer fake.getObjectTaggingMutex.RUnlock()
 	argsForCall := fake.getObjectTaggingArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetObjectTaggingReturns(result1 *s3a.GetObjectTaggingOutput, result2 error) {
+func (fake *FakeClient) GetObjectTaggingReturns(result1 *s3a.GetObjectTaggingOutput, result2 error) {
 	fake.getObjectTaggingMutex.Lock()
 	defer fake.getObjectTaggingMutex.Unlock()
 	fake.GetObjectTaggingStub = nil
@@ -13507,7 +13507,7 @@ func (fake *FakeS3) GetObjectTaggingReturns(result1 *s3a.GetObjectTaggingOutput,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectTaggingReturnsOnCall(i int, result1 *s3a.GetObjectTaggingOutput, result2 error) {
+func (fake *FakeClient) GetObjectTaggingReturnsOnCall(i int, result1 *s3a.GetObjectTaggingOutput, result2 error) {
 	fake.getObjectTaggingMutex.Lock()
 	defer fake.getObjectTaggingMutex.Unlock()
 	fake.GetObjectTaggingStub = nil
@@ -13523,7 +13523,7 @@ func (fake *FakeS3) GetObjectTaggingReturnsOnCall(i int, result1 *s3a.GetObjectT
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectTaggingRequest(arg1 *s3a.GetObjectTaggingInput) (*request.Request, *s3a.GetObjectTaggingOutput) {
+func (fake *FakeClient) GetObjectTaggingRequest(arg1 *s3a.GetObjectTaggingInput) (*request.Request, *s3a.GetObjectTaggingOutput) {
 	fake.getObjectTaggingRequestMutex.Lock()
 	ret, specificReturn := fake.getObjectTaggingRequestReturnsOnCall[len(fake.getObjectTaggingRequestArgsForCall)]
 	fake.getObjectTaggingRequestArgsForCall = append(fake.getObjectTaggingRequestArgsForCall, struct {
@@ -13541,26 +13541,26 @@ func (fake *FakeS3) GetObjectTaggingRequest(arg1 *s3a.GetObjectTaggingInput) (*r
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetObjectTaggingRequestCallCount() int {
+func (fake *FakeClient) GetObjectTaggingRequestCallCount() int {
 	fake.getObjectTaggingRequestMutex.RLock()
 	defer fake.getObjectTaggingRequestMutex.RUnlock()
 	return len(fake.getObjectTaggingRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetObjectTaggingRequestCalls(stub func(*s3a.GetObjectTaggingInput) (*request.Request, *s3a.GetObjectTaggingOutput)) {
+func (fake *FakeClient) GetObjectTaggingRequestCalls(stub func(*s3a.GetObjectTaggingInput) (*request.Request, *s3a.GetObjectTaggingOutput)) {
 	fake.getObjectTaggingRequestMutex.Lock()
 	defer fake.getObjectTaggingRequestMutex.Unlock()
 	fake.GetObjectTaggingRequestStub = stub
 }
 
-func (fake *FakeS3) GetObjectTaggingRequestArgsForCall(i int) *s3a.GetObjectTaggingInput {
+func (fake *FakeClient) GetObjectTaggingRequestArgsForCall(i int) *s3a.GetObjectTaggingInput {
 	fake.getObjectTaggingRequestMutex.RLock()
 	defer fake.getObjectTaggingRequestMutex.RUnlock()
 	argsForCall := fake.getObjectTaggingRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetObjectTaggingRequestReturns(result1 *request.Request, result2 *s3a.GetObjectTaggingOutput) {
+func (fake *FakeClient) GetObjectTaggingRequestReturns(result1 *request.Request, result2 *s3a.GetObjectTaggingOutput) {
 	fake.getObjectTaggingRequestMutex.Lock()
 	defer fake.getObjectTaggingRequestMutex.Unlock()
 	fake.GetObjectTaggingRequestStub = nil
@@ -13570,7 +13570,7 @@ func (fake *FakeS3) GetObjectTaggingRequestReturns(result1 *request.Request, res
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectTaggingRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetObjectTaggingOutput) {
+func (fake *FakeClient) GetObjectTaggingRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetObjectTaggingOutput) {
 	fake.getObjectTaggingRequestMutex.Lock()
 	defer fake.getObjectTaggingRequestMutex.Unlock()
 	fake.GetObjectTaggingRequestStub = nil
@@ -13586,7 +13586,7 @@ func (fake *FakeS3) GetObjectTaggingRequestReturnsOnCall(i int, result1 *request
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectTaggingWithContext(arg1 context.Context, arg2 *s3a.GetObjectTaggingInput, arg3 ...request.Option) (*s3a.GetObjectTaggingOutput, error) {
+func (fake *FakeClient) GetObjectTaggingWithContext(arg1 context.Context, arg2 *s3a.GetObjectTaggingInput, arg3 ...request.Option) (*s3a.GetObjectTaggingOutput, error) {
 	fake.getObjectTaggingWithContextMutex.Lock()
 	ret, specificReturn := fake.getObjectTaggingWithContextReturnsOnCall[len(fake.getObjectTaggingWithContextArgsForCall)]
 	fake.getObjectTaggingWithContextArgsForCall = append(fake.getObjectTaggingWithContextArgsForCall, struct {
@@ -13606,26 +13606,26 @@ func (fake *FakeS3) GetObjectTaggingWithContext(arg1 context.Context, arg2 *s3a.
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetObjectTaggingWithContextCallCount() int {
+func (fake *FakeClient) GetObjectTaggingWithContextCallCount() int {
 	fake.getObjectTaggingWithContextMutex.RLock()
 	defer fake.getObjectTaggingWithContextMutex.RUnlock()
 	return len(fake.getObjectTaggingWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetObjectTaggingWithContextCalls(stub func(context.Context, *s3a.GetObjectTaggingInput, ...request.Option) (*s3a.GetObjectTaggingOutput, error)) {
+func (fake *FakeClient) GetObjectTaggingWithContextCalls(stub func(context.Context, *s3a.GetObjectTaggingInput, ...request.Option) (*s3a.GetObjectTaggingOutput, error)) {
 	fake.getObjectTaggingWithContextMutex.Lock()
 	defer fake.getObjectTaggingWithContextMutex.Unlock()
 	fake.GetObjectTaggingWithContextStub = stub
 }
 
-func (fake *FakeS3) GetObjectTaggingWithContextArgsForCall(i int) (context.Context, *s3a.GetObjectTaggingInput, []request.Option) {
+func (fake *FakeClient) GetObjectTaggingWithContextArgsForCall(i int) (context.Context, *s3a.GetObjectTaggingInput, []request.Option) {
 	fake.getObjectTaggingWithContextMutex.RLock()
 	defer fake.getObjectTaggingWithContextMutex.RUnlock()
 	argsForCall := fake.getObjectTaggingWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetObjectTaggingWithContextReturns(result1 *s3a.GetObjectTaggingOutput, result2 error) {
+func (fake *FakeClient) GetObjectTaggingWithContextReturns(result1 *s3a.GetObjectTaggingOutput, result2 error) {
 	fake.getObjectTaggingWithContextMutex.Lock()
 	defer fake.getObjectTaggingWithContextMutex.Unlock()
 	fake.GetObjectTaggingWithContextStub = nil
@@ -13635,7 +13635,7 @@ func (fake *FakeS3) GetObjectTaggingWithContextReturns(result1 *s3a.GetObjectTag
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectTaggingWithContextReturnsOnCall(i int, result1 *s3a.GetObjectTaggingOutput, result2 error) {
+func (fake *FakeClient) GetObjectTaggingWithContextReturnsOnCall(i int, result1 *s3a.GetObjectTaggingOutput, result2 error) {
 	fake.getObjectTaggingWithContextMutex.Lock()
 	defer fake.getObjectTaggingWithContextMutex.Unlock()
 	fake.GetObjectTaggingWithContextStub = nil
@@ -13651,7 +13651,7 @@ func (fake *FakeS3) GetObjectTaggingWithContextReturnsOnCall(i int, result1 *s3a
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectTorrent(arg1 *s3a.GetObjectTorrentInput) (*s3a.GetObjectTorrentOutput, error) {
+func (fake *FakeClient) GetObjectTorrent(arg1 *s3a.GetObjectTorrentInput) (*s3a.GetObjectTorrentOutput, error) {
 	fake.getObjectTorrentMutex.Lock()
 	ret, specificReturn := fake.getObjectTorrentReturnsOnCall[len(fake.getObjectTorrentArgsForCall)]
 	fake.getObjectTorrentArgsForCall = append(fake.getObjectTorrentArgsForCall, struct {
@@ -13669,26 +13669,26 @@ func (fake *FakeS3) GetObjectTorrent(arg1 *s3a.GetObjectTorrentInput) (*s3a.GetO
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetObjectTorrentCallCount() int {
+func (fake *FakeClient) GetObjectTorrentCallCount() int {
 	fake.getObjectTorrentMutex.RLock()
 	defer fake.getObjectTorrentMutex.RUnlock()
 	return len(fake.getObjectTorrentArgsForCall)
 }
 
-func (fake *FakeS3) GetObjectTorrentCalls(stub func(*s3a.GetObjectTorrentInput) (*s3a.GetObjectTorrentOutput, error)) {
+func (fake *FakeClient) GetObjectTorrentCalls(stub func(*s3a.GetObjectTorrentInput) (*s3a.GetObjectTorrentOutput, error)) {
 	fake.getObjectTorrentMutex.Lock()
 	defer fake.getObjectTorrentMutex.Unlock()
 	fake.GetObjectTorrentStub = stub
 }
 
-func (fake *FakeS3) GetObjectTorrentArgsForCall(i int) *s3a.GetObjectTorrentInput {
+func (fake *FakeClient) GetObjectTorrentArgsForCall(i int) *s3a.GetObjectTorrentInput {
 	fake.getObjectTorrentMutex.RLock()
 	defer fake.getObjectTorrentMutex.RUnlock()
 	argsForCall := fake.getObjectTorrentArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetObjectTorrentReturns(result1 *s3a.GetObjectTorrentOutput, result2 error) {
+func (fake *FakeClient) GetObjectTorrentReturns(result1 *s3a.GetObjectTorrentOutput, result2 error) {
 	fake.getObjectTorrentMutex.Lock()
 	defer fake.getObjectTorrentMutex.Unlock()
 	fake.GetObjectTorrentStub = nil
@@ -13698,7 +13698,7 @@ func (fake *FakeS3) GetObjectTorrentReturns(result1 *s3a.GetObjectTorrentOutput,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectTorrentReturnsOnCall(i int, result1 *s3a.GetObjectTorrentOutput, result2 error) {
+func (fake *FakeClient) GetObjectTorrentReturnsOnCall(i int, result1 *s3a.GetObjectTorrentOutput, result2 error) {
 	fake.getObjectTorrentMutex.Lock()
 	defer fake.getObjectTorrentMutex.Unlock()
 	fake.GetObjectTorrentStub = nil
@@ -13714,7 +13714,7 @@ func (fake *FakeS3) GetObjectTorrentReturnsOnCall(i int, result1 *s3a.GetObjectT
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectTorrentRequest(arg1 *s3a.GetObjectTorrentInput) (*request.Request, *s3a.GetObjectTorrentOutput) {
+func (fake *FakeClient) GetObjectTorrentRequest(arg1 *s3a.GetObjectTorrentInput) (*request.Request, *s3a.GetObjectTorrentOutput) {
 	fake.getObjectTorrentRequestMutex.Lock()
 	ret, specificReturn := fake.getObjectTorrentRequestReturnsOnCall[len(fake.getObjectTorrentRequestArgsForCall)]
 	fake.getObjectTorrentRequestArgsForCall = append(fake.getObjectTorrentRequestArgsForCall, struct {
@@ -13732,26 +13732,26 @@ func (fake *FakeS3) GetObjectTorrentRequest(arg1 *s3a.GetObjectTorrentInput) (*r
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetObjectTorrentRequestCallCount() int {
+func (fake *FakeClient) GetObjectTorrentRequestCallCount() int {
 	fake.getObjectTorrentRequestMutex.RLock()
 	defer fake.getObjectTorrentRequestMutex.RUnlock()
 	return len(fake.getObjectTorrentRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetObjectTorrentRequestCalls(stub func(*s3a.GetObjectTorrentInput) (*request.Request, *s3a.GetObjectTorrentOutput)) {
+func (fake *FakeClient) GetObjectTorrentRequestCalls(stub func(*s3a.GetObjectTorrentInput) (*request.Request, *s3a.GetObjectTorrentOutput)) {
 	fake.getObjectTorrentRequestMutex.Lock()
 	defer fake.getObjectTorrentRequestMutex.Unlock()
 	fake.GetObjectTorrentRequestStub = stub
 }
 
-func (fake *FakeS3) GetObjectTorrentRequestArgsForCall(i int) *s3a.GetObjectTorrentInput {
+func (fake *FakeClient) GetObjectTorrentRequestArgsForCall(i int) *s3a.GetObjectTorrentInput {
 	fake.getObjectTorrentRequestMutex.RLock()
 	defer fake.getObjectTorrentRequestMutex.RUnlock()
 	argsForCall := fake.getObjectTorrentRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetObjectTorrentRequestReturns(result1 *request.Request, result2 *s3a.GetObjectTorrentOutput) {
+func (fake *FakeClient) GetObjectTorrentRequestReturns(result1 *request.Request, result2 *s3a.GetObjectTorrentOutput) {
 	fake.getObjectTorrentRequestMutex.Lock()
 	defer fake.getObjectTorrentRequestMutex.Unlock()
 	fake.GetObjectTorrentRequestStub = nil
@@ -13761,7 +13761,7 @@ func (fake *FakeS3) GetObjectTorrentRequestReturns(result1 *request.Request, res
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectTorrentRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetObjectTorrentOutput) {
+func (fake *FakeClient) GetObjectTorrentRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetObjectTorrentOutput) {
 	fake.getObjectTorrentRequestMutex.Lock()
 	defer fake.getObjectTorrentRequestMutex.Unlock()
 	fake.GetObjectTorrentRequestStub = nil
@@ -13777,7 +13777,7 @@ func (fake *FakeS3) GetObjectTorrentRequestReturnsOnCall(i int, result1 *request
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectTorrentWithContext(arg1 context.Context, arg2 *s3a.GetObjectTorrentInput, arg3 ...request.Option) (*s3a.GetObjectTorrentOutput, error) {
+func (fake *FakeClient) GetObjectTorrentWithContext(arg1 context.Context, arg2 *s3a.GetObjectTorrentInput, arg3 ...request.Option) (*s3a.GetObjectTorrentOutput, error) {
 	fake.getObjectTorrentWithContextMutex.Lock()
 	ret, specificReturn := fake.getObjectTorrentWithContextReturnsOnCall[len(fake.getObjectTorrentWithContextArgsForCall)]
 	fake.getObjectTorrentWithContextArgsForCall = append(fake.getObjectTorrentWithContextArgsForCall, struct {
@@ -13797,26 +13797,26 @@ func (fake *FakeS3) GetObjectTorrentWithContext(arg1 context.Context, arg2 *s3a.
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetObjectTorrentWithContextCallCount() int {
+func (fake *FakeClient) GetObjectTorrentWithContextCallCount() int {
 	fake.getObjectTorrentWithContextMutex.RLock()
 	defer fake.getObjectTorrentWithContextMutex.RUnlock()
 	return len(fake.getObjectTorrentWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetObjectTorrentWithContextCalls(stub func(context.Context, *s3a.GetObjectTorrentInput, ...request.Option) (*s3a.GetObjectTorrentOutput, error)) {
+func (fake *FakeClient) GetObjectTorrentWithContextCalls(stub func(context.Context, *s3a.GetObjectTorrentInput, ...request.Option) (*s3a.GetObjectTorrentOutput, error)) {
 	fake.getObjectTorrentWithContextMutex.Lock()
 	defer fake.getObjectTorrentWithContextMutex.Unlock()
 	fake.GetObjectTorrentWithContextStub = stub
 }
 
-func (fake *FakeS3) GetObjectTorrentWithContextArgsForCall(i int) (context.Context, *s3a.GetObjectTorrentInput, []request.Option) {
+func (fake *FakeClient) GetObjectTorrentWithContextArgsForCall(i int) (context.Context, *s3a.GetObjectTorrentInput, []request.Option) {
 	fake.getObjectTorrentWithContextMutex.RLock()
 	defer fake.getObjectTorrentWithContextMutex.RUnlock()
 	argsForCall := fake.getObjectTorrentWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetObjectTorrentWithContextReturns(result1 *s3a.GetObjectTorrentOutput, result2 error) {
+func (fake *FakeClient) GetObjectTorrentWithContextReturns(result1 *s3a.GetObjectTorrentOutput, result2 error) {
 	fake.getObjectTorrentWithContextMutex.Lock()
 	defer fake.getObjectTorrentWithContextMutex.Unlock()
 	fake.GetObjectTorrentWithContextStub = nil
@@ -13826,7 +13826,7 @@ func (fake *FakeS3) GetObjectTorrentWithContextReturns(result1 *s3a.GetObjectTor
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectTorrentWithContextReturnsOnCall(i int, result1 *s3a.GetObjectTorrentOutput, result2 error) {
+func (fake *FakeClient) GetObjectTorrentWithContextReturnsOnCall(i int, result1 *s3a.GetObjectTorrentOutput, result2 error) {
 	fake.getObjectTorrentWithContextMutex.Lock()
 	defer fake.getObjectTorrentWithContextMutex.Unlock()
 	fake.GetObjectTorrentWithContextStub = nil
@@ -13842,7 +13842,7 @@ func (fake *FakeS3) GetObjectTorrentWithContextReturnsOnCall(i int, result1 *s3a
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectWithContext(arg1 context.Context, arg2 *s3a.GetObjectInput, arg3 ...request.Option) (*s3a.GetObjectOutput, error) {
+func (fake *FakeClient) GetObjectWithContext(arg1 context.Context, arg2 *s3a.GetObjectInput, arg3 ...request.Option) (*s3a.GetObjectOutput, error) {
 	fake.getObjectWithContextMutex.Lock()
 	ret, specificReturn := fake.getObjectWithContextReturnsOnCall[len(fake.getObjectWithContextArgsForCall)]
 	fake.getObjectWithContextArgsForCall = append(fake.getObjectWithContextArgsForCall, struct {
@@ -13862,26 +13862,26 @@ func (fake *FakeS3) GetObjectWithContext(arg1 context.Context, arg2 *s3a.GetObje
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetObjectWithContextCallCount() int {
+func (fake *FakeClient) GetObjectWithContextCallCount() int {
 	fake.getObjectWithContextMutex.RLock()
 	defer fake.getObjectWithContextMutex.RUnlock()
 	return len(fake.getObjectWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetObjectWithContextCalls(stub func(context.Context, *s3a.GetObjectInput, ...request.Option) (*s3a.GetObjectOutput, error)) {
+func (fake *FakeClient) GetObjectWithContextCalls(stub func(context.Context, *s3a.GetObjectInput, ...request.Option) (*s3a.GetObjectOutput, error)) {
 	fake.getObjectWithContextMutex.Lock()
 	defer fake.getObjectWithContextMutex.Unlock()
 	fake.GetObjectWithContextStub = stub
 }
 
-func (fake *FakeS3) GetObjectWithContextArgsForCall(i int) (context.Context, *s3a.GetObjectInput, []request.Option) {
+func (fake *FakeClient) GetObjectWithContextArgsForCall(i int) (context.Context, *s3a.GetObjectInput, []request.Option) {
 	fake.getObjectWithContextMutex.RLock()
 	defer fake.getObjectWithContextMutex.RUnlock()
 	argsForCall := fake.getObjectWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetObjectWithContextReturns(result1 *s3a.GetObjectOutput, result2 error) {
+func (fake *FakeClient) GetObjectWithContextReturns(result1 *s3a.GetObjectOutput, result2 error) {
 	fake.getObjectWithContextMutex.Lock()
 	defer fake.getObjectWithContextMutex.Unlock()
 	fake.GetObjectWithContextStub = nil
@@ -13891,7 +13891,7 @@ func (fake *FakeS3) GetObjectWithContextReturns(result1 *s3a.GetObjectOutput, re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetObjectWithContextReturnsOnCall(i int, result1 *s3a.GetObjectOutput, result2 error) {
+func (fake *FakeClient) GetObjectWithContextReturnsOnCall(i int, result1 *s3a.GetObjectOutput, result2 error) {
 	fake.getObjectWithContextMutex.Lock()
 	defer fake.getObjectWithContextMutex.Unlock()
 	fake.GetObjectWithContextStub = nil
@@ -13907,7 +13907,7 @@ func (fake *FakeS3) GetObjectWithContextReturnsOnCall(i int, result1 *s3a.GetObj
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetPublicAccessBlock(arg1 *s3a.GetPublicAccessBlockInput) (*s3a.GetPublicAccessBlockOutput, error) {
+func (fake *FakeClient) GetPublicAccessBlock(arg1 *s3a.GetPublicAccessBlockInput) (*s3a.GetPublicAccessBlockOutput, error) {
 	fake.getPublicAccessBlockMutex.Lock()
 	ret, specificReturn := fake.getPublicAccessBlockReturnsOnCall[len(fake.getPublicAccessBlockArgsForCall)]
 	fake.getPublicAccessBlockArgsForCall = append(fake.getPublicAccessBlockArgsForCall, struct {
@@ -13925,26 +13925,26 @@ func (fake *FakeS3) GetPublicAccessBlock(arg1 *s3a.GetPublicAccessBlockInput) (*
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetPublicAccessBlockCallCount() int {
+func (fake *FakeClient) GetPublicAccessBlockCallCount() int {
 	fake.getPublicAccessBlockMutex.RLock()
 	defer fake.getPublicAccessBlockMutex.RUnlock()
 	return len(fake.getPublicAccessBlockArgsForCall)
 }
 
-func (fake *FakeS3) GetPublicAccessBlockCalls(stub func(*s3a.GetPublicAccessBlockInput) (*s3a.GetPublicAccessBlockOutput, error)) {
+func (fake *FakeClient) GetPublicAccessBlockCalls(stub func(*s3a.GetPublicAccessBlockInput) (*s3a.GetPublicAccessBlockOutput, error)) {
 	fake.getPublicAccessBlockMutex.Lock()
 	defer fake.getPublicAccessBlockMutex.Unlock()
 	fake.GetPublicAccessBlockStub = stub
 }
 
-func (fake *FakeS3) GetPublicAccessBlockArgsForCall(i int) *s3a.GetPublicAccessBlockInput {
+func (fake *FakeClient) GetPublicAccessBlockArgsForCall(i int) *s3a.GetPublicAccessBlockInput {
 	fake.getPublicAccessBlockMutex.RLock()
 	defer fake.getPublicAccessBlockMutex.RUnlock()
 	argsForCall := fake.getPublicAccessBlockArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetPublicAccessBlockReturns(result1 *s3a.GetPublicAccessBlockOutput, result2 error) {
+func (fake *FakeClient) GetPublicAccessBlockReturns(result1 *s3a.GetPublicAccessBlockOutput, result2 error) {
 	fake.getPublicAccessBlockMutex.Lock()
 	defer fake.getPublicAccessBlockMutex.Unlock()
 	fake.GetPublicAccessBlockStub = nil
@@ -13954,7 +13954,7 @@ func (fake *FakeS3) GetPublicAccessBlockReturns(result1 *s3a.GetPublicAccessBloc
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetPublicAccessBlockReturnsOnCall(i int, result1 *s3a.GetPublicAccessBlockOutput, result2 error) {
+func (fake *FakeClient) GetPublicAccessBlockReturnsOnCall(i int, result1 *s3a.GetPublicAccessBlockOutput, result2 error) {
 	fake.getPublicAccessBlockMutex.Lock()
 	defer fake.getPublicAccessBlockMutex.Unlock()
 	fake.GetPublicAccessBlockStub = nil
@@ -13970,7 +13970,7 @@ func (fake *FakeS3) GetPublicAccessBlockReturnsOnCall(i int, result1 *s3a.GetPub
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetPublicAccessBlockRequest(arg1 *s3a.GetPublicAccessBlockInput) (*request.Request, *s3a.GetPublicAccessBlockOutput) {
+func (fake *FakeClient) GetPublicAccessBlockRequest(arg1 *s3a.GetPublicAccessBlockInput) (*request.Request, *s3a.GetPublicAccessBlockOutput) {
 	fake.getPublicAccessBlockRequestMutex.Lock()
 	ret, specificReturn := fake.getPublicAccessBlockRequestReturnsOnCall[len(fake.getPublicAccessBlockRequestArgsForCall)]
 	fake.getPublicAccessBlockRequestArgsForCall = append(fake.getPublicAccessBlockRequestArgsForCall, struct {
@@ -13988,26 +13988,26 @@ func (fake *FakeS3) GetPublicAccessBlockRequest(arg1 *s3a.GetPublicAccessBlockIn
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetPublicAccessBlockRequestCallCount() int {
+func (fake *FakeClient) GetPublicAccessBlockRequestCallCount() int {
 	fake.getPublicAccessBlockRequestMutex.RLock()
 	defer fake.getPublicAccessBlockRequestMutex.RUnlock()
 	return len(fake.getPublicAccessBlockRequestArgsForCall)
 }
 
-func (fake *FakeS3) GetPublicAccessBlockRequestCalls(stub func(*s3a.GetPublicAccessBlockInput) (*request.Request, *s3a.GetPublicAccessBlockOutput)) {
+func (fake *FakeClient) GetPublicAccessBlockRequestCalls(stub func(*s3a.GetPublicAccessBlockInput) (*request.Request, *s3a.GetPublicAccessBlockOutput)) {
 	fake.getPublicAccessBlockRequestMutex.Lock()
 	defer fake.getPublicAccessBlockRequestMutex.Unlock()
 	fake.GetPublicAccessBlockRequestStub = stub
 }
 
-func (fake *FakeS3) GetPublicAccessBlockRequestArgsForCall(i int) *s3a.GetPublicAccessBlockInput {
+func (fake *FakeClient) GetPublicAccessBlockRequestArgsForCall(i int) *s3a.GetPublicAccessBlockInput {
 	fake.getPublicAccessBlockRequestMutex.RLock()
 	defer fake.getPublicAccessBlockRequestMutex.RUnlock()
 	argsForCall := fake.getPublicAccessBlockRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) GetPublicAccessBlockRequestReturns(result1 *request.Request, result2 *s3a.GetPublicAccessBlockOutput) {
+func (fake *FakeClient) GetPublicAccessBlockRequestReturns(result1 *request.Request, result2 *s3a.GetPublicAccessBlockOutput) {
 	fake.getPublicAccessBlockRequestMutex.Lock()
 	defer fake.getPublicAccessBlockRequestMutex.Unlock()
 	fake.GetPublicAccessBlockRequestStub = nil
@@ -14017,7 +14017,7 @@ func (fake *FakeS3) GetPublicAccessBlockRequestReturns(result1 *request.Request,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetPublicAccessBlockRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetPublicAccessBlockOutput) {
+func (fake *FakeClient) GetPublicAccessBlockRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.GetPublicAccessBlockOutput) {
 	fake.getPublicAccessBlockRequestMutex.Lock()
 	defer fake.getPublicAccessBlockRequestMutex.Unlock()
 	fake.GetPublicAccessBlockRequestStub = nil
@@ -14033,7 +14033,7 @@ func (fake *FakeS3) GetPublicAccessBlockRequestReturnsOnCall(i int, result1 *req
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetPublicAccessBlockWithContext(arg1 context.Context, arg2 *s3a.GetPublicAccessBlockInput, arg3 ...request.Option) (*s3a.GetPublicAccessBlockOutput, error) {
+func (fake *FakeClient) GetPublicAccessBlockWithContext(arg1 context.Context, arg2 *s3a.GetPublicAccessBlockInput, arg3 ...request.Option) (*s3a.GetPublicAccessBlockOutput, error) {
 	fake.getPublicAccessBlockWithContextMutex.Lock()
 	ret, specificReturn := fake.getPublicAccessBlockWithContextReturnsOnCall[len(fake.getPublicAccessBlockWithContextArgsForCall)]
 	fake.getPublicAccessBlockWithContextArgsForCall = append(fake.getPublicAccessBlockWithContextArgsForCall, struct {
@@ -14053,26 +14053,26 @@ func (fake *FakeS3) GetPublicAccessBlockWithContext(arg1 context.Context, arg2 *
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) GetPublicAccessBlockWithContextCallCount() int {
+func (fake *FakeClient) GetPublicAccessBlockWithContextCallCount() int {
 	fake.getPublicAccessBlockWithContextMutex.RLock()
 	defer fake.getPublicAccessBlockWithContextMutex.RUnlock()
 	return len(fake.getPublicAccessBlockWithContextArgsForCall)
 }
 
-func (fake *FakeS3) GetPublicAccessBlockWithContextCalls(stub func(context.Context, *s3a.GetPublicAccessBlockInput, ...request.Option) (*s3a.GetPublicAccessBlockOutput, error)) {
+func (fake *FakeClient) GetPublicAccessBlockWithContextCalls(stub func(context.Context, *s3a.GetPublicAccessBlockInput, ...request.Option) (*s3a.GetPublicAccessBlockOutput, error)) {
 	fake.getPublicAccessBlockWithContextMutex.Lock()
 	defer fake.getPublicAccessBlockWithContextMutex.Unlock()
 	fake.GetPublicAccessBlockWithContextStub = stub
 }
 
-func (fake *FakeS3) GetPublicAccessBlockWithContextArgsForCall(i int) (context.Context, *s3a.GetPublicAccessBlockInput, []request.Option) {
+func (fake *FakeClient) GetPublicAccessBlockWithContextArgsForCall(i int) (context.Context, *s3a.GetPublicAccessBlockInput, []request.Option) {
 	fake.getPublicAccessBlockWithContextMutex.RLock()
 	defer fake.getPublicAccessBlockWithContextMutex.RUnlock()
 	argsForCall := fake.getPublicAccessBlockWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) GetPublicAccessBlockWithContextReturns(result1 *s3a.GetPublicAccessBlockOutput, result2 error) {
+func (fake *FakeClient) GetPublicAccessBlockWithContextReturns(result1 *s3a.GetPublicAccessBlockOutput, result2 error) {
 	fake.getPublicAccessBlockWithContextMutex.Lock()
 	defer fake.getPublicAccessBlockWithContextMutex.Unlock()
 	fake.GetPublicAccessBlockWithContextStub = nil
@@ -14082,7 +14082,7 @@ func (fake *FakeS3) GetPublicAccessBlockWithContextReturns(result1 *s3a.GetPubli
 	}{result1, result2}
 }
 
-func (fake *FakeS3) GetPublicAccessBlockWithContextReturnsOnCall(i int, result1 *s3a.GetPublicAccessBlockOutput, result2 error) {
+func (fake *FakeClient) GetPublicAccessBlockWithContextReturnsOnCall(i int, result1 *s3a.GetPublicAccessBlockOutput, result2 error) {
 	fake.getPublicAccessBlockWithContextMutex.Lock()
 	defer fake.getPublicAccessBlockWithContextMutex.Unlock()
 	fake.GetPublicAccessBlockWithContextStub = nil
@@ -14098,7 +14098,7 @@ func (fake *FakeS3) GetPublicAccessBlockWithContextReturnsOnCall(i int, result1 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) HeadBucket(arg1 *s3a.HeadBucketInput) (*s3a.HeadBucketOutput, error) {
+func (fake *FakeClient) HeadBucket(arg1 *s3a.HeadBucketInput) (*s3a.HeadBucketOutput, error) {
 	fake.headBucketMutex.Lock()
 	ret, specificReturn := fake.headBucketReturnsOnCall[len(fake.headBucketArgsForCall)]
 	fake.headBucketArgsForCall = append(fake.headBucketArgsForCall, struct {
@@ -14116,26 +14116,26 @@ func (fake *FakeS3) HeadBucket(arg1 *s3a.HeadBucketInput) (*s3a.HeadBucketOutput
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) HeadBucketCallCount() int {
+func (fake *FakeClient) HeadBucketCallCount() int {
 	fake.headBucketMutex.RLock()
 	defer fake.headBucketMutex.RUnlock()
 	return len(fake.headBucketArgsForCall)
 }
 
-func (fake *FakeS3) HeadBucketCalls(stub func(*s3a.HeadBucketInput) (*s3a.HeadBucketOutput, error)) {
+func (fake *FakeClient) HeadBucketCalls(stub func(*s3a.HeadBucketInput) (*s3a.HeadBucketOutput, error)) {
 	fake.headBucketMutex.Lock()
 	defer fake.headBucketMutex.Unlock()
 	fake.HeadBucketStub = stub
 }
 
-func (fake *FakeS3) HeadBucketArgsForCall(i int) *s3a.HeadBucketInput {
+func (fake *FakeClient) HeadBucketArgsForCall(i int) *s3a.HeadBucketInput {
 	fake.headBucketMutex.RLock()
 	defer fake.headBucketMutex.RUnlock()
 	argsForCall := fake.headBucketArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) HeadBucketReturns(result1 *s3a.HeadBucketOutput, result2 error) {
+func (fake *FakeClient) HeadBucketReturns(result1 *s3a.HeadBucketOutput, result2 error) {
 	fake.headBucketMutex.Lock()
 	defer fake.headBucketMutex.Unlock()
 	fake.HeadBucketStub = nil
@@ -14145,7 +14145,7 @@ func (fake *FakeS3) HeadBucketReturns(result1 *s3a.HeadBucketOutput, result2 err
 	}{result1, result2}
 }
 
-func (fake *FakeS3) HeadBucketReturnsOnCall(i int, result1 *s3a.HeadBucketOutput, result2 error) {
+func (fake *FakeClient) HeadBucketReturnsOnCall(i int, result1 *s3a.HeadBucketOutput, result2 error) {
 	fake.headBucketMutex.Lock()
 	defer fake.headBucketMutex.Unlock()
 	fake.HeadBucketStub = nil
@@ -14161,7 +14161,7 @@ func (fake *FakeS3) HeadBucketReturnsOnCall(i int, result1 *s3a.HeadBucketOutput
 	}{result1, result2}
 }
 
-func (fake *FakeS3) HeadBucketRequest(arg1 *s3a.HeadBucketInput) (*request.Request, *s3a.HeadBucketOutput) {
+func (fake *FakeClient) HeadBucketRequest(arg1 *s3a.HeadBucketInput) (*request.Request, *s3a.HeadBucketOutput) {
 	fake.headBucketRequestMutex.Lock()
 	ret, specificReturn := fake.headBucketRequestReturnsOnCall[len(fake.headBucketRequestArgsForCall)]
 	fake.headBucketRequestArgsForCall = append(fake.headBucketRequestArgsForCall, struct {
@@ -14179,26 +14179,26 @@ func (fake *FakeS3) HeadBucketRequest(arg1 *s3a.HeadBucketInput) (*request.Reque
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) HeadBucketRequestCallCount() int {
+func (fake *FakeClient) HeadBucketRequestCallCount() int {
 	fake.headBucketRequestMutex.RLock()
 	defer fake.headBucketRequestMutex.RUnlock()
 	return len(fake.headBucketRequestArgsForCall)
 }
 
-func (fake *FakeS3) HeadBucketRequestCalls(stub func(*s3a.HeadBucketInput) (*request.Request, *s3a.HeadBucketOutput)) {
+func (fake *FakeClient) HeadBucketRequestCalls(stub func(*s3a.HeadBucketInput) (*request.Request, *s3a.HeadBucketOutput)) {
 	fake.headBucketRequestMutex.Lock()
 	defer fake.headBucketRequestMutex.Unlock()
 	fake.HeadBucketRequestStub = stub
 }
 
-func (fake *FakeS3) HeadBucketRequestArgsForCall(i int) *s3a.HeadBucketInput {
+func (fake *FakeClient) HeadBucketRequestArgsForCall(i int) *s3a.HeadBucketInput {
 	fake.headBucketRequestMutex.RLock()
 	defer fake.headBucketRequestMutex.RUnlock()
 	argsForCall := fake.headBucketRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) HeadBucketRequestReturns(result1 *request.Request, result2 *s3a.HeadBucketOutput) {
+func (fake *FakeClient) HeadBucketRequestReturns(result1 *request.Request, result2 *s3a.HeadBucketOutput) {
 	fake.headBucketRequestMutex.Lock()
 	defer fake.headBucketRequestMutex.Unlock()
 	fake.HeadBucketRequestStub = nil
@@ -14208,7 +14208,7 @@ func (fake *FakeS3) HeadBucketRequestReturns(result1 *request.Request, result2 *
 	}{result1, result2}
 }
 
-func (fake *FakeS3) HeadBucketRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.HeadBucketOutput) {
+func (fake *FakeClient) HeadBucketRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.HeadBucketOutput) {
 	fake.headBucketRequestMutex.Lock()
 	defer fake.headBucketRequestMutex.Unlock()
 	fake.HeadBucketRequestStub = nil
@@ -14224,7 +14224,7 @@ func (fake *FakeS3) HeadBucketRequestReturnsOnCall(i int, result1 *request.Reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) HeadBucketWithContext(arg1 context.Context, arg2 *s3a.HeadBucketInput, arg3 ...request.Option) (*s3a.HeadBucketOutput, error) {
+func (fake *FakeClient) HeadBucketWithContext(arg1 context.Context, arg2 *s3a.HeadBucketInput, arg3 ...request.Option) (*s3a.HeadBucketOutput, error) {
 	fake.headBucketWithContextMutex.Lock()
 	ret, specificReturn := fake.headBucketWithContextReturnsOnCall[len(fake.headBucketWithContextArgsForCall)]
 	fake.headBucketWithContextArgsForCall = append(fake.headBucketWithContextArgsForCall, struct {
@@ -14244,26 +14244,26 @@ func (fake *FakeS3) HeadBucketWithContext(arg1 context.Context, arg2 *s3a.HeadBu
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) HeadBucketWithContextCallCount() int {
+func (fake *FakeClient) HeadBucketWithContextCallCount() int {
 	fake.headBucketWithContextMutex.RLock()
 	defer fake.headBucketWithContextMutex.RUnlock()
 	return len(fake.headBucketWithContextArgsForCall)
 }
 
-func (fake *FakeS3) HeadBucketWithContextCalls(stub func(context.Context, *s3a.HeadBucketInput, ...request.Option) (*s3a.HeadBucketOutput, error)) {
+func (fake *FakeClient) HeadBucketWithContextCalls(stub func(context.Context, *s3a.HeadBucketInput, ...request.Option) (*s3a.HeadBucketOutput, error)) {
 	fake.headBucketWithContextMutex.Lock()
 	defer fake.headBucketWithContextMutex.Unlock()
 	fake.HeadBucketWithContextStub = stub
 }
 
-func (fake *FakeS3) HeadBucketWithContextArgsForCall(i int) (context.Context, *s3a.HeadBucketInput, []request.Option) {
+func (fake *FakeClient) HeadBucketWithContextArgsForCall(i int) (context.Context, *s3a.HeadBucketInput, []request.Option) {
 	fake.headBucketWithContextMutex.RLock()
 	defer fake.headBucketWithContextMutex.RUnlock()
 	argsForCall := fake.headBucketWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) HeadBucketWithContextReturns(result1 *s3a.HeadBucketOutput, result2 error) {
+func (fake *FakeClient) HeadBucketWithContextReturns(result1 *s3a.HeadBucketOutput, result2 error) {
 	fake.headBucketWithContextMutex.Lock()
 	defer fake.headBucketWithContextMutex.Unlock()
 	fake.HeadBucketWithContextStub = nil
@@ -14273,7 +14273,7 @@ func (fake *FakeS3) HeadBucketWithContextReturns(result1 *s3a.HeadBucketOutput, 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) HeadBucketWithContextReturnsOnCall(i int, result1 *s3a.HeadBucketOutput, result2 error) {
+func (fake *FakeClient) HeadBucketWithContextReturnsOnCall(i int, result1 *s3a.HeadBucketOutput, result2 error) {
 	fake.headBucketWithContextMutex.Lock()
 	defer fake.headBucketWithContextMutex.Unlock()
 	fake.HeadBucketWithContextStub = nil
@@ -14289,7 +14289,7 @@ func (fake *FakeS3) HeadBucketWithContextReturnsOnCall(i int, result1 *s3a.HeadB
 	}{result1, result2}
 }
 
-func (fake *FakeS3) HeadObject(arg1 *s3a.HeadObjectInput) (*s3a.HeadObjectOutput, error) {
+func (fake *FakeClient) HeadObject(arg1 *s3a.HeadObjectInput) (*s3a.HeadObjectOutput, error) {
 	fake.headObjectMutex.Lock()
 	ret, specificReturn := fake.headObjectReturnsOnCall[len(fake.headObjectArgsForCall)]
 	fake.headObjectArgsForCall = append(fake.headObjectArgsForCall, struct {
@@ -14307,26 +14307,26 @@ func (fake *FakeS3) HeadObject(arg1 *s3a.HeadObjectInput) (*s3a.HeadObjectOutput
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) HeadObjectCallCount() int {
+func (fake *FakeClient) HeadObjectCallCount() int {
 	fake.headObjectMutex.RLock()
 	defer fake.headObjectMutex.RUnlock()
 	return len(fake.headObjectArgsForCall)
 }
 
-func (fake *FakeS3) HeadObjectCalls(stub func(*s3a.HeadObjectInput) (*s3a.HeadObjectOutput, error)) {
+func (fake *FakeClient) HeadObjectCalls(stub func(*s3a.HeadObjectInput) (*s3a.HeadObjectOutput, error)) {
 	fake.headObjectMutex.Lock()
 	defer fake.headObjectMutex.Unlock()
 	fake.HeadObjectStub = stub
 }
 
-func (fake *FakeS3) HeadObjectArgsForCall(i int) *s3a.HeadObjectInput {
+func (fake *FakeClient) HeadObjectArgsForCall(i int) *s3a.HeadObjectInput {
 	fake.headObjectMutex.RLock()
 	defer fake.headObjectMutex.RUnlock()
 	argsForCall := fake.headObjectArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) HeadObjectReturns(result1 *s3a.HeadObjectOutput, result2 error) {
+func (fake *FakeClient) HeadObjectReturns(result1 *s3a.HeadObjectOutput, result2 error) {
 	fake.headObjectMutex.Lock()
 	defer fake.headObjectMutex.Unlock()
 	fake.HeadObjectStub = nil
@@ -14336,7 +14336,7 @@ func (fake *FakeS3) HeadObjectReturns(result1 *s3a.HeadObjectOutput, result2 err
 	}{result1, result2}
 }
 
-func (fake *FakeS3) HeadObjectReturnsOnCall(i int, result1 *s3a.HeadObjectOutput, result2 error) {
+func (fake *FakeClient) HeadObjectReturnsOnCall(i int, result1 *s3a.HeadObjectOutput, result2 error) {
 	fake.headObjectMutex.Lock()
 	defer fake.headObjectMutex.Unlock()
 	fake.HeadObjectStub = nil
@@ -14352,7 +14352,7 @@ func (fake *FakeS3) HeadObjectReturnsOnCall(i int, result1 *s3a.HeadObjectOutput
 	}{result1, result2}
 }
 
-func (fake *FakeS3) HeadObjectRequest(arg1 *s3a.HeadObjectInput) (*request.Request, *s3a.HeadObjectOutput) {
+func (fake *FakeClient) HeadObjectRequest(arg1 *s3a.HeadObjectInput) (*request.Request, *s3a.HeadObjectOutput) {
 	fake.headObjectRequestMutex.Lock()
 	ret, specificReturn := fake.headObjectRequestReturnsOnCall[len(fake.headObjectRequestArgsForCall)]
 	fake.headObjectRequestArgsForCall = append(fake.headObjectRequestArgsForCall, struct {
@@ -14370,26 +14370,26 @@ func (fake *FakeS3) HeadObjectRequest(arg1 *s3a.HeadObjectInput) (*request.Reque
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) HeadObjectRequestCallCount() int {
+func (fake *FakeClient) HeadObjectRequestCallCount() int {
 	fake.headObjectRequestMutex.RLock()
 	defer fake.headObjectRequestMutex.RUnlock()
 	return len(fake.headObjectRequestArgsForCall)
 }
 
-func (fake *FakeS3) HeadObjectRequestCalls(stub func(*s3a.HeadObjectInput) (*request.Request, *s3a.HeadObjectOutput)) {
+func (fake *FakeClient) HeadObjectRequestCalls(stub func(*s3a.HeadObjectInput) (*request.Request, *s3a.HeadObjectOutput)) {
 	fake.headObjectRequestMutex.Lock()
 	defer fake.headObjectRequestMutex.Unlock()
 	fake.HeadObjectRequestStub = stub
 }
 
-func (fake *FakeS3) HeadObjectRequestArgsForCall(i int) *s3a.HeadObjectInput {
+func (fake *FakeClient) HeadObjectRequestArgsForCall(i int) *s3a.HeadObjectInput {
 	fake.headObjectRequestMutex.RLock()
 	defer fake.headObjectRequestMutex.RUnlock()
 	argsForCall := fake.headObjectRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) HeadObjectRequestReturns(result1 *request.Request, result2 *s3a.HeadObjectOutput) {
+func (fake *FakeClient) HeadObjectRequestReturns(result1 *request.Request, result2 *s3a.HeadObjectOutput) {
 	fake.headObjectRequestMutex.Lock()
 	defer fake.headObjectRequestMutex.Unlock()
 	fake.HeadObjectRequestStub = nil
@@ -14399,7 +14399,7 @@ func (fake *FakeS3) HeadObjectRequestReturns(result1 *request.Request, result2 *
 	}{result1, result2}
 }
 
-func (fake *FakeS3) HeadObjectRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.HeadObjectOutput) {
+func (fake *FakeClient) HeadObjectRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.HeadObjectOutput) {
 	fake.headObjectRequestMutex.Lock()
 	defer fake.headObjectRequestMutex.Unlock()
 	fake.HeadObjectRequestStub = nil
@@ -14415,7 +14415,7 @@ func (fake *FakeS3) HeadObjectRequestReturnsOnCall(i int, result1 *request.Reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) HeadObjectWithContext(arg1 context.Context, arg2 *s3a.HeadObjectInput, arg3 ...request.Option) (*s3a.HeadObjectOutput, error) {
+func (fake *FakeClient) HeadObjectWithContext(arg1 context.Context, arg2 *s3a.HeadObjectInput, arg3 ...request.Option) (*s3a.HeadObjectOutput, error) {
 	fake.headObjectWithContextMutex.Lock()
 	ret, specificReturn := fake.headObjectWithContextReturnsOnCall[len(fake.headObjectWithContextArgsForCall)]
 	fake.headObjectWithContextArgsForCall = append(fake.headObjectWithContextArgsForCall, struct {
@@ -14435,26 +14435,26 @@ func (fake *FakeS3) HeadObjectWithContext(arg1 context.Context, arg2 *s3a.HeadOb
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) HeadObjectWithContextCallCount() int {
+func (fake *FakeClient) HeadObjectWithContextCallCount() int {
 	fake.headObjectWithContextMutex.RLock()
 	defer fake.headObjectWithContextMutex.RUnlock()
 	return len(fake.headObjectWithContextArgsForCall)
 }
 
-func (fake *FakeS3) HeadObjectWithContextCalls(stub func(context.Context, *s3a.HeadObjectInput, ...request.Option) (*s3a.HeadObjectOutput, error)) {
+func (fake *FakeClient) HeadObjectWithContextCalls(stub func(context.Context, *s3a.HeadObjectInput, ...request.Option) (*s3a.HeadObjectOutput, error)) {
 	fake.headObjectWithContextMutex.Lock()
 	defer fake.headObjectWithContextMutex.Unlock()
 	fake.HeadObjectWithContextStub = stub
 }
 
-func (fake *FakeS3) HeadObjectWithContextArgsForCall(i int) (context.Context, *s3a.HeadObjectInput, []request.Option) {
+func (fake *FakeClient) HeadObjectWithContextArgsForCall(i int) (context.Context, *s3a.HeadObjectInput, []request.Option) {
 	fake.headObjectWithContextMutex.RLock()
 	defer fake.headObjectWithContextMutex.RUnlock()
 	argsForCall := fake.headObjectWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) HeadObjectWithContextReturns(result1 *s3a.HeadObjectOutput, result2 error) {
+func (fake *FakeClient) HeadObjectWithContextReturns(result1 *s3a.HeadObjectOutput, result2 error) {
 	fake.headObjectWithContextMutex.Lock()
 	defer fake.headObjectWithContextMutex.Unlock()
 	fake.HeadObjectWithContextStub = nil
@@ -14464,7 +14464,7 @@ func (fake *FakeS3) HeadObjectWithContextReturns(result1 *s3a.HeadObjectOutput, 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) HeadObjectWithContextReturnsOnCall(i int, result1 *s3a.HeadObjectOutput, result2 error) {
+func (fake *FakeClient) HeadObjectWithContextReturnsOnCall(i int, result1 *s3a.HeadObjectOutput, result2 error) {
 	fake.headObjectWithContextMutex.Lock()
 	defer fake.headObjectWithContextMutex.Unlock()
 	fake.HeadObjectWithContextStub = nil
@@ -14480,7 +14480,7 @@ func (fake *FakeS3) HeadObjectWithContextReturnsOnCall(i int, result1 *s3a.HeadO
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketAnalyticsConfigurations(arg1 *s3a.ListBucketAnalyticsConfigurationsInput) (*s3a.ListBucketAnalyticsConfigurationsOutput, error) {
+func (fake *FakeClient) ListBucketAnalyticsConfigurations(arg1 *s3a.ListBucketAnalyticsConfigurationsInput) (*s3a.ListBucketAnalyticsConfigurationsOutput, error) {
 	fake.listBucketAnalyticsConfigurationsMutex.Lock()
 	ret, specificReturn := fake.listBucketAnalyticsConfigurationsReturnsOnCall[len(fake.listBucketAnalyticsConfigurationsArgsForCall)]
 	fake.listBucketAnalyticsConfigurationsArgsForCall = append(fake.listBucketAnalyticsConfigurationsArgsForCall, struct {
@@ -14498,26 +14498,26 @@ func (fake *FakeS3) ListBucketAnalyticsConfigurations(arg1 *s3a.ListBucketAnalyt
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListBucketAnalyticsConfigurationsCallCount() int {
+func (fake *FakeClient) ListBucketAnalyticsConfigurationsCallCount() int {
 	fake.listBucketAnalyticsConfigurationsMutex.RLock()
 	defer fake.listBucketAnalyticsConfigurationsMutex.RUnlock()
 	return len(fake.listBucketAnalyticsConfigurationsArgsForCall)
 }
 
-func (fake *FakeS3) ListBucketAnalyticsConfigurationsCalls(stub func(*s3a.ListBucketAnalyticsConfigurationsInput) (*s3a.ListBucketAnalyticsConfigurationsOutput, error)) {
+func (fake *FakeClient) ListBucketAnalyticsConfigurationsCalls(stub func(*s3a.ListBucketAnalyticsConfigurationsInput) (*s3a.ListBucketAnalyticsConfigurationsOutput, error)) {
 	fake.listBucketAnalyticsConfigurationsMutex.Lock()
 	defer fake.listBucketAnalyticsConfigurationsMutex.Unlock()
 	fake.ListBucketAnalyticsConfigurationsStub = stub
 }
 
-func (fake *FakeS3) ListBucketAnalyticsConfigurationsArgsForCall(i int) *s3a.ListBucketAnalyticsConfigurationsInput {
+func (fake *FakeClient) ListBucketAnalyticsConfigurationsArgsForCall(i int) *s3a.ListBucketAnalyticsConfigurationsInput {
 	fake.listBucketAnalyticsConfigurationsMutex.RLock()
 	defer fake.listBucketAnalyticsConfigurationsMutex.RUnlock()
 	argsForCall := fake.listBucketAnalyticsConfigurationsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) ListBucketAnalyticsConfigurationsReturns(result1 *s3a.ListBucketAnalyticsConfigurationsOutput, result2 error) {
+func (fake *FakeClient) ListBucketAnalyticsConfigurationsReturns(result1 *s3a.ListBucketAnalyticsConfigurationsOutput, result2 error) {
 	fake.listBucketAnalyticsConfigurationsMutex.Lock()
 	defer fake.listBucketAnalyticsConfigurationsMutex.Unlock()
 	fake.ListBucketAnalyticsConfigurationsStub = nil
@@ -14527,7 +14527,7 @@ func (fake *FakeS3) ListBucketAnalyticsConfigurationsReturns(result1 *s3a.ListBu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketAnalyticsConfigurationsReturnsOnCall(i int, result1 *s3a.ListBucketAnalyticsConfigurationsOutput, result2 error) {
+func (fake *FakeClient) ListBucketAnalyticsConfigurationsReturnsOnCall(i int, result1 *s3a.ListBucketAnalyticsConfigurationsOutput, result2 error) {
 	fake.listBucketAnalyticsConfigurationsMutex.Lock()
 	defer fake.listBucketAnalyticsConfigurationsMutex.Unlock()
 	fake.ListBucketAnalyticsConfigurationsStub = nil
@@ -14543,7 +14543,7 @@ func (fake *FakeS3) ListBucketAnalyticsConfigurationsReturnsOnCall(i int, result
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketAnalyticsConfigurationsRequest(arg1 *s3a.ListBucketAnalyticsConfigurationsInput) (*request.Request, *s3a.ListBucketAnalyticsConfigurationsOutput) {
+func (fake *FakeClient) ListBucketAnalyticsConfigurationsRequest(arg1 *s3a.ListBucketAnalyticsConfigurationsInput) (*request.Request, *s3a.ListBucketAnalyticsConfigurationsOutput) {
 	fake.listBucketAnalyticsConfigurationsRequestMutex.Lock()
 	ret, specificReturn := fake.listBucketAnalyticsConfigurationsRequestReturnsOnCall[len(fake.listBucketAnalyticsConfigurationsRequestArgsForCall)]
 	fake.listBucketAnalyticsConfigurationsRequestArgsForCall = append(fake.listBucketAnalyticsConfigurationsRequestArgsForCall, struct {
@@ -14561,26 +14561,26 @@ func (fake *FakeS3) ListBucketAnalyticsConfigurationsRequest(arg1 *s3a.ListBucke
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListBucketAnalyticsConfigurationsRequestCallCount() int {
+func (fake *FakeClient) ListBucketAnalyticsConfigurationsRequestCallCount() int {
 	fake.listBucketAnalyticsConfigurationsRequestMutex.RLock()
 	defer fake.listBucketAnalyticsConfigurationsRequestMutex.RUnlock()
 	return len(fake.listBucketAnalyticsConfigurationsRequestArgsForCall)
 }
 
-func (fake *FakeS3) ListBucketAnalyticsConfigurationsRequestCalls(stub func(*s3a.ListBucketAnalyticsConfigurationsInput) (*request.Request, *s3a.ListBucketAnalyticsConfigurationsOutput)) {
+func (fake *FakeClient) ListBucketAnalyticsConfigurationsRequestCalls(stub func(*s3a.ListBucketAnalyticsConfigurationsInput) (*request.Request, *s3a.ListBucketAnalyticsConfigurationsOutput)) {
 	fake.listBucketAnalyticsConfigurationsRequestMutex.Lock()
 	defer fake.listBucketAnalyticsConfigurationsRequestMutex.Unlock()
 	fake.ListBucketAnalyticsConfigurationsRequestStub = stub
 }
 
-func (fake *FakeS3) ListBucketAnalyticsConfigurationsRequestArgsForCall(i int) *s3a.ListBucketAnalyticsConfigurationsInput {
+func (fake *FakeClient) ListBucketAnalyticsConfigurationsRequestArgsForCall(i int) *s3a.ListBucketAnalyticsConfigurationsInput {
 	fake.listBucketAnalyticsConfigurationsRequestMutex.RLock()
 	defer fake.listBucketAnalyticsConfigurationsRequestMutex.RUnlock()
 	argsForCall := fake.listBucketAnalyticsConfigurationsRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) ListBucketAnalyticsConfigurationsRequestReturns(result1 *request.Request, result2 *s3a.ListBucketAnalyticsConfigurationsOutput) {
+func (fake *FakeClient) ListBucketAnalyticsConfigurationsRequestReturns(result1 *request.Request, result2 *s3a.ListBucketAnalyticsConfigurationsOutput) {
 	fake.listBucketAnalyticsConfigurationsRequestMutex.Lock()
 	defer fake.listBucketAnalyticsConfigurationsRequestMutex.Unlock()
 	fake.ListBucketAnalyticsConfigurationsRequestStub = nil
@@ -14590,7 +14590,7 @@ func (fake *FakeS3) ListBucketAnalyticsConfigurationsRequestReturns(result1 *req
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketAnalyticsConfigurationsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.ListBucketAnalyticsConfigurationsOutput) {
+func (fake *FakeClient) ListBucketAnalyticsConfigurationsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.ListBucketAnalyticsConfigurationsOutput) {
 	fake.listBucketAnalyticsConfigurationsRequestMutex.Lock()
 	defer fake.listBucketAnalyticsConfigurationsRequestMutex.Unlock()
 	fake.ListBucketAnalyticsConfigurationsRequestStub = nil
@@ -14606,7 +14606,7 @@ func (fake *FakeS3) ListBucketAnalyticsConfigurationsRequestReturnsOnCall(i int,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketAnalyticsConfigurationsWithContext(arg1 context.Context, arg2 *s3a.ListBucketAnalyticsConfigurationsInput, arg3 ...request.Option) (*s3a.ListBucketAnalyticsConfigurationsOutput, error) {
+func (fake *FakeClient) ListBucketAnalyticsConfigurationsWithContext(arg1 context.Context, arg2 *s3a.ListBucketAnalyticsConfigurationsInput, arg3 ...request.Option) (*s3a.ListBucketAnalyticsConfigurationsOutput, error) {
 	fake.listBucketAnalyticsConfigurationsWithContextMutex.Lock()
 	ret, specificReturn := fake.listBucketAnalyticsConfigurationsWithContextReturnsOnCall[len(fake.listBucketAnalyticsConfigurationsWithContextArgsForCall)]
 	fake.listBucketAnalyticsConfigurationsWithContextArgsForCall = append(fake.listBucketAnalyticsConfigurationsWithContextArgsForCall, struct {
@@ -14626,26 +14626,26 @@ func (fake *FakeS3) ListBucketAnalyticsConfigurationsWithContext(arg1 context.Co
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListBucketAnalyticsConfigurationsWithContextCallCount() int {
+func (fake *FakeClient) ListBucketAnalyticsConfigurationsWithContextCallCount() int {
 	fake.listBucketAnalyticsConfigurationsWithContextMutex.RLock()
 	defer fake.listBucketAnalyticsConfigurationsWithContextMutex.RUnlock()
 	return len(fake.listBucketAnalyticsConfigurationsWithContextArgsForCall)
 }
 
-func (fake *FakeS3) ListBucketAnalyticsConfigurationsWithContextCalls(stub func(context.Context, *s3a.ListBucketAnalyticsConfigurationsInput, ...request.Option) (*s3a.ListBucketAnalyticsConfigurationsOutput, error)) {
+func (fake *FakeClient) ListBucketAnalyticsConfigurationsWithContextCalls(stub func(context.Context, *s3a.ListBucketAnalyticsConfigurationsInput, ...request.Option) (*s3a.ListBucketAnalyticsConfigurationsOutput, error)) {
 	fake.listBucketAnalyticsConfigurationsWithContextMutex.Lock()
 	defer fake.listBucketAnalyticsConfigurationsWithContextMutex.Unlock()
 	fake.ListBucketAnalyticsConfigurationsWithContextStub = stub
 }
 
-func (fake *FakeS3) ListBucketAnalyticsConfigurationsWithContextArgsForCall(i int) (context.Context, *s3a.ListBucketAnalyticsConfigurationsInput, []request.Option) {
+func (fake *FakeClient) ListBucketAnalyticsConfigurationsWithContextArgsForCall(i int) (context.Context, *s3a.ListBucketAnalyticsConfigurationsInput, []request.Option) {
 	fake.listBucketAnalyticsConfigurationsWithContextMutex.RLock()
 	defer fake.listBucketAnalyticsConfigurationsWithContextMutex.RUnlock()
 	argsForCall := fake.listBucketAnalyticsConfigurationsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) ListBucketAnalyticsConfigurationsWithContextReturns(result1 *s3a.ListBucketAnalyticsConfigurationsOutput, result2 error) {
+func (fake *FakeClient) ListBucketAnalyticsConfigurationsWithContextReturns(result1 *s3a.ListBucketAnalyticsConfigurationsOutput, result2 error) {
 	fake.listBucketAnalyticsConfigurationsWithContextMutex.Lock()
 	defer fake.listBucketAnalyticsConfigurationsWithContextMutex.Unlock()
 	fake.ListBucketAnalyticsConfigurationsWithContextStub = nil
@@ -14655,7 +14655,7 @@ func (fake *FakeS3) ListBucketAnalyticsConfigurationsWithContextReturns(result1 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketAnalyticsConfigurationsWithContextReturnsOnCall(i int, result1 *s3a.ListBucketAnalyticsConfigurationsOutput, result2 error) {
+func (fake *FakeClient) ListBucketAnalyticsConfigurationsWithContextReturnsOnCall(i int, result1 *s3a.ListBucketAnalyticsConfigurationsOutput, result2 error) {
 	fake.listBucketAnalyticsConfigurationsWithContextMutex.Lock()
 	defer fake.listBucketAnalyticsConfigurationsWithContextMutex.Unlock()
 	fake.ListBucketAnalyticsConfigurationsWithContextStub = nil
@@ -14671,7 +14671,7 @@ func (fake *FakeS3) ListBucketAnalyticsConfigurationsWithContextReturnsOnCall(i 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketIntelligentTieringConfigurations(arg1 *s3a.ListBucketIntelligentTieringConfigurationsInput) (*s3a.ListBucketIntelligentTieringConfigurationsOutput, error) {
+func (fake *FakeClient) ListBucketIntelligentTieringConfigurations(arg1 *s3a.ListBucketIntelligentTieringConfigurationsInput) (*s3a.ListBucketIntelligentTieringConfigurationsOutput, error) {
 	fake.listBucketIntelligentTieringConfigurationsMutex.Lock()
 	ret, specificReturn := fake.listBucketIntelligentTieringConfigurationsReturnsOnCall[len(fake.listBucketIntelligentTieringConfigurationsArgsForCall)]
 	fake.listBucketIntelligentTieringConfigurationsArgsForCall = append(fake.listBucketIntelligentTieringConfigurationsArgsForCall, struct {
@@ -14689,26 +14689,26 @@ func (fake *FakeS3) ListBucketIntelligentTieringConfigurations(arg1 *s3a.ListBuc
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsCallCount() int {
+func (fake *FakeClient) ListBucketIntelligentTieringConfigurationsCallCount() int {
 	fake.listBucketIntelligentTieringConfigurationsMutex.RLock()
 	defer fake.listBucketIntelligentTieringConfigurationsMutex.RUnlock()
 	return len(fake.listBucketIntelligentTieringConfigurationsArgsForCall)
 }
 
-func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsCalls(stub func(*s3a.ListBucketIntelligentTieringConfigurationsInput) (*s3a.ListBucketIntelligentTieringConfigurationsOutput, error)) {
+func (fake *FakeClient) ListBucketIntelligentTieringConfigurationsCalls(stub func(*s3a.ListBucketIntelligentTieringConfigurationsInput) (*s3a.ListBucketIntelligentTieringConfigurationsOutput, error)) {
 	fake.listBucketIntelligentTieringConfigurationsMutex.Lock()
 	defer fake.listBucketIntelligentTieringConfigurationsMutex.Unlock()
 	fake.ListBucketIntelligentTieringConfigurationsStub = stub
 }
 
-func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsArgsForCall(i int) *s3a.ListBucketIntelligentTieringConfigurationsInput {
+func (fake *FakeClient) ListBucketIntelligentTieringConfigurationsArgsForCall(i int) *s3a.ListBucketIntelligentTieringConfigurationsInput {
 	fake.listBucketIntelligentTieringConfigurationsMutex.RLock()
 	defer fake.listBucketIntelligentTieringConfigurationsMutex.RUnlock()
 	argsForCall := fake.listBucketIntelligentTieringConfigurationsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsReturns(result1 *s3a.ListBucketIntelligentTieringConfigurationsOutput, result2 error) {
+func (fake *FakeClient) ListBucketIntelligentTieringConfigurationsReturns(result1 *s3a.ListBucketIntelligentTieringConfigurationsOutput, result2 error) {
 	fake.listBucketIntelligentTieringConfigurationsMutex.Lock()
 	defer fake.listBucketIntelligentTieringConfigurationsMutex.Unlock()
 	fake.ListBucketIntelligentTieringConfigurationsStub = nil
@@ -14718,7 +14718,7 @@ func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsReturns(result1 *s
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsReturnsOnCall(i int, result1 *s3a.ListBucketIntelligentTieringConfigurationsOutput, result2 error) {
+func (fake *FakeClient) ListBucketIntelligentTieringConfigurationsReturnsOnCall(i int, result1 *s3a.ListBucketIntelligentTieringConfigurationsOutput, result2 error) {
 	fake.listBucketIntelligentTieringConfigurationsMutex.Lock()
 	defer fake.listBucketIntelligentTieringConfigurationsMutex.Unlock()
 	fake.ListBucketIntelligentTieringConfigurationsStub = nil
@@ -14734,7 +14734,7 @@ func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsReturnsOnCall(i in
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsRequest(arg1 *s3a.ListBucketIntelligentTieringConfigurationsInput) (*request.Request, *s3a.ListBucketIntelligentTieringConfigurationsOutput) {
+func (fake *FakeClient) ListBucketIntelligentTieringConfigurationsRequest(arg1 *s3a.ListBucketIntelligentTieringConfigurationsInput) (*request.Request, *s3a.ListBucketIntelligentTieringConfigurationsOutput) {
 	fake.listBucketIntelligentTieringConfigurationsRequestMutex.Lock()
 	ret, specificReturn := fake.listBucketIntelligentTieringConfigurationsRequestReturnsOnCall[len(fake.listBucketIntelligentTieringConfigurationsRequestArgsForCall)]
 	fake.listBucketIntelligentTieringConfigurationsRequestArgsForCall = append(fake.listBucketIntelligentTieringConfigurationsRequestArgsForCall, struct {
@@ -14752,26 +14752,26 @@ func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsRequest(arg1 *s3a.
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsRequestCallCount() int {
+func (fake *FakeClient) ListBucketIntelligentTieringConfigurationsRequestCallCount() int {
 	fake.listBucketIntelligentTieringConfigurationsRequestMutex.RLock()
 	defer fake.listBucketIntelligentTieringConfigurationsRequestMutex.RUnlock()
 	return len(fake.listBucketIntelligentTieringConfigurationsRequestArgsForCall)
 }
 
-func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsRequestCalls(stub func(*s3a.ListBucketIntelligentTieringConfigurationsInput) (*request.Request, *s3a.ListBucketIntelligentTieringConfigurationsOutput)) {
+func (fake *FakeClient) ListBucketIntelligentTieringConfigurationsRequestCalls(stub func(*s3a.ListBucketIntelligentTieringConfigurationsInput) (*request.Request, *s3a.ListBucketIntelligentTieringConfigurationsOutput)) {
 	fake.listBucketIntelligentTieringConfigurationsRequestMutex.Lock()
 	defer fake.listBucketIntelligentTieringConfigurationsRequestMutex.Unlock()
 	fake.ListBucketIntelligentTieringConfigurationsRequestStub = stub
 }
 
-func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsRequestArgsForCall(i int) *s3a.ListBucketIntelligentTieringConfigurationsInput {
+func (fake *FakeClient) ListBucketIntelligentTieringConfigurationsRequestArgsForCall(i int) *s3a.ListBucketIntelligentTieringConfigurationsInput {
 	fake.listBucketIntelligentTieringConfigurationsRequestMutex.RLock()
 	defer fake.listBucketIntelligentTieringConfigurationsRequestMutex.RUnlock()
 	argsForCall := fake.listBucketIntelligentTieringConfigurationsRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsRequestReturns(result1 *request.Request, result2 *s3a.ListBucketIntelligentTieringConfigurationsOutput) {
+func (fake *FakeClient) ListBucketIntelligentTieringConfigurationsRequestReturns(result1 *request.Request, result2 *s3a.ListBucketIntelligentTieringConfigurationsOutput) {
 	fake.listBucketIntelligentTieringConfigurationsRequestMutex.Lock()
 	defer fake.listBucketIntelligentTieringConfigurationsRequestMutex.Unlock()
 	fake.ListBucketIntelligentTieringConfigurationsRequestStub = nil
@@ -14781,7 +14781,7 @@ func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsRequestReturns(res
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.ListBucketIntelligentTieringConfigurationsOutput) {
+func (fake *FakeClient) ListBucketIntelligentTieringConfigurationsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.ListBucketIntelligentTieringConfigurationsOutput) {
 	fake.listBucketIntelligentTieringConfigurationsRequestMutex.Lock()
 	defer fake.listBucketIntelligentTieringConfigurationsRequestMutex.Unlock()
 	fake.ListBucketIntelligentTieringConfigurationsRequestStub = nil
@@ -14797,7 +14797,7 @@ func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsRequestReturnsOnCa
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsWithContext(arg1 context.Context, arg2 *s3a.ListBucketIntelligentTieringConfigurationsInput, arg3 ...request.Option) (*s3a.ListBucketIntelligentTieringConfigurationsOutput, error) {
+func (fake *FakeClient) ListBucketIntelligentTieringConfigurationsWithContext(arg1 context.Context, arg2 *s3a.ListBucketIntelligentTieringConfigurationsInput, arg3 ...request.Option) (*s3a.ListBucketIntelligentTieringConfigurationsOutput, error) {
 	fake.listBucketIntelligentTieringConfigurationsWithContextMutex.Lock()
 	ret, specificReturn := fake.listBucketIntelligentTieringConfigurationsWithContextReturnsOnCall[len(fake.listBucketIntelligentTieringConfigurationsWithContextArgsForCall)]
 	fake.listBucketIntelligentTieringConfigurationsWithContextArgsForCall = append(fake.listBucketIntelligentTieringConfigurationsWithContextArgsForCall, struct {
@@ -14817,26 +14817,26 @@ func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsWithContext(arg1 c
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsWithContextCallCount() int {
+func (fake *FakeClient) ListBucketIntelligentTieringConfigurationsWithContextCallCount() int {
 	fake.listBucketIntelligentTieringConfigurationsWithContextMutex.RLock()
 	defer fake.listBucketIntelligentTieringConfigurationsWithContextMutex.RUnlock()
 	return len(fake.listBucketIntelligentTieringConfigurationsWithContextArgsForCall)
 }
 
-func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsWithContextCalls(stub func(context.Context, *s3a.ListBucketIntelligentTieringConfigurationsInput, ...request.Option) (*s3a.ListBucketIntelligentTieringConfigurationsOutput, error)) {
+func (fake *FakeClient) ListBucketIntelligentTieringConfigurationsWithContextCalls(stub func(context.Context, *s3a.ListBucketIntelligentTieringConfigurationsInput, ...request.Option) (*s3a.ListBucketIntelligentTieringConfigurationsOutput, error)) {
 	fake.listBucketIntelligentTieringConfigurationsWithContextMutex.Lock()
 	defer fake.listBucketIntelligentTieringConfigurationsWithContextMutex.Unlock()
 	fake.ListBucketIntelligentTieringConfigurationsWithContextStub = stub
 }
 
-func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsWithContextArgsForCall(i int) (context.Context, *s3a.ListBucketIntelligentTieringConfigurationsInput, []request.Option) {
+func (fake *FakeClient) ListBucketIntelligentTieringConfigurationsWithContextArgsForCall(i int) (context.Context, *s3a.ListBucketIntelligentTieringConfigurationsInput, []request.Option) {
 	fake.listBucketIntelligentTieringConfigurationsWithContextMutex.RLock()
 	defer fake.listBucketIntelligentTieringConfigurationsWithContextMutex.RUnlock()
 	argsForCall := fake.listBucketIntelligentTieringConfigurationsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsWithContextReturns(result1 *s3a.ListBucketIntelligentTieringConfigurationsOutput, result2 error) {
+func (fake *FakeClient) ListBucketIntelligentTieringConfigurationsWithContextReturns(result1 *s3a.ListBucketIntelligentTieringConfigurationsOutput, result2 error) {
 	fake.listBucketIntelligentTieringConfigurationsWithContextMutex.Lock()
 	defer fake.listBucketIntelligentTieringConfigurationsWithContextMutex.Unlock()
 	fake.ListBucketIntelligentTieringConfigurationsWithContextStub = nil
@@ -14846,7 +14846,7 @@ func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsWithContextReturns
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsWithContextReturnsOnCall(i int, result1 *s3a.ListBucketIntelligentTieringConfigurationsOutput, result2 error) {
+func (fake *FakeClient) ListBucketIntelligentTieringConfigurationsWithContextReturnsOnCall(i int, result1 *s3a.ListBucketIntelligentTieringConfigurationsOutput, result2 error) {
 	fake.listBucketIntelligentTieringConfigurationsWithContextMutex.Lock()
 	defer fake.listBucketIntelligentTieringConfigurationsWithContextMutex.Unlock()
 	fake.ListBucketIntelligentTieringConfigurationsWithContextStub = nil
@@ -14862,7 +14862,7 @@ func (fake *FakeS3) ListBucketIntelligentTieringConfigurationsWithContextReturns
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketInventoryConfigurations(arg1 *s3a.ListBucketInventoryConfigurationsInput) (*s3a.ListBucketInventoryConfigurationsOutput, error) {
+func (fake *FakeClient) ListBucketInventoryConfigurations(arg1 *s3a.ListBucketInventoryConfigurationsInput) (*s3a.ListBucketInventoryConfigurationsOutput, error) {
 	fake.listBucketInventoryConfigurationsMutex.Lock()
 	ret, specificReturn := fake.listBucketInventoryConfigurationsReturnsOnCall[len(fake.listBucketInventoryConfigurationsArgsForCall)]
 	fake.listBucketInventoryConfigurationsArgsForCall = append(fake.listBucketInventoryConfigurationsArgsForCall, struct {
@@ -14880,26 +14880,26 @@ func (fake *FakeS3) ListBucketInventoryConfigurations(arg1 *s3a.ListBucketInvent
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListBucketInventoryConfigurationsCallCount() int {
+func (fake *FakeClient) ListBucketInventoryConfigurationsCallCount() int {
 	fake.listBucketInventoryConfigurationsMutex.RLock()
 	defer fake.listBucketInventoryConfigurationsMutex.RUnlock()
 	return len(fake.listBucketInventoryConfigurationsArgsForCall)
 }
 
-func (fake *FakeS3) ListBucketInventoryConfigurationsCalls(stub func(*s3a.ListBucketInventoryConfigurationsInput) (*s3a.ListBucketInventoryConfigurationsOutput, error)) {
+func (fake *FakeClient) ListBucketInventoryConfigurationsCalls(stub func(*s3a.ListBucketInventoryConfigurationsInput) (*s3a.ListBucketInventoryConfigurationsOutput, error)) {
 	fake.listBucketInventoryConfigurationsMutex.Lock()
 	defer fake.listBucketInventoryConfigurationsMutex.Unlock()
 	fake.ListBucketInventoryConfigurationsStub = stub
 }
 
-func (fake *FakeS3) ListBucketInventoryConfigurationsArgsForCall(i int) *s3a.ListBucketInventoryConfigurationsInput {
+func (fake *FakeClient) ListBucketInventoryConfigurationsArgsForCall(i int) *s3a.ListBucketInventoryConfigurationsInput {
 	fake.listBucketInventoryConfigurationsMutex.RLock()
 	defer fake.listBucketInventoryConfigurationsMutex.RUnlock()
 	argsForCall := fake.listBucketInventoryConfigurationsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) ListBucketInventoryConfigurationsReturns(result1 *s3a.ListBucketInventoryConfigurationsOutput, result2 error) {
+func (fake *FakeClient) ListBucketInventoryConfigurationsReturns(result1 *s3a.ListBucketInventoryConfigurationsOutput, result2 error) {
 	fake.listBucketInventoryConfigurationsMutex.Lock()
 	defer fake.listBucketInventoryConfigurationsMutex.Unlock()
 	fake.ListBucketInventoryConfigurationsStub = nil
@@ -14909,7 +14909,7 @@ func (fake *FakeS3) ListBucketInventoryConfigurationsReturns(result1 *s3a.ListBu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketInventoryConfigurationsReturnsOnCall(i int, result1 *s3a.ListBucketInventoryConfigurationsOutput, result2 error) {
+func (fake *FakeClient) ListBucketInventoryConfigurationsReturnsOnCall(i int, result1 *s3a.ListBucketInventoryConfigurationsOutput, result2 error) {
 	fake.listBucketInventoryConfigurationsMutex.Lock()
 	defer fake.listBucketInventoryConfigurationsMutex.Unlock()
 	fake.ListBucketInventoryConfigurationsStub = nil
@@ -14925,7 +14925,7 @@ func (fake *FakeS3) ListBucketInventoryConfigurationsReturnsOnCall(i int, result
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketInventoryConfigurationsRequest(arg1 *s3a.ListBucketInventoryConfigurationsInput) (*request.Request, *s3a.ListBucketInventoryConfigurationsOutput) {
+func (fake *FakeClient) ListBucketInventoryConfigurationsRequest(arg1 *s3a.ListBucketInventoryConfigurationsInput) (*request.Request, *s3a.ListBucketInventoryConfigurationsOutput) {
 	fake.listBucketInventoryConfigurationsRequestMutex.Lock()
 	ret, specificReturn := fake.listBucketInventoryConfigurationsRequestReturnsOnCall[len(fake.listBucketInventoryConfigurationsRequestArgsForCall)]
 	fake.listBucketInventoryConfigurationsRequestArgsForCall = append(fake.listBucketInventoryConfigurationsRequestArgsForCall, struct {
@@ -14943,26 +14943,26 @@ func (fake *FakeS3) ListBucketInventoryConfigurationsRequest(arg1 *s3a.ListBucke
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListBucketInventoryConfigurationsRequestCallCount() int {
+func (fake *FakeClient) ListBucketInventoryConfigurationsRequestCallCount() int {
 	fake.listBucketInventoryConfigurationsRequestMutex.RLock()
 	defer fake.listBucketInventoryConfigurationsRequestMutex.RUnlock()
 	return len(fake.listBucketInventoryConfigurationsRequestArgsForCall)
 }
 
-func (fake *FakeS3) ListBucketInventoryConfigurationsRequestCalls(stub func(*s3a.ListBucketInventoryConfigurationsInput) (*request.Request, *s3a.ListBucketInventoryConfigurationsOutput)) {
+func (fake *FakeClient) ListBucketInventoryConfigurationsRequestCalls(stub func(*s3a.ListBucketInventoryConfigurationsInput) (*request.Request, *s3a.ListBucketInventoryConfigurationsOutput)) {
 	fake.listBucketInventoryConfigurationsRequestMutex.Lock()
 	defer fake.listBucketInventoryConfigurationsRequestMutex.Unlock()
 	fake.ListBucketInventoryConfigurationsRequestStub = stub
 }
 
-func (fake *FakeS3) ListBucketInventoryConfigurationsRequestArgsForCall(i int) *s3a.ListBucketInventoryConfigurationsInput {
+func (fake *FakeClient) ListBucketInventoryConfigurationsRequestArgsForCall(i int) *s3a.ListBucketInventoryConfigurationsInput {
 	fake.listBucketInventoryConfigurationsRequestMutex.RLock()
 	defer fake.listBucketInventoryConfigurationsRequestMutex.RUnlock()
 	argsForCall := fake.listBucketInventoryConfigurationsRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) ListBucketInventoryConfigurationsRequestReturns(result1 *request.Request, result2 *s3a.ListBucketInventoryConfigurationsOutput) {
+func (fake *FakeClient) ListBucketInventoryConfigurationsRequestReturns(result1 *request.Request, result2 *s3a.ListBucketInventoryConfigurationsOutput) {
 	fake.listBucketInventoryConfigurationsRequestMutex.Lock()
 	defer fake.listBucketInventoryConfigurationsRequestMutex.Unlock()
 	fake.ListBucketInventoryConfigurationsRequestStub = nil
@@ -14972,7 +14972,7 @@ func (fake *FakeS3) ListBucketInventoryConfigurationsRequestReturns(result1 *req
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketInventoryConfigurationsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.ListBucketInventoryConfigurationsOutput) {
+func (fake *FakeClient) ListBucketInventoryConfigurationsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.ListBucketInventoryConfigurationsOutput) {
 	fake.listBucketInventoryConfigurationsRequestMutex.Lock()
 	defer fake.listBucketInventoryConfigurationsRequestMutex.Unlock()
 	fake.ListBucketInventoryConfigurationsRequestStub = nil
@@ -14988,7 +14988,7 @@ func (fake *FakeS3) ListBucketInventoryConfigurationsRequestReturnsOnCall(i int,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketInventoryConfigurationsWithContext(arg1 context.Context, arg2 *s3a.ListBucketInventoryConfigurationsInput, arg3 ...request.Option) (*s3a.ListBucketInventoryConfigurationsOutput, error) {
+func (fake *FakeClient) ListBucketInventoryConfigurationsWithContext(arg1 context.Context, arg2 *s3a.ListBucketInventoryConfigurationsInput, arg3 ...request.Option) (*s3a.ListBucketInventoryConfigurationsOutput, error) {
 	fake.listBucketInventoryConfigurationsWithContextMutex.Lock()
 	ret, specificReturn := fake.listBucketInventoryConfigurationsWithContextReturnsOnCall[len(fake.listBucketInventoryConfigurationsWithContextArgsForCall)]
 	fake.listBucketInventoryConfigurationsWithContextArgsForCall = append(fake.listBucketInventoryConfigurationsWithContextArgsForCall, struct {
@@ -15008,26 +15008,26 @@ func (fake *FakeS3) ListBucketInventoryConfigurationsWithContext(arg1 context.Co
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListBucketInventoryConfigurationsWithContextCallCount() int {
+func (fake *FakeClient) ListBucketInventoryConfigurationsWithContextCallCount() int {
 	fake.listBucketInventoryConfigurationsWithContextMutex.RLock()
 	defer fake.listBucketInventoryConfigurationsWithContextMutex.RUnlock()
 	return len(fake.listBucketInventoryConfigurationsWithContextArgsForCall)
 }
 
-func (fake *FakeS3) ListBucketInventoryConfigurationsWithContextCalls(stub func(context.Context, *s3a.ListBucketInventoryConfigurationsInput, ...request.Option) (*s3a.ListBucketInventoryConfigurationsOutput, error)) {
+func (fake *FakeClient) ListBucketInventoryConfigurationsWithContextCalls(stub func(context.Context, *s3a.ListBucketInventoryConfigurationsInput, ...request.Option) (*s3a.ListBucketInventoryConfigurationsOutput, error)) {
 	fake.listBucketInventoryConfigurationsWithContextMutex.Lock()
 	defer fake.listBucketInventoryConfigurationsWithContextMutex.Unlock()
 	fake.ListBucketInventoryConfigurationsWithContextStub = stub
 }
 
-func (fake *FakeS3) ListBucketInventoryConfigurationsWithContextArgsForCall(i int) (context.Context, *s3a.ListBucketInventoryConfigurationsInput, []request.Option) {
+func (fake *FakeClient) ListBucketInventoryConfigurationsWithContextArgsForCall(i int) (context.Context, *s3a.ListBucketInventoryConfigurationsInput, []request.Option) {
 	fake.listBucketInventoryConfigurationsWithContextMutex.RLock()
 	defer fake.listBucketInventoryConfigurationsWithContextMutex.RUnlock()
 	argsForCall := fake.listBucketInventoryConfigurationsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) ListBucketInventoryConfigurationsWithContextReturns(result1 *s3a.ListBucketInventoryConfigurationsOutput, result2 error) {
+func (fake *FakeClient) ListBucketInventoryConfigurationsWithContextReturns(result1 *s3a.ListBucketInventoryConfigurationsOutput, result2 error) {
 	fake.listBucketInventoryConfigurationsWithContextMutex.Lock()
 	defer fake.listBucketInventoryConfigurationsWithContextMutex.Unlock()
 	fake.ListBucketInventoryConfigurationsWithContextStub = nil
@@ -15037,7 +15037,7 @@ func (fake *FakeS3) ListBucketInventoryConfigurationsWithContextReturns(result1 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketInventoryConfigurationsWithContextReturnsOnCall(i int, result1 *s3a.ListBucketInventoryConfigurationsOutput, result2 error) {
+func (fake *FakeClient) ListBucketInventoryConfigurationsWithContextReturnsOnCall(i int, result1 *s3a.ListBucketInventoryConfigurationsOutput, result2 error) {
 	fake.listBucketInventoryConfigurationsWithContextMutex.Lock()
 	defer fake.listBucketInventoryConfigurationsWithContextMutex.Unlock()
 	fake.ListBucketInventoryConfigurationsWithContextStub = nil
@@ -15053,7 +15053,7 @@ func (fake *FakeS3) ListBucketInventoryConfigurationsWithContextReturnsOnCall(i 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketMetricsConfigurations(arg1 *s3a.ListBucketMetricsConfigurationsInput) (*s3a.ListBucketMetricsConfigurationsOutput, error) {
+func (fake *FakeClient) ListBucketMetricsConfigurations(arg1 *s3a.ListBucketMetricsConfigurationsInput) (*s3a.ListBucketMetricsConfigurationsOutput, error) {
 	fake.listBucketMetricsConfigurationsMutex.Lock()
 	ret, specificReturn := fake.listBucketMetricsConfigurationsReturnsOnCall[len(fake.listBucketMetricsConfigurationsArgsForCall)]
 	fake.listBucketMetricsConfigurationsArgsForCall = append(fake.listBucketMetricsConfigurationsArgsForCall, struct {
@@ -15071,26 +15071,26 @@ func (fake *FakeS3) ListBucketMetricsConfigurations(arg1 *s3a.ListBucketMetricsC
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListBucketMetricsConfigurationsCallCount() int {
+func (fake *FakeClient) ListBucketMetricsConfigurationsCallCount() int {
 	fake.listBucketMetricsConfigurationsMutex.RLock()
 	defer fake.listBucketMetricsConfigurationsMutex.RUnlock()
 	return len(fake.listBucketMetricsConfigurationsArgsForCall)
 }
 
-func (fake *FakeS3) ListBucketMetricsConfigurationsCalls(stub func(*s3a.ListBucketMetricsConfigurationsInput) (*s3a.ListBucketMetricsConfigurationsOutput, error)) {
+func (fake *FakeClient) ListBucketMetricsConfigurationsCalls(stub func(*s3a.ListBucketMetricsConfigurationsInput) (*s3a.ListBucketMetricsConfigurationsOutput, error)) {
 	fake.listBucketMetricsConfigurationsMutex.Lock()
 	defer fake.listBucketMetricsConfigurationsMutex.Unlock()
 	fake.ListBucketMetricsConfigurationsStub = stub
 }
 
-func (fake *FakeS3) ListBucketMetricsConfigurationsArgsForCall(i int) *s3a.ListBucketMetricsConfigurationsInput {
+func (fake *FakeClient) ListBucketMetricsConfigurationsArgsForCall(i int) *s3a.ListBucketMetricsConfigurationsInput {
 	fake.listBucketMetricsConfigurationsMutex.RLock()
 	defer fake.listBucketMetricsConfigurationsMutex.RUnlock()
 	argsForCall := fake.listBucketMetricsConfigurationsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) ListBucketMetricsConfigurationsReturns(result1 *s3a.ListBucketMetricsConfigurationsOutput, result2 error) {
+func (fake *FakeClient) ListBucketMetricsConfigurationsReturns(result1 *s3a.ListBucketMetricsConfigurationsOutput, result2 error) {
 	fake.listBucketMetricsConfigurationsMutex.Lock()
 	defer fake.listBucketMetricsConfigurationsMutex.Unlock()
 	fake.ListBucketMetricsConfigurationsStub = nil
@@ -15100,7 +15100,7 @@ func (fake *FakeS3) ListBucketMetricsConfigurationsReturns(result1 *s3a.ListBuck
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketMetricsConfigurationsReturnsOnCall(i int, result1 *s3a.ListBucketMetricsConfigurationsOutput, result2 error) {
+func (fake *FakeClient) ListBucketMetricsConfigurationsReturnsOnCall(i int, result1 *s3a.ListBucketMetricsConfigurationsOutput, result2 error) {
 	fake.listBucketMetricsConfigurationsMutex.Lock()
 	defer fake.listBucketMetricsConfigurationsMutex.Unlock()
 	fake.ListBucketMetricsConfigurationsStub = nil
@@ -15116,7 +15116,7 @@ func (fake *FakeS3) ListBucketMetricsConfigurationsReturnsOnCall(i int, result1 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketMetricsConfigurationsRequest(arg1 *s3a.ListBucketMetricsConfigurationsInput) (*request.Request, *s3a.ListBucketMetricsConfigurationsOutput) {
+func (fake *FakeClient) ListBucketMetricsConfigurationsRequest(arg1 *s3a.ListBucketMetricsConfigurationsInput) (*request.Request, *s3a.ListBucketMetricsConfigurationsOutput) {
 	fake.listBucketMetricsConfigurationsRequestMutex.Lock()
 	ret, specificReturn := fake.listBucketMetricsConfigurationsRequestReturnsOnCall[len(fake.listBucketMetricsConfigurationsRequestArgsForCall)]
 	fake.listBucketMetricsConfigurationsRequestArgsForCall = append(fake.listBucketMetricsConfigurationsRequestArgsForCall, struct {
@@ -15134,26 +15134,26 @@ func (fake *FakeS3) ListBucketMetricsConfigurationsRequest(arg1 *s3a.ListBucketM
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListBucketMetricsConfigurationsRequestCallCount() int {
+func (fake *FakeClient) ListBucketMetricsConfigurationsRequestCallCount() int {
 	fake.listBucketMetricsConfigurationsRequestMutex.RLock()
 	defer fake.listBucketMetricsConfigurationsRequestMutex.RUnlock()
 	return len(fake.listBucketMetricsConfigurationsRequestArgsForCall)
 }
 
-func (fake *FakeS3) ListBucketMetricsConfigurationsRequestCalls(stub func(*s3a.ListBucketMetricsConfigurationsInput) (*request.Request, *s3a.ListBucketMetricsConfigurationsOutput)) {
+func (fake *FakeClient) ListBucketMetricsConfigurationsRequestCalls(stub func(*s3a.ListBucketMetricsConfigurationsInput) (*request.Request, *s3a.ListBucketMetricsConfigurationsOutput)) {
 	fake.listBucketMetricsConfigurationsRequestMutex.Lock()
 	defer fake.listBucketMetricsConfigurationsRequestMutex.Unlock()
 	fake.ListBucketMetricsConfigurationsRequestStub = stub
 }
 
-func (fake *FakeS3) ListBucketMetricsConfigurationsRequestArgsForCall(i int) *s3a.ListBucketMetricsConfigurationsInput {
+func (fake *FakeClient) ListBucketMetricsConfigurationsRequestArgsForCall(i int) *s3a.ListBucketMetricsConfigurationsInput {
 	fake.listBucketMetricsConfigurationsRequestMutex.RLock()
 	defer fake.listBucketMetricsConfigurationsRequestMutex.RUnlock()
 	argsForCall := fake.listBucketMetricsConfigurationsRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) ListBucketMetricsConfigurationsRequestReturns(result1 *request.Request, result2 *s3a.ListBucketMetricsConfigurationsOutput) {
+func (fake *FakeClient) ListBucketMetricsConfigurationsRequestReturns(result1 *request.Request, result2 *s3a.ListBucketMetricsConfigurationsOutput) {
 	fake.listBucketMetricsConfigurationsRequestMutex.Lock()
 	defer fake.listBucketMetricsConfigurationsRequestMutex.Unlock()
 	fake.ListBucketMetricsConfigurationsRequestStub = nil
@@ -15163,7 +15163,7 @@ func (fake *FakeS3) ListBucketMetricsConfigurationsRequestReturns(result1 *reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketMetricsConfigurationsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.ListBucketMetricsConfigurationsOutput) {
+func (fake *FakeClient) ListBucketMetricsConfigurationsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.ListBucketMetricsConfigurationsOutput) {
 	fake.listBucketMetricsConfigurationsRequestMutex.Lock()
 	defer fake.listBucketMetricsConfigurationsRequestMutex.Unlock()
 	fake.ListBucketMetricsConfigurationsRequestStub = nil
@@ -15179,7 +15179,7 @@ func (fake *FakeS3) ListBucketMetricsConfigurationsRequestReturnsOnCall(i int, r
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketMetricsConfigurationsWithContext(arg1 context.Context, arg2 *s3a.ListBucketMetricsConfigurationsInput, arg3 ...request.Option) (*s3a.ListBucketMetricsConfigurationsOutput, error) {
+func (fake *FakeClient) ListBucketMetricsConfigurationsWithContext(arg1 context.Context, arg2 *s3a.ListBucketMetricsConfigurationsInput, arg3 ...request.Option) (*s3a.ListBucketMetricsConfigurationsOutput, error) {
 	fake.listBucketMetricsConfigurationsWithContextMutex.Lock()
 	ret, specificReturn := fake.listBucketMetricsConfigurationsWithContextReturnsOnCall[len(fake.listBucketMetricsConfigurationsWithContextArgsForCall)]
 	fake.listBucketMetricsConfigurationsWithContextArgsForCall = append(fake.listBucketMetricsConfigurationsWithContextArgsForCall, struct {
@@ -15199,26 +15199,26 @@ func (fake *FakeS3) ListBucketMetricsConfigurationsWithContext(arg1 context.Cont
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListBucketMetricsConfigurationsWithContextCallCount() int {
+func (fake *FakeClient) ListBucketMetricsConfigurationsWithContextCallCount() int {
 	fake.listBucketMetricsConfigurationsWithContextMutex.RLock()
 	defer fake.listBucketMetricsConfigurationsWithContextMutex.RUnlock()
 	return len(fake.listBucketMetricsConfigurationsWithContextArgsForCall)
 }
 
-func (fake *FakeS3) ListBucketMetricsConfigurationsWithContextCalls(stub func(context.Context, *s3a.ListBucketMetricsConfigurationsInput, ...request.Option) (*s3a.ListBucketMetricsConfigurationsOutput, error)) {
+func (fake *FakeClient) ListBucketMetricsConfigurationsWithContextCalls(stub func(context.Context, *s3a.ListBucketMetricsConfigurationsInput, ...request.Option) (*s3a.ListBucketMetricsConfigurationsOutput, error)) {
 	fake.listBucketMetricsConfigurationsWithContextMutex.Lock()
 	defer fake.listBucketMetricsConfigurationsWithContextMutex.Unlock()
 	fake.ListBucketMetricsConfigurationsWithContextStub = stub
 }
 
-func (fake *FakeS3) ListBucketMetricsConfigurationsWithContextArgsForCall(i int) (context.Context, *s3a.ListBucketMetricsConfigurationsInput, []request.Option) {
+func (fake *FakeClient) ListBucketMetricsConfigurationsWithContextArgsForCall(i int) (context.Context, *s3a.ListBucketMetricsConfigurationsInput, []request.Option) {
 	fake.listBucketMetricsConfigurationsWithContextMutex.RLock()
 	defer fake.listBucketMetricsConfigurationsWithContextMutex.RUnlock()
 	argsForCall := fake.listBucketMetricsConfigurationsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) ListBucketMetricsConfigurationsWithContextReturns(result1 *s3a.ListBucketMetricsConfigurationsOutput, result2 error) {
+func (fake *FakeClient) ListBucketMetricsConfigurationsWithContextReturns(result1 *s3a.ListBucketMetricsConfigurationsOutput, result2 error) {
 	fake.listBucketMetricsConfigurationsWithContextMutex.Lock()
 	defer fake.listBucketMetricsConfigurationsWithContextMutex.Unlock()
 	fake.ListBucketMetricsConfigurationsWithContextStub = nil
@@ -15228,7 +15228,7 @@ func (fake *FakeS3) ListBucketMetricsConfigurationsWithContextReturns(result1 *s
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketMetricsConfigurationsWithContextReturnsOnCall(i int, result1 *s3a.ListBucketMetricsConfigurationsOutput, result2 error) {
+func (fake *FakeClient) ListBucketMetricsConfigurationsWithContextReturnsOnCall(i int, result1 *s3a.ListBucketMetricsConfigurationsOutput, result2 error) {
 	fake.listBucketMetricsConfigurationsWithContextMutex.Lock()
 	defer fake.listBucketMetricsConfigurationsWithContextMutex.Unlock()
 	fake.ListBucketMetricsConfigurationsWithContextStub = nil
@@ -15244,7 +15244,7 @@ func (fake *FakeS3) ListBucketMetricsConfigurationsWithContextReturnsOnCall(i in
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBuckets(arg1 *s3a.ListBucketsInput) (*s3a.ListBucketsOutput, error) {
+func (fake *FakeClient) ListBuckets(arg1 *s3a.ListBucketsInput) (*s3a.ListBucketsOutput, error) {
 	fake.listBucketsMutex.Lock()
 	ret, specificReturn := fake.listBucketsReturnsOnCall[len(fake.listBucketsArgsForCall)]
 	fake.listBucketsArgsForCall = append(fake.listBucketsArgsForCall, struct {
@@ -15262,26 +15262,26 @@ func (fake *FakeS3) ListBuckets(arg1 *s3a.ListBucketsInput) (*s3a.ListBucketsOut
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListBucketsCallCount() int {
+func (fake *FakeClient) ListBucketsCallCount() int {
 	fake.listBucketsMutex.RLock()
 	defer fake.listBucketsMutex.RUnlock()
 	return len(fake.listBucketsArgsForCall)
 }
 
-func (fake *FakeS3) ListBucketsCalls(stub func(*s3a.ListBucketsInput) (*s3a.ListBucketsOutput, error)) {
+func (fake *FakeClient) ListBucketsCalls(stub func(*s3a.ListBucketsInput) (*s3a.ListBucketsOutput, error)) {
 	fake.listBucketsMutex.Lock()
 	defer fake.listBucketsMutex.Unlock()
 	fake.ListBucketsStub = stub
 }
 
-func (fake *FakeS3) ListBucketsArgsForCall(i int) *s3a.ListBucketsInput {
+func (fake *FakeClient) ListBucketsArgsForCall(i int) *s3a.ListBucketsInput {
 	fake.listBucketsMutex.RLock()
 	defer fake.listBucketsMutex.RUnlock()
 	argsForCall := fake.listBucketsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) ListBucketsReturns(result1 *s3a.ListBucketsOutput, result2 error) {
+func (fake *FakeClient) ListBucketsReturns(result1 *s3a.ListBucketsOutput, result2 error) {
 	fake.listBucketsMutex.Lock()
 	defer fake.listBucketsMutex.Unlock()
 	fake.ListBucketsStub = nil
@@ -15291,7 +15291,7 @@ func (fake *FakeS3) ListBucketsReturns(result1 *s3a.ListBucketsOutput, result2 e
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketsReturnsOnCall(i int, result1 *s3a.ListBucketsOutput, result2 error) {
+func (fake *FakeClient) ListBucketsReturnsOnCall(i int, result1 *s3a.ListBucketsOutput, result2 error) {
 	fake.listBucketsMutex.Lock()
 	defer fake.listBucketsMutex.Unlock()
 	fake.ListBucketsStub = nil
@@ -15307,7 +15307,7 @@ func (fake *FakeS3) ListBucketsReturnsOnCall(i int, result1 *s3a.ListBucketsOutp
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketsRequest(arg1 *s3a.ListBucketsInput) (*request.Request, *s3a.ListBucketsOutput) {
+func (fake *FakeClient) ListBucketsRequest(arg1 *s3a.ListBucketsInput) (*request.Request, *s3a.ListBucketsOutput) {
 	fake.listBucketsRequestMutex.Lock()
 	ret, specificReturn := fake.listBucketsRequestReturnsOnCall[len(fake.listBucketsRequestArgsForCall)]
 	fake.listBucketsRequestArgsForCall = append(fake.listBucketsRequestArgsForCall, struct {
@@ -15325,26 +15325,26 @@ func (fake *FakeS3) ListBucketsRequest(arg1 *s3a.ListBucketsInput) (*request.Req
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListBucketsRequestCallCount() int {
+func (fake *FakeClient) ListBucketsRequestCallCount() int {
 	fake.listBucketsRequestMutex.RLock()
 	defer fake.listBucketsRequestMutex.RUnlock()
 	return len(fake.listBucketsRequestArgsForCall)
 }
 
-func (fake *FakeS3) ListBucketsRequestCalls(stub func(*s3a.ListBucketsInput) (*request.Request, *s3a.ListBucketsOutput)) {
+func (fake *FakeClient) ListBucketsRequestCalls(stub func(*s3a.ListBucketsInput) (*request.Request, *s3a.ListBucketsOutput)) {
 	fake.listBucketsRequestMutex.Lock()
 	defer fake.listBucketsRequestMutex.Unlock()
 	fake.ListBucketsRequestStub = stub
 }
 
-func (fake *FakeS3) ListBucketsRequestArgsForCall(i int) *s3a.ListBucketsInput {
+func (fake *FakeClient) ListBucketsRequestArgsForCall(i int) *s3a.ListBucketsInput {
 	fake.listBucketsRequestMutex.RLock()
 	defer fake.listBucketsRequestMutex.RUnlock()
 	argsForCall := fake.listBucketsRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) ListBucketsRequestReturns(result1 *request.Request, result2 *s3a.ListBucketsOutput) {
+func (fake *FakeClient) ListBucketsRequestReturns(result1 *request.Request, result2 *s3a.ListBucketsOutput) {
 	fake.listBucketsRequestMutex.Lock()
 	defer fake.listBucketsRequestMutex.Unlock()
 	fake.ListBucketsRequestStub = nil
@@ -15354,7 +15354,7 @@ func (fake *FakeS3) ListBucketsRequestReturns(result1 *request.Request, result2 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.ListBucketsOutput) {
+func (fake *FakeClient) ListBucketsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.ListBucketsOutput) {
 	fake.listBucketsRequestMutex.Lock()
 	defer fake.listBucketsRequestMutex.Unlock()
 	fake.ListBucketsRequestStub = nil
@@ -15370,7 +15370,7 @@ func (fake *FakeS3) ListBucketsRequestReturnsOnCall(i int, result1 *request.Requ
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketsWithContext(arg1 context.Context, arg2 *s3a.ListBucketsInput, arg3 ...request.Option) (*s3a.ListBucketsOutput, error) {
+func (fake *FakeClient) ListBucketsWithContext(arg1 context.Context, arg2 *s3a.ListBucketsInput, arg3 ...request.Option) (*s3a.ListBucketsOutput, error) {
 	fake.listBucketsWithContextMutex.Lock()
 	ret, specificReturn := fake.listBucketsWithContextReturnsOnCall[len(fake.listBucketsWithContextArgsForCall)]
 	fake.listBucketsWithContextArgsForCall = append(fake.listBucketsWithContextArgsForCall, struct {
@@ -15390,26 +15390,26 @@ func (fake *FakeS3) ListBucketsWithContext(arg1 context.Context, arg2 *s3a.ListB
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListBucketsWithContextCallCount() int {
+func (fake *FakeClient) ListBucketsWithContextCallCount() int {
 	fake.listBucketsWithContextMutex.RLock()
 	defer fake.listBucketsWithContextMutex.RUnlock()
 	return len(fake.listBucketsWithContextArgsForCall)
 }
 
-func (fake *FakeS3) ListBucketsWithContextCalls(stub func(context.Context, *s3a.ListBucketsInput, ...request.Option) (*s3a.ListBucketsOutput, error)) {
+func (fake *FakeClient) ListBucketsWithContextCalls(stub func(context.Context, *s3a.ListBucketsInput, ...request.Option) (*s3a.ListBucketsOutput, error)) {
 	fake.listBucketsWithContextMutex.Lock()
 	defer fake.listBucketsWithContextMutex.Unlock()
 	fake.ListBucketsWithContextStub = stub
 }
 
-func (fake *FakeS3) ListBucketsWithContextArgsForCall(i int) (context.Context, *s3a.ListBucketsInput, []request.Option) {
+func (fake *FakeClient) ListBucketsWithContextArgsForCall(i int) (context.Context, *s3a.ListBucketsInput, []request.Option) {
 	fake.listBucketsWithContextMutex.RLock()
 	defer fake.listBucketsWithContextMutex.RUnlock()
 	argsForCall := fake.listBucketsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) ListBucketsWithContextReturns(result1 *s3a.ListBucketsOutput, result2 error) {
+func (fake *FakeClient) ListBucketsWithContextReturns(result1 *s3a.ListBucketsOutput, result2 error) {
 	fake.listBucketsWithContextMutex.Lock()
 	defer fake.listBucketsWithContextMutex.Unlock()
 	fake.ListBucketsWithContextStub = nil
@@ -15419,7 +15419,7 @@ func (fake *FakeS3) ListBucketsWithContextReturns(result1 *s3a.ListBucketsOutput
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListBucketsWithContextReturnsOnCall(i int, result1 *s3a.ListBucketsOutput, result2 error) {
+func (fake *FakeClient) ListBucketsWithContextReturnsOnCall(i int, result1 *s3a.ListBucketsOutput, result2 error) {
 	fake.listBucketsWithContextMutex.Lock()
 	defer fake.listBucketsWithContextMutex.Unlock()
 	fake.ListBucketsWithContextStub = nil
@@ -15435,7 +15435,7 @@ func (fake *FakeS3) ListBucketsWithContextReturnsOnCall(i int, result1 *s3a.List
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListMultipartUploads(arg1 *s3a.ListMultipartUploadsInput) (*s3a.ListMultipartUploadsOutput, error) {
+func (fake *FakeClient) ListMultipartUploads(arg1 *s3a.ListMultipartUploadsInput) (*s3a.ListMultipartUploadsOutput, error) {
 	fake.listMultipartUploadsMutex.Lock()
 	ret, specificReturn := fake.listMultipartUploadsReturnsOnCall[len(fake.listMultipartUploadsArgsForCall)]
 	fake.listMultipartUploadsArgsForCall = append(fake.listMultipartUploadsArgsForCall, struct {
@@ -15453,26 +15453,26 @@ func (fake *FakeS3) ListMultipartUploads(arg1 *s3a.ListMultipartUploadsInput) (*
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListMultipartUploadsCallCount() int {
+func (fake *FakeClient) ListMultipartUploadsCallCount() int {
 	fake.listMultipartUploadsMutex.RLock()
 	defer fake.listMultipartUploadsMutex.RUnlock()
 	return len(fake.listMultipartUploadsArgsForCall)
 }
 
-func (fake *FakeS3) ListMultipartUploadsCalls(stub func(*s3a.ListMultipartUploadsInput) (*s3a.ListMultipartUploadsOutput, error)) {
+func (fake *FakeClient) ListMultipartUploadsCalls(stub func(*s3a.ListMultipartUploadsInput) (*s3a.ListMultipartUploadsOutput, error)) {
 	fake.listMultipartUploadsMutex.Lock()
 	defer fake.listMultipartUploadsMutex.Unlock()
 	fake.ListMultipartUploadsStub = stub
 }
 
-func (fake *FakeS3) ListMultipartUploadsArgsForCall(i int) *s3a.ListMultipartUploadsInput {
+func (fake *FakeClient) ListMultipartUploadsArgsForCall(i int) *s3a.ListMultipartUploadsInput {
 	fake.listMultipartUploadsMutex.RLock()
 	defer fake.listMultipartUploadsMutex.RUnlock()
 	argsForCall := fake.listMultipartUploadsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) ListMultipartUploadsReturns(result1 *s3a.ListMultipartUploadsOutput, result2 error) {
+func (fake *FakeClient) ListMultipartUploadsReturns(result1 *s3a.ListMultipartUploadsOutput, result2 error) {
 	fake.listMultipartUploadsMutex.Lock()
 	defer fake.listMultipartUploadsMutex.Unlock()
 	fake.ListMultipartUploadsStub = nil
@@ -15482,7 +15482,7 @@ func (fake *FakeS3) ListMultipartUploadsReturns(result1 *s3a.ListMultipartUpload
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListMultipartUploadsReturnsOnCall(i int, result1 *s3a.ListMultipartUploadsOutput, result2 error) {
+func (fake *FakeClient) ListMultipartUploadsReturnsOnCall(i int, result1 *s3a.ListMultipartUploadsOutput, result2 error) {
 	fake.listMultipartUploadsMutex.Lock()
 	defer fake.listMultipartUploadsMutex.Unlock()
 	fake.ListMultipartUploadsStub = nil
@@ -15498,7 +15498,7 @@ func (fake *FakeS3) ListMultipartUploadsReturnsOnCall(i int, result1 *s3a.ListMu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListMultipartUploadsPages(arg1 *s3a.ListMultipartUploadsInput, arg2 func(*s3a.ListMultipartUploadsOutput, bool) bool) error {
+func (fake *FakeClient) ListMultipartUploadsPages(arg1 *s3a.ListMultipartUploadsInput, arg2 func(*s3a.ListMultipartUploadsOutput, bool) bool) error {
 	fake.listMultipartUploadsPagesMutex.Lock()
 	ret, specificReturn := fake.listMultipartUploadsPagesReturnsOnCall[len(fake.listMultipartUploadsPagesArgsForCall)]
 	fake.listMultipartUploadsPagesArgsForCall = append(fake.listMultipartUploadsPagesArgsForCall, struct {
@@ -15517,26 +15517,26 @@ func (fake *FakeS3) ListMultipartUploadsPages(arg1 *s3a.ListMultipartUploadsInpu
 	return fakeReturns.result1
 }
 
-func (fake *FakeS3) ListMultipartUploadsPagesCallCount() int {
+func (fake *FakeClient) ListMultipartUploadsPagesCallCount() int {
 	fake.listMultipartUploadsPagesMutex.RLock()
 	defer fake.listMultipartUploadsPagesMutex.RUnlock()
 	return len(fake.listMultipartUploadsPagesArgsForCall)
 }
 
-func (fake *FakeS3) ListMultipartUploadsPagesCalls(stub func(*s3a.ListMultipartUploadsInput, func(*s3a.ListMultipartUploadsOutput, bool) bool) error) {
+func (fake *FakeClient) ListMultipartUploadsPagesCalls(stub func(*s3a.ListMultipartUploadsInput, func(*s3a.ListMultipartUploadsOutput, bool) bool) error) {
 	fake.listMultipartUploadsPagesMutex.Lock()
 	defer fake.listMultipartUploadsPagesMutex.Unlock()
 	fake.ListMultipartUploadsPagesStub = stub
 }
 
-func (fake *FakeS3) ListMultipartUploadsPagesArgsForCall(i int) (*s3a.ListMultipartUploadsInput, func(*s3a.ListMultipartUploadsOutput, bool) bool) {
+func (fake *FakeClient) ListMultipartUploadsPagesArgsForCall(i int) (*s3a.ListMultipartUploadsInput, func(*s3a.ListMultipartUploadsOutput, bool) bool) {
 	fake.listMultipartUploadsPagesMutex.RLock()
 	defer fake.listMultipartUploadsPagesMutex.RUnlock()
 	argsForCall := fake.listMultipartUploadsPagesArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2
 }
 
-func (fake *FakeS3) ListMultipartUploadsPagesReturns(result1 error) {
+func (fake *FakeClient) ListMultipartUploadsPagesReturns(result1 error) {
 	fake.listMultipartUploadsPagesMutex.Lock()
 	defer fake.listMultipartUploadsPagesMutex.Unlock()
 	fake.ListMultipartUploadsPagesStub = nil
@@ -15545,7 +15545,7 @@ func (fake *FakeS3) ListMultipartUploadsPagesReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) ListMultipartUploadsPagesReturnsOnCall(i int, result1 error) {
+func (fake *FakeClient) ListMultipartUploadsPagesReturnsOnCall(i int, result1 error) {
 	fake.listMultipartUploadsPagesMutex.Lock()
 	defer fake.listMultipartUploadsPagesMutex.Unlock()
 	fake.ListMultipartUploadsPagesStub = nil
@@ -15559,7 +15559,7 @@ func (fake *FakeS3) ListMultipartUploadsPagesReturnsOnCall(i int, result1 error)
 	}{result1}
 }
 
-func (fake *FakeS3) ListMultipartUploadsPagesWithContext(arg1 context.Context, arg2 *s3a.ListMultipartUploadsInput, arg3 func(*s3a.ListMultipartUploadsOutput, bool) bool, arg4 ...request.Option) error {
+func (fake *FakeClient) ListMultipartUploadsPagesWithContext(arg1 context.Context, arg2 *s3a.ListMultipartUploadsInput, arg3 func(*s3a.ListMultipartUploadsOutput, bool) bool, arg4 ...request.Option) error {
 	fake.listMultipartUploadsPagesWithContextMutex.Lock()
 	ret, specificReturn := fake.listMultipartUploadsPagesWithContextReturnsOnCall[len(fake.listMultipartUploadsPagesWithContextArgsForCall)]
 	fake.listMultipartUploadsPagesWithContextArgsForCall = append(fake.listMultipartUploadsPagesWithContextArgsForCall, struct {
@@ -15580,26 +15580,26 @@ func (fake *FakeS3) ListMultipartUploadsPagesWithContext(arg1 context.Context, a
 	return fakeReturns.result1
 }
 
-func (fake *FakeS3) ListMultipartUploadsPagesWithContextCallCount() int {
+func (fake *FakeClient) ListMultipartUploadsPagesWithContextCallCount() int {
 	fake.listMultipartUploadsPagesWithContextMutex.RLock()
 	defer fake.listMultipartUploadsPagesWithContextMutex.RUnlock()
 	return len(fake.listMultipartUploadsPagesWithContextArgsForCall)
 }
 
-func (fake *FakeS3) ListMultipartUploadsPagesWithContextCalls(stub func(context.Context, *s3a.ListMultipartUploadsInput, func(*s3a.ListMultipartUploadsOutput, bool) bool, ...request.Option) error) {
+func (fake *FakeClient) ListMultipartUploadsPagesWithContextCalls(stub func(context.Context, *s3a.ListMultipartUploadsInput, func(*s3a.ListMultipartUploadsOutput, bool) bool, ...request.Option) error) {
 	fake.listMultipartUploadsPagesWithContextMutex.Lock()
 	defer fake.listMultipartUploadsPagesWithContextMutex.Unlock()
 	fake.ListMultipartUploadsPagesWithContextStub = stub
 }
 
-func (fake *FakeS3) ListMultipartUploadsPagesWithContextArgsForCall(i int) (context.Context, *s3a.ListMultipartUploadsInput, func(*s3a.ListMultipartUploadsOutput, bool) bool, []request.Option) {
+func (fake *FakeClient) ListMultipartUploadsPagesWithContextArgsForCall(i int) (context.Context, *s3a.ListMultipartUploadsInput, func(*s3a.ListMultipartUploadsOutput, bool) bool, []request.Option) {
 	fake.listMultipartUploadsPagesWithContextMutex.RLock()
 	defer fake.listMultipartUploadsPagesWithContextMutex.RUnlock()
 	argsForCall := fake.listMultipartUploadsPagesWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3, argsForCall.arg4
 }
 
-func (fake *FakeS3) ListMultipartUploadsPagesWithContextReturns(result1 error) {
+func (fake *FakeClient) ListMultipartUploadsPagesWithContextReturns(result1 error) {
 	fake.listMultipartUploadsPagesWithContextMutex.Lock()
 	defer fake.listMultipartUploadsPagesWithContextMutex.Unlock()
 	fake.ListMultipartUploadsPagesWithContextStub = nil
@@ -15608,7 +15608,7 @@ func (fake *FakeS3) ListMultipartUploadsPagesWithContextReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) ListMultipartUploadsPagesWithContextReturnsOnCall(i int, result1 error) {
+func (fake *FakeClient) ListMultipartUploadsPagesWithContextReturnsOnCall(i int, result1 error) {
 	fake.listMultipartUploadsPagesWithContextMutex.Lock()
 	defer fake.listMultipartUploadsPagesWithContextMutex.Unlock()
 	fake.ListMultipartUploadsPagesWithContextStub = nil
@@ -15622,7 +15622,7 @@ func (fake *FakeS3) ListMultipartUploadsPagesWithContextReturnsOnCall(i int, res
 	}{result1}
 }
 
-func (fake *FakeS3) ListMultipartUploadsRequest(arg1 *s3a.ListMultipartUploadsInput) (*request.Request, *s3a.ListMultipartUploadsOutput) {
+func (fake *FakeClient) ListMultipartUploadsRequest(arg1 *s3a.ListMultipartUploadsInput) (*request.Request, *s3a.ListMultipartUploadsOutput) {
 	fake.listMultipartUploadsRequestMutex.Lock()
 	ret, specificReturn := fake.listMultipartUploadsRequestReturnsOnCall[len(fake.listMultipartUploadsRequestArgsForCall)]
 	fake.listMultipartUploadsRequestArgsForCall = append(fake.listMultipartUploadsRequestArgsForCall, struct {
@@ -15640,26 +15640,26 @@ func (fake *FakeS3) ListMultipartUploadsRequest(arg1 *s3a.ListMultipartUploadsIn
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListMultipartUploadsRequestCallCount() int {
+func (fake *FakeClient) ListMultipartUploadsRequestCallCount() int {
 	fake.listMultipartUploadsRequestMutex.RLock()
 	defer fake.listMultipartUploadsRequestMutex.RUnlock()
 	return len(fake.listMultipartUploadsRequestArgsForCall)
 }
 
-func (fake *FakeS3) ListMultipartUploadsRequestCalls(stub func(*s3a.ListMultipartUploadsInput) (*request.Request, *s3a.ListMultipartUploadsOutput)) {
+func (fake *FakeClient) ListMultipartUploadsRequestCalls(stub func(*s3a.ListMultipartUploadsInput) (*request.Request, *s3a.ListMultipartUploadsOutput)) {
 	fake.listMultipartUploadsRequestMutex.Lock()
 	defer fake.listMultipartUploadsRequestMutex.Unlock()
 	fake.ListMultipartUploadsRequestStub = stub
 }
 
-func (fake *FakeS3) ListMultipartUploadsRequestArgsForCall(i int) *s3a.ListMultipartUploadsInput {
+func (fake *FakeClient) ListMultipartUploadsRequestArgsForCall(i int) *s3a.ListMultipartUploadsInput {
 	fake.listMultipartUploadsRequestMutex.RLock()
 	defer fake.listMultipartUploadsRequestMutex.RUnlock()
 	argsForCall := fake.listMultipartUploadsRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) ListMultipartUploadsRequestReturns(result1 *request.Request, result2 *s3a.ListMultipartUploadsOutput) {
+func (fake *FakeClient) ListMultipartUploadsRequestReturns(result1 *request.Request, result2 *s3a.ListMultipartUploadsOutput) {
 	fake.listMultipartUploadsRequestMutex.Lock()
 	defer fake.listMultipartUploadsRequestMutex.Unlock()
 	fake.ListMultipartUploadsRequestStub = nil
@@ -15669,7 +15669,7 @@ func (fake *FakeS3) ListMultipartUploadsRequestReturns(result1 *request.Request,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListMultipartUploadsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.ListMultipartUploadsOutput) {
+func (fake *FakeClient) ListMultipartUploadsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.ListMultipartUploadsOutput) {
 	fake.listMultipartUploadsRequestMutex.Lock()
 	defer fake.listMultipartUploadsRequestMutex.Unlock()
 	fake.ListMultipartUploadsRequestStub = nil
@@ -15685,7 +15685,7 @@ func (fake *FakeS3) ListMultipartUploadsRequestReturnsOnCall(i int, result1 *req
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListMultipartUploadsWithContext(arg1 context.Context, arg2 *s3a.ListMultipartUploadsInput, arg3 ...request.Option) (*s3a.ListMultipartUploadsOutput, error) {
+func (fake *FakeClient) ListMultipartUploadsWithContext(arg1 context.Context, arg2 *s3a.ListMultipartUploadsInput, arg3 ...request.Option) (*s3a.ListMultipartUploadsOutput, error) {
 	fake.listMultipartUploadsWithContextMutex.Lock()
 	ret, specificReturn := fake.listMultipartUploadsWithContextReturnsOnCall[len(fake.listMultipartUploadsWithContextArgsForCall)]
 	fake.listMultipartUploadsWithContextArgsForCall = append(fake.listMultipartUploadsWithContextArgsForCall, struct {
@@ -15705,26 +15705,26 @@ func (fake *FakeS3) ListMultipartUploadsWithContext(arg1 context.Context, arg2 *
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListMultipartUploadsWithContextCallCount() int {
+func (fake *FakeClient) ListMultipartUploadsWithContextCallCount() int {
 	fake.listMultipartUploadsWithContextMutex.RLock()
 	defer fake.listMultipartUploadsWithContextMutex.RUnlock()
 	return len(fake.listMultipartUploadsWithContextArgsForCall)
 }
 
-func (fake *FakeS3) ListMultipartUploadsWithContextCalls(stub func(context.Context, *s3a.ListMultipartUploadsInput, ...request.Option) (*s3a.ListMultipartUploadsOutput, error)) {
+func (fake *FakeClient) ListMultipartUploadsWithContextCalls(stub func(context.Context, *s3a.ListMultipartUploadsInput, ...request.Option) (*s3a.ListMultipartUploadsOutput, error)) {
 	fake.listMultipartUploadsWithContextMutex.Lock()
 	defer fake.listMultipartUploadsWithContextMutex.Unlock()
 	fake.ListMultipartUploadsWithContextStub = stub
 }
 
-func (fake *FakeS3) ListMultipartUploadsWithContextArgsForCall(i int) (context.Context, *s3a.ListMultipartUploadsInput, []request.Option) {
+func (fake *FakeClient) ListMultipartUploadsWithContextArgsForCall(i int) (context.Context, *s3a.ListMultipartUploadsInput, []request.Option) {
 	fake.listMultipartUploadsWithContextMutex.RLock()
 	defer fake.listMultipartUploadsWithContextMutex.RUnlock()
 	argsForCall := fake.listMultipartUploadsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) ListMultipartUploadsWithContextReturns(result1 *s3a.ListMultipartUploadsOutput, result2 error) {
+func (fake *FakeClient) ListMultipartUploadsWithContextReturns(result1 *s3a.ListMultipartUploadsOutput, result2 error) {
 	fake.listMultipartUploadsWithContextMutex.Lock()
 	defer fake.listMultipartUploadsWithContextMutex.Unlock()
 	fake.ListMultipartUploadsWithContextStub = nil
@@ -15734,7 +15734,7 @@ func (fake *FakeS3) ListMultipartUploadsWithContextReturns(result1 *s3a.ListMult
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListMultipartUploadsWithContextReturnsOnCall(i int, result1 *s3a.ListMultipartUploadsOutput, result2 error) {
+func (fake *FakeClient) ListMultipartUploadsWithContextReturnsOnCall(i int, result1 *s3a.ListMultipartUploadsOutput, result2 error) {
 	fake.listMultipartUploadsWithContextMutex.Lock()
 	defer fake.listMultipartUploadsWithContextMutex.Unlock()
 	fake.ListMultipartUploadsWithContextStub = nil
@@ -15750,7 +15750,7 @@ func (fake *FakeS3) ListMultipartUploadsWithContextReturnsOnCall(i int, result1 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListObjectVersions(arg1 *s3a.ListObjectVersionsInput) (*s3a.ListObjectVersionsOutput, error) {
+func (fake *FakeClient) ListObjectVersions(arg1 *s3a.ListObjectVersionsInput) (*s3a.ListObjectVersionsOutput, error) {
 	fake.listObjectVersionsMutex.Lock()
 	ret, specificReturn := fake.listObjectVersionsReturnsOnCall[len(fake.listObjectVersionsArgsForCall)]
 	fake.listObjectVersionsArgsForCall = append(fake.listObjectVersionsArgsForCall, struct {
@@ -15768,26 +15768,26 @@ func (fake *FakeS3) ListObjectVersions(arg1 *s3a.ListObjectVersionsInput) (*s3a.
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListObjectVersionsCallCount() int {
+func (fake *FakeClient) ListObjectVersionsCallCount() int {
 	fake.listObjectVersionsMutex.RLock()
 	defer fake.listObjectVersionsMutex.RUnlock()
 	return len(fake.listObjectVersionsArgsForCall)
 }
 
-func (fake *FakeS3) ListObjectVersionsCalls(stub func(*s3a.ListObjectVersionsInput) (*s3a.ListObjectVersionsOutput, error)) {
+func (fake *FakeClient) ListObjectVersionsCalls(stub func(*s3a.ListObjectVersionsInput) (*s3a.ListObjectVersionsOutput, error)) {
 	fake.listObjectVersionsMutex.Lock()
 	defer fake.listObjectVersionsMutex.Unlock()
 	fake.ListObjectVersionsStub = stub
 }
 
-func (fake *FakeS3) ListObjectVersionsArgsForCall(i int) *s3a.ListObjectVersionsInput {
+func (fake *FakeClient) ListObjectVersionsArgsForCall(i int) *s3a.ListObjectVersionsInput {
 	fake.listObjectVersionsMutex.RLock()
 	defer fake.listObjectVersionsMutex.RUnlock()
 	argsForCall := fake.listObjectVersionsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) ListObjectVersionsReturns(result1 *s3a.ListObjectVersionsOutput, result2 error) {
+func (fake *FakeClient) ListObjectVersionsReturns(result1 *s3a.ListObjectVersionsOutput, result2 error) {
 	fake.listObjectVersionsMutex.Lock()
 	defer fake.listObjectVersionsMutex.Unlock()
 	fake.ListObjectVersionsStub = nil
@@ -15797,7 +15797,7 @@ func (fake *FakeS3) ListObjectVersionsReturns(result1 *s3a.ListObjectVersionsOut
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListObjectVersionsReturnsOnCall(i int, result1 *s3a.ListObjectVersionsOutput, result2 error) {
+func (fake *FakeClient) ListObjectVersionsReturnsOnCall(i int, result1 *s3a.ListObjectVersionsOutput, result2 error) {
 	fake.listObjectVersionsMutex.Lock()
 	defer fake.listObjectVersionsMutex.Unlock()
 	fake.ListObjectVersionsStub = nil
@@ -15813,7 +15813,7 @@ func (fake *FakeS3) ListObjectVersionsReturnsOnCall(i int, result1 *s3a.ListObje
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListObjectVersionsPages(arg1 *s3a.ListObjectVersionsInput, arg2 func(*s3a.ListObjectVersionsOutput, bool) bool) error {
+func (fake *FakeClient) ListObjectVersionsPages(arg1 *s3a.ListObjectVersionsInput, arg2 func(*s3a.ListObjectVersionsOutput, bool) bool) error {
 	fake.listObjectVersionsPagesMutex.Lock()
 	ret, specificReturn := fake.listObjectVersionsPagesReturnsOnCall[len(fake.listObjectVersionsPagesArgsForCall)]
 	fake.listObjectVersionsPagesArgsForCall = append(fake.listObjectVersionsPagesArgsForCall, struct {
@@ -15832,26 +15832,26 @@ func (fake *FakeS3) ListObjectVersionsPages(arg1 *s3a.ListObjectVersionsInput, a
 	return fakeReturns.result1
 }
 
-func (fake *FakeS3) ListObjectVersionsPagesCallCount() int {
+func (fake *FakeClient) ListObjectVersionsPagesCallCount() int {
 	fake.listObjectVersionsPagesMutex.RLock()
 	defer fake.listObjectVersionsPagesMutex.RUnlock()
 	return len(fake.listObjectVersionsPagesArgsForCall)
 }
 
-func (fake *FakeS3) ListObjectVersionsPagesCalls(stub func(*s3a.ListObjectVersionsInput, func(*s3a.ListObjectVersionsOutput, bool) bool) error) {
+func (fake *FakeClient) ListObjectVersionsPagesCalls(stub func(*s3a.ListObjectVersionsInput, func(*s3a.ListObjectVersionsOutput, bool) bool) error) {
 	fake.listObjectVersionsPagesMutex.Lock()
 	defer fake.listObjectVersionsPagesMutex.Unlock()
 	fake.ListObjectVersionsPagesStub = stub
 }
 
-func (fake *FakeS3) ListObjectVersionsPagesArgsForCall(i int) (*s3a.ListObjectVersionsInput, func(*s3a.ListObjectVersionsOutput, bool) bool) {
+func (fake *FakeClient) ListObjectVersionsPagesArgsForCall(i int) (*s3a.ListObjectVersionsInput, func(*s3a.ListObjectVersionsOutput, bool) bool) {
 	fake.listObjectVersionsPagesMutex.RLock()
 	defer fake.listObjectVersionsPagesMutex.RUnlock()
 	argsForCall := fake.listObjectVersionsPagesArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2
 }
 
-func (fake *FakeS3) ListObjectVersionsPagesReturns(result1 error) {
+func (fake *FakeClient) ListObjectVersionsPagesReturns(result1 error) {
 	fake.listObjectVersionsPagesMutex.Lock()
 	defer fake.listObjectVersionsPagesMutex.Unlock()
 	fake.ListObjectVersionsPagesStub = nil
@@ -15860,7 +15860,7 @@ func (fake *FakeS3) ListObjectVersionsPagesReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) ListObjectVersionsPagesReturnsOnCall(i int, result1 error) {
+func (fake *FakeClient) ListObjectVersionsPagesReturnsOnCall(i int, result1 error) {
 	fake.listObjectVersionsPagesMutex.Lock()
 	defer fake.listObjectVersionsPagesMutex.Unlock()
 	fake.ListObjectVersionsPagesStub = nil
@@ -15874,7 +15874,7 @@ func (fake *FakeS3) ListObjectVersionsPagesReturnsOnCall(i int, result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) ListObjectVersionsPagesWithContext(arg1 context.Context, arg2 *s3a.ListObjectVersionsInput, arg3 func(*s3a.ListObjectVersionsOutput, bool) bool, arg4 ...request.Option) error {
+func (fake *FakeClient) ListObjectVersionsPagesWithContext(arg1 context.Context, arg2 *s3a.ListObjectVersionsInput, arg3 func(*s3a.ListObjectVersionsOutput, bool) bool, arg4 ...request.Option) error {
 	fake.listObjectVersionsPagesWithContextMutex.Lock()
 	ret, specificReturn := fake.listObjectVersionsPagesWithContextReturnsOnCall[len(fake.listObjectVersionsPagesWithContextArgsForCall)]
 	fake.listObjectVersionsPagesWithContextArgsForCall = append(fake.listObjectVersionsPagesWithContextArgsForCall, struct {
@@ -15895,26 +15895,26 @@ func (fake *FakeS3) ListObjectVersionsPagesWithContext(arg1 context.Context, arg
 	return fakeReturns.result1
 }
 
-func (fake *FakeS3) ListObjectVersionsPagesWithContextCallCount() int {
+func (fake *FakeClient) ListObjectVersionsPagesWithContextCallCount() int {
 	fake.listObjectVersionsPagesWithContextMutex.RLock()
 	defer fake.listObjectVersionsPagesWithContextMutex.RUnlock()
 	return len(fake.listObjectVersionsPagesWithContextArgsForCall)
 }
 
-func (fake *FakeS3) ListObjectVersionsPagesWithContextCalls(stub func(context.Context, *s3a.ListObjectVersionsInput, func(*s3a.ListObjectVersionsOutput, bool) bool, ...request.Option) error) {
+func (fake *FakeClient) ListObjectVersionsPagesWithContextCalls(stub func(context.Context, *s3a.ListObjectVersionsInput, func(*s3a.ListObjectVersionsOutput, bool) bool, ...request.Option) error) {
 	fake.listObjectVersionsPagesWithContextMutex.Lock()
 	defer fake.listObjectVersionsPagesWithContextMutex.Unlock()
 	fake.ListObjectVersionsPagesWithContextStub = stub
 }
 
-func (fake *FakeS3) ListObjectVersionsPagesWithContextArgsForCall(i int) (context.Context, *s3a.ListObjectVersionsInput, func(*s3a.ListObjectVersionsOutput, bool) bool, []request.Option) {
+func (fake *FakeClient) ListObjectVersionsPagesWithContextArgsForCall(i int) (context.Context, *s3a.ListObjectVersionsInput, func(*s3a.ListObjectVersionsOutput, bool) bool, []request.Option) {
 	fake.listObjectVersionsPagesWithContextMutex.RLock()
 	defer fake.listObjectVersionsPagesWithContextMutex.RUnlock()
 	argsForCall := fake.listObjectVersionsPagesWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3, argsForCall.arg4
 }
 
-func (fake *FakeS3) ListObjectVersionsPagesWithContextReturns(result1 error) {
+func (fake *FakeClient) ListObjectVersionsPagesWithContextReturns(result1 error) {
 	fake.listObjectVersionsPagesWithContextMutex.Lock()
 	defer fake.listObjectVersionsPagesWithContextMutex.Unlock()
 	fake.ListObjectVersionsPagesWithContextStub = nil
@@ -15923,7 +15923,7 @@ func (fake *FakeS3) ListObjectVersionsPagesWithContextReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) ListObjectVersionsPagesWithContextReturnsOnCall(i int, result1 error) {
+func (fake *FakeClient) ListObjectVersionsPagesWithContextReturnsOnCall(i int, result1 error) {
 	fake.listObjectVersionsPagesWithContextMutex.Lock()
 	defer fake.listObjectVersionsPagesWithContextMutex.Unlock()
 	fake.ListObjectVersionsPagesWithContextStub = nil
@@ -15937,7 +15937,7 @@ func (fake *FakeS3) ListObjectVersionsPagesWithContextReturnsOnCall(i int, resul
 	}{result1}
 }
 
-func (fake *FakeS3) ListObjectVersionsRequest(arg1 *s3a.ListObjectVersionsInput) (*request.Request, *s3a.ListObjectVersionsOutput) {
+func (fake *FakeClient) ListObjectVersionsRequest(arg1 *s3a.ListObjectVersionsInput) (*request.Request, *s3a.ListObjectVersionsOutput) {
 	fake.listObjectVersionsRequestMutex.Lock()
 	ret, specificReturn := fake.listObjectVersionsRequestReturnsOnCall[len(fake.listObjectVersionsRequestArgsForCall)]
 	fake.listObjectVersionsRequestArgsForCall = append(fake.listObjectVersionsRequestArgsForCall, struct {
@@ -15955,26 +15955,26 @@ func (fake *FakeS3) ListObjectVersionsRequest(arg1 *s3a.ListObjectVersionsInput)
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListObjectVersionsRequestCallCount() int {
+func (fake *FakeClient) ListObjectVersionsRequestCallCount() int {
 	fake.listObjectVersionsRequestMutex.RLock()
 	defer fake.listObjectVersionsRequestMutex.RUnlock()
 	return len(fake.listObjectVersionsRequestArgsForCall)
 }
 
-func (fake *FakeS3) ListObjectVersionsRequestCalls(stub func(*s3a.ListObjectVersionsInput) (*request.Request, *s3a.ListObjectVersionsOutput)) {
+func (fake *FakeClient) ListObjectVersionsRequestCalls(stub func(*s3a.ListObjectVersionsInput) (*request.Request, *s3a.ListObjectVersionsOutput)) {
 	fake.listObjectVersionsRequestMutex.Lock()
 	defer fake.listObjectVersionsRequestMutex.Unlock()
 	fake.ListObjectVersionsRequestStub = stub
 }
 
-func (fake *FakeS3) ListObjectVersionsRequestArgsForCall(i int) *s3a.ListObjectVersionsInput {
+func (fake *FakeClient) ListObjectVersionsRequestArgsForCall(i int) *s3a.ListObjectVersionsInput {
 	fake.listObjectVersionsRequestMutex.RLock()
 	defer fake.listObjectVersionsRequestMutex.RUnlock()
 	argsForCall := fake.listObjectVersionsRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) ListObjectVersionsRequestReturns(result1 *request.Request, result2 *s3a.ListObjectVersionsOutput) {
+func (fake *FakeClient) ListObjectVersionsRequestReturns(result1 *request.Request, result2 *s3a.ListObjectVersionsOutput) {
 	fake.listObjectVersionsRequestMutex.Lock()
 	defer fake.listObjectVersionsRequestMutex.Unlock()
 	fake.ListObjectVersionsRequestStub = nil
@@ -15984,7 +15984,7 @@ func (fake *FakeS3) ListObjectVersionsRequestReturns(result1 *request.Request, r
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListObjectVersionsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.ListObjectVersionsOutput) {
+func (fake *FakeClient) ListObjectVersionsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.ListObjectVersionsOutput) {
 	fake.listObjectVersionsRequestMutex.Lock()
 	defer fake.listObjectVersionsRequestMutex.Unlock()
 	fake.ListObjectVersionsRequestStub = nil
@@ -16000,7 +16000,7 @@ func (fake *FakeS3) ListObjectVersionsRequestReturnsOnCall(i int, result1 *reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListObjectVersionsWithContext(arg1 context.Context, arg2 *s3a.ListObjectVersionsInput, arg3 ...request.Option) (*s3a.ListObjectVersionsOutput, error) {
+func (fake *FakeClient) ListObjectVersionsWithContext(arg1 context.Context, arg2 *s3a.ListObjectVersionsInput, arg3 ...request.Option) (*s3a.ListObjectVersionsOutput, error) {
 	fake.listObjectVersionsWithContextMutex.Lock()
 	ret, specificReturn := fake.listObjectVersionsWithContextReturnsOnCall[len(fake.listObjectVersionsWithContextArgsForCall)]
 	fake.listObjectVersionsWithContextArgsForCall = append(fake.listObjectVersionsWithContextArgsForCall, struct {
@@ -16020,26 +16020,26 @@ func (fake *FakeS3) ListObjectVersionsWithContext(arg1 context.Context, arg2 *s3
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListObjectVersionsWithContextCallCount() int {
+func (fake *FakeClient) ListObjectVersionsWithContextCallCount() int {
 	fake.listObjectVersionsWithContextMutex.RLock()
 	defer fake.listObjectVersionsWithContextMutex.RUnlock()
 	return len(fake.listObjectVersionsWithContextArgsForCall)
 }
 
-func (fake *FakeS3) ListObjectVersionsWithContextCalls(stub func(context.Context, *s3a.ListObjectVersionsInput, ...request.Option) (*s3a.ListObjectVersionsOutput, error)) {
+func (fake *FakeClient) ListObjectVersionsWithContextCalls(stub func(context.Context, *s3a.ListObjectVersionsInput, ...request.Option) (*s3a.ListObjectVersionsOutput, error)) {
 	fake.listObjectVersionsWithContextMutex.Lock()
 	defer fake.listObjectVersionsWithContextMutex.Unlock()
 	fake.ListObjectVersionsWithContextStub = stub
 }
 
-func (fake *FakeS3) ListObjectVersionsWithContextArgsForCall(i int) (context.Context, *s3a.ListObjectVersionsInput, []request.Option) {
+func (fake *FakeClient) ListObjectVersionsWithContextArgsForCall(i int) (context.Context, *s3a.ListObjectVersionsInput, []request.Option) {
 	fake.listObjectVersionsWithContextMutex.RLock()
 	defer fake.listObjectVersionsWithContextMutex.RUnlock()
 	argsForCall := fake.listObjectVersionsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) ListObjectVersionsWithContextReturns(result1 *s3a.ListObjectVersionsOutput, result2 error) {
+func (fake *FakeClient) ListObjectVersionsWithContextReturns(result1 *s3a.ListObjectVersionsOutput, result2 error) {
 	fake.listObjectVersionsWithContextMutex.Lock()
 	defer fake.listObjectVersionsWithContextMutex.Unlock()
 	fake.ListObjectVersionsWithContextStub = nil
@@ -16049,7 +16049,7 @@ func (fake *FakeS3) ListObjectVersionsWithContextReturns(result1 *s3a.ListObject
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListObjectVersionsWithContextReturnsOnCall(i int, result1 *s3a.ListObjectVersionsOutput, result2 error) {
+func (fake *FakeClient) ListObjectVersionsWithContextReturnsOnCall(i int, result1 *s3a.ListObjectVersionsOutput, result2 error) {
 	fake.listObjectVersionsWithContextMutex.Lock()
 	defer fake.listObjectVersionsWithContextMutex.Unlock()
 	fake.ListObjectVersionsWithContextStub = nil
@@ -16065,7 +16065,7 @@ func (fake *FakeS3) ListObjectVersionsWithContextReturnsOnCall(i int, result1 *s
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListObjects(arg1 *s3a.ListObjectsInput) (*s3a.ListObjectsOutput, error) {
+func (fake *FakeClient) ListObjects(arg1 *s3a.ListObjectsInput) (*s3a.ListObjectsOutput, error) {
 	fake.listObjectsMutex.Lock()
 	ret, specificReturn := fake.listObjectsReturnsOnCall[len(fake.listObjectsArgsForCall)]
 	fake.listObjectsArgsForCall = append(fake.listObjectsArgsForCall, struct {
@@ -16083,26 +16083,26 @@ func (fake *FakeS3) ListObjects(arg1 *s3a.ListObjectsInput) (*s3a.ListObjectsOut
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListObjectsCallCount() int {
+func (fake *FakeClient) ListObjectsCallCount() int {
 	fake.listObjectsMutex.RLock()
 	defer fake.listObjectsMutex.RUnlock()
 	return len(fake.listObjectsArgsForCall)
 }
 
-func (fake *FakeS3) ListObjectsCalls(stub func(*s3a.ListObjectsInput) (*s3a.ListObjectsOutput, error)) {
+func (fake *FakeClient) ListObjectsCalls(stub func(*s3a.ListObjectsInput) (*s3a.ListObjectsOutput, error)) {
 	fake.listObjectsMutex.Lock()
 	defer fake.listObjectsMutex.Unlock()
 	fake.ListObjectsStub = stub
 }
 
-func (fake *FakeS3) ListObjectsArgsForCall(i int) *s3a.ListObjectsInput {
+func (fake *FakeClient) ListObjectsArgsForCall(i int) *s3a.ListObjectsInput {
 	fake.listObjectsMutex.RLock()
 	defer fake.listObjectsMutex.RUnlock()
 	argsForCall := fake.listObjectsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) ListObjectsReturns(result1 *s3a.ListObjectsOutput, result2 error) {
+func (fake *FakeClient) ListObjectsReturns(result1 *s3a.ListObjectsOutput, result2 error) {
 	fake.listObjectsMutex.Lock()
 	defer fake.listObjectsMutex.Unlock()
 	fake.ListObjectsStub = nil
@@ -16112,7 +16112,7 @@ func (fake *FakeS3) ListObjectsReturns(result1 *s3a.ListObjectsOutput, result2 e
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListObjectsReturnsOnCall(i int, result1 *s3a.ListObjectsOutput, result2 error) {
+func (fake *FakeClient) ListObjectsReturnsOnCall(i int, result1 *s3a.ListObjectsOutput, result2 error) {
 	fake.listObjectsMutex.Lock()
 	defer fake.listObjectsMutex.Unlock()
 	fake.ListObjectsStub = nil
@@ -16128,7 +16128,7 @@ func (fake *FakeS3) ListObjectsReturnsOnCall(i int, result1 *s3a.ListObjectsOutp
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListObjectsPages(arg1 *s3a.ListObjectsInput, arg2 func(*s3a.ListObjectsOutput, bool) bool) error {
+func (fake *FakeClient) ListObjectsPages(arg1 *s3a.ListObjectsInput, arg2 func(*s3a.ListObjectsOutput, bool) bool) error {
 	fake.listObjectsPagesMutex.Lock()
 	ret, specificReturn := fake.listObjectsPagesReturnsOnCall[len(fake.listObjectsPagesArgsForCall)]
 	fake.listObjectsPagesArgsForCall = append(fake.listObjectsPagesArgsForCall, struct {
@@ -16147,26 +16147,26 @@ func (fake *FakeS3) ListObjectsPages(arg1 *s3a.ListObjectsInput, arg2 func(*s3a.
 	return fakeReturns.result1
 }
 
-func (fake *FakeS3) ListObjectsPagesCallCount() int {
+func (fake *FakeClient) ListObjectsPagesCallCount() int {
 	fake.listObjectsPagesMutex.RLock()
 	defer fake.listObjectsPagesMutex.RUnlock()
 	return len(fake.listObjectsPagesArgsForCall)
 }
 
-func (fake *FakeS3) ListObjectsPagesCalls(stub func(*s3a.ListObjectsInput, func(*s3a.ListObjectsOutput, bool) bool) error) {
+func (fake *FakeClient) ListObjectsPagesCalls(stub func(*s3a.ListObjectsInput, func(*s3a.ListObjectsOutput, bool) bool) error) {
 	fake.listObjectsPagesMutex.Lock()
 	defer fake.listObjectsPagesMutex.Unlock()
 	fake.ListObjectsPagesStub = stub
 }
 
-func (fake *FakeS3) ListObjectsPagesArgsForCall(i int) (*s3a.ListObjectsInput, func(*s3a.ListObjectsOutput, bool) bool) {
+func (fake *FakeClient) ListObjectsPagesArgsForCall(i int) (*s3a.ListObjectsInput, func(*s3a.ListObjectsOutput, bool) bool) {
 	fake.listObjectsPagesMutex.RLock()
 	defer fake.listObjectsPagesMutex.RUnlock()
 	argsForCall := fake.listObjectsPagesArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2
 }
 
-func (fake *FakeS3) ListObjectsPagesReturns(result1 error) {
+func (fake *FakeClient) ListObjectsPagesReturns(result1 error) {
 	fake.listObjectsPagesMutex.Lock()
 	defer fake.listObjectsPagesMutex.Unlock()
 	fake.ListObjectsPagesStub = nil
@@ -16175,7 +16175,7 @@ func (fake *FakeS3) ListObjectsPagesReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) ListObjectsPagesReturnsOnCall(i int, result1 error) {
+func (fake *FakeClient) ListObjectsPagesReturnsOnCall(i int, result1 error) {
 	fake.listObjectsPagesMutex.Lock()
 	defer fake.listObjectsPagesMutex.Unlock()
 	fake.ListObjectsPagesStub = nil
@@ -16189,7 +16189,7 @@ func (fake *FakeS3) ListObjectsPagesReturnsOnCall(i int, result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) ListObjectsPagesWithContext(arg1 context.Context, arg2 *s3a.ListObjectsInput, arg3 func(*s3a.ListObjectsOutput, bool) bool, arg4 ...request.Option) error {
+func (fake *FakeClient) ListObjectsPagesWithContext(arg1 context.Context, arg2 *s3a.ListObjectsInput, arg3 func(*s3a.ListObjectsOutput, bool) bool, arg4 ...request.Option) error {
 	fake.listObjectsPagesWithContextMutex.Lock()
 	ret, specificReturn := fake.listObjectsPagesWithContextReturnsOnCall[len(fake.listObjectsPagesWithContextArgsForCall)]
 	fake.listObjectsPagesWithContextArgsForCall = append(fake.listObjectsPagesWithContextArgsForCall, struct {
@@ -16210,26 +16210,26 @@ func (fake *FakeS3) ListObjectsPagesWithContext(arg1 context.Context, arg2 *s3a.
 	return fakeReturns.result1
 }
 
-func (fake *FakeS3) ListObjectsPagesWithContextCallCount() int {
+func (fake *FakeClient) ListObjectsPagesWithContextCallCount() int {
 	fake.listObjectsPagesWithContextMutex.RLock()
 	defer fake.listObjectsPagesWithContextMutex.RUnlock()
 	return len(fake.listObjectsPagesWithContextArgsForCall)
 }
 
-func (fake *FakeS3) ListObjectsPagesWithContextCalls(stub func(context.Context, *s3a.ListObjectsInput, func(*s3a.ListObjectsOutput, bool) bool, ...request.Option) error) {
+func (fake *FakeClient) ListObjectsPagesWithContextCalls(stub func(context.Context, *s3a.ListObjectsInput, func(*s3a.ListObjectsOutput, bool) bool, ...request.Option) error) {
 	fake.listObjectsPagesWithContextMutex.Lock()
 	defer fake.listObjectsPagesWithContextMutex.Unlock()
 	fake.ListObjectsPagesWithContextStub = stub
 }
 
-func (fake *FakeS3) ListObjectsPagesWithContextArgsForCall(i int) (context.Context, *s3a.ListObjectsInput, func(*s3a.ListObjectsOutput, bool) bool, []request.Option) {
+func (fake *FakeClient) ListObjectsPagesWithContextArgsForCall(i int) (context.Context, *s3a.ListObjectsInput, func(*s3a.ListObjectsOutput, bool) bool, []request.Option) {
 	fake.listObjectsPagesWithContextMutex.RLock()
 	defer fake.listObjectsPagesWithContextMutex.RUnlock()
 	argsForCall := fake.listObjectsPagesWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3, argsForCall.arg4
 }
 
-func (fake *FakeS3) ListObjectsPagesWithContextReturns(result1 error) {
+func (fake *FakeClient) ListObjectsPagesWithContextReturns(result1 error) {
 	fake.listObjectsPagesWithContextMutex.Lock()
 	defer fake.listObjectsPagesWithContextMutex.Unlock()
 	fake.ListObjectsPagesWithContextStub = nil
@@ -16238,7 +16238,7 @@ func (fake *FakeS3) ListObjectsPagesWithContextReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) ListObjectsPagesWithContextReturnsOnCall(i int, result1 error) {
+func (fake *FakeClient) ListObjectsPagesWithContextReturnsOnCall(i int, result1 error) {
 	fake.listObjectsPagesWithContextMutex.Lock()
 	defer fake.listObjectsPagesWithContextMutex.Unlock()
 	fake.ListObjectsPagesWithContextStub = nil
@@ -16252,7 +16252,7 @@ func (fake *FakeS3) ListObjectsPagesWithContextReturnsOnCall(i int, result1 erro
 	}{result1}
 }
 
-func (fake *FakeS3) ListObjectsRequest(arg1 *s3a.ListObjectsInput) (*request.Request, *s3a.ListObjectsOutput) {
+func (fake *FakeClient) ListObjectsRequest(arg1 *s3a.ListObjectsInput) (*request.Request, *s3a.ListObjectsOutput) {
 	fake.listObjectsRequestMutex.Lock()
 	ret, specificReturn := fake.listObjectsRequestReturnsOnCall[len(fake.listObjectsRequestArgsForCall)]
 	fake.listObjectsRequestArgsForCall = append(fake.listObjectsRequestArgsForCall, struct {
@@ -16270,26 +16270,26 @@ func (fake *FakeS3) ListObjectsRequest(arg1 *s3a.ListObjectsInput) (*request.Req
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListObjectsRequestCallCount() int {
+func (fake *FakeClient) ListObjectsRequestCallCount() int {
 	fake.listObjectsRequestMutex.RLock()
 	defer fake.listObjectsRequestMutex.RUnlock()
 	return len(fake.listObjectsRequestArgsForCall)
 }
 
-func (fake *FakeS3) ListObjectsRequestCalls(stub func(*s3a.ListObjectsInput) (*request.Request, *s3a.ListObjectsOutput)) {
+func (fake *FakeClient) ListObjectsRequestCalls(stub func(*s3a.ListObjectsInput) (*request.Request, *s3a.ListObjectsOutput)) {
 	fake.listObjectsRequestMutex.Lock()
 	defer fake.listObjectsRequestMutex.Unlock()
 	fake.ListObjectsRequestStub = stub
 }
 
-func (fake *FakeS3) ListObjectsRequestArgsForCall(i int) *s3a.ListObjectsInput {
+func (fake *FakeClient) ListObjectsRequestArgsForCall(i int) *s3a.ListObjectsInput {
 	fake.listObjectsRequestMutex.RLock()
 	defer fake.listObjectsRequestMutex.RUnlock()
 	argsForCall := fake.listObjectsRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) ListObjectsRequestReturns(result1 *request.Request, result2 *s3a.ListObjectsOutput) {
+func (fake *FakeClient) ListObjectsRequestReturns(result1 *request.Request, result2 *s3a.ListObjectsOutput) {
 	fake.listObjectsRequestMutex.Lock()
 	defer fake.listObjectsRequestMutex.Unlock()
 	fake.ListObjectsRequestStub = nil
@@ -16299,7 +16299,7 @@ func (fake *FakeS3) ListObjectsRequestReturns(result1 *request.Request, result2 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListObjectsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.ListObjectsOutput) {
+func (fake *FakeClient) ListObjectsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.ListObjectsOutput) {
 	fake.listObjectsRequestMutex.Lock()
 	defer fake.listObjectsRequestMutex.Unlock()
 	fake.ListObjectsRequestStub = nil
@@ -16315,7 +16315,7 @@ func (fake *FakeS3) ListObjectsRequestReturnsOnCall(i int, result1 *request.Requ
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListObjectsV2(arg1 *s3a.ListObjectsV2Input) (*s3a.ListObjectsV2Output, error) {
+func (fake *FakeClient) ListObjectsV2(arg1 *s3a.ListObjectsV2Input) (*s3a.ListObjectsV2Output, error) {
 	fake.listObjectsV2Mutex.Lock()
 	ret, specificReturn := fake.listObjectsV2ReturnsOnCall[len(fake.listObjectsV2ArgsForCall)]
 	fake.listObjectsV2ArgsForCall = append(fake.listObjectsV2ArgsForCall, struct {
@@ -16333,26 +16333,26 @@ func (fake *FakeS3) ListObjectsV2(arg1 *s3a.ListObjectsV2Input) (*s3a.ListObject
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListObjectsV2CallCount() int {
+func (fake *FakeClient) ListObjectsV2CallCount() int {
 	fake.listObjectsV2Mutex.RLock()
 	defer fake.listObjectsV2Mutex.RUnlock()
 	return len(fake.listObjectsV2ArgsForCall)
 }
 
-func (fake *FakeS3) ListObjectsV2Calls(stub func(*s3a.ListObjectsV2Input) (*s3a.ListObjectsV2Output, error)) {
+func (fake *FakeClient) ListObjectsV2Calls(stub func(*s3a.ListObjectsV2Input) (*s3a.ListObjectsV2Output, error)) {
 	fake.listObjectsV2Mutex.Lock()
 	defer fake.listObjectsV2Mutex.Unlock()
 	fake.ListObjectsV2Stub = stub
 }
 
-func (fake *FakeS3) ListObjectsV2ArgsForCall(i int) *s3a.ListObjectsV2Input {
+func (fake *FakeClient) ListObjectsV2ArgsForCall(i int) *s3a.ListObjectsV2Input {
 	fake.listObjectsV2Mutex.RLock()
 	defer fake.listObjectsV2Mutex.RUnlock()
 	argsForCall := fake.listObjectsV2ArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) ListObjectsV2Returns(result1 *s3a.ListObjectsV2Output, result2 error) {
+func (fake *FakeClient) ListObjectsV2Returns(result1 *s3a.ListObjectsV2Output, result2 error) {
 	fake.listObjectsV2Mutex.Lock()
 	defer fake.listObjectsV2Mutex.Unlock()
 	fake.ListObjectsV2Stub = nil
@@ -16362,7 +16362,7 @@ func (fake *FakeS3) ListObjectsV2Returns(result1 *s3a.ListObjectsV2Output, resul
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListObjectsV2ReturnsOnCall(i int, result1 *s3a.ListObjectsV2Output, result2 error) {
+func (fake *FakeClient) ListObjectsV2ReturnsOnCall(i int, result1 *s3a.ListObjectsV2Output, result2 error) {
 	fake.listObjectsV2Mutex.Lock()
 	defer fake.listObjectsV2Mutex.Unlock()
 	fake.ListObjectsV2Stub = nil
@@ -16378,7 +16378,7 @@ func (fake *FakeS3) ListObjectsV2ReturnsOnCall(i int, result1 *s3a.ListObjectsV2
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListObjectsV2Pages(arg1 *s3a.ListObjectsV2Input, arg2 func(*s3a.ListObjectsV2Output, bool) bool) error {
+func (fake *FakeClient) ListObjectsV2Pages(arg1 *s3a.ListObjectsV2Input, arg2 func(*s3a.ListObjectsV2Output, bool) bool) error {
 	fake.listObjectsV2PagesMutex.Lock()
 	ret, specificReturn := fake.listObjectsV2PagesReturnsOnCall[len(fake.listObjectsV2PagesArgsForCall)]
 	fake.listObjectsV2PagesArgsForCall = append(fake.listObjectsV2PagesArgsForCall, struct {
@@ -16397,26 +16397,26 @@ func (fake *FakeS3) ListObjectsV2Pages(arg1 *s3a.ListObjectsV2Input, arg2 func(*
 	return fakeReturns.result1
 }
 
-func (fake *FakeS3) ListObjectsV2PagesCallCount() int {
+func (fake *FakeClient) ListObjectsV2PagesCallCount() int {
 	fake.listObjectsV2PagesMutex.RLock()
 	defer fake.listObjectsV2PagesMutex.RUnlock()
 	return len(fake.listObjectsV2PagesArgsForCall)
 }
 
-func (fake *FakeS3) ListObjectsV2PagesCalls(stub func(*s3a.ListObjectsV2Input, func(*s3a.ListObjectsV2Output, bool) bool) error) {
+func (fake *FakeClient) ListObjectsV2PagesCalls(stub func(*s3a.ListObjectsV2Input, func(*s3a.ListObjectsV2Output, bool) bool) error) {
 	fake.listObjectsV2PagesMutex.Lock()
 	defer fake.listObjectsV2PagesMutex.Unlock()
 	fake.ListObjectsV2PagesStub = stub
 }
 
-func (fake *FakeS3) ListObjectsV2PagesArgsForCall(i int) (*s3a.ListObjectsV2Input, func(*s3a.ListObjectsV2Output, bool) bool) {
+func (fake *FakeClient) ListObjectsV2PagesArgsForCall(i int) (*s3a.ListObjectsV2Input, func(*s3a.ListObjectsV2Output, bool) bool) {
 	fake.listObjectsV2PagesMutex.RLock()
 	defer fake.listObjectsV2PagesMutex.RUnlock()
 	argsForCall := fake.listObjectsV2PagesArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2
 }
 
-func (fake *FakeS3) ListObjectsV2PagesReturns(result1 error) {
+func (fake *FakeClient) ListObjectsV2PagesReturns(result1 error) {
 	fake.listObjectsV2PagesMutex.Lock()
 	defer fake.listObjectsV2PagesMutex.Unlock()
 	fake.ListObjectsV2PagesStub = nil
@@ -16425,7 +16425,7 @@ func (fake *FakeS3) ListObjectsV2PagesReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) ListObjectsV2PagesReturnsOnCall(i int, result1 error) {
+func (fake *FakeClient) ListObjectsV2PagesReturnsOnCall(i int, result1 error) {
 	fake.listObjectsV2PagesMutex.Lock()
 	defer fake.listObjectsV2PagesMutex.Unlock()
 	fake.ListObjectsV2PagesStub = nil
@@ -16439,7 +16439,7 @@ func (fake *FakeS3) ListObjectsV2PagesReturnsOnCall(i int, result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) ListObjectsV2PagesWithContext(arg1 context.Context, arg2 *s3a.ListObjectsV2Input, arg3 func(*s3a.ListObjectsV2Output, bool) bool, arg4 ...request.Option) error {
+func (fake *FakeClient) ListObjectsV2PagesWithContext(arg1 context.Context, arg2 *s3a.ListObjectsV2Input, arg3 func(*s3a.ListObjectsV2Output, bool) bool, arg4 ...request.Option) error {
 	fake.listObjectsV2PagesWithContextMutex.Lock()
 	ret, specificReturn := fake.listObjectsV2PagesWithContextReturnsOnCall[len(fake.listObjectsV2PagesWithContextArgsForCall)]
 	fake.listObjectsV2PagesWithContextArgsForCall = append(fake.listObjectsV2PagesWithContextArgsForCall, struct {
@@ -16460,26 +16460,26 @@ func (fake *FakeS3) ListObjectsV2PagesWithContext(arg1 context.Context, arg2 *s3
 	return fakeReturns.result1
 }
 
-func (fake *FakeS3) ListObjectsV2PagesWithContextCallCount() int {
+func (fake *FakeClient) ListObjectsV2PagesWithContextCallCount() int {
 	fake.listObjectsV2PagesWithContextMutex.RLock()
 	defer fake.listObjectsV2PagesWithContextMutex.RUnlock()
 	return len(fake.listObjectsV2PagesWithContextArgsForCall)
 }
 
-func (fake *FakeS3) ListObjectsV2PagesWithContextCalls(stub func(context.Context, *s3a.ListObjectsV2Input, func(*s3a.ListObjectsV2Output, bool) bool, ...request.Option) error) {
+func (fake *FakeClient) ListObjectsV2PagesWithContextCalls(stub func(context.Context, *s3a.ListObjectsV2Input, func(*s3a.ListObjectsV2Output, bool) bool, ...request.Option) error) {
 	fake.listObjectsV2PagesWithContextMutex.Lock()
 	defer fake.listObjectsV2PagesWithContextMutex.Unlock()
 	fake.ListObjectsV2PagesWithContextStub = stub
 }
 
-func (fake *FakeS3) ListObjectsV2PagesWithContextArgsForCall(i int) (context.Context, *s3a.ListObjectsV2Input, func(*s3a.ListObjectsV2Output, bool) bool, []request.Option) {
+func (fake *FakeClient) ListObjectsV2PagesWithContextArgsForCall(i int) (context.Context, *s3a.ListObjectsV2Input, func(*s3a.ListObjectsV2Output, bool) bool, []request.Option) {
 	fake.listObjectsV2PagesWithContextMutex.RLock()
 	defer fake.listObjectsV2PagesWithContextMutex.RUnlock()
 	argsForCall := fake.listObjectsV2PagesWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3, argsForCall.arg4
 }
 
-func (fake *FakeS3) ListObjectsV2PagesWithContextReturns(result1 error) {
+func (fake *FakeClient) ListObjectsV2PagesWithContextReturns(result1 error) {
 	fake.listObjectsV2PagesWithContextMutex.Lock()
 	defer fake.listObjectsV2PagesWithContextMutex.Unlock()
 	fake.ListObjectsV2PagesWithContextStub = nil
@@ -16488,7 +16488,7 @@ func (fake *FakeS3) ListObjectsV2PagesWithContextReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) ListObjectsV2PagesWithContextReturnsOnCall(i int, result1 error) {
+func (fake *FakeClient) ListObjectsV2PagesWithContextReturnsOnCall(i int, result1 error) {
 	fake.listObjectsV2PagesWithContextMutex.Lock()
 	defer fake.listObjectsV2PagesWithContextMutex.Unlock()
 	fake.ListObjectsV2PagesWithContextStub = nil
@@ -16502,7 +16502,7 @@ func (fake *FakeS3) ListObjectsV2PagesWithContextReturnsOnCall(i int, result1 er
 	}{result1}
 }
 
-func (fake *FakeS3) ListObjectsV2Request(arg1 *s3a.ListObjectsV2Input) (*request.Request, *s3a.ListObjectsV2Output) {
+func (fake *FakeClient) ListObjectsV2Request(arg1 *s3a.ListObjectsV2Input) (*request.Request, *s3a.ListObjectsV2Output) {
 	fake.listObjectsV2RequestMutex.Lock()
 	ret, specificReturn := fake.listObjectsV2RequestReturnsOnCall[len(fake.listObjectsV2RequestArgsForCall)]
 	fake.listObjectsV2RequestArgsForCall = append(fake.listObjectsV2RequestArgsForCall, struct {
@@ -16520,26 +16520,26 @@ func (fake *FakeS3) ListObjectsV2Request(arg1 *s3a.ListObjectsV2Input) (*request
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListObjectsV2RequestCallCount() int {
+func (fake *FakeClient) ListObjectsV2RequestCallCount() int {
 	fake.listObjectsV2RequestMutex.RLock()
 	defer fake.listObjectsV2RequestMutex.RUnlock()
 	return len(fake.listObjectsV2RequestArgsForCall)
 }
 
-func (fake *FakeS3) ListObjectsV2RequestCalls(stub func(*s3a.ListObjectsV2Input) (*request.Request, *s3a.ListObjectsV2Output)) {
+func (fake *FakeClient) ListObjectsV2RequestCalls(stub func(*s3a.ListObjectsV2Input) (*request.Request, *s3a.ListObjectsV2Output)) {
 	fake.listObjectsV2RequestMutex.Lock()
 	defer fake.listObjectsV2RequestMutex.Unlock()
 	fake.ListObjectsV2RequestStub = stub
 }
 
-func (fake *FakeS3) ListObjectsV2RequestArgsForCall(i int) *s3a.ListObjectsV2Input {
+func (fake *FakeClient) ListObjectsV2RequestArgsForCall(i int) *s3a.ListObjectsV2Input {
 	fake.listObjectsV2RequestMutex.RLock()
 	defer fake.listObjectsV2RequestMutex.RUnlock()
 	argsForCall := fake.listObjectsV2RequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) ListObjectsV2RequestReturns(result1 *request.Request, result2 *s3a.ListObjectsV2Output) {
+func (fake *FakeClient) ListObjectsV2RequestReturns(result1 *request.Request, result2 *s3a.ListObjectsV2Output) {
 	fake.listObjectsV2RequestMutex.Lock()
 	defer fake.listObjectsV2RequestMutex.Unlock()
 	fake.ListObjectsV2RequestStub = nil
@@ -16549,7 +16549,7 @@ func (fake *FakeS3) ListObjectsV2RequestReturns(result1 *request.Request, result
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListObjectsV2RequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.ListObjectsV2Output) {
+func (fake *FakeClient) ListObjectsV2RequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.ListObjectsV2Output) {
 	fake.listObjectsV2RequestMutex.Lock()
 	defer fake.listObjectsV2RequestMutex.Unlock()
 	fake.ListObjectsV2RequestStub = nil
@@ -16565,7 +16565,7 @@ func (fake *FakeS3) ListObjectsV2RequestReturnsOnCall(i int, result1 *request.Re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListObjectsV2WithContext(arg1 context.Context, arg2 *s3a.ListObjectsV2Input, arg3 ...request.Option) (*s3a.ListObjectsV2Output, error) {
+func (fake *FakeClient) ListObjectsV2WithContext(arg1 context.Context, arg2 *s3a.ListObjectsV2Input, arg3 ...request.Option) (*s3a.ListObjectsV2Output, error) {
 	fake.listObjectsV2WithContextMutex.Lock()
 	ret, specificReturn := fake.listObjectsV2WithContextReturnsOnCall[len(fake.listObjectsV2WithContextArgsForCall)]
 	fake.listObjectsV2WithContextArgsForCall = append(fake.listObjectsV2WithContextArgsForCall, struct {
@@ -16585,26 +16585,26 @@ func (fake *FakeS3) ListObjectsV2WithContext(arg1 context.Context, arg2 *s3a.Lis
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListObjectsV2WithContextCallCount() int {
+func (fake *FakeClient) ListObjectsV2WithContextCallCount() int {
 	fake.listObjectsV2WithContextMutex.RLock()
 	defer fake.listObjectsV2WithContextMutex.RUnlock()
 	return len(fake.listObjectsV2WithContextArgsForCall)
 }
 
-func (fake *FakeS3) ListObjectsV2WithContextCalls(stub func(context.Context, *s3a.ListObjectsV2Input, ...request.Option) (*s3a.ListObjectsV2Output, error)) {
+func (fake *FakeClient) ListObjectsV2WithContextCalls(stub func(context.Context, *s3a.ListObjectsV2Input, ...request.Option) (*s3a.ListObjectsV2Output, error)) {
 	fake.listObjectsV2WithContextMutex.Lock()
 	defer fake.listObjectsV2WithContextMutex.Unlock()
 	fake.ListObjectsV2WithContextStub = stub
 }
 
-func (fake *FakeS3) ListObjectsV2WithContextArgsForCall(i int) (context.Context, *s3a.ListObjectsV2Input, []request.Option) {
+func (fake *FakeClient) ListObjectsV2WithContextArgsForCall(i int) (context.Context, *s3a.ListObjectsV2Input, []request.Option) {
 	fake.listObjectsV2WithContextMutex.RLock()
 	defer fake.listObjectsV2WithContextMutex.RUnlock()
 	argsForCall := fake.listObjectsV2WithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) ListObjectsV2WithContextReturns(result1 *s3a.ListObjectsV2Output, result2 error) {
+func (fake *FakeClient) ListObjectsV2WithContextReturns(result1 *s3a.ListObjectsV2Output, result2 error) {
 	fake.listObjectsV2WithContextMutex.Lock()
 	defer fake.listObjectsV2WithContextMutex.Unlock()
 	fake.ListObjectsV2WithContextStub = nil
@@ -16614,7 +16614,7 @@ func (fake *FakeS3) ListObjectsV2WithContextReturns(result1 *s3a.ListObjectsV2Ou
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListObjectsV2WithContextReturnsOnCall(i int, result1 *s3a.ListObjectsV2Output, result2 error) {
+func (fake *FakeClient) ListObjectsV2WithContextReturnsOnCall(i int, result1 *s3a.ListObjectsV2Output, result2 error) {
 	fake.listObjectsV2WithContextMutex.Lock()
 	defer fake.listObjectsV2WithContextMutex.Unlock()
 	fake.ListObjectsV2WithContextStub = nil
@@ -16630,7 +16630,7 @@ func (fake *FakeS3) ListObjectsV2WithContextReturnsOnCall(i int, result1 *s3a.Li
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListObjectsWithContext(arg1 context.Context, arg2 *s3a.ListObjectsInput, arg3 ...request.Option) (*s3a.ListObjectsOutput, error) {
+func (fake *FakeClient) ListObjectsWithContext(arg1 context.Context, arg2 *s3a.ListObjectsInput, arg3 ...request.Option) (*s3a.ListObjectsOutput, error) {
 	fake.listObjectsWithContextMutex.Lock()
 	ret, specificReturn := fake.listObjectsWithContextReturnsOnCall[len(fake.listObjectsWithContextArgsForCall)]
 	fake.listObjectsWithContextArgsForCall = append(fake.listObjectsWithContextArgsForCall, struct {
@@ -16650,26 +16650,26 @@ func (fake *FakeS3) ListObjectsWithContext(arg1 context.Context, arg2 *s3a.ListO
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListObjectsWithContextCallCount() int {
+func (fake *FakeClient) ListObjectsWithContextCallCount() int {
 	fake.listObjectsWithContextMutex.RLock()
 	defer fake.listObjectsWithContextMutex.RUnlock()
 	return len(fake.listObjectsWithContextArgsForCall)
 }
 
-func (fake *FakeS3) ListObjectsWithContextCalls(stub func(context.Context, *s3a.ListObjectsInput, ...request.Option) (*s3a.ListObjectsOutput, error)) {
+func (fake *FakeClient) ListObjectsWithContextCalls(stub func(context.Context, *s3a.ListObjectsInput, ...request.Option) (*s3a.ListObjectsOutput, error)) {
 	fake.listObjectsWithContextMutex.Lock()
 	defer fake.listObjectsWithContextMutex.Unlock()
 	fake.ListObjectsWithContextStub = stub
 }
 
-func (fake *FakeS3) ListObjectsWithContextArgsForCall(i int) (context.Context, *s3a.ListObjectsInput, []request.Option) {
+func (fake *FakeClient) ListObjectsWithContextArgsForCall(i int) (context.Context, *s3a.ListObjectsInput, []request.Option) {
 	fake.listObjectsWithContextMutex.RLock()
 	defer fake.listObjectsWithContextMutex.RUnlock()
 	argsForCall := fake.listObjectsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) ListObjectsWithContextReturns(result1 *s3a.ListObjectsOutput, result2 error) {
+func (fake *FakeClient) ListObjectsWithContextReturns(result1 *s3a.ListObjectsOutput, result2 error) {
 	fake.listObjectsWithContextMutex.Lock()
 	defer fake.listObjectsWithContextMutex.Unlock()
 	fake.ListObjectsWithContextStub = nil
@@ -16679,7 +16679,7 @@ func (fake *FakeS3) ListObjectsWithContextReturns(result1 *s3a.ListObjectsOutput
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListObjectsWithContextReturnsOnCall(i int, result1 *s3a.ListObjectsOutput, result2 error) {
+func (fake *FakeClient) ListObjectsWithContextReturnsOnCall(i int, result1 *s3a.ListObjectsOutput, result2 error) {
 	fake.listObjectsWithContextMutex.Lock()
 	defer fake.listObjectsWithContextMutex.Unlock()
 	fake.ListObjectsWithContextStub = nil
@@ -16695,7 +16695,7 @@ func (fake *FakeS3) ListObjectsWithContextReturnsOnCall(i int, result1 *s3a.List
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListParts(arg1 *s3a.ListPartsInput) (*s3a.ListPartsOutput, error) {
+func (fake *FakeClient) ListParts(arg1 *s3a.ListPartsInput) (*s3a.ListPartsOutput, error) {
 	fake.listPartsMutex.Lock()
 	ret, specificReturn := fake.listPartsReturnsOnCall[len(fake.listPartsArgsForCall)]
 	fake.listPartsArgsForCall = append(fake.listPartsArgsForCall, struct {
@@ -16713,26 +16713,26 @@ func (fake *FakeS3) ListParts(arg1 *s3a.ListPartsInput) (*s3a.ListPartsOutput, e
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListPartsCallCount() int {
+func (fake *FakeClient) ListPartsCallCount() int {
 	fake.listPartsMutex.RLock()
 	defer fake.listPartsMutex.RUnlock()
 	return len(fake.listPartsArgsForCall)
 }
 
-func (fake *FakeS3) ListPartsCalls(stub func(*s3a.ListPartsInput) (*s3a.ListPartsOutput, error)) {
+func (fake *FakeClient) ListPartsCalls(stub func(*s3a.ListPartsInput) (*s3a.ListPartsOutput, error)) {
 	fake.listPartsMutex.Lock()
 	defer fake.listPartsMutex.Unlock()
 	fake.ListPartsStub = stub
 }
 
-func (fake *FakeS3) ListPartsArgsForCall(i int) *s3a.ListPartsInput {
+func (fake *FakeClient) ListPartsArgsForCall(i int) *s3a.ListPartsInput {
 	fake.listPartsMutex.RLock()
 	defer fake.listPartsMutex.RUnlock()
 	argsForCall := fake.listPartsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) ListPartsReturns(result1 *s3a.ListPartsOutput, result2 error) {
+func (fake *FakeClient) ListPartsReturns(result1 *s3a.ListPartsOutput, result2 error) {
 	fake.listPartsMutex.Lock()
 	defer fake.listPartsMutex.Unlock()
 	fake.ListPartsStub = nil
@@ -16742,7 +16742,7 @@ func (fake *FakeS3) ListPartsReturns(result1 *s3a.ListPartsOutput, result2 error
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListPartsReturnsOnCall(i int, result1 *s3a.ListPartsOutput, result2 error) {
+func (fake *FakeClient) ListPartsReturnsOnCall(i int, result1 *s3a.ListPartsOutput, result2 error) {
 	fake.listPartsMutex.Lock()
 	defer fake.listPartsMutex.Unlock()
 	fake.ListPartsStub = nil
@@ -16758,7 +16758,7 @@ func (fake *FakeS3) ListPartsReturnsOnCall(i int, result1 *s3a.ListPartsOutput, 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListPartsPages(arg1 *s3a.ListPartsInput, arg2 func(*s3a.ListPartsOutput, bool) bool) error {
+func (fake *FakeClient) ListPartsPages(arg1 *s3a.ListPartsInput, arg2 func(*s3a.ListPartsOutput, bool) bool) error {
 	fake.listPartsPagesMutex.Lock()
 	ret, specificReturn := fake.listPartsPagesReturnsOnCall[len(fake.listPartsPagesArgsForCall)]
 	fake.listPartsPagesArgsForCall = append(fake.listPartsPagesArgsForCall, struct {
@@ -16777,26 +16777,26 @@ func (fake *FakeS3) ListPartsPages(arg1 *s3a.ListPartsInput, arg2 func(*s3a.List
 	return fakeReturns.result1
 }
 
-func (fake *FakeS3) ListPartsPagesCallCount() int {
+func (fake *FakeClient) ListPartsPagesCallCount() int {
 	fake.listPartsPagesMutex.RLock()
 	defer fake.listPartsPagesMutex.RUnlock()
 	return len(fake.listPartsPagesArgsForCall)
 }
 
-func (fake *FakeS3) ListPartsPagesCalls(stub func(*s3a.ListPartsInput, func(*s3a.ListPartsOutput, bool) bool) error) {
+func (fake *FakeClient) ListPartsPagesCalls(stub func(*s3a.ListPartsInput, func(*s3a.ListPartsOutput, bool) bool) error) {
 	fake.listPartsPagesMutex.Lock()
 	defer fake.listPartsPagesMutex.Unlock()
 	fake.ListPartsPagesStub = stub
 }
 
-func (fake *FakeS3) ListPartsPagesArgsForCall(i int) (*s3a.ListPartsInput, func(*s3a.ListPartsOutput, bool) bool) {
+func (fake *FakeClient) ListPartsPagesArgsForCall(i int) (*s3a.ListPartsInput, func(*s3a.ListPartsOutput, bool) bool) {
 	fake.listPartsPagesMutex.RLock()
 	defer fake.listPartsPagesMutex.RUnlock()
 	argsForCall := fake.listPartsPagesArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2
 }
 
-func (fake *FakeS3) ListPartsPagesReturns(result1 error) {
+func (fake *FakeClient) ListPartsPagesReturns(result1 error) {
 	fake.listPartsPagesMutex.Lock()
 	defer fake.listPartsPagesMutex.Unlock()
 	fake.ListPartsPagesStub = nil
@@ -16805,7 +16805,7 @@ func (fake *FakeS3) ListPartsPagesReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) ListPartsPagesReturnsOnCall(i int, result1 error) {
+func (fake *FakeClient) ListPartsPagesReturnsOnCall(i int, result1 error) {
 	fake.listPartsPagesMutex.Lock()
 	defer fake.listPartsPagesMutex.Unlock()
 	fake.ListPartsPagesStub = nil
@@ -16819,7 +16819,7 @@ func (fake *FakeS3) ListPartsPagesReturnsOnCall(i int, result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) ListPartsPagesWithContext(arg1 context.Context, arg2 *s3a.ListPartsInput, arg3 func(*s3a.ListPartsOutput, bool) bool, arg4 ...request.Option) error {
+func (fake *FakeClient) ListPartsPagesWithContext(arg1 context.Context, arg2 *s3a.ListPartsInput, arg3 func(*s3a.ListPartsOutput, bool) bool, arg4 ...request.Option) error {
 	fake.listPartsPagesWithContextMutex.Lock()
 	ret, specificReturn := fake.listPartsPagesWithContextReturnsOnCall[len(fake.listPartsPagesWithContextArgsForCall)]
 	fake.listPartsPagesWithContextArgsForCall = append(fake.listPartsPagesWithContextArgsForCall, struct {
@@ -16840,26 +16840,26 @@ func (fake *FakeS3) ListPartsPagesWithContext(arg1 context.Context, arg2 *s3a.Li
 	return fakeReturns.result1
 }
 
-func (fake *FakeS3) ListPartsPagesWithContextCallCount() int {
+func (fake *FakeClient) ListPartsPagesWithContextCallCount() int {
 	fake.listPartsPagesWithContextMutex.RLock()
 	defer fake.listPartsPagesWithContextMutex.RUnlock()
 	return len(fake.listPartsPagesWithContextArgsForCall)
 }
 
-func (fake *FakeS3) ListPartsPagesWithContextCalls(stub func(context.Context, *s3a.ListPartsInput, func(*s3a.ListPartsOutput, bool) bool, ...request.Option) error) {
+func (fake *FakeClient) ListPartsPagesWithContextCalls(stub func(context.Context, *s3a.ListPartsInput, func(*s3a.ListPartsOutput, bool) bool, ...request.Option) error) {
 	fake.listPartsPagesWithContextMutex.Lock()
 	defer fake.listPartsPagesWithContextMutex.Unlock()
 	fake.ListPartsPagesWithContextStub = stub
 }
 
-func (fake *FakeS3) ListPartsPagesWithContextArgsForCall(i int) (context.Context, *s3a.ListPartsInput, func(*s3a.ListPartsOutput, bool) bool, []request.Option) {
+func (fake *FakeClient) ListPartsPagesWithContextArgsForCall(i int) (context.Context, *s3a.ListPartsInput, func(*s3a.ListPartsOutput, bool) bool, []request.Option) {
 	fake.listPartsPagesWithContextMutex.RLock()
 	defer fake.listPartsPagesWithContextMutex.RUnlock()
 	argsForCall := fake.listPartsPagesWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3, argsForCall.arg4
 }
 
-func (fake *FakeS3) ListPartsPagesWithContextReturns(result1 error) {
+func (fake *FakeClient) ListPartsPagesWithContextReturns(result1 error) {
 	fake.listPartsPagesWithContextMutex.Lock()
 	defer fake.listPartsPagesWithContextMutex.Unlock()
 	fake.ListPartsPagesWithContextStub = nil
@@ -16868,7 +16868,7 @@ func (fake *FakeS3) ListPartsPagesWithContextReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) ListPartsPagesWithContextReturnsOnCall(i int, result1 error) {
+func (fake *FakeClient) ListPartsPagesWithContextReturnsOnCall(i int, result1 error) {
 	fake.listPartsPagesWithContextMutex.Lock()
 	defer fake.listPartsPagesWithContextMutex.Unlock()
 	fake.ListPartsPagesWithContextStub = nil
@@ -16882,7 +16882,7 @@ func (fake *FakeS3) ListPartsPagesWithContextReturnsOnCall(i int, result1 error)
 	}{result1}
 }
 
-func (fake *FakeS3) ListPartsRequest(arg1 *s3a.ListPartsInput) (*request.Request, *s3a.ListPartsOutput) {
+func (fake *FakeClient) ListPartsRequest(arg1 *s3a.ListPartsInput) (*request.Request, *s3a.ListPartsOutput) {
 	fake.listPartsRequestMutex.Lock()
 	ret, specificReturn := fake.listPartsRequestReturnsOnCall[len(fake.listPartsRequestArgsForCall)]
 	fake.listPartsRequestArgsForCall = append(fake.listPartsRequestArgsForCall, struct {
@@ -16900,26 +16900,26 @@ func (fake *FakeS3) ListPartsRequest(arg1 *s3a.ListPartsInput) (*request.Request
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListPartsRequestCallCount() int {
+func (fake *FakeClient) ListPartsRequestCallCount() int {
 	fake.listPartsRequestMutex.RLock()
 	defer fake.listPartsRequestMutex.RUnlock()
 	return len(fake.listPartsRequestArgsForCall)
 }
 
-func (fake *FakeS3) ListPartsRequestCalls(stub func(*s3a.ListPartsInput) (*request.Request, *s3a.ListPartsOutput)) {
+func (fake *FakeClient) ListPartsRequestCalls(stub func(*s3a.ListPartsInput) (*request.Request, *s3a.ListPartsOutput)) {
 	fake.listPartsRequestMutex.Lock()
 	defer fake.listPartsRequestMutex.Unlock()
 	fake.ListPartsRequestStub = stub
 }
 
-func (fake *FakeS3) ListPartsRequestArgsForCall(i int) *s3a.ListPartsInput {
+func (fake *FakeClient) ListPartsRequestArgsForCall(i int) *s3a.ListPartsInput {
 	fake.listPartsRequestMutex.RLock()
 	defer fake.listPartsRequestMutex.RUnlock()
 	argsForCall := fake.listPartsRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) ListPartsRequestReturns(result1 *request.Request, result2 *s3a.ListPartsOutput) {
+func (fake *FakeClient) ListPartsRequestReturns(result1 *request.Request, result2 *s3a.ListPartsOutput) {
 	fake.listPartsRequestMutex.Lock()
 	defer fake.listPartsRequestMutex.Unlock()
 	fake.ListPartsRequestStub = nil
@@ -16929,7 +16929,7 @@ func (fake *FakeS3) ListPartsRequestReturns(result1 *request.Request, result2 *s
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListPartsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.ListPartsOutput) {
+func (fake *FakeClient) ListPartsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.ListPartsOutput) {
 	fake.listPartsRequestMutex.Lock()
 	defer fake.listPartsRequestMutex.Unlock()
 	fake.ListPartsRequestStub = nil
@@ -16945,7 +16945,7 @@ func (fake *FakeS3) ListPartsRequestReturnsOnCall(i int, result1 *request.Reques
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListPartsWithContext(arg1 context.Context, arg2 *s3a.ListPartsInput, arg3 ...request.Option) (*s3a.ListPartsOutput, error) {
+func (fake *FakeClient) ListPartsWithContext(arg1 context.Context, arg2 *s3a.ListPartsInput, arg3 ...request.Option) (*s3a.ListPartsOutput, error) {
 	fake.listPartsWithContextMutex.Lock()
 	ret, specificReturn := fake.listPartsWithContextReturnsOnCall[len(fake.listPartsWithContextArgsForCall)]
 	fake.listPartsWithContextArgsForCall = append(fake.listPartsWithContextArgsForCall, struct {
@@ -16965,26 +16965,26 @@ func (fake *FakeS3) ListPartsWithContext(arg1 context.Context, arg2 *s3a.ListPar
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) ListPartsWithContextCallCount() int {
+func (fake *FakeClient) ListPartsWithContextCallCount() int {
 	fake.listPartsWithContextMutex.RLock()
 	defer fake.listPartsWithContextMutex.RUnlock()
 	return len(fake.listPartsWithContextArgsForCall)
 }
 
-func (fake *FakeS3) ListPartsWithContextCalls(stub func(context.Context, *s3a.ListPartsInput, ...request.Option) (*s3a.ListPartsOutput, error)) {
+func (fake *FakeClient) ListPartsWithContextCalls(stub func(context.Context, *s3a.ListPartsInput, ...request.Option) (*s3a.ListPartsOutput, error)) {
 	fake.listPartsWithContextMutex.Lock()
 	defer fake.listPartsWithContextMutex.Unlock()
 	fake.ListPartsWithContextStub = stub
 }
 
-func (fake *FakeS3) ListPartsWithContextArgsForCall(i int) (context.Context, *s3a.ListPartsInput, []request.Option) {
+func (fake *FakeClient) ListPartsWithContextArgsForCall(i int) (context.Context, *s3a.ListPartsInput, []request.Option) {
 	fake.listPartsWithContextMutex.RLock()
 	defer fake.listPartsWithContextMutex.RUnlock()
 	argsForCall := fake.listPartsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) ListPartsWithContextReturns(result1 *s3a.ListPartsOutput, result2 error) {
+func (fake *FakeClient) ListPartsWithContextReturns(result1 *s3a.ListPartsOutput, result2 error) {
 	fake.listPartsWithContextMutex.Lock()
 	defer fake.listPartsWithContextMutex.Unlock()
 	fake.ListPartsWithContextStub = nil
@@ -16994,7 +16994,7 @@ func (fake *FakeS3) ListPartsWithContextReturns(result1 *s3a.ListPartsOutput, re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) ListPartsWithContextReturnsOnCall(i int, result1 *s3a.ListPartsOutput, result2 error) {
+func (fake *FakeClient) ListPartsWithContextReturnsOnCall(i int, result1 *s3a.ListPartsOutput, result2 error) {
 	fake.listPartsWithContextMutex.Lock()
 	defer fake.listPartsWithContextMutex.Unlock()
 	fake.ListPartsWithContextStub = nil
@@ -17010,7 +17010,7 @@ func (fake *FakeS3) ListPartsWithContextReturnsOnCall(i int, result1 *s3a.ListPa
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketAccelerateConfiguration(arg1 *s3a.PutBucketAccelerateConfigurationInput) (*s3a.PutBucketAccelerateConfigurationOutput, error) {
+func (fake *FakeClient) PutBucketAccelerateConfiguration(arg1 *s3a.PutBucketAccelerateConfigurationInput) (*s3a.PutBucketAccelerateConfigurationOutput, error) {
 	fake.putBucketAccelerateConfigurationMutex.Lock()
 	ret, specificReturn := fake.putBucketAccelerateConfigurationReturnsOnCall[len(fake.putBucketAccelerateConfigurationArgsForCall)]
 	fake.putBucketAccelerateConfigurationArgsForCall = append(fake.putBucketAccelerateConfigurationArgsForCall, struct {
@@ -17028,26 +17028,26 @@ func (fake *FakeS3) PutBucketAccelerateConfiguration(arg1 *s3a.PutBucketAccelera
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketAccelerateConfigurationCallCount() int {
+func (fake *FakeClient) PutBucketAccelerateConfigurationCallCount() int {
 	fake.putBucketAccelerateConfigurationMutex.RLock()
 	defer fake.putBucketAccelerateConfigurationMutex.RUnlock()
 	return len(fake.putBucketAccelerateConfigurationArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketAccelerateConfigurationCalls(stub func(*s3a.PutBucketAccelerateConfigurationInput) (*s3a.PutBucketAccelerateConfigurationOutput, error)) {
+func (fake *FakeClient) PutBucketAccelerateConfigurationCalls(stub func(*s3a.PutBucketAccelerateConfigurationInput) (*s3a.PutBucketAccelerateConfigurationOutput, error)) {
 	fake.putBucketAccelerateConfigurationMutex.Lock()
 	defer fake.putBucketAccelerateConfigurationMutex.Unlock()
 	fake.PutBucketAccelerateConfigurationStub = stub
 }
 
-func (fake *FakeS3) PutBucketAccelerateConfigurationArgsForCall(i int) *s3a.PutBucketAccelerateConfigurationInput {
+func (fake *FakeClient) PutBucketAccelerateConfigurationArgsForCall(i int) *s3a.PutBucketAccelerateConfigurationInput {
 	fake.putBucketAccelerateConfigurationMutex.RLock()
 	defer fake.putBucketAccelerateConfigurationMutex.RUnlock()
 	argsForCall := fake.putBucketAccelerateConfigurationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketAccelerateConfigurationReturns(result1 *s3a.PutBucketAccelerateConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketAccelerateConfigurationReturns(result1 *s3a.PutBucketAccelerateConfigurationOutput, result2 error) {
 	fake.putBucketAccelerateConfigurationMutex.Lock()
 	defer fake.putBucketAccelerateConfigurationMutex.Unlock()
 	fake.PutBucketAccelerateConfigurationStub = nil
@@ -17057,7 +17057,7 @@ func (fake *FakeS3) PutBucketAccelerateConfigurationReturns(result1 *s3a.PutBuck
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketAccelerateConfigurationReturnsOnCall(i int, result1 *s3a.PutBucketAccelerateConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketAccelerateConfigurationReturnsOnCall(i int, result1 *s3a.PutBucketAccelerateConfigurationOutput, result2 error) {
 	fake.putBucketAccelerateConfigurationMutex.Lock()
 	defer fake.putBucketAccelerateConfigurationMutex.Unlock()
 	fake.PutBucketAccelerateConfigurationStub = nil
@@ -17073,7 +17073,7 @@ func (fake *FakeS3) PutBucketAccelerateConfigurationReturnsOnCall(i int, result1
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketAccelerateConfigurationRequest(arg1 *s3a.PutBucketAccelerateConfigurationInput) (*request.Request, *s3a.PutBucketAccelerateConfigurationOutput) {
+func (fake *FakeClient) PutBucketAccelerateConfigurationRequest(arg1 *s3a.PutBucketAccelerateConfigurationInput) (*request.Request, *s3a.PutBucketAccelerateConfigurationOutput) {
 	fake.putBucketAccelerateConfigurationRequestMutex.Lock()
 	ret, specificReturn := fake.putBucketAccelerateConfigurationRequestReturnsOnCall[len(fake.putBucketAccelerateConfigurationRequestArgsForCall)]
 	fake.putBucketAccelerateConfigurationRequestArgsForCall = append(fake.putBucketAccelerateConfigurationRequestArgsForCall, struct {
@@ -17091,26 +17091,26 @@ func (fake *FakeS3) PutBucketAccelerateConfigurationRequest(arg1 *s3a.PutBucketA
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketAccelerateConfigurationRequestCallCount() int {
+func (fake *FakeClient) PutBucketAccelerateConfigurationRequestCallCount() int {
 	fake.putBucketAccelerateConfigurationRequestMutex.RLock()
 	defer fake.putBucketAccelerateConfigurationRequestMutex.RUnlock()
 	return len(fake.putBucketAccelerateConfigurationRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketAccelerateConfigurationRequestCalls(stub func(*s3a.PutBucketAccelerateConfigurationInput) (*request.Request, *s3a.PutBucketAccelerateConfigurationOutput)) {
+func (fake *FakeClient) PutBucketAccelerateConfigurationRequestCalls(stub func(*s3a.PutBucketAccelerateConfigurationInput) (*request.Request, *s3a.PutBucketAccelerateConfigurationOutput)) {
 	fake.putBucketAccelerateConfigurationRequestMutex.Lock()
 	defer fake.putBucketAccelerateConfigurationRequestMutex.Unlock()
 	fake.PutBucketAccelerateConfigurationRequestStub = stub
 }
 
-func (fake *FakeS3) PutBucketAccelerateConfigurationRequestArgsForCall(i int) *s3a.PutBucketAccelerateConfigurationInput {
+func (fake *FakeClient) PutBucketAccelerateConfigurationRequestArgsForCall(i int) *s3a.PutBucketAccelerateConfigurationInput {
 	fake.putBucketAccelerateConfigurationRequestMutex.RLock()
 	defer fake.putBucketAccelerateConfigurationRequestMutex.RUnlock()
 	argsForCall := fake.putBucketAccelerateConfigurationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketAccelerateConfigurationRequestReturns(result1 *request.Request, result2 *s3a.PutBucketAccelerateConfigurationOutput) {
+func (fake *FakeClient) PutBucketAccelerateConfigurationRequestReturns(result1 *request.Request, result2 *s3a.PutBucketAccelerateConfigurationOutput) {
 	fake.putBucketAccelerateConfigurationRequestMutex.Lock()
 	defer fake.putBucketAccelerateConfigurationRequestMutex.Unlock()
 	fake.PutBucketAccelerateConfigurationRequestStub = nil
@@ -17120,7 +17120,7 @@ func (fake *FakeS3) PutBucketAccelerateConfigurationRequestReturns(result1 *requ
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketAccelerateConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketAccelerateConfigurationOutput) {
+func (fake *FakeClient) PutBucketAccelerateConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketAccelerateConfigurationOutput) {
 	fake.putBucketAccelerateConfigurationRequestMutex.Lock()
 	defer fake.putBucketAccelerateConfigurationRequestMutex.Unlock()
 	fake.PutBucketAccelerateConfigurationRequestStub = nil
@@ -17136,7 +17136,7 @@ func (fake *FakeS3) PutBucketAccelerateConfigurationRequestReturnsOnCall(i int, 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketAccelerateConfigurationWithContext(arg1 context.Context, arg2 *s3a.PutBucketAccelerateConfigurationInput, arg3 ...request.Option) (*s3a.PutBucketAccelerateConfigurationOutput, error) {
+func (fake *FakeClient) PutBucketAccelerateConfigurationWithContext(arg1 context.Context, arg2 *s3a.PutBucketAccelerateConfigurationInput, arg3 ...request.Option) (*s3a.PutBucketAccelerateConfigurationOutput, error) {
 	fake.putBucketAccelerateConfigurationWithContextMutex.Lock()
 	ret, specificReturn := fake.putBucketAccelerateConfigurationWithContextReturnsOnCall[len(fake.putBucketAccelerateConfigurationWithContextArgsForCall)]
 	fake.putBucketAccelerateConfigurationWithContextArgsForCall = append(fake.putBucketAccelerateConfigurationWithContextArgsForCall, struct {
@@ -17156,26 +17156,26 @@ func (fake *FakeS3) PutBucketAccelerateConfigurationWithContext(arg1 context.Con
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketAccelerateConfigurationWithContextCallCount() int {
+func (fake *FakeClient) PutBucketAccelerateConfigurationWithContextCallCount() int {
 	fake.putBucketAccelerateConfigurationWithContextMutex.RLock()
 	defer fake.putBucketAccelerateConfigurationWithContextMutex.RUnlock()
 	return len(fake.putBucketAccelerateConfigurationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketAccelerateConfigurationWithContextCalls(stub func(context.Context, *s3a.PutBucketAccelerateConfigurationInput, ...request.Option) (*s3a.PutBucketAccelerateConfigurationOutput, error)) {
+func (fake *FakeClient) PutBucketAccelerateConfigurationWithContextCalls(stub func(context.Context, *s3a.PutBucketAccelerateConfigurationInput, ...request.Option) (*s3a.PutBucketAccelerateConfigurationOutput, error)) {
 	fake.putBucketAccelerateConfigurationWithContextMutex.Lock()
 	defer fake.putBucketAccelerateConfigurationWithContextMutex.Unlock()
 	fake.PutBucketAccelerateConfigurationWithContextStub = stub
 }
 
-func (fake *FakeS3) PutBucketAccelerateConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketAccelerateConfigurationInput, []request.Option) {
+func (fake *FakeClient) PutBucketAccelerateConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketAccelerateConfigurationInput, []request.Option) {
 	fake.putBucketAccelerateConfigurationWithContextMutex.RLock()
 	defer fake.putBucketAccelerateConfigurationWithContextMutex.RUnlock()
 	argsForCall := fake.putBucketAccelerateConfigurationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutBucketAccelerateConfigurationWithContextReturns(result1 *s3a.PutBucketAccelerateConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketAccelerateConfigurationWithContextReturns(result1 *s3a.PutBucketAccelerateConfigurationOutput, result2 error) {
 	fake.putBucketAccelerateConfigurationWithContextMutex.Lock()
 	defer fake.putBucketAccelerateConfigurationWithContextMutex.Unlock()
 	fake.PutBucketAccelerateConfigurationWithContextStub = nil
@@ -17185,7 +17185,7 @@ func (fake *FakeS3) PutBucketAccelerateConfigurationWithContextReturns(result1 *
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketAccelerateConfigurationWithContextReturnsOnCall(i int, result1 *s3a.PutBucketAccelerateConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketAccelerateConfigurationWithContextReturnsOnCall(i int, result1 *s3a.PutBucketAccelerateConfigurationOutput, result2 error) {
 	fake.putBucketAccelerateConfigurationWithContextMutex.Lock()
 	defer fake.putBucketAccelerateConfigurationWithContextMutex.Unlock()
 	fake.PutBucketAccelerateConfigurationWithContextStub = nil
@@ -17201,7 +17201,7 @@ func (fake *FakeS3) PutBucketAccelerateConfigurationWithContextReturnsOnCall(i i
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketAcl(arg1 *s3a.PutBucketAclInput) (*s3a.PutBucketAclOutput, error) {
+func (fake *FakeClient) PutBucketAcl(arg1 *s3a.PutBucketAclInput) (*s3a.PutBucketAclOutput, error) {
 	fake.putBucketAclMutex.Lock()
 	ret, specificReturn := fake.putBucketAclReturnsOnCall[len(fake.putBucketAclArgsForCall)]
 	fake.putBucketAclArgsForCall = append(fake.putBucketAclArgsForCall, struct {
@@ -17219,26 +17219,26 @@ func (fake *FakeS3) PutBucketAcl(arg1 *s3a.PutBucketAclInput) (*s3a.PutBucketAcl
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketAclCallCount() int {
+func (fake *FakeClient) PutBucketAclCallCount() int {
 	fake.putBucketAclMutex.RLock()
 	defer fake.putBucketAclMutex.RUnlock()
 	return len(fake.putBucketAclArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketAclCalls(stub func(*s3a.PutBucketAclInput) (*s3a.PutBucketAclOutput, error)) {
+func (fake *FakeClient) PutBucketAclCalls(stub func(*s3a.PutBucketAclInput) (*s3a.PutBucketAclOutput, error)) {
 	fake.putBucketAclMutex.Lock()
 	defer fake.putBucketAclMutex.Unlock()
 	fake.PutBucketAclStub = stub
 }
 
-func (fake *FakeS3) PutBucketAclArgsForCall(i int) *s3a.PutBucketAclInput {
+func (fake *FakeClient) PutBucketAclArgsForCall(i int) *s3a.PutBucketAclInput {
 	fake.putBucketAclMutex.RLock()
 	defer fake.putBucketAclMutex.RUnlock()
 	argsForCall := fake.putBucketAclArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketAclReturns(result1 *s3a.PutBucketAclOutput, result2 error) {
+func (fake *FakeClient) PutBucketAclReturns(result1 *s3a.PutBucketAclOutput, result2 error) {
 	fake.putBucketAclMutex.Lock()
 	defer fake.putBucketAclMutex.Unlock()
 	fake.PutBucketAclStub = nil
@@ -17248,7 +17248,7 @@ func (fake *FakeS3) PutBucketAclReturns(result1 *s3a.PutBucketAclOutput, result2
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketAclReturnsOnCall(i int, result1 *s3a.PutBucketAclOutput, result2 error) {
+func (fake *FakeClient) PutBucketAclReturnsOnCall(i int, result1 *s3a.PutBucketAclOutput, result2 error) {
 	fake.putBucketAclMutex.Lock()
 	defer fake.putBucketAclMutex.Unlock()
 	fake.PutBucketAclStub = nil
@@ -17264,7 +17264,7 @@ func (fake *FakeS3) PutBucketAclReturnsOnCall(i int, result1 *s3a.PutBucketAclOu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketAclRequest(arg1 *s3a.PutBucketAclInput) (*request.Request, *s3a.PutBucketAclOutput) {
+func (fake *FakeClient) PutBucketAclRequest(arg1 *s3a.PutBucketAclInput) (*request.Request, *s3a.PutBucketAclOutput) {
 	fake.putBucketAclRequestMutex.Lock()
 	ret, specificReturn := fake.putBucketAclRequestReturnsOnCall[len(fake.putBucketAclRequestArgsForCall)]
 	fake.putBucketAclRequestArgsForCall = append(fake.putBucketAclRequestArgsForCall, struct {
@@ -17282,26 +17282,26 @@ func (fake *FakeS3) PutBucketAclRequest(arg1 *s3a.PutBucketAclInput) (*request.R
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketAclRequestCallCount() int {
+func (fake *FakeClient) PutBucketAclRequestCallCount() int {
 	fake.putBucketAclRequestMutex.RLock()
 	defer fake.putBucketAclRequestMutex.RUnlock()
 	return len(fake.putBucketAclRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketAclRequestCalls(stub func(*s3a.PutBucketAclInput) (*request.Request, *s3a.PutBucketAclOutput)) {
+func (fake *FakeClient) PutBucketAclRequestCalls(stub func(*s3a.PutBucketAclInput) (*request.Request, *s3a.PutBucketAclOutput)) {
 	fake.putBucketAclRequestMutex.Lock()
 	defer fake.putBucketAclRequestMutex.Unlock()
 	fake.PutBucketAclRequestStub = stub
 }
 
-func (fake *FakeS3) PutBucketAclRequestArgsForCall(i int) *s3a.PutBucketAclInput {
+func (fake *FakeClient) PutBucketAclRequestArgsForCall(i int) *s3a.PutBucketAclInput {
 	fake.putBucketAclRequestMutex.RLock()
 	defer fake.putBucketAclRequestMutex.RUnlock()
 	argsForCall := fake.putBucketAclRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketAclRequestReturns(result1 *request.Request, result2 *s3a.PutBucketAclOutput) {
+func (fake *FakeClient) PutBucketAclRequestReturns(result1 *request.Request, result2 *s3a.PutBucketAclOutput) {
 	fake.putBucketAclRequestMutex.Lock()
 	defer fake.putBucketAclRequestMutex.Unlock()
 	fake.PutBucketAclRequestStub = nil
@@ -17311,7 +17311,7 @@ func (fake *FakeS3) PutBucketAclRequestReturns(result1 *request.Request, result2
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketAclRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketAclOutput) {
+func (fake *FakeClient) PutBucketAclRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketAclOutput) {
 	fake.putBucketAclRequestMutex.Lock()
 	defer fake.putBucketAclRequestMutex.Unlock()
 	fake.PutBucketAclRequestStub = nil
@@ -17327,7 +17327,7 @@ func (fake *FakeS3) PutBucketAclRequestReturnsOnCall(i int, result1 *request.Req
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketAclWithContext(arg1 context.Context, arg2 *s3a.PutBucketAclInput, arg3 ...request.Option) (*s3a.PutBucketAclOutput, error) {
+func (fake *FakeClient) PutBucketAclWithContext(arg1 context.Context, arg2 *s3a.PutBucketAclInput, arg3 ...request.Option) (*s3a.PutBucketAclOutput, error) {
 	fake.putBucketAclWithContextMutex.Lock()
 	ret, specificReturn := fake.putBucketAclWithContextReturnsOnCall[len(fake.putBucketAclWithContextArgsForCall)]
 	fake.putBucketAclWithContextArgsForCall = append(fake.putBucketAclWithContextArgsForCall, struct {
@@ -17347,26 +17347,26 @@ func (fake *FakeS3) PutBucketAclWithContext(arg1 context.Context, arg2 *s3a.PutB
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketAclWithContextCallCount() int {
+func (fake *FakeClient) PutBucketAclWithContextCallCount() int {
 	fake.putBucketAclWithContextMutex.RLock()
 	defer fake.putBucketAclWithContextMutex.RUnlock()
 	return len(fake.putBucketAclWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketAclWithContextCalls(stub func(context.Context, *s3a.PutBucketAclInput, ...request.Option) (*s3a.PutBucketAclOutput, error)) {
+func (fake *FakeClient) PutBucketAclWithContextCalls(stub func(context.Context, *s3a.PutBucketAclInput, ...request.Option) (*s3a.PutBucketAclOutput, error)) {
 	fake.putBucketAclWithContextMutex.Lock()
 	defer fake.putBucketAclWithContextMutex.Unlock()
 	fake.PutBucketAclWithContextStub = stub
 }
 
-func (fake *FakeS3) PutBucketAclWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketAclInput, []request.Option) {
+func (fake *FakeClient) PutBucketAclWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketAclInput, []request.Option) {
 	fake.putBucketAclWithContextMutex.RLock()
 	defer fake.putBucketAclWithContextMutex.RUnlock()
 	argsForCall := fake.putBucketAclWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutBucketAclWithContextReturns(result1 *s3a.PutBucketAclOutput, result2 error) {
+func (fake *FakeClient) PutBucketAclWithContextReturns(result1 *s3a.PutBucketAclOutput, result2 error) {
 	fake.putBucketAclWithContextMutex.Lock()
 	defer fake.putBucketAclWithContextMutex.Unlock()
 	fake.PutBucketAclWithContextStub = nil
@@ -17376,7 +17376,7 @@ func (fake *FakeS3) PutBucketAclWithContextReturns(result1 *s3a.PutBucketAclOutp
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketAclWithContextReturnsOnCall(i int, result1 *s3a.PutBucketAclOutput, result2 error) {
+func (fake *FakeClient) PutBucketAclWithContextReturnsOnCall(i int, result1 *s3a.PutBucketAclOutput, result2 error) {
 	fake.putBucketAclWithContextMutex.Lock()
 	defer fake.putBucketAclWithContextMutex.Unlock()
 	fake.PutBucketAclWithContextStub = nil
@@ -17392,7 +17392,7 @@ func (fake *FakeS3) PutBucketAclWithContextReturnsOnCall(i int, result1 *s3a.Put
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketAnalyticsConfiguration(arg1 *s3a.PutBucketAnalyticsConfigurationInput) (*s3a.PutBucketAnalyticsConfigurationOutput, error) {
+func (fake *FakeClient) PutBucketAnalyticsConfiguration(arg1 *s3a.PutBucketAnalyticsConfigurationInput) (*s3a.PutBucketAnalyticsConfigurationOutput, error) {
 	fake.putBucketAnalyticsConfigurationMutex.Lock()
 	ret, specificReturn := fake.putBucketAnalyticsConfigurationReturnsOnCall[len(fake.putBucketAnalyticsConfigurationArgsForCall)]
 	fake.putBucketAnalyticsConfigurationArgsForCall = append(fake.putBucketAnalyticsConfigurationArgsForCall, struct {
@@ -17410,26 +17410,26 @@ func (fake *FakeS3) PutBucketAnalyticsConfiguration(arg1 *s3a.PutBucketAnalytics
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketAnalyticsConfigurationCallCount() int {
+func (fake *FakeClient) PutBucketAnalyticsConfigurationCallCount() int {
 	fake.putBucketAnalyticsConfigurationMutex.RLock()
 	defer fake.putBucketAnalyticsConfigurationMutex.RUnlock()
 	return len(fake.putBucketAnalyticsConfigurationArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketAnalyticsConfigurationCalls(stub func(*s3a.PutBucketAnalyticsConfigurationInput) (*s3a.PutBucketAnalyticsConfigurationOutput, error)) {
+func (fake *FakeClient) PutBucketAnalyticsConfigurationCalls(stub func(*s3a.PutBucketAnalyticsConfigurationInput) (*s3a.PutBucketAnalyticsConfigurationOutput, error)) {
 	fake.putBucketAnalyticsConfigurationMutex.Lock()
 	defer fake.putBucketAnalyticsConfigurationMutex.Unlock()
 	fake.PutBucketAnalyticsConfigurationStub = stub
 }
 
-func (fake *FakeS3) PutBucketAnalyticsConfigurationArgsForCall(i int) *s3a.PutBucketAnalyticsConfigurationInput {
+func (fake *FakeClient) PutBucketAnalyticsConfigurationArgsForCall(i int) *s3a.PutBucketAnalyticsConfigurationInput {
 	fake.putBucketAnalyticsConfigurationMutex.RLock()
 	defer fake.putBucketAnalyticsConfigurationMutex.RUnlock()
 	argsForCall := fake.putBucketAnalyticsConfigurationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketAnalyticsConfigurationReturns(result1 *s3a.PutBucketAnalyticsConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketAnalyticsConfigurationReturns(result1 *s3a.PutBucketAnalyticsConfigurationOutput, result2 error) {
 	fake.putBucketAnalyticsConfigurationMutex.Lock()
 	defer fake.putBucketAnalyticsConfigurationMutex.Unlock()
 	fake.PutBucketAnalyticsConfigurationStub = nil
@@ -17439,7 +17439,7 @@ func (fake *FakeS3) PutBucketAnalyticsConfigurationReturns(result1 *s3a.PutBucke
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketAnalyticsConfigurationReturnsOnCall(i int, result1 *s3a.PutBucketAnalyticsConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketAnalyticsConfigurationReturnsOnCall(i int, result1 *s3a.PutBucketAnalyticsConfigurationOutput, result2 error) {
 	fake.putBucketAnalyticsConfigurationMutex.Lock()
 	defer fake.putBucketAnalyticsConfigurationMutex.Unlock()
 	fake.PutBucketAnalyticsConfigurationStub = nil
@@ -17455,7 +17455,7 @@ func (fake *FakeS3) PutBucketAnalyticsConfigurationReturnsOnCall(i int, result1 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketAnalyticsConfigurationRequest(arg1 *s3a.PutBucketAnalyticsConfigurationInput) (*request.Request, *s3a.PutBucketAnalyticsConfigurationOutput) {
+func (fake *FakeClient) PutBucketAnalyticsConfigurationRequest(arg1 *s3a.PutBucketAnalyticsConfigurationInput) (*request.Request, *s3a.PutBucketAnalyticsConfigurationOutput) {
 	fake.putBucketAnalyticsConfigurationRequestMutex.Lock()
 	ret, specificReturn := fake.putBucketAnalyticsConfigurationRequestReturnsOnCall[len(fake.putBucketAnalyticsConfigurationRequestArgsForCall)]
 	fake.putBucketAnalyticsConfigurationRequestArgsForCall = append(fake.putBucketAnalyticsConfigurationRequestArgsForCall, struct {
@@ -17473,26 +17473,26 @@ func (fake *FakeS3) PutBucketAnalyticsConfigurationRequest(arg1 *s3a.PutBucketAn
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketAnalyticsConfigurationRequestCallCount() int {
+func (fake *FakeClient) PutBucketAnalyticsConfigurationRequestCallCount() int {
 	fake.putBucketAnalyticsConfigurationRequestMutex.RLock()
 	defer fake.putBucketAnalyticsConfigurationRequestMutex.RUnlock()
 	return len(fake.putBucketAnalyticsConfigurationRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketAnalyticsConfigurationRequestCalls(stub func(*s3a.PutBucketAnalyticsConfigurationInput) (*request.Request, *s3a.PutBucketAnalyticsConfigurationOutput)) {
+func (fake *FakeClient) PutBucketAnalyticsConfigurationRequestCalls(stub func(*s3a.PutBucketAnalyticsConfigurationInput) (*request.Request, *s3a.PutBucketAnalyticsConfigurationOutput)) {
 	fake.putBucketAnalyticsConfigurationRequestMutex.Lock()
 	defer fake.putBucketAnalyticsConfigurationRequestMutex.Unlock()
 	fake.PutBucketAnalyticsConfigurationRequestStub = stub
 }
 
-func (fake *FakeS3) PutBucketAnalyticsConfigurationRequestArgsForCall(i int) *s3a.PutBucketAnalyticsConfigurationInput {
+func (fake *FakeClient) PutBucketAnalyticsConfigurationRequestArgsForCall(i int) *s3a.PutBucketAnalyticsConfigurationInput {
 	fake.putBucketAnalyticsConfigurationRequestMutex.RLock()
 	defer fake.putBucketAnalyticsConfigurationRequestMutex.RUnlock()
 	argsForCall := fake.putBucketAnalyticsConfigurationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketAnalyticsConfigurationRequestReturns(result1 *request.Request, result2 *s3a.PutBucketAnalyticsConfigurationOutput) {
+func (fake *FakeClient) PutBucketAnalyticsConfigurationRequestReturns(result1 *request.Request, result2 *s3a.PutBucketAnalyticsConfigurationOutput) {
 	fake.putBucketAnalyticsConfigurationRequestMutex.Lock()
 	defer fake.putBucketAnalyticsConfigurationRequestMutex.Unlock()
 	fake.PutBucketAnalyticsConfigurationRequestStub = nil
@@ -17502,7 +17502,7 @@ func (fake *FakeS3) PutBucketAnalyticsConfigurationRequestReturns(result1 *reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketAnalyticsConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketAnalyticsConfigurationOutput) {
+func (fake *FakeClient) PutBucketAnalyticsConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketAnalyticsConfigurationOutput) {
 	fake.putBucketAnalyticsConfigurationRequestMutex.Lock()
 	defer fake.putBucketAnalyticsConfigurationRequestMutex.Unlock()
 	fake.PutBucketAnalyticsConfigurationRequestStub = nil
@@ -17518,7 +17518,7 @@ func (fake *FakeS3) PutBucketAnalyticsConfigurationRequestReturnsOnCall(i int, r
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketAnalyticsConfigurationWithContext(arg1 context.Context, arg2 *s3a.PutBucketAnalyticsConfigurationInput, arg3 ...request.Option) (*s3a.PutBucketAnalyticsConfigurationOutput, error) {
+func (fake *FakeClient) PutBucketAnalyticsConfigurationWithContext(arg1 context.Context, arg2 *s3a.PutBucketAnalyticsConfigurationInput, arg3 ...request.Option) (*s3a.PutBucketAnalyticsConfigurationOutput, error) {
 	fake.putBucketAnalyticsConfigurationWithContextMutex.Lock()
 	ret, specificReturn := fake.putBucketAnalyticsConfigurationWithContextReturnsOnCall[len(fake.putBucketAnalyticsConfigurationWithContextArgsForCall)]
 	fake.putBucketAnalyticsConfigurationWithContextArgsForCall = append(fake.putBucketAnalyticsConfigurationWithContextArgsForCall, struct {
@@ -17538,26 +17538,26 @@ func (fake *FakeS3) PutBucketAnalyticsConfigurationWithContext(arg1 context.Cont
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketAnalyticsConfigurationWithContextCallCount() int {
+func (fake *FakeClient) PutBucketAnalyticsConfigurationWithContextCallCount() int {
 	fake.putBucketAnalyticsConfigurationWithContextMutex.RLock()
 	defer fake.putBucketAnalyticsConfigurationWithContextMutex.RUnlock()
 	return len(fake.putBucketAnalyticsConfigurationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketAnalyticsConfigurationWithContextCalls(stub func(context.Context, *s3a.PutBucketAnalyticsConfigurationInput, ...request.Option) (*s3a.PutBucketAnalyticsConfigurationOutput, error)) {
+func (fake *FakeClient) PutBucketAnalyticsConfigurationWithContextCalls(stub func(context.Context, *s3a.PutBucketAnalyticsConfigurationInput, ...request.Option) (*s3a.PutBucketAnalyticsConfigurationOutput, error)) {
 	fake.putBucketAnalyticsConfigurationWithContextMutex.Lock()
 	defer fake.putBucketAnalyticsConfigurationWithContextMutex.Unlock()
 	fake.PutBucketAnalyticsConfigurationWithContextStub = stub
 }
 
-func (fake *FakeS3) PutBucketAnalyticsConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketAnalyticsConfigurationInput, []request.Option) {
+func (fake *FakeClient) PutBucketAnalyticsConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketAnalyticsConfigurationInput, []request.Option) {
 	fake.putBucketAnalyticsConfigurationWithContextMutex.RLock()
 	defer fake.putBucketAnalyticsConfigurationWithContextMutex.RUnlock()
 	argsForCall := fake.putBucketAnalyticsConfigurationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutBucketAnalyticsConfigurationWithContextReturns(result1 *s3a.PutBucketAnalyticsConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketAnalyticsConfigurationWithContextReturns(result1 *s3a.PutBucketAnalyticsConfigurationOutput, result2 error) {
 	fake.putBucketAnalyticsConfigurationWithContextMutex.Lock()
 	defer fake.putBucketAnalyticsConfigurationWithContextMutex.Unlock()
 	fake.PutBucketAnalyticsConfigurationWithContextStub = nil
@@ -17567,7 +17567,7 @@ func (fake *FakeS3) PutBucketAnalyticsConfigurationWithContextReturns(result1 *s
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketAnalyticsConfigurationWithContextReturnsOnCall(i int, result1 *s3a.PutBucketAnalyticsConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketAnalyticsConfigurationWithContextReturnsOnCall(i int, result1 *s3a.PutBucketAnalyticsConfigurationOutput, result2 error) {
 	fake.putBucketAnalyticsConfigurationWithContextMutex.Lock()
 	defer fake.putBucketAnalyticsConfigurationWithContextMutex.Unlock()
 	fake.PutBucketAnalyticsConfigurationWithContextStub = nil
@@ -17583,7 +17583,7 @@ func (fake *FakeS3) PutBucketAnalyticsConfigurationWithContextReturnsOnCall(i in
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketCors(arg1 *s3a.PutBucketCorsInput) (*s3a.PutBucketCorsOutput, error) {
+func (fake *FakeClient) PutBucketCors(arg1 *s3a.PutBucketCorsInput) (*s3a.PutBucketCorsOutput, error) {
 	fake.putBucketCorsMutex.Lock()
 	ret, specificReturn := fake.putBucketCorsReturnsOnCall[len(fake.putBucketCorsArgsForCall)]
 	fake.putBucketCorsArgsForCall = append(fake.putBucketCorsArgsForCall, struct {
@@ -17601,26 +17601,26 @@ func (fake *FakeS3) PutBucketCors(arg1 *s3a.PutBucketCorsInput) (*s3a.PutBucketC
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketCorsCallCount() int {
+func (fake *FakeClient) PutBucketCorsCallCount() int {
 	fake.putBucketCorsMutex.RLock()
 	defer fake.putBucketCorsMutex.RUnlock()
 	return len(fake.putBucketCorsArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketCorsCalls(stub func(*s3a.PutBucketCorsInput) (*s3a.PutBucketCorsOutput, error)) {
+func (fake *FakeClient) PutBucketCorsCalls(stub func(*s3a.PutBucketCorsInput) (*s3a.PutBucketCorsOutput, error)) {
 	fake.putBucketCorsMutex.Lock()
 	defer fake.putBucketCorsMutex.Unlock()
 	fake.PutBucketCorsStub = stub
 }
 
-func (fake *FakeS3) PutBucketCorsArgsForCall(i int) *s3a.PutBucketCorsInput {
+func (fake *FakeClient) PutBucketCorsArgsForCall(i int) *s3a.PutBucketCorsInput {
 	fake.putBucketCorsMutex.RLock()
 	defer fake.putBucketCorsMutex.RUnlock()
 	argsForCall := fake.putBucketCorsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketCorsReturns(result1 *s3a.PutBucketCorsOutput, result2 error) {
+func (fake *FakeClient) PutBucketCorsReturns(result1 *s3a.PutBucketCorsOutput, result2 error) {
 	fake.putBucketCorsMutex.Lock()
 	defer fake.putBucketCorsMutex.Unlock()
 	fake.PutBucketCorsStub = nil
@@ -17630,7 +17630,7 @@ func (fake *FakeS3) PutBucketCorsReturns(result1 *s3a.PutBucketCorsOutput, resul
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketCorsReturnsOnCall(i int, result1 *s3a.PutBucketCorsOutput, result2 error) {
+func (fake *FakeClient) PutBucketCorsReturnsOnCall(i int, result1 *s3a.PutBucketCorsOutput, result2 error) {
 	fake.putBucketCorsMutex.Lock()
 	defer fake.putBucketCorsMutex.Unlock()
 	fake.PutBucketCorsStub = nil
@@ -17646,7 +17646,7 @@ func (fake *FakeS3) PutBucketCorsReturnsOnCall(i int, result1 *s3a.PutBucketCors
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketCorsRequest(arg1 *s3a.PutBucketCorsInput) (*request.Request, *s3a.PutBucketCorsOutput) {
+func (fake *FakeClient) PutBucketCorsRequest(arg1 *s3a.PutBucketCorsInput) (*request.Request, *s3a.PutBucketCorsOutput) {
 	fake.putBucketCorsRequestMutex.Lock()
 	ret, specificReturn := fake.putBucketCorsRequestReturnsOnCall[len(fake.putBucketCorsRequestArgsForCall)]
 	fake.putBucketCorsRequestArgsForCall = append(fake.putBucketCorsRequestArgsForCall, struct {
@@ -17664,26 +17664,26 @@ func (fake *FakeS3) PutBucketCorsRequest(arg1 *s3a.PutBucketCorsInput) (*request
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketCorsRequestCallCount() int {
+func (fake *FakeClient) PutBucketCorsRequestCallCount() int {
 	fake.putBucketCorsRequestMutex.RLock()
 	defer fake.putBucketCorsRequestMutex.RUnlock()
 	return len(fake.putBucketCorsRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketCorsRequestCalls(stub func(*s3a.PutBucketCorsInput) (*request.Request, *s3a.PutBucketCorsOutput)) {
+func (fake *FakeClient) PutBucketCorsRequestCalls(stub func(*s3a.PutBucketCorsInput) (*request.Request, *s3a.PutBucketCorsOutput)) {
 	fake.putBucketCorsRequestMutex.Lock()
 	defer fake.putBucketCorsRequestMutex.Unlock()
 	fake.PutBucketCorsRequestStub = stub
 }
 
-func (fake *FakeS3) PutBucketCorsRequestArgsForCall(i int) *s3a.PutBucketCorsInput {
+func (fake *FakeClient) PutBucketCorsRequestArgsForCall(i int) *s3a.PutBucketCorsInput {
 	fake.putBucketCorsRequestMutex.RLock()
 	defer fake.putBucketCorsRequestMutex.RUnlock()
 	argsForCall := fake.putBucketCorsRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketCorsRequestReturns(result1 *request.Request, result2 *s3a.PutBucketCorsOutput) {
+func (fake *FakeClient) PutBucketCorsRequestReturns(result1 *request.Request, result2 *s3a.PutBucketCorsOutput) {
 	fake.putBucketCorsRequestMutex.Lock()
 	defer fake.putBucketCorsRequestMutex.Unlock()
 	fake.PutBucketCorsRequestStub = nil
@@ -17693,7 +17693,7 @@ func (fake *FakeS3) PutBucketCorsRequestReturns(result1 *request.Request, result
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketCorsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketCorsOutput) {
+func (fake *FakeClient) PutBucketCorsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketCorsOutput) {
 	fake.putBucketCorsRequestMutex.Lock()
 	defer fake.putBucketCorsRequestMutex.Unlock()
 	fake.PutBucketCorsRequestStub = nil
@@ -17709,7 +17709,7 @@ func (fake *FakeS3) PutBucketCorsRequestReturnsOnCall(i int, result1 *request.Re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketCorsWithContext(arg1 context.Context, arg2 *s3a.PutBucketCorsInput, arg3 ...request.Option) (*s3a.PutBucketCorsOutput, error) {
+func (fake *FakeClient) PutBucketCorsWithContext(arg1 context.Context, arg2 *s3a.PutBucketCorsInput, arg3 ...request.Option) (*s3a.PutBucketCorsOutput, error) {
 	fake.putBucketCorsWithContextMutex.Lock()
 	ret, specificReturn := fake.putBucketCorsWithContextReturnsOnCall[len(fake.putBucketCorsWithContextArgsForCall)]
 	fake.putBucketCorsWithContextArgsForCall = append(fake.putBucketCorsWithContextArgsForCall, struct {
@@ -17729,26 +17729,26 @@ func (fake *FakeS3) PutBucketCorsWithContext(arg1 context.Context, arg2 *s3a.Put
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketCorsWithContextCallCount() int {
+func (fake *FakeClient) PutBucketCorsWithContextCallCount() int {
 	fake.putBucketCorsWithContextMutex.RLock()
 	defer fake.putBucketCorsWithContextMutex.RUnlock()
 	return len(fake.putBucketCorsWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketCorsWithContextCalls(stub func(context.Context, *s3a.PutBucketCorsInput, ...request.Option) (*s3a.PutBucketCorsOutput, error)) {
+func (fake *FakeClient) PutBucketCorsWithContextCalls(stub func(context.Context, *s3a.PutBucketCorsInput, ...request.Option) (*s3a.PutBucketCorsOutput, error)) {
 	fake.putBucketCorsWithContextMutex.Lock()
 	defer fake.putBucketCorsWithContextMutex.Unlock()
 	fake.PutBucketCorsWithContextStub = stub
 }
 
-func (fake *FakeS3) PutBucketCorsWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketCorsInput, []request.Option) {
+func (fake *FakeClient) PutBucketCorsWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketCorsInput, []request.Option) {
 	fake.putBucketCorsWithContextMutex.RLock()
 	defer fake.putBucketCorsWithContextMutex.RUnlock()
 	argsForCall := fake.putBucketCorsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutBucketCorsWithContextReturns(result1 *s3a.PutBucketCorsOutput, result2 error) {
+func (fake *FakeClient) PutBucketCorsWithContextReturns(result1 *s3a.PutBucketCorsOutput, result2 error) {
 	fake.putBucketCorsWithContextMutex.Lock()
 	defer fake.putBucketCorsWithContextMutex.Unlock()
 	fake.PutBucketCorsWithContextStub = nil
@@ -17758,7 +17758,7 @@ func (fake *FakeS3) PutBucketCorsWithContextReturns(result1 *s3a.PutBucketCorsOu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketCorsWithContextReturnsOnCall(i int, result1 *s3a.PutBucketCorsOutput, result2 error) {
+func (fake *FakeClient) PutBucketCorsWithContextReturnsOnCall(i int, result1 *s3a.PutBucketCorsOutput, result2 error) {
 	fake.putBucketCorsWithContextMutex.Lock()
 	defer fake.putBucketCorsWithContextMutex.Unlock()
 	fake.PutBucketCorsWithContextStub = nil
@@ -17774,7 +17774,7 @@ func (fake *FakeS3) PutBucketCorsWithContextReturnsOnCall(i int, result1 *s3a.Pu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketEncryption(arg1 *s3a.PutBucketEncryptionInput) (*s3a.PutBucketEncryptionOutput, error) {
+func (fake *FakeClient) PutBucketEncryption(arg1 *s3a.PutBucketEncryptionInput) (*s3a.PutBucketEncryptionOutput, error) {
 	fake.putBucketEncryptionMutex.Lock()
 	ret, specificReturn := fake.putBucketEncryptionReturnsOnCall[len(fake.putBucketEncryptionArgsForCall)]
 	fake.putBucketEncryptionArgsForCall = append(fake.putBucketEncryptionArgsForCall, struct {
@@ -17792,26 +17792,26 @@ func (fake *FakeS3) PutBucketEncryption(arg1 *s3a.PutBucketEncryptionInput) (*s3
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketEncryptionCallCount() int {
+func (fake *FakeClient) PutBucketEncryptionCallCount() int {
 	fake.putBucketEncryptionMutex.RLock()
 	defer fake.putBucketEncryptionMutex.RUnlock()
 	return len(fake.putBucketEncryptionArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketEncryptionCalls(stub func(*s3a.PutBucketEncryptionInput) (*s3a.PutBucketEncryptionOutput, error)) {
+func (fake *FakeClient) PutBucketEncryptionCalls(stub func(*s3a.PutBucketEncryptionInput) (*s3a.PutBucketEncryptionOutput, error)) {
 	fake.putBucketEncryptionMutex.Lock()
 	defer fake.putBucketEncryptionMutex.Unlock()
 	fake.PutBucketEncryptionStub = stub
 }
 
-func (fake *FakeS3) PutBucketEncryptionArgsForCall(i int) *s3a.PutBucketEncryptionInput {
+func (fake *FakeClient) PutBucketEncryptionArgsForCall(i int) *s3a.PutBucketEncryptionInput {
 	fake.putBucketEncryptionMutex.RLock()
 	defer fake.putBucketEncryptionMutex.RUnlock()
 	argsForCall := fake.putBucketEncryptionArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketEncryptionReturns(result1 *s3a.PutBucketEncryptionOutput, result2 error) {
+func (fake *FakeClient) PutBucketEncryptionReturns(result1 *s3a.PutBucketEncryptionOutput, result2 error) {
 	fake.putBucketEncryptionMutex.Lock()
 	defer fake.putBucketEncryptionMutex.Unlock()
 	fake.PutBucketEncryptionStub = nil
@@ -17821,7 +17821,7 @@ func (fake *FakeS3) PutBucketEncryptionReturns(result1 *s3a.PutBucketEncryptionO
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketEncryptionReturnsOnCall(i int, result1 *s3a.PutBucketEncryptionOutput, result2 error) {
+func (fake *FakeClient) PutBucketEncryptionReturnsOnCall(i int, result1 *s3a.PutBucketEncryptionOutput, result2 error) {
 	fake.putBucketEncryptionMutex.Lock()
 	defer fake.putBucketEncryptionMutex.Unlock()
 	fake.PutBucketEncryptionStub = nil
@@ -17837,7 +17837,7 @@ func (fake *FakeS3) PutBucketEncryptionReturnsOnCall(i int, result1 *s3a.PutBuck
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketEncryptionRequest(arg1 *s3a.PutBucketEncryptionInput) (*request.Request, *s3a.PutBucketEncryptionOutput) {
+func (fake *FakeClient) PutBucketEncryptionRequest(arg1 *s3a.PutBucketEncryptionInput) (*request.Request, *s3a.PutBucketEncryptionOutput) {
 	fake.putBucketEncryptionRequestMutex.Lock()
 	ret, specificReturn := fake.putBucketEncryptionRequestReturnsOnCall[len(fake.putBucketEncryptionRequestArgsForCall)]
 	fake.putBucketEncryptionRequestArgsForCall = append(fake.putBucketEncryptionRequestArgsForCall, struct {
@@ -17855,26 +17855,26 @@ func (fake *FakeS3) PutBucketEncryptionRequest(arg1 *s3a.PutBucketEncryptionInpu
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketEncryptionRequestCallCount() int {
+func (fake *FakeClient) PutBucketEncryptionRequestCallCount() int {
 	fake.putBucketEncryptionRequestMutex.RLock()
 	defer fake.putBucketEncryptionRequestMutex.RUnlock()
 	return len(fake.putBucketEncryptionRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketEncryptionRequestCalls(stub func(*s3a.PutBucketEncryptionInput) (*request.Request, *s3a.PutBucketEncryptionOutput)) {
+func (fake *FakeClient) PutBucketEncryptionRequestCalls(stub func(*s3a.PutBucketEncryptionInput) (*request.Request, *s3a.PutBucketEncryptionOutput)) {
 	fake.putBucketEncryptionRequestMutex.Lock()
 	defer fake.putBucketEncryptionRequestMutex.Unlock()
 	fake.PutBucketEncryptionRequestStub = stub
 }
 
-func (fake *FakeS3) PutBucketEncryptionRequestArgsForCall(i int) *s3a.PutBucketEncryptionInput {
+func (fake *FakeClient) PutBucketEncryptionRequestArgsForCall(i int) *s3a.PutBucketEncryptionInput {
 	fake.putBucketEncryptionRequestMutex.RLock()
 	defer fake.putBucketEncryptionRequestMutex.RUnlock()
 	argsForCall := fake.putBucketEncryptionRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketEncryptionRequestReturns(result1 *request.Request, result2 *s3a.PutBucketEncryptionOutput) {
+func (fake *FakeClient) PutBucketEncryptionRequestReturns(result1 *request.Request, result2 *s3a.PutBucketEncryptionOutput) {
 	fake.putBucketEncryptionRequestMutex.Lock()
 	defer fake.putBucketEncryptionRequestMutex.Unlock()
 	fake.PutBucketEncryptionRequestStub = nil
@@ -17884,7 +17884,7 @@ func (fake *FakeS3) PutBucketEncryptionRequestReturns(result1 *request.Request, 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketEncryptionRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketEncryptionOutput) {
+func (fake *FakeClient) PutBucketEncryptionRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketEncryptionOutput) {
 	fake.putBucketEncryptionRequestMutex.Lock()
 	defer fake.putBucketEncryptionRequestMutex.Unlock()
 	fake.PutBucketEncryptionRequestStub = nil
@@ -17900,7 +17900,7 @@ func (fake *FakeS3) PutBucketEncryptionRequestReturnsOnCall(i int, result1 *requ
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketEncryptionWithContext(arg1 context.Context, arg2 *s3a.PutBucketEncryptionInput, arg3 ...request.Option) (*s3a.PutBucketEncryptionOutput, error) {
+func (fake *FakeClient) PutBucketEncryptionWithContext(arg1 context.Context, arg2 *s3a.PutBucketEncryptionInput, arg3 ...request.Option) (*s3a.PutBucketEncryptionOutput, error) {
 	fake.putBucketEncryptionWithContextMutex.Lock()
 	ret, specificReturn := fake.putBucketEncryptionWithContextReturnsOnCall[len(fake.putBucketEncryptionWithContextArgsForCall)]
 	fake.putBucketEncryptionWithContextArgsForCall = append(fake.putBucketEncryptionWithContextArgsForCall, struct {
@@ -17920,26 +17920,26 @@ func (fake *FakeS3) PutBucketEncryptionWithContext(arg1 context.Context, arg2 *s
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketEncryptionWithContextCallCount() int {
+func (fake *FakeClient) PutBucketEncryptionWithContextCallCount() int {
 	fake.putBucketEncryptionWithContextMutex.RLock()
 	defer fake.putBucketEncryptionWithContextMutex.RUnlock()
 	return len(fake.putBucketEncryptionWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketEncryptionWithContextCalls(stub func(context.Context, *s3a.PutBucketEncryptionInput, ...request.Option) (*s3a.PutBucketEncryptionOutput, error)) {
+func (fake *FakeClient) PutBucketEncryptionWithContextCalls(stub func(context.Context, *s3a.PutBucketEncryptionInput, ...request.Option) (*s3a.PutBucketEncryptionOutput, error)) {
 	fake.putBucketEncryptionWithContextMutex.Lock()
 	defer fake.putBucketEncryptionWithContextMutex.Unlock()
 	fake.PutBucketEncryptionWithContextStub = stub
 }
 
-func (fake *FakeS3) PutBucketEncryptionWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketEncryptionInput, []request.Option) {
+func (fake *FakeClient) PutBucketEncryptionWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketEncryptionInput, []request.Option) {
 	fake.putBucketEncryptionWithContextMutex.RLock()
 	defer fake.putBucketEncryptionWithContextMutex.RUnlock()
 	argsForCall := fake.putBucketEncryptionWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutBucketEncryptionWithContextReturns(result1 *s3a.PutBucketEncryptionOutput, result2 error) {
+func (fake *FakeClient) PutBucketEncryptionWithContextReturns(result1 *s3a.PutBucketEncryptionOutput, result2 error) {
 	fake.putBucketEncryptionWithContextMutex.Lock()
 	defer fake.putBucketEncryptionWithContextMutex.Unlock()
 	fake.PutBucketEncryptionWithContextStub = nil
@@ -17949,7 +17949,7 @@ func (fake *FakeS3) PutBucketEncryptionWithContextReturns(result1 *s3a.PutBucket
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketEncryptionWithContextReturnsOnCall(i int, result1 *s3a.PutBucketEncryptionOutput, result2 error) {
+func (fake *FakeClient) PutBucketEncryptionWithContextReturnsOnCall(i int, result1 *s3a.PutBucketEncryptionOutput, result2 error) {
 	fake.putBucketEncryptionWithContextMutex.Lock()
 	defer fake.putBucketEncryptionWithContextMutex.Unlock()
 	fake.PutBucketEncryptionWithContextStub = nil
@@ -17965,7 +17965,7 @@ func (fake *FakeS3) PutBucketEncryptionWithContextReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketIntelligentTieringConfiguration(arg1 *s3a.PutBucketIntelligentTieringConfigurationInput) (*s3a.PutBucketIntelligentTieringConfigurationOutput, error) {
+func (fake *FakeClient) PutBucketIntelligentTieringConfiguration(arg1 *s3a.PutBucketIntelligentTieringConfigurationInput) (*s3a.PutBucketIntelligentTieringConfigurationOutput, error) {
 	fake.putBucketIntelligentTieringConfigurationMutex.Lock()
 	ret, specificReturn := fake.putBucketIntelligentTieringConfigurationReturnsOnCall[len(fake.putBucketIntelligentTieringConfigurationArgsForCall)]
 	fake.putBucketIntelligentTieringConfigurationArgsForCall = append(fake.putBucketIntelligentTieringConfigurationArgsForCall, struct {
@@ -17983,26 +17983,26 @@ func (fake *FakeS3) PutBucketIntelligentTieringConfiguration(arg1 *s3a.PutBucket
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketIntelligentTieringConfigurationCallCount() int {
+func (fake *FakeClient) PutBucketIntelligentTieringConfigurationCallCount() int {
 	fake.putBucketIntelligentTieringConfigurationMutex.RLock()
 	defer fake.putBucketIntelligentTieringConfigurationMutex.RUnlock()
 	return len(fake.putBucketIntelligentTieringConfigurationArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketIntelligentTieringConfigurationCalls(stub func(*s3a.PutBucketIntelligentTieringConfigurationInput) (*s3a.PutBucketIntelligentTieringConfigurationOutput, error)) {
+func (fake *FakeClient) PutBucketIntelligentTieringConfigurationCalls(stub func(*s3a.PutBucketIntelligentTieringConfigurationInput) (*s3a.PutBucketIntelligentTieringConfigurationOutput, error)) {
 	fake.putBucketIntelligentTieringConfigurationMutex.Lock()
 	defer fake.putBucketIntelligentTieringConfigurationMutex.Unlock()
 	fake.PutBucketIntelligentTieringConfigurationStub = stub
 }
 
-func (fake *FakeS3) PutBucketIntelligentTieringConfigurationArgsForCall(i int) *s3a.PutBucketIntelligentTieringConfigurationInput {
+func (fake *FakeClient) PutBucketIntelligentTieringConfigurationArgsForCall(i int) *s3a.PutBucketIntelligentTieringConfigurationInput {
 	fake.putBucketIntelligentTieringConfigurationMutex.RLock()
 	defer fake.putBucketIntelligentTieringConfigurationMutex.RUnlock()
 	argsForCall := fake.putBucketIntelligentTieringConfigurationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketIntelligentTieringConfigurationReturns(result1 *s3a.PutBucketIntelligentTieringConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketIntelligentTieringConfigurationReturns(result1 *s3a.PutBucketIntelligentTieringConfigurationOutput, result2 error) {
 	fake.putBucketIntelligentTieringConfigurationMutex.Lock()
 	defer fake.putBucketIntelligentTieringConfigurationMutex.Unlock()
 	fake.PutBucketIntelligentTieringConfigurationStub = nil
@@ -18012,7 +18012,7 @@ func (fake *FakeS3) PutBucketIntelligentTieringConfigurationReturns(result1 *s3a
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketIntelligentTieringConfigurationReturnsOnCall(i int, result1 *s3a.PutBucketIntelligentTieringConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketIntelligentTieringConfigurationReturnsOnCall(i int, result1 *s3a.PutBucketIntelligentTieringConfigurationOutput, result2 error) {
 	fake.putBucketIntelligentTieringConfigurationMutex.Lock()
 	defer fake.putBucketIntelligentTieringConfigurationMutex.Unlock()
 	fake.PutBucketIntelligentTieringConfigurationStub = nil
@@ -18028,7 +18028,7 @@ func (fake *FakeS3) PutBucketIntelligentTieringConfigurationReturnsOnCall(i int,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketIntelligentTieringConfigurationRequest(arg1 *s3a.PutBucketIntelligentTieringConfigurationInput) (*request.Request, *s3a.PutBucketIntelligentTieringConfigurationOutput) {
+func (fake *FakeClient) PutBucketIntelligentTieringConfigurationRequest(arg1 *s3a.PutBucketIntelligentTieringConfigurationInput) (*request.Request, *s3a.PutBucketIntelligentTieringConfigurationOutput) {
 	fake.putBucketIntelligentTieringConfigurationRequestMutex.Lock()
 	ret, specificReturn := fake.putBucketIntelligentTieringConfigurationRequestReturnsOnCall[len(fake.putBucketIntelligentTieringConfigurationRequestArgsForCall)]
 	fake.putBucketIntelligentTieringConfigurationRequestArgsForCall = append(fake.putBucketIntelligentTieringConfigurationRequestArgsForCall, struct {
@@ -18046,26 +18046,26 @@ func (fake *FakeS3) PutBucketIntelligentTieringConfigurationRequest(arg1 *s3a.Pu
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketIntelligentTieringConfigurationRequestCallCount() int {
+func (fake *FakeClient) PutBucketIntelligentTieringConfigurationRequestCallCount() int {
 	fake.putBucketIntelligentTieringConfigurationRequestMutex.RLock()
 	defer fake.putBucketIntelligentTieringConfigurationRequestMutex.RUnlock()
 	return len(fake.putBucketIntelligentTieringConfigurationRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketIntelligentTieringConfigurationRequestCalls(stub func(*s3a.PutBucketIntelligentTieringConfigurationInput) (*request.Request, *s3a.PutBucketIntelligentTieringConfigurationOutput)) {
+func (fake *FakeClient) PutBucketIntelligentTieringConfigurationRequestCalls(stub func(*s3a.PutBucketIntelligentTieringConfigurationInput) (*request.Request, *s3a.PutBucketIntelligentTieringConfigurationOutput)) {
 	fake.putBucketIntelligentTieringConfigurationRequestMutex.Lock()
 	defer fake.putBucketIntelligentTieringConfigurationRequestMutex.Unlock()
 	fake.PutBucketIntelligentTieringConfigurationRequestStub = stub
 }
 
-func (fake *FakeS3) PutBucketIntelligentTieringConfigurationRequestArgsForCall(i int) *s3a.PutBucketIntelligentTieringConfigurationInput {
+func (fake *FakeClient) PutBucketIntelligentTieringConfigurationRequestArgsForCall(i int) *s3a.PutBucketIntelligentTieringConfigurationInput {
 	fake.putBucketIntelligentTieringConfigurationRequestMutex.RLock()
 	defer fake.putBucketIntelligentTieringConfigurationRequestMutex.RUnlock()
 	argsForCall := fake.putBucketIntelligentTieringConfigurationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketIntelligentTieringConfigurationRequestReturns(result1 *request.Request, result2 *s3a.PutBucketIntelligentTieringConfigurationOutput) {
+func (fake *FakeClient) PutBucketIntelligentTieringConfigurationRequestReturns(result1 *request.Request, result2 *s3a.PutBucketIntelligentTieringConfigurationOutput) {
 	fake.putBucketIntelligentTieringConfigurationRequestMutex.Lock()
 	defer fake.putBucketIntelligentTieringConfigurationRequestMutex.Unlock()
 	fake.PutBucketIntelligentTieringConfigurationRequestStub = nil
@@ -18075,7 +18075,7 @@ func (fake *FakeS3) PutBucketIntelligentTieringConfigurationRequestReturns(resul
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketIntelligentTieringConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketIntelligentTieringConfigurationOutput) {
+func (fake *FakeClient) PutBucketIntelligentTieringConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketIntelligentTieringConfigurationOutput) {
 	fake.putBucketIntelligentTieringConfigurationRequestMutex.Lock()
 	defer fake.putBucketIntelligentTieringConfigurationRequestMutex.Unlock()
 	fake.PutBucketIntelligentTieringConfigurationRequestStub = nil
@@ -18091,7 +18091,7 @@ func (fake *FakeS3) PutBucketIntelligentTieringConfigurationRequestReturnsOnCall
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketIntelligentTieringConfigurationWithContext(arg1 context.Context, arg2 *s3a.PutBucketIntelligentTieringConfigurationInput, arg3 ...request.Option) (*s3a.PutBucketIntelligentTieringConfigurationOutput, error) {
+func (fake *FakeClient) PutBucketIntelligentTieringConfigurationWithContext(arg1 context.Context, arg2 *s3a.PutBucketIntelligentTieringConfigurationInput, arg3 ...request.Option) (*s3a.PutBucketIntelligentTieringConfigurationOutput, error) {
 	fake.putBucketIntelligentTieringConfigurationWithContextMutex.Lock()
 	ret, specificReturn := fake.putBucketIntelligentTieringConfigurationWithContextReturnsOnCall[len(fake.putBucketIntelligentTieringConfigurationWithContextArgsForCall)]
 	fake.putBucketIntelligentTieringConfigurationWithContextArgsForCall = append(fake.putBucketIntelligentTieringConfigurationWithContextArgsForCall, struct {
@@ -18111,26 +18111,26 @@ func (fake *FakeS3) PutBucketIntelligentTieringConfigurationWithContext(arg1 con
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketIntelligentTieringConfigurationWithContextCallCount() int {
+func (fake *FakeClient) PutBucketIntelligentTieringConfigurationWithContextCallCount() int {
 	fake.putBucketIntelligentTieringConfigurationWithContextMutex.RLock()
 	defer fake.putBucketIntelligentTieringConfigurationWithContextMutex.RUnlock()
 	return len(fake.putBucketIntelligentTieringConfigurationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketIntelligentTieringConfigurationWithContextCalls(stub func(context.Context, *s3a.PutBucketIntelligentTieringConfigurationInput, ...request.Option) (*s3a.PutBucketIntelligentTieringConfigurationOutput, error)) {
+func (fake *FakeClient) PutBucketIntelligentTieringConfigurationWithContextCalls(stub func(context.Context, *s3a.PutBucketIntelligentTieringConfigurationInput, ...request.Option) (*s3a.PutBucketIntelligentTieringConfigurationOutput, error)) {
 	fake.putBucketIntelligentTieringConfigurationWithContextMutex.Lock()
 	defer fake.putBucketIntelligentTieringConfigurationWithContextMutex.Unlock()
 	fake.PutBucketIntelligentTieringConfigurationWithContextStub = stub
 }
 
-func (fake *FakeS3) PutBucketIntelligentTieringConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketIntelligentTieringConfigurationInput, []request.Option) {
+func (fake *FakeClient) PutBucketIntelligentTieringConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketIntelligentTieringConfigurationInput, []request.Option) {
 	fake.putBucketIntelligentTieringConfigurationWithContextMutex.RLock()
 	defer fake.putBucketIntelligentTieringConfigurationWithContextMutex.RUnlock()
 	argsForCall := fake.putBucketIntelligentTieringConfigurationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutBucketIntelligentTieringConfigurationWithContextReturns(result1 *s3a.PutBucketIntelligentTieringConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketIntelligentTieringConfigurationWithContextReturns(result1 *s3a.PutBucketIntelligentTieringConfigurationOutput, result2 error) {
 	fake.putBucketIntelligentTieringConfigurationWithContextMutex.Lock()
 	defer fake.putBucketIntelligentTieringConfigurationWithContextMutex.Unlock()
 	fake.PutBucketIntelligentTieringConfigurationWithContextStub = nil
@@ -18140,7 +18140,7 @@ func (fake *FakeS3) PutBucketIntelligentTieringConfigurationWithContextReturns(r
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketIntelligentTieringConfigurationWithContextReturnsOnCall(i int, result1 *s3a.PutBucketIntelligentTieringConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketIntelligentTieringConfigurationWithContextReturnsOnCall(i int, result1 *s3a.PutBucketIntelligentTieringConfigurationOutput, result2 error) {
 	fake.putBucketIntelligentTieringConfigurationWithContextMutex.Lock()
 	defer fake.putBucketIntelligentTieringConfigurationWithContextMutex.Unlock()
 	fake.PutBucketIntelligentTieringConfigurationWithContextStub = nil
@@ -18156,7 +18156,7 @@ func (fake *FakeS3) PutBucketIntelligentTieringConfigurationWithContextReturnsOn
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketInventoryConfiguration(arg1 *s3a.PutBucketInventoryConfigurationInput) (*s3a.PutBucketInventoryConfigurationOutput, error) {
+func (fake *FakeClient) PutBucketInventoryConfiguration(arg1 *s3a.PutBucketInventoryConfigurationInput) (*s3a.PutBucketInventoryConfigurationOutput, error) {
 	fake.putBucketInventoryConfigurationMutex.Lock()
 	ret, specificReturn := fake.putBucketInventoryConfigurationReturnsOnCall[len(fake.putBucketInventoryConfigurationArgsForCall)]
 	fake.putBucketInventoryConfigurationArgsForCall = append(fake.putBucketInventoryConfigurationArgsForCall, struct {
@@ -18174,26 +18174,26 @@ func (fake *FakeS3) PutBucketInventoryConfiguration(arg1 *s3a.PutBucketInventory
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketInventoryConfigurationCallCount() int {
+func (fake *FakeClient) PutBucketInventoryConfigurationCallCount() int {
 	fake.putBucketInventoryConfigurationMutex.RLock()
 	defer fake.putBucketInventoryConfigurationMutex.RUnlock()
 	return len(fake.putBucketInventoryConfigurationArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketInventoryConfigurationCalls(stub func(*s3a.PutBucketInventoryConfigurationInput) (*s3a.PutBucketInventoryConfigurationOutput, error)) {
+func (fake *FakeClient) PutBucketInventoryConfigurationCalls(stub func(*s3a.PutBucketInventoryConfigurationInput) (*s3a.PutBucketInventoryConfigurationOutput, error)) {
 	fake.putBucketInventoryConfigurationMutex.Lock()
 	defer fake.putBucketInventoryConfigurationMutex.Unlock()
 	fake.PutBucketInventoryConfigurationStub = stub
 }
 
-func (fake *FakeS3) PutBucketInventoryConfigurationArgsForCall(i int) *s3a.PutBucketInventoryConfigurationInput {
+func (fake *FakeClient) PutBucketInventoryConfigurationArgsForCall(i int) *s3a.PutBucketInventoryConfigurationInput {
 	fake.putBucketInventoryConfigurationMutex.RLock()
 	defer fake.putBucketInventoryConfigurationMutex.RUnlock()
 	argsForCall := fake.putBucketInventoryConfigurationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketInventoryConfigurationReturns(result1 *s3a.PutBucketInventoryConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketInventoryConfigurationReturns(result1 *s3a.PutBucketInventoryConfigurationOutput, result2 error) {
 	fake.putBucketInventoryConfigurationMutex.Lock()
 	defer fake.putBucketInventoryConfigurationMutex.Unlock()
 	fake.PutBucketInventoryConfigurationStub = nil
@@ -18203,7 +18203,7 @@ func (fake *FakeS3) PutBucketInventoryConfigurationReturns(result1 *s3a.PutBucke
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketInventoryConfigurationReturnsOnCall(i int, result1 *s3a.PutBucketInventoryConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketInventoryConfigurationReturnsOnCall(i int, result1 *s3a.PutBucketInventoryConfigurationOutput, result2 error) {
 	fake.putBucketInventoryConfigurationMutex.Lock()
 	defer fake.putBucketInventoryConfigurationMutex.Unlock()
 	fake.PutBucketInventoryConfigurationStub = nil
@@ -18219,7 +18219,7 @@ func (fake *FakeS3) PutBucketInventoryConfigurationReturnsOnCall(i int, result1 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketInventoryConfigurationRequest(arg1 *s3a.PutBucketInventoryConfigurationInput) (*request.Request, *s3a.PutBucketInventoryConfigurationOutput) {
+func (fake *FakeClient) PutBucketInventoryConfigurationRequest(arg1 *s3a.PutBucketInventoryConfigurationInput) (*request.Request, *s3a.PutBucketInventoryConfigurationOutput) {
 	fake.putBucketInventoryConfigurationRequestMutex.Lock()
 	ret, specificReturn := fake.putBucketInventoryConfigurationRequestReturnsOnCall[len(fake.putBucketInventoryConfigurationRequestArgsForCall)]
 	fake.putBucketInventoryConfigurationRequestArgsForCall = append(fake.putBucketInventoryConfigurationRequestArgsForCall, struct {
@@ -18237,26 +18237,26 @@ func (fake *FakeS3) PutBucketInventoryConfigurationRequest(arg1 *s3a.PutBucketIn
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketInventoryConfigurationRequestCallCount() int {
+func (fake *FakeClient) PutBucketInventoryConfigurationRequestCallCount() int {
 	fake.putBucketInventoryConfigurationRequestMutex.RLock()
 	defer fake.putBucketInventoryConfigurationRequestMutex.RUnlock()
 	return len(fake.putBucketInventoryConfigurationRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketInventoryConfigurationRequestCalls(stub func(*s3a.PutBucketInventoryConfigurationInput) (*request.Request, *s3a.PutBucketInventoryConfigurationOutput)) {
+func (fake *FakeClient) PutBucketInventoryConfigurationRequestCalls(stub func(*s3a.PutBucketInventoryConfigurationInput) (*request.Request, *s3a.PutBucketInventoryConfigurationOutput)) {
 	fake.putBucketInventoryConfigurationRequestMutex.Lock()
 	defer fake.putBucketInventoryConfigurationRequestMutex.Unlock()
 	fake.PutBucketInventoryConfigurationRequestStub = stub
 }
 
-func (fake *FakeS3) PutBucketInventoryConfigurationRequestArgsForCall(i int) *s3a.PutBucketInventoryConfigurationInput {
+func (fake *FakeClient) PutBucketInventoryConfigurationRequestArgsForCall(i int) *s3a.PutBucketInventoryConfigurationInput {
 	fake.putBucketInventoryConfigurationRequestMutex.RLock()
 	defer fake.putBucketInventoryConfigurationRequestMutex.RUnlock()
 	argsForCall := fake.putBucketInventoryConfigurationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketInventoryConfigurationRequestReturns(result1 *request.Request, result2 *s3a.PutBucketInventoryConfigurationOutput) {
+func (fake *FakeClient) PutBucketInventoryConfigurationRequestReturns(result1 *request.Request, result2 *s3a.PutBucketInventoryConfigurationOutput) {
 	fake.putBucketInventoryConfigurationRequestMutex.Lock()
 	defer fake.putBucketInventoryConfigurationRequestMutex.Unlock()
 	fake.PutBucketInventoryConfigurationRequestStub = nil
@@ -18266,7 +18266,7 @@ func (fake *FakeS3) PutBucketInventoryConfigurationRequestReturns(result1 *reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketInventoryConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketInventoryConfigurationOutput) {
+func (fake *FakeClient) PutBucketInventoryConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketInventoryConfigurationOutput) {
 	fake.putBucketInventoryConfigurationRequestMutex.Lock()
 	defer fake.putBucketInventoryConfigurationRequestMutex.Unlock()
 	fake.PutBucketInventoryConfigurationRequestStub = nil
@@ -18282,7 +18282,7 @@ func (fake *FakeS3) PutBucketInventoryConfigurationRequestReturnsOnCall(i int, r
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketInventoryConfigurationWithContext(arg1 context.Context, arg2 *s3a.PutBucketInventoryConfigurationInput, arg3 ...request.Option) (*s3a.PutBucketInventoryConfigurationOutput, error) {
+func (fake *FakeClient) PutBucketInventoryConfigurationWithContext(arg1 context.Context, arg2 *s3a.PutBucketInventoryConfigurationInput, arg3 ...request.Option) (*s3a.PutBucketInventoryConfigurationOutput, error) {
 	fake.putBucketInventoryConfigurationWithContextMutex.Lock()
 	ret, specificReturn := fake.putBucketInventoryConfigurationWithContextReturnsOnCall[len(fake.putBucketInventoryConfigurationWithContextArgsForCall)]
 	fake.putBucketInventoryConfigurationWithContextArgsForCall = append(fake.putBucketInventoryConfigurationWithContextArgsForCall, struct {
@@ -18302,26 +18302,26 @@ func (fake *FakeS3) PutBucketInventoryConfigurationWithContext(arg1 context.Cont
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketInventoryConfigurationWithContextCallCount() int {
+func (fake *FakeClient) PutBucketInventoryConfigurationWithContextCallCount() int {
 	fake.putBucketInventoryConfigurationWithContextMutex.RLock()
 	defer fake.putBucketInventoryConfigurationWithContextMutex.RUnlock()
 	return len(fake.putBucketInventoryConfigurationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketInventoryConfigurationWithContextCalls(stub func(context.Context, *s3a.PutBucketInventoryConfigurationInput, ...request.Option) (*s3a.PutBucketInventoryConfigurationOutput, error)) {
+func (fake *FakeClient) PutBucketInventoryConfigurationWithContextCalls(stub func(context.Context, *s3a.PutBucketInventoryConfigurationInput, ...request.Option) (*s3a.PutBucketInventoryConfigurationOutput, error)) {
 	fake.putBucketInventoryConfigurationWithContextMutex.Lock()
 	defer fake.putBucketInventoryConfigurationWithContextMutex.Unlock()
 	fake.PutBucketInventoryConfigurationWithContextStub = stub
 }
 
-func (fake *FakeS3) PutBucketInventoryConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketInventoryConfigurationInput, []request.Option) {
+func (fake *FakeClient) PutBucketInventoryConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketInventoryConfigurationInput, []request.Option) {
 	fake.putBucketInventoryConfigurationWithContextMutex.RLock()
 	defer fake.putBucketInventoryConfigurationWithContextMutex.RUnlock()
 	argsForCall := fake.putBucketInventoryConfigurationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutBucketInventoryConfigurationWithContextReturns(result1 *s3a.PutBucketInventoryConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketInventoryConfigurationWithContextReturns(result1 *s3a.PutBucketInventoryConfigurationOutput, result2 error) {
 	fake.putBucketInventoryConfigurationWithContextMutex.Lock()
 	defer fake.putBucketInventoryConfigurationWithContextMutex.Unlock()
 	fake.PutBucketInventoryConfigurationWithContextStub = nil
@@ -18331,7 +18331,7 @@ func (fake *FakeS3) PutBucketInventoryConfigurationWithContextReturns(result1 *s
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketInventoryConfigurationWithContextReturnsOnCall(i int, result1 *s3a.PutBucketInventoryConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketInventoryConfigurationWithContextReturnsOnCall(i int, result1 *s3a.PutBucketInventoryConfigurationOutput, result2 error) {
 	fake.putBucketInventoryConfigurationWithContextMutex.Lock()
 	defer fake.putBucketInventoryConfigurationWithContextMutex.Unlock()
 	fake.PutBucketInventoryConfigurationWithContextStub = nil
@@ -18347,7 +18347,7 @@ func (fake *FakeS3) PutBucketInventoryConfigurationWithContextReturnsOnCall(i in
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketLifecycle(arg1 *s3a.PutBucketLifecycleInput) (*s3a.PutBucketLifecycleOutput, error) {
+func (fake *FakeClient) PutBucketLifecycle(arg1 *s3a.PutBucketLifecycleInput) (*s3a.PutBucketLifecycleOutput, error) {
 	fake.putBucketLifecycleMutex.Lock()
 	ret, specificReturn := fake.putBucketLifecycleReturnsOnCall[len(fake.putBucketLifecycleArgsForCall)]
 	fake.putBucketLifecycleArgsForCall = append(fake.putBucketLifecycleArgsForCall, struct {
@@ -18365,26 +18365,26 @@ func (fake *FakeS3) PutBucketLifecycle(arg1 *s3a.PutBucketLifecycleInput) (*s3a.
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketLifecycleCallCount() int {
+func (fake *FakeClient) PutBucketLifecycleCallCount() int {
 	fake.putBucketLifecycleMutex.RLock()
 	defer fake.putBucketLifecycleMutex.RUnlock()
 	return len(fake.putBucketLifecycleArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketLifecycleCalls(stub func(*s3a.PutBucketLifecycleInput) (*s3a.PutBucketLifecycleOutput, error)) {
+func (fake *FakeClient) PutBucketLifecycleCalls(stub func(*s3a.PutBucketLifecycleInput) (*s3a.PutBucketLifecycleOutput, error)) {
 	fake.putBucketLifecycleMutex.Lock()
 	defer fake.putBucketLifecycleMutex.Unlock()
 	fake.PutBucketLifecycleStub = stub
 }
 
-func (fake *FakeS3) PutBucketLifecycleArgsForCall(i int) *s3a.PutBucketLifecycleInput {
+func (fake *FakeClient) PutBucketLifecycleArgsForCall(i int) *s3a.PutBucketLifecycleInput {
 	fake.putBucketLifecycleMutex.RLock()
 	defer fake.putBucketLifecycleMutex.RUnlock()
 	argsForCall := fake.putBucketLifecycleArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketLifecycleReturns(result1 *s3a.PutBucketLifecycleOutput, result2 error) {
+func (fake *FakeClient) PutBucketLifecycleReturns(result1 *s3a.PutBucketLifecycleOutput, result2 error) {
 	fake.putBucketLifecycleMutex.Lock()
 	defer fake.putBucketLifecycleMutex.Unlock()
 	fake.PutBucketLifecycleStub = nil
@@ -18394,7 +18394,7 @@ func (fake *FakeS3) PutBucketLifecycleReturns(result1 *s3a.PutBucketLifecycleOut
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketLifecycleReturnsOnCall(i int, result1 *s3a.PutBucketLifecycleOutput, result2 error) {
+func (fake *FakeClient) PutBucketLifecycleReturnsOnCall(i int, result1 *s3a.PutBucketLifecycleOutput, result2 error) {
 	fake.putBucketLifecycleMutex.Lock()
 	defer fake.putBucketLifecycleMutex.Unlock()
 	fake.PutBucketLifecycleStub = nil
@@ -18410,7 +18410,7 @@ func (fake *FakeS3) PutBucketLifecycleReturnsOnCall(i int, result1 *s3a.PutBucke
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketLifecycleConfiguration(arg1 *s3a.PutBucketLifecycleConfigurationInput) (*s3a.PutBucketLifecycleConfigurationOutput, error) {
+func (fake *FakeClient) PutBucketLifecycleConfiguration(arg1 *s3a.PutBucketLifecycleConfigurationInput) (*s3a.PutBucketLifecycleConfigurationOutput, error) {
 	fake.putBucketLifecycleConfigurationMutex.Lock()
 	ret, specificReturn := fake.putBucketLifecycleConfigurationReturnsOnCall[len(fake.putBucketLifecycleConfigurationArgsForCall)]
 	fake.putBucketLifecycleConfigurationArgsForCall = append(fake.putBucketLifecycleConfigurationArgsForCall, struct {
@@ -18428,26 +18428,26 @@ func (fake *FakeS3) PutBucketLifecycleConfiguration(arg1 *s3a.PutBucketLifecycle
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketLifecycleConfigurationCallCount() int {
+func (fake *FakeClient) PutBucketLifecycleConfigurationCallCount() int {
 	fake.putBucketLifecycleConfigurationMutex.RLock()
 	defer fake.putBucketLifecycleConfigurationMutex.RUnlock()
 	return len(fake.putBucketLifecycleConfigurationArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketLifecycleConfigurationCalls(stub func(*s3a.PutBucketLifecycleConfigurationInput) (*s3a.PutBucketLifecycleConfigurationOutput, error)) {
+func (fake *FakeClient) PutBucketLifecycleConfigurationCalls(stub func(*s3a.PutBucketLifecycleConfigurationInput) (*s3a.PutBucketLifecycleConfigurationOutput, error)) {
 	fake.putBucketLifecycleConfigurationMutex.Lock()
 	defer fake.putBucketLifecycleConfigurationMutex.Unlock()
 	fake.PutBucketLifecycleConfigurationStub = stub
 }
 
-func (fake *FakeS3) PutBucketLifecycleConfigurationArgsForCall(i int) *s3a.PutBucketLifecycleConfigurationInput {
+func (fake *FakeClient) PutBucketLifecycleConfigurationArgsForCall(i int) *s3a.PutBucketLifecycleConfigurationInput {
 	fake.putBucketLifecycleConfigurationMutex.RLock()
 	defer fake.putBucketLifecycleConfigurationMutex.RUnlock()
 	argsForCall := fake.putBucketLifecycleConfigurationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketLifecycleConfigurationReturns(result1 *s3a.PutBucketLifecycleConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketLifecycleConfigurationReturns(result1 *s3a.PutBucketLifecycleConfigurationOutput, result2 error) {
 	fake.putBucketLifecycleConfigurationMutex.Lock()
 	defer fake.putBucketLifecycleConfigurationMutex.Unlock()
 	fake.PutBucketLifecycleConfigurationStub = nil
@@ -18457,7 +18457,7 @@ func (fake *FakeS3) PutBucketLifecycleConfigurationReturns(result1 *s3a.PutBucke
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketLifecycleConfigurationReturnsOnCall(i int, result1 *s3a.PutBucketLifecycleConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketLifecycleConfigurationReturnsOnCall(i int, result1 *s3a.PutBucketLifecycleConfigurationOutput, result2 error) {
 	fake.putBucketLifecycleConfigurationMutex.Lock()
 	defer fake.putBucketLifecycleConfigurationMutex.Unlock()
 	fake.PutBucketLifecycleConfigurationStub = nil
@@ -18473,7 +18473,7 @@ func (fake *FakeS3) PutBucketLifecycleConfigurationReturnsOnCall(i int, result1 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketLifecycleConfigurationRequest(arg1 *s3a.PutBucketLifecycleConfigurationInput) (*request.Request, *s3a.PutBucketLifecycleConfigurationOutput) {
+func (fake *FakeClient) PutBucketLifecycleConfigurationRequest(arg1 *s3a.PutBucketLifecycleConfigurationInput) (*request.Request, *s3a.PutBucketLifecycleConfigurationOutput) {
 	fake.putBucketLifecycleConfigurationRequestMutex.Lock()
 	ret, specificReturn := fake.putBucketLifecycleConfigurationRequestReturnsOnCall[len(fake.putBucketLifecycleConfigurationRequestArgsForCall)]
 	fake.putBucketLifecycleConfigurationRequestArgsForCall = append(fake.putBucketLifecycleConfigurationRequestArgsForCall, struct {
@@ -18491,26 +18491,26 @@ func (fake *FakeS3) PutBucketLifecycleConfigurationRequest(arg1 *s3a.PutBucketLi
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketLifecycleConfigurationRequestCallCount() int {
+func (fake *FakeClient) PutBucketLifecycleConfigurationRequestCallCount() int {
 	fake.putBucketLifecycleConfigurationRequestMutex.RLock()
 	defer fake.putBucketLifecycleConfigurationRequestMutex.RUnlock()
 	return len(fake.putBucketLifecycleConfigurationRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketLifecycleConfigurationRequestCalls(stub func(*s3a.PutBucketLifecycleConfigurationInput) (*request.Request, *s3a.PutBucketLifecycleConfigurationOutput)) {
+func (fake *FakeClient) PutBucketLifecycleConfigurationRequestCalls(stub func(*s3a.PutBucketLifecycleConfigurationInput) (*request.Request, *s3a.PutBucketLifecycleConfigurationOutput)) {
 	fake.putBucketLifecycleConfigurationRequestMutex.Lock()
 	defer fake.putBucketLifecycleConfigurationRequestMutex.Unlock()
 	fake.PutBucketLifecycleConfigurationRequestStub = stub
 }
 
-func (fake *FakeS3) PutBucketLifecycleConfigurationRequestArgsForCall(i int) *s3a.PutBucketLifecycleConfigurationInput {
+func (fake *FakeClient) PutBucketLifecycleConfigurationRequestArgsForCall(i int) *s3a.PutBucketLifecycleConfigurationInput {
 	fake.putBucketLifecycleConfigurationRequestMutex.RLock()
 	defer fake.putBucketLifecycleConfigurationRequestMutex.RUnlock()
 	argsForCall := fake.putBucketLifecycleConfigurationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketLifecycleConfigurationRequestReturns(result1 *request.Request, result2 *s3a.PutBucketLifecycleConfigurationOutput) {
+func (fake *FakeClient) PutBucketLifecycleConfigurationRequestReturns(result1 *request.Request, result2 *s3a.PutBucketLifecycleConfigurationOutput) {
 	fake.putBucketLifecycleConfigurationRequestMutex.Lock()
 	defer fake.putBucketLifecycleConfigurationRequestMutex.Unlock()
 	fake.PutBucketLifecycleConfigurationRequestStub = nil
@@ -18520,7 +18520,7 @@ func (fake *FakeS3) PutBucketLifecycleConfigurationRequestReturns(result1 *reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketLifecycleConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketLifecycleConfigurationOutput) {
+func (fake *FakeClient) PutBucketLifecycleConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketLifecycleConfigurationOutput) {
 	fake.putBucketLifecycleConfigurationRequestMutex.Lock()
 	defer fake.putBucketLifecycleConfigurationRequestMutex.Unlock()
 	fake.PutBucketLifecycleConfigurationRequestStub = nil
@@ -18536,7 +18536,7 @@ func (fake *FakeS3) PutBucketLifecycleConfigurationRequestReturnsOnCall(i int, r
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketLifecycleConfigurationWithContext(arg1 context.Context, arg2 *s3a.PutBucketLifecycleConfigurationInput, arg3 ...request.Option) (*s3a.PutBucketLifecycleConfigurationOutput, error) {
+func (fake *FakeClient) PutBucketLifecycleConfigurationWithContext(arg1 context.Context, arg2 *s3a.PutBucketLifecycleConfigurationInput, arg3 ...request.Option) (*s3a.PutBucketLifecycleConfigurationOutput, error) {
 	fake.putBucketLifecycleConfigurationWithContextMutex.Lock()
 	ret, specificReturn := fake.putBucketLifecycleConfigurationWithContextReturnsOnCall[len(fake.putBucketLifecycleConfigurationWithContextArgsForCall)]
 	fake.putBucketLifecycleConfigurationWithContextArgsForCall = append(fake.putBucketLifecycleConfigurationWithContextArgsForCall, struct {
@@ -18556,26 +18556,26 @@ func (fake *FakeS3) PutBucketLifecycleConfigurationWithContext(arg1 context.Cont
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketLifecycleConfigurationWithContextCallCount() int {
+func (fake *FakeClient) PutBucketLifecycleConfigurationWithContextCallCount() int {
 	fake.putBucketLifecycleConfigurationWithContextMutex.RLock()
 	defer fake.putBucketLifecycleConfigurationWithContextMutex.RUnlock()
 	return len(fake.putBucketLifecycleConfigurationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketLifecycleConfigurationWithContextCalls(stub func(context.Context, *s3a.PutBucketLifecycleConfigurationInput, ...request.Option) (*s3a.PutBucketLifecycleConfigurationOutput, error)) {
+func (fake *FakeClient) PutBucketLifecycleConfigurationWithContextCalls(stub func(context.Context, *s3a.PutBucketLifecycleConfigurationInput, ...request.Option) (*s3a.PutBucketLifecycleConfigurationOutput, error)) {
 	fake.putBucketLifecycleConfigurationWithContextMutex.Lock()
 	defer fake.putBucketLifecycleConfigurationWithContextMutex.Unlock()
 	fake.PutBucketLifecycleConfigurationWithContextStub = stub
 }
 
-func (fake *FakeS3) PutBucketLifecycleConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketLifecycleConfigurationInput, []request.Option) {
+func (fake *FakeClient) PutBucketLifecycleConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketLifecycleConfigurationInput, []request.Option) {
 	fake.putBucketLifecycleConfigurationWithContextMutex.RLock()
 	defer fake.putBucketLifecycleConfigurationWithContextMutex.RUnlock()
 	argsForCall := fake.putBucketLifecycleConfigurationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutBucketLifecycleConfigurationWithContextReturns(result1 *s3a.PutBucketLifecycleConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketLifecycleConfigurationWithContextReturns(result1 *s3a.PutBucketLifecycleConfigurationOutput, result2 error) {
 	fake.putBucketLifecycleConfigurationWithContextMutex.Lock()
 	defer fake.putBucketLifecycleConfigurationWithContextMutex.Unlock()
 	fake.PutBucketLifecycleConfigurationWithContextStub = nil
@@ -18585,7 +18585,7 @@ func (fake *FakeS3) PutBucketLifecycleConfigurationWithContextReturns(result1 *s
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketLifecycleConfigurationWithContextReturnsOnCall(i int, result1 *s3a.PutBucketLifecycleConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketLifecycleConfigurationWithContextReturnsOnCall(i int, result1 *s3a.PutBucketLifecycleConfigurationOutput, result2 error) {
 	fake.putBucketLifecycleConfigurationWithContextMutex.Lock()
 	defer fake.putBucketLifecycleConfigurationWithContextMutex.Unlock()
 	fake.PutBucketLifecycleConfigurationWithContextStub = nil
@@ -18601,7 +18601,7 @@ func (fake *FakeS3) PutBucketLifecycleConfigurationWithContextReturnsOnCall(i in
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketLifecycleRequest(arg1 *s3a.PutBucketLifecycleInput) (*request.Request, *s3a.PutBucketLifecycleOutput) {
+func (fake *FakeClient) PutBucketLifecycleRequest(arg1 *s3a.PutBucketLifecycleInput) (*request.Request, *s3a.PutBucketLifecycleOutput) {
 	fake.putBucketLifecycleRequestMutex.Lock()
 	ret, specificReturn := fake.putBucketLifecycleRequestReturnsOnCall[len(fake.putBucketLifecycleRequestArgsForCall)]
 	fake.putBucketLifecycleRequestArgsForCall = append(fake.putBucketLifecycleRequestArgsForCall, struct {
@@ -18619,26 +18619,26 @@ func (fake *FakeS3) PutBucketLifecycleRequest(arg1 *s3a.PutBucketLifecycleInput)
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketLifecycleRequestCallCount() int {
+func (fake *FakeClient) PutBucketLifecycleRequestCallCount() int {
 	fake.putBucketLifecycleRequestMutex.RLock()
 	defer fake.putBucketLifecycleRequestMutex.RUnlock()
 	return len(fake.putBucketLifecycleRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketLifecycleRequestCalls(stub func(*s3a.PutBucketLifecycleInput) (*request.Request, *s3a.PutBucketLifecycleOutput)) {
+func (fake *FakeClient) PutBucketLifecycleRequestCalls(stub func(*s3a.PutBucketLifecycleInput) (*request.Request, *s3a.PutBucketLifecycleOutput)) {
 	fake.putBucketLifecycleRequestMutex.Lock()
 	defer fake.putBucketLifecycleRequestMutex.Unlock()
 	fake.PutBucketLifecycleRequestStub = stub
 }
 
-func (fake *FakeS3) PutBucketLifecycleRequestArgsForCall(i int) *s3a.PutBucketLifecycleInput {
+func (fake *FakeClient) PutBucketLifecycleRequestArgsForCall(i int) *s3a.PutBucketLifecycleInput {
 	fake.putBucketLifecycleRequestMutex.RLock()
 	defer fake.putBucketLifecycleRequestMutex.RUnlock()
 	argsForCall := fake.putBucketLifecycleRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketLifecycleRequestReturns(result1 *request.Request, result2 *s3a.PutBucketLifecycleOutput) {
+func (fake *FakeClient) PutBucketLifecycleRequestReturns(result1 *request.Request, result2 *s3a.PutBucketLifecycleOutput) {
 	fake.putBucketLifecycleRequestMutex.Lock()
 	defer fake.putBucketLifecycleRequestMutex.Unlock()
 	fake.PutBucketLifecycleRequestStub = nil
@@ -18648,7 +18648,7 @@ func (fake *FakeS3) PutBucketLifecycleRequestReturns(result1 *request.Request, r
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketLifecycleRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketLifecycleOutput) {
+func (fake *FakeClient) PutBucketLifecycleRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketLifecycleOutput) {
 	fake.putBucketLifecycleRequestMutex.Lock()
 	defer fake.putBucketLifecycleRequestMutex.Unlock()
 	fake.PutBucketLifecycleRequestStub = nil
@@ -18664,7 +18664,7 @@ func (fake *FakeS3) PutBucketLifecycleRequestReturnsOnCall(i int, result1 *reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketLifecycleWithContext(arg1 context.Context, arg2 *s3a.PutBucketLifecycleInput, arg3 ...request.Option) (*s3a.PutBucketLifecycleOutput, error) {
+func (fake *FakeClient) PutBucketLifecycleWithContext(arg1 context.Context, arg2 *s3a.PutBucketLifecycleInput, arg3 ...request.Option) (*s3a.PutBucketLifecycleOutput, error) {
 	fake.putBucketLifecycleWithContextMutex.Lock()
 	ret, specificReturn := fake.putBucketLifecycleWithContextReturnsOnCall[len(fake.putBucketLifecycleWithContextArgsForCall)]
 	fake.putBucketLifecycleWithContextArgsForCall = append(fake.putBucketLifecycleWithContextArgsForCall, struct {
@@ -18684,26 +18684,26 @@ func (fake *FakeS3) PutBucketLifecycleWithContext(arg1 context.Context, arg2 *s3
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketLifecycleWithContextCallCount() int {
+func (fake *FakeClient) PutBucketLifecycleWithContextCallCount() int {
 	fake.putBucketLifecycleWithContextMutex.RLock()
 	defer fake.putBucketLifecycleWithContextMutex.RUnlock()
 	return len(fake.putBucketLifecycleWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketLifecycleWithContextCalls(stub func(context.Context, *s3a.PutBucketLifecycleInput, ...request.Option) (*s3a.PutBucketLifecycleOutput, error)) {
+func (fake *FakeClient) PutBucketLifecycleWithContextCalls(stub func(context.Context, *s3a.PutBucketLifecycleInput, ...request.Option) (*s3a.PutBucketLifecycleOutput, error)) {
 	fake.putBucketLifecycleWithContextMutex.Lock()
 	defer fake.putBucketLifecycleWithContextMutex.Unlock()
 	fake.PutBucketLifecycleWithContextStub = stub
 }
 
-func (fake *FakeS3) PutBucketLifecycleWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketLifecycleInput, []request.Option) {
+func (fake *FakeClient) PutBucketLifecycleWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketLifecycleInput, []request.Option) {
 	fake.putBucketLifecycleWithContextMutex.RLock()
 	defer fake.putBucketLifecycleWithContextMutex.RUnlock()
 	argsForCall := fake.putBucketLifecycleWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutBucketLifecycleWithContextReturns(result1 *s3a.PutBucketLifecycleOutput, result2 error) {
+func (fake *FakeClient) PutBucketLifecycleWithContextReturns(result1 *s3a.PutBucketLifecycleOutput, result2 error) {
 	fake.putBucketLifecycleWithContextMutex.Lock()
 	defer fake.putBucketLifecycleWithContextMutex.Unlock()
 	fake.PutBucketLifecycleWithContextStub = nil
@@ -18713,7 +18713,7 @@ func (fake *FakeS3) PutBucketLifecycleWithContextReturns(result1 *s3a.PutBucketL
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketLifecycleWithContextReturnsOnCall(i int, result1 *s3a.PutBucketLifecycleOutput, result2 error) {
+func (fake *FakeClient) PutBucketLifecycleWithContextReturnsOnCall(i int, result1 *s3a.PutBucketLifecycleOutput, result2 error) {
 	fake.putBucketLifecycleWithContextMutex.Lock()
 	defer fake.putBucketLifecycleWithContextMutex.Unlock()
 	fake.PutBucketLifecycleWithContextStub = nil
@@ -18729,7 +18729,7 @@ func (fake *FakeS3) PutBucketLifecycleWithContextReturnsOnCall(i int, result1 *s
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketLogging(arg1 *s3a.PutBucketLoggingInput) (*s3a.PutBucketLoggingOutput, error) {
+func (fake *FakeClient) PutBucketLogging(arg1 *s3a.PutBucketLoggingInput) (*s3a.PutBucketLoggingOutput, error) {
 	fake.putBucketLoggingMutex.Lock()
 	ret, specificReturn := fake.putBucketLoggingReturnsOnCall[len(fake.putBucketLoggingArgsForCall)]
 	fake.putBucketLoggingArgsForCall = append(fake.putBucketLoggingArgsForCall, struct {
@@ -18747,26 +18747,26 @@ func (fake *FakeS3) PutBucketLogging(arg1 *s3a.PutBucketLoggingInput) (*s3a.PutB
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketLoggingCallCount() int {
+func (fake *FakeClient) PutBucketLoggingCallCount() int {
 	fake.putBucketLoggingMutex.RLock()
 	defer fake.putBucketLoggingMutex.RUnlock()
 	return len(fake.putBucketLoggingArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketLoggingCalls(stub func(*s3a.PutBucketLoggingInput) (*s3a.PutBucketLoggingOutput, error)) {
+func (fake *FakeClient) PutBucketLoggingCalls(stub func(*s3a.PutBucketLoggingInput) (*s3a.PutBucketLoggingOutput, error)) {
 	fake.putBucketLoggingMutex.Lock()
 	defer fake.putBucketLoggingMutex.Unlock()
 	fake.PutBucketLoggingStub = stub
 }
 
-func (fake *FakeS3) PutBucketLoggingArgsForCall(i int) *s3a.PutBucketLoggingInput {
+func (fake *FakeClient) PutBucketLoggingArgsForCall(i int) *s3a.PutBucketLoggingInput {
 	fake.putBucketLoggingMutex.RLock()
 	defer fake.putBucketLoggingMutex.RUnlock()
 	argsForCall := fake.putBucketLoggingArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketLoggingReturns(result1 *s3a.PutBucketLoggingOutput, result2 error) {
+func (fake *FakeClient) PutBucketLoggingReturns(result1 *s3a.PutBucketLoggingOutput, result2 error) {
 	fake.putBucketLoggingMutex.Lock()
 	defer fake.putBucketLoggingMutex.Unlock()
 	fake.PutBucketLoggingStub = nil
@@ -18776,7 +18776,7 @@ func (fake *FakeS3) PutBucketLoggingReturns(result1 *s3a.PutBucketLoggingOutput,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketLoggingReturnsOnCall(i int, result1 *s3a.PutBucketLoggingOutput, result2 error) {
+func (fake *FakeClient) PutBucketLoggingReturnsOnCall(i int, result1 *s3a.PutBucketLoggingOutput, result2 error) {
 	fake.putBucketLoggingMutex.Lock()
 	defer fake.putBucketLoggingMutex.Unlock()
 	fake.PutBucketLoggingStub = nil
@@ -18792,7 +18792,7 @@ func (fake *FakeS3) PutBucketLoggingReturnsOnCall(i int, result1 *s3a.PutBucketL
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketLoggingRequest(arg1 *s3a.PutBucketLoggingInput) (*request.Request, *s3a.PutBucketLoggingOutput) {
+func (fake *FakeClient) PutBucketLoggingRequest(arg1 *s3a.PutBucketLoggingInput) (*request.Request, *s3a.PutBucketLoggingOutput) {
 	fake.putBucketLoggingRequestMutex.Lock()
 	ret, specificReturn := fake.putBucketLoggingRequestReturnsOnCall[len(fake.putBucketLoggingRequestArgsForCall)]
 	fake.putBucketLoggingRequestArgsForCall = append(fake.putBucketLoggingRequestArgsForCall, struct {
@@ -18810,26 +18810,26 @@ func (fake *FakeS3) PutBucketLoggingRequest(arg1 *s3a.PutBucketLoggingInput) (*r
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketLoggingRequestCallCount() int {
+func (fake *FakeClient) PutBucketLoggingRequestCallCount() int {
 	fake.putBucketLoggingRequestMutex.RLock()
 	defer fake.putBucketLoggingRequestMutex.RUnlock()
 	return len(fake.putBucketLoggingRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketLoggingRequestCalls(stub func(*s3a.PutBucketLoggingInput) (*request.Request, *s3a.PutBucketLoggingOutput)) {
+func (fake *FakeClient) PutBucketLoggingRequestCalls(stub func(*s3a.PutBucketLoggingInput) (*request.Request, *s3a.PutBucketLoggingOutput)) {
 	fake.putBucketLoggingRequestMutex.Lock()
 	defer fake.putBucketLoggingRequestMutex.Unlock()
 	fake.PutBucketLoggingRequestStub = stub
 }
 
-func (fake *FakeS3) PutBucketLoggingRequestArgsForCall(i int) *s3a.PutBucketLoggingInput {
+func (fake *FakeClient) PutBucketLoggingRequestArgsForCall(i int) *s3a.PutBucketLoggingInput {
 	fake.putBucketLoggingRequestMutex.RLock()
 	defer fake.putBucketLoggingRequestMutex.RUnlock()
 	argsForCall := fake.putBucketLoggingRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketLoggingRequestReturns(result1 *request.Request, result2 *s3a.PutBucketLoggingOutput) {
+func (fake *FakeClient) PutBucketLoggingRequestReturns(result1 *request.Request, result2 *s3a.PutBucketLoggingOutput) {
 	fake.putBucketLoggingRequestMutex.Lock()
 	defer fake.putBucketLoggingRequestMutex.Unlock()
 	fake.PutBucketLoggingRequestStub = nil
@@ -18839,7 +18839,7 @@ func (fake *FakeS3) PutBucketLoggingRequestReturns(result1 *request.Request, res
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketLoggingRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketLoggingOutput) {
+func (fake *FakeClient) PutBucketLoggingRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketLoggingOutput) {
 	fake.putBucketLoggingRequestMutex.Lock()
 	defer fake.putBucketLoggingRequestMutex.Unlock()
 	fake.PutBucketLoggingRequestStub = nil
@@ -18855,7 +18855,7 @@ func (fake *FakeS3) PutBucketLoggingRequestReturnsOnCall(i int, result1 *request
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketLoggingWithContext(arg1 context.Context, arg2 *s3a.PutBucketLoggingInput, arg3 ...request.Option) (*s3a.PutBucketLoggingOutput, error) {
+func (fake *FakeClient) PutBucketLoggingWithContext(arg1 context.Context, arg2 *s3a.PutBucketLoggingInput, arg3 ...request.Option) (*s3a.PutBucketLoggingOutput, error) {
 	fake.putBucketLoggingWithContextMutex.Lock()
 	ret, specificReturn := fake.putBucketLoggingWithContextReturnsOnCall[len(fake.putBucketLoggingWithContextArgsForCall)]
 	fake.putBucketLoggingWithContextArgsForCall = append(fake.putBucketLoggingWithContextArgsForCall, struct {
@@ -18875,26 +18875,26 @@ func (fake *FakeS3) PutBucketLoggingWithContext(arg1 context.Context, arg2 *s3a.
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketLoggingWithContextCallCount() int {
+func (fake *FakeClient) PutBucketLoggingWithContextCallCount() int {
 	fake.putBucketLoggingWithContextMutex.RLock()
 	defer fake.putBucketLoggingWithContextMutex.RUnlock()
 	return len(fake.putBucketLoggingWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketLoggingWithContextCalls(stub func(context.Context, *s3a.PutBucketLoggingInput, ...request.Option) (*s3a.PutBucketLoggingOutput, error)) {
+func (fake *FakeClient) PutBucketLoggingWithContextCalls(stub func(context.Context, *s3a.PutBucketLoggingInput, ...request.Option) (*s3a.PutBucketLoggingOutput, error)) {
 	fake.putBucketLoggingWithContextMutex.Lock()
 	defer fake.putBucketLoggingWithContextMutex.Unlock()
 	fake.PutBucketLoggingWithContextStub = stub
 }
 
-func (fake *FakeS3) PutBucketLoggingWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketLoggingInput, []request.Option) {
+func (fake *FakeClient) PutBucketLoggingWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketLoggingInput, []request.Option) {
 	fake.putBucketLoggingWithContextMutex.RLock()
 	defer fake.putBucketLoggingWithContextMutex.RUnlock()
 	argsForCall := fake.putBucketLoggingWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutBucketLoggingWithContextReturns(result1 *s3a.PutBucketLoggingOutput, result2 error) {
+func (fake *FakeClient) PutBucketLoggingWithContextReturns(result1 *s3a.PutBucketLoggingOutput, result2 error) {
 	fake.putBucketLoggingWithContextMutex.Lock()
 	defer fake.putBucketLoggingWithContextMutex.Unlock()
 	fake.PutBucketLoggingWithContextStub = nil
@@ -18904,7 +18904,7 @@ func (fake *FakeS3) PutBucketLoggingWithContextReturns(result1 *s3a.PutBucketLog
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketLoggingWithContextReturnsOnCall(i int, result1 *s3a.PutBucketLoggingOutput, result2 error) {
+func (fake *FakeClient) PutBucketLoggingWithContextReturnsOnCall(i int, result1 *s3a.PutBucketLoggingOutput, result2 error) {
 	fake.putBucketLoggingWithContextMutex.Lock()
 	defer fake.putBucketLoggingWithContextMutex.Unlock()
 	fake.PutBucketLoggingWithContextStub = nil
@@ -18920,7 +18920,7 @@ func (fake *FakeS3) PutBucketLoggingWithContextReturnsOnCall(i int, result1 *s3a
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketMetricsConfiguration(arg1 *s3a.PutBucketMetricsConfigurationInput) (*s3a.PutBucketMetricsConfigurationOutput, error) {
+func (fake *FakeClient) PutBucketMetricsConfiguration(arg1 *s3a.PutBucketMetricsConfigurationInput) (*s3a.PutBucketMetricsConfigurationOutput, error) {
 	fake.putBucketMetricsConfigurationMutex.Lock()
 	ret, specificReturn := fake.putBucketMetricsConfigurationReturnsOnCall[len(fake.putBucketMetricsConfigurationArgsForCall)]
 	fake.putBucketMetricsConfigurationArgsForCall = append(fake.putBucketMetricsConfigurationArgsForCall, struct {
@@ -18938,26 +18938,26 @@ func (fake *FakeS3) PutBucketMetricsConfiguration(arg1 *s3a.PutBucketMetricsConf
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketMetricsConfigurationCallCount() int {
+func (fake *FakeClient) PutBucketMetricsConfigurationCallCount() int {
 	fake.putBucketMetricsConfigurationMutex.RLock()
 	defer fake.putBucketMetricsConfigurationMutex.RUnlock()
 	return len(fake.putBucketMetricsConfigurationArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketMetricsConfigurationCalls(stub func(*s3a.PutBucketMetricsConfigurationInput) (*s3a.PutBucketMetricsConfigurationOutput, error)) {
+func (fake *FakeClient) PutBucketMetricsConfigurationCalls(stub func(*s3a.PutBucketMetricsConfigurationInput) (*s3a.PutBucketMetricsConfigurationOutput, error)) {
 	fake.putBucketMetricsConfigurationMutex.Lock()
 	defer fake.putBucketMetricsConfigurationMutex.Unlock()
 	fake.PutBucketMetricsConfigurationStub = stub
 }
 
-func (fake *FakeS3) PutBucketMetricsConfigurationArgsForCall(i int) *s3a.PutBucketMetricsConfigurationInput {
+func (fake *FakeClient) PutBucketMetricsConfigurationArgsForCall(i int) *s3a.PutBucketMetricsConfigurationInput {
 	fake.putBucketMetricsConfigurationMutex.RLock()
 	defer fake.putBucketMetricsConfigurationMutex.RUnlock()
 	argsForCall := fake.putBucketMetricsConfigurationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketMetricsConfigurationReturns(result1 *s3a.PutBucketMetricsConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketMetricsConfigurationReturns(result1 *s3a.PutBucketMetricsConfigurationOutput, result2 error) {
 	fake.putBucketMetricsConfigurationMutex.Lock()
 	defer fake.putBucketMetricsConfigurationMutex.Unlock()
 	fake.PutBucketMetricsConfigurationStub = nil
@@ -18967,7 +18967,7 @@ func (fake *FakeS3) PutBucketMetricsConfigurationReturns(result1 *s3a.PutBucketM
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketMetricsConfigurationReturnsOnCall(i int, result1 *s3a.PutBucketMetricsConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketMetricsConfigurationReturnsOnCall(i int, result1 *s3a.PutBucketMetricsConfigurationOutput, result2 error) {
 	fake.putBucketMetricsConfigurationMutex.Lock()
 	defer fake.putBucketMetricsConfigurationMutex.Unlock()
 	fake.PutBucketMetricsConfigurationStub = nil
@@ -18983,7 +18983,7 @@ func (fake *FakeS3) PutBucketMetricsConfigurationReturnsOnCall(i int, result1 *s
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketMetricsConfigurationRequest(arg1 *s3a.PutBucketMetricsConfigurationInput) (*request.Request, *s3a.PutBucketMetricsConfigurationOutput) {
+func (fake *FakeClient) PutBucketMetricsConfigurationRequest(arg1 *s3a.PutBucketMetricsConfigurationInput) (*request.Request, *s3a.PutBucketMetricsConfigurationOutput) {
 	fake.putBucketMetricsConfigurationRequestMutex.Lock()
 	ret, specificReturn := fake.putBucketMetricsConfigurationRequestReturnsOnCall[len(fake.putBucketMetricsConfigurationRequestArgsForCall)]
 	fake.putBucketMetricsConfigurationRequestArgsForCall = append(fake.putBucketMetricsConfigurationRequestArgsForCall, struct {
@@ -19001,26 +19001,26 @@ func (fake *FakeS3) PutBucketMetricsConfigurationRequest(arg1 *s3a.PutBucketMetr
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketMetricsConfigurationRequestCallCount() int {
+func (fake *FakeClient) PutBucketMetricsConfigurationRequestCallCount() int {
 	fake.putBucketMetricsConfigurationRequestMutex.RLock()
 	defer fake.putBucketMetricsConfigurationRequestMutex.RUnlock()
 	return len(fake.putBucketMetricsConfigurationRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketMetricsConfigurationRequestCalls(stub func(*s3a.PutBucketMetricsConfigurationInput) (*request.Request, *s3a.PutBucketMetricsConfigurationOutput)) {
+func (fake *FakeClient) PutBucketMetricsConfigurationRequestCalls(stub func(*s3a.PutBucketMetricsConfigurationInput) (*request.Request, *s3a.PutBucketMetricsConfigurationOutput)) {
 	fake.putBucketMetricsConfigurationRequestMutex.Lock()
 	defer fake.putBucketMetricsConfigurationRequestMutex.Unlock()
 	fake.PutBucketMetricsConfigurationRequestStub = stub
 }
 
-func (fake *FakeS3) PutBucketMetricsConfigurationRequestArgsForCall(i int) *s3a.PutBucketMetricsConfigurationInput {
+func (fake *FakeClient) PutBucketMetricsConfigurationRequestArgsForCall(i int) *s3a.PutBucketMetricsConfigurationInput {
 	fake.putBucketMetricsConfigurationRequestMutex.RLock()
 	defer fake.putBucketMetricsConfigurationRequestMutex.RUnlock()
 	argsForCall := fake.putBucketMetricsConfigurationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketMetricsConfigurationRequestReturns(result1 *request.Request, result2 *s3a.PutBucketMetricsConfigurationOutput) {
+func (fake *FakeClient) PutBucketMetricsConfigurationRequestReturns(result1 *request.Request, result2 *s3a.PutBucketMetricsConfigurationOutput) {
 	fake.putBucketMetricsConfigurationRequestMutex.Lock()
 	defer fake.putBucketMetricsConfigurationRequestMutex.Unlock()
 	fake.PutBucketMetricsConfigurationRequestStub = nil
@@ -19030,7 +19030,7 @@ func (fake *FakeS3) PutBucketMetricsConfigurationRequestReturns(result1 *request
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketMetricsConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketMetricsConfigurationOutput) {
+func (fake *FakeClient) PutBucketMetricsConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketMetricsConfigurationOutput) {
 	fake.putBucketMetricsConfigurationRequestMutex.Lock()
 	defer fake.putBucketMetricsConfigurationRequestMutex.Unlock()
 	fake.PutBucketMetricsConfigurationRequestStub = nil
@@ -19046,7 +19046,7 @@ func (fake *FakeS3) PutBucketMetricsConfigurationRequestReturnsOnCall(i int, res
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketMetricsConfigurationWithContext(arg1 context.Context, arg2 *s3a.PutBucketMetricsConfigurationInput, arg3 ...request.Option) (*s3a.PutBucketMetricsConfigurationOutput, error) {
+func (fake *FakeClient) PutBucketMetricsConfigurationWithContext(arg1 context.Context, arg2 *s3a.PutBucketMetricsConfigurationInput, arg3 ...request.Option) (*s3a.PutBucketMetricsConfigurationOutput, error) {
 	fake.putBucketMetricsConfigurationWithContextMutex.Lock()
 	ret, specificReturn := fake.putBucketMetricsConfigurationWithContextReturnsOnCall[len(fake.putBucketMetricsConfigurationWithContextArgsForCall)]
 	fake.putBucketMetricsConfigurationWithContextArgsForCall = append(fake.putBucketMetricsConfigurationWithContextArgsForCall, struct {
@@ -19066,26 +19066,26 @@ func (fake *FakeS3) PutBucketMetricsConfigurationWithContext(arg1 context.Contex
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketMetricsConfigurationWithContextCallCount() int {
+func (fake *FakeClient) PutBucketMetricsConfigurationWithContextCallCount() int {
 	fake.putBucketMetricsConfigurationWithContextMutex.RLock()
 	defer fake.putBucketMetricsConfigurationWithContextMutex.RUnlock()
 	return len(fake.putBucketMetricsConfigurationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketMetricsConfigurationWithContextCalls(stub func(context.Context, *s3a.PutBucketMetricsConfigurationInput, ...request.Option) (*s3a.PutBucketMetricsConfigurationOutput, error)) {
+func (fake *FakeClient) PutBucketMetricsConfigurationWithContextCalls(stub func(context.Context, *s3a.PutBucketMetricsConfigurationInput, ...request.Option) (*s3a.PutBucketMetricsConfigurationOutput, error)) {
 	fake.putBucketMetricsConfigurationWithContextMutex.Lock()
 	defer fake.putBucketMetricsConfigurationWithContextMutex.Unlock()
 	fake.PutBucketMetricsConfigurationWithContextStub = stub
 }
 
-func (fake *FakeS3) PutBucketMetricsConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketMetricsConfigurationInput, []request.Option) {
+func (fake *FakeClient) PutBucketMetricsConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketMetricsConfigurationInput, []request.Option) {
 	fake.putBucketMetricsConfigurationWithContextMutex.RLock()
 	defer fake.putBucketMetricsConfigurationWithContextMutex.RUnlock()
 	argsForCall := fake.putBucketMetricsConfigurationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutBucketMetricsConfigurationWithContextReturns(result1 *s3a.PutBucketMetricsConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketMetricsConfigurationWithContextReturns(result1 *s3a.PutBucketMetricsConfigurationOutput, result2 error) {
 	fake.putBucketMetricsConfigurationWithContextMutex.Lock()
 	defer fake.putBucketMetricsConfigurationWithContextMutex.Unlock()
 	fake.PutBucketMetricsConfigurationWithContextStub = nil
@@ -19095,7 +19095,7 @@ func (fake *FakeS3) PutBucketMetricsConfigurationWithContextReturns(result1 *s3a
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketMetricsConfigurationWithContextReturnsOnCall(i int, result1 *s3a.PutBucketMetricsConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketMetricsConfigurationWithContextReturnsOnCall(i int, result1 *s3a.PutBucketMetricsConfigurationOutput, result2 error) {
 	fake.putBucketMetricsConfigurationWithContextMutex.Lock()
 	defer fake.putBucketMetricsConfigurationWithContextMutex.Unlock()
 	fake.PutBucketMetricsConfigurationWithContextStub = nil
@@ -19111,7 +19111,7 @@ func (fake *FakeS3) PutBucketMetricsConfigurationWithContextReturnsOnCall(i int,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketNotification(arg1 *s3a.PutBucketNotificationInput) (*s3a.PutBucketNotificationOutput, error) {
+func (fake *FakeClient) PutBucketNotification(arg1 *s3a.PutBucketNotificationInput) (*s3a.PutBucketNotificationOutput, error) {
 	fake.putBucketNotificationMutex.Lock()
 	ret, specificReturn := fake.putBucketNotificationReturnsOnCall[len(fake.putBucketNotificationArgsForCall)]
 	fake.putBucketNotificationArgsForCall = append(fake.putBucketNotificationArgsForCall, struct {
@@ -19129,26 +19129,26 @@ func (fake *FakeS3) PutBucketNotification(arg1 *s3a.PutBucketNotificationInput) 
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketNotificationCallCount() int {
+func (fake *FakeClient) PutBucketNotificationCallCount() int {
 	fake.putBucketNotificationMutex.RLock()
 	defer fake.putBucketNotificationMutex.RUnlock()
 	return len(fake.putBucketNotificationArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketNotificationCalls(stub func(*s3a.PutBucketNotificationInput) (*s3a.PutBucketNotificationOutput, error)) {
+func (fake *FakeClient) PutBucketNotificationCalls(stub func(*s3a.PutBucketNotificationInput) (*s3a.PutBucketNotificationOutput, error)) {
 	fake.putBucketNotificationMutex.Lock()
 	defer fake.putBucketNotificationMutex.Unlock()
 	fake.PutBucketNotificationStub = stub
 }
 
-func (fake *FakeS3) PutBucketNotificationArgsForCall(i int) *s3a.PutBucketNotificationInput {
+func (fake *FakeClient) PutBucketNotificationArgsForCall(i int) *s3a.PutBucketNotificationInput {
 	fake.putBucketNotificationMutex.RLock()
 	defer fake.putBucketNotificationMutex.RUnlock()
 	argsForCall := fake.putBucketNotificationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketNotificationReturns(result1 *s3a.PutBucketNotificationOutput, result2 error) {
+func (fake *FakeClient) PutBucketNotificationReturns(result1 *s3a.PutBucketNotificationOutput, result2 error) {
 	fake.putBucketNotificationMutex.Lock()
 	defer fake.putBucketNotificationMutex.Unlock()
 	fake.PutBucketNotificationStub = nil
@@ -19158,7 +19158,7 @@ func (fake *FakeS3) PutBucketNotificationReturns(result1 *s3a.PutBucketNotificat
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketNotificationReturnsOnCall(i int, result1 *s3a.PutBucketNotificationOutput, result2 error) {
+func (fake *FakeClient) PutBucketNotificationReturnsOnCall(i int, result1 *s3a.PutBucketNotificationOutput, result2 error) {
 	fake.putBucketNotificationMutex.Lock()
 	defer fake.putBucketNotificationMutex.Unlock()
 	fake.PutBucketNotificationStub = nil
@@ -19174,7 +19174,7 @@ func (fake *FakeS3) PutBucketNotificationReturnsOnCall(i int, result1 *s3a.PutBu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketNotificationConfiguration(arg1 *s3a.PutBucketNotificationConfigurationInput) (*s3a.PutBucketNotificationConfigurationOutput, error) {
+func (fake *FakeClient) PutBucketNotificationConfiguration(arg1 *s3a.PutBucketNotificationConfigurationInput) (*s3a.PutBucketNotificationConfigurationOutput, error) {
 	fake.putBucketNotificationConfigurationMutex.Lock()
 	ret, specificReturn := fake.putBucketNotificationConfigurationReturnsOnCall[len(fake.putBucketNotificationConfigurationArgsForCall)]
 	fake.putBucketNotificationConfigurationArgsForCall = append(fake.putBucketNotificationConfigurationArgsForCall, struct {
@@ -19192,26 +19192,26 @@ func (fake *FakeS3) PutBucketNotificationConfiguration(arg1 *s3a.PutBucketNotifi
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketNotificationConfigurationCallCount() int {
+func (fake *FakeClient) PutBucketNotificationConfigurationCallCount() int {
 	fake.putBucketNotificationConfigurationMutex.RLock()
 	defer fake.putBucketNotificationConfigurationMutex.RUnlock()
 	return len(fake.putBucketNotificationConfigurationArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketNotificationConfigurationCalls(stub func(*s3a.PutBucketNotificationConfigurationInput) (*s3a.PutBucketNotificationConfigurationOutput, error)) {
+func (fake *FakeClient) PutBucketNotificationConfigurationCalls(stub func(*s3a.PutBucketNotificationConfigurationInput) (*s3a.PutBucketNotificationConfigurationOutput, error)) {
 	fake.putBucketNotificationConfigurationMutex.Lock()
 	defer fake.putBucketNotificationConfigurationMutex.Unlock()
 	fake.PutBucketNotificationConfigurationStub = stub
 }
 
-func (fake *FakeS3) PutBucketNotificationConfigurationArgsForCall(i int) *s3a.PutBucketNotificationConfigurationInput {
+func (fake *FakeClient) PutBucketNotificationConfigurationArgsForCall(i int) *s3a.PutBucketNotificationConfigurationInput {
 	fake.putBucketNotificationConfigurationMutex.RLock()
 	defer fake.putBucketNotificationConfigurationMutex.RUnlock()
 	argsForCall := fake.putBucketNotificationConfigurationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketNotificationConfigurationReturns(result1 *s3a.PutBucketNotificationConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketNotificationConfigurationReturns(result1 *s3a.PutBucketNotificationConfigurationOutput, result2 error) {
 	fake.putBucketNotificationConfigurationMutex.Lock()
 	defer fake.putBucketNotificationConfigurationMutex.Unlock()
 	fake.PutBucketNotificationConfigurationStub = nil
@@ -19221,7 +19221,7 @@ func (fake *FakeS3) PutBucketNotificationConfigurationReturns(result1 *s3a.PutBu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketNotificationConfigurationReturnsOnCall(i int, result1 *s3a.PutBucketNotificationConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketNotificationConfigurationReturnsOnCall(i int, result1 *s3a.PutBucketNotificationConfigurationOutput, result2 error) {
 	fake.putBucketNotificationConfigurationMutex.Lock()
 	defer fake.putBucketNotificationConfigurationMutex.Unlock()
 	fake.PutBucketNotificationConfigurationStub = nil
@@ -19237,7 +19237,7 @@ func (fake *FakeS3) PutBucketNotificationConfigurationReturnsOnCall(i int, resul
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketNotificationConfigurationRequest(arg1 *s3a.PutBucketNotificationConfigurationInput) (*request.Request, *s3a.PutBucketNotificationConfigurationOutput) {
+func (fake *FakeClient) PutBucketNotificationConfigurationRequest(arg1 *s3a.PutBucketNotificationConfigurationInput) (*request.Request, *s3a.PutBucketNotificationConfigurationOutput) {
 	fake.putBucketNotificationConfigurationRequestMutex.Lock()
 	ret, specificReturn := fake.putBucketNotificationConfigurationRequestReturnsOnCall[len(fake.putBucketNotificationConfigurationRequestArgsForCall)]
 	fake.putBucketNotificationConfigurationRequestArgsForCall = append(fake.putBucketNotificationConfigurationRequestArgsForCall, struct {
@@ -19255,26 +19255,26 @@ func (fake *FakeS3) PutBucketNotificationConfigurationRequest(arg1 *s3a.PutBucke
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketNotificationConfigurationRequestCallCount() int {
+func (fake *FakeClient) PutBucketNotificationConfigurationRequestCallCount() int {
 	fake.putBucketNotificationConfigurationRequestMutex.RLock()
 	defer fake.putBucketNotificationConfigurationRequestMutex.RUnlock()
 	return len(fake.putBucketNotificationConfigurationRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketNotificationConfigurationRequestCalls(stub func(*s3a.PutBucketNotificationConfigurationInput) (*request.Request, *s3a.PutBucketNotificationConfigurationOutput)) {
+func (fake *FakeClient) PutBucketNotificationConfigurationRequestCalls(stub func(*s3a.PutBucketNotificationConfigurationInput) (*request.Request, *s3a.PutBucketNotificationConfigurationOutput)) {
 	fake.putBucketNotificationConfigurationRequestMutex.Lock()
 	defer fake.putBucketNotificationConfigurationRequestMutex.Unlock()
 	fake.PutBucketNotificationConfigurationRequestStub = stub
 }
 
-func (fake *FakeS3) PutBucketNotificationConfigurationRequestArgsForCall(i int) *s3a.PutBucketNotificationConfigurationInput {
+func (fake *FakeClient) PutBucketNotificationConfigurationRequestArgsForCall(i int) *s3a.PutBucketNotificationConfigurationInput {
 	fake.putBucketNotificationConfigurationRequestMutex.RLock()
 	defer fake.putBucketNotificationConfigurationRequestMutex.RUnlock()
 	argsForCall := fake.putBucketNotificationConfigurationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketNotificationConfigurationRequestReturns(result1 *request.Request, result2 *s3a.PutBucketNotificationConfigurationOutput) {
+func (fake *FakeClient) PutBucketNotificationConfigurationRequestReturns(result1 *request.Request, result2 *s3a.PutBucketNotificationConfigurationOutput) {
 	fake.putBucketNotificationConfigurationRequestMutex.Lock()
 	defer fake.putBucketNotificationConfigurationRequestMutex.Unlock()
 	fake.PutBucketNotificationConfigurationRequestStub = nil
@@ -19284,7 +19284,7 @@ func (fake *FakeS3) PutBucketNotificationConfigurationRequestReturns(result1 *re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketNotificationConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketNotificationConfigurationOutput) {
+func (fake *FakeClient) PutBucketNotificationConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketNotificationConfigurationOutput) {
 	fake.putBucketNotificationConfigurationRequestMutex.Lock()
 	defer fake.putBucketNotificationConfigurationRequestMutex.Unlock()
 	fake.PutBucketNotificationConfigurationRequestStub = nil
@@ -19300,7 +19300,7 @@ func (fake *FakeS3) PutBucketNotificationConfigurationRequestReturnsOnCall(i int
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketNotificationConfigurationWithContext(arg1 context.Context, arg2 *s3a.PutBucketNotificationConfigurationInput, arg3 ...request.Option) (*s3a.PutBucketNotificationConfigurationOutput, error) {
+func (fake *FakeClient) PutBucketNotificationConfigurationWithContext(arg1 context.Context, arg2 *s3a.PutBucketNotificationConfigurationInput, arg3 ...request.Option) (*s3a.PutBucketNotificationConfigurationOutput, error) {
 	fake.putBucketNotificationConfigurationWithContextMutex.Lock()
 	ret, specificReturn := fake.putBucketNotificationConfigurationWithContextReturnsOnCall[len(fake.putBucketNotificationConfigurationWithContextArgsForCall)]
 	fake.putBucketNotificationConfigurationWithContextArgsForCall = append(fake.putBucketNotificationConfigurationWithContextArgsForCall, struct {
@@ -19320,26 +19320,26 @@ func (fake *FakeS3) PutBucketNotificationConfigurationWithContext(arg1 context.C
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketNotificationConfigurationWithContextCallCount() int {
+func (fake *FakeClient) PutBucketNotificationConfigurationWithContextCallCount() int {
 	fake.putBucketNotificationConfigurationWithContextMutex.RLock()
 	defer fake.putBucketNotificationConfigurationWithContextMutex.RUnlock()
 	return len(fake.putBucketNotificationConfigurationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketNotificationConfigurationWithContextCalls(stub func(context.Context, *s3a.PutBucketNotificationConfigurationInput, ...request.Option) (*s3a.PutBucketNotificationConfigurationOutput, error)) {
+func (fake *FakeClient) PutBucketNotificationConfigurationWithContextCalls(stub func(context.Context, *s3a.PutBucketNotificationConfigurationInput, ...request.Option) (*s3a.PutBucketNotificationConfigurationOutput, error)) {
 	fake.putBucketNotificationConfigurationWithContextMutex.Lock()
 	defer fake.putBucketNotificationConfigurationWithContextMutex.Unlock()
 	fake.PutBucketNotificationConfigurationWithContextStub = stub
 }
 
-func (fake *FakeS3) PutBucketNotificationConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketNotificationConfigurationInput, []request.Option) {
+func (fake *FakeClient) PutBucketNotificationConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketNotificationConfigurationInput, []request.Option) {
 	fake.putBucketNotificationConfigurationWithContextMutex.RLock()
 	defer fake.putBucketNotificationConfigurationWithContextMutex.RUnlock()
 	argsForCall := fake.putBucketNotificationConfigurationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutBucketNotificationConfigurationWithContextReturns(result1 *s3a.PutBucketNotificationConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketNotificationConfigurationWithContextReturns(result1 *s3a.PutBucketNotificationConfigurationOutput, result2 error) {
 	fake.putBucketNotificationConfigurationWithContextMutex.Lock()
 	defer fake.putBucketNotificationConfigurationWithContextMutex.Unlock()
 	fake.PutBucketNotificationConfigurationWithContextStub = nil
@@ -19349,7 +19349,7 @@ func (fake *FakeS3) PutBucketNotificationConfigurationWithContextReturns(result1
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketNotificationConfigurationWithContextReturnsOnCall(i int, result1 *s3a.PutBucketNotificationConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutBucketNotificationConfigurationWithContextReturnsOnCall(i int, result1 *s3a.PutBucketNotificationConfigurationOutput, result2 error) {
 	fake.putBucketNotificationConfigurationWithContextMutex.Lock()
 	defer fake.putBucketNotificationConfigurationWithContextMutex.Unlock()
 	fake.PutBucketNotificationConfigurationWithContextStub = nil
@@ -19365,7 +19365,7 @@ func (fake *FakeS3) PutBucketNotificationConfigurationWithContextReturnsOnCall(i
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketNotificationRequest(arg1 *s3a.PutBucketNotificationInput) (*request.Request, *s3a.PutBucketNotificationOutput) {
+func (fake *FakeClient) PutBucketNotificationRequest(arg1 *s3a.PutBucketNotificationInput) (*request.Request, *s3a.PutBucketNotificationOutput) {
 	fake.putBucketNotificationRequestMutex.Lock()
 	ret, specificReturn := fake.putBucketNotificationRequestReturnsOnCall[len(fake.putBucketNotificationRequestArgsForCall)]
 	fake.putBucketNotificationRequestArgsForCall = append(fake.putBucketNotificationRequestArgsForCall, struct {
@@ -19383,26 +19383,26 @@ func (fake *FakeS3) PutBucketNotificationRequest(arg1 *s3a.PutBucketNotification
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketNotificationRequestCallCount() int {
+func (fake *FakeClient) PutBucketNotificationRequestCallCount() int {
 	fake.putBucketNotificationRequestMutex.RLock()
 	defer fake.putBucketNotificationRequestMutex.RUnlock()
 	return len(fake.putBucketNotificationRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketNotificationRequestCalls(stub func(*s3a.PutBucketNotificationInput) (*request.Request, *s3a.PutBucketNotificationOutput)) {
+func (fake *FakeClient) PutBucketNotificationRequestCalls(stub func(*s3a.PutBucketNotificationInput) (*request.Request, *s3a.PutBucketNotificationOutput)) {
 	fake.putBucketNotificationRequestMutex.Lock()
 	defer fake.putBucketNotificationRequestMutex.Unlock()
 	fake.PutBucketNotificationRequestStub = stub
 }
 
-func (fake *FakeS3) PutBucketNotificationRequestArgsForCall(i int) *s3a.PutBucketNotificationInput {
+func (fake *FakeClient) PutBucketNotificationRequestArgsForCall(i int) *s3a.PutBucketNotificationInput {
 	fake.putBucketNotificationRequestMutex.RLock()
 	defer fake.putBucketNotificationRequestMutex.RUnlock()
 	argsForCall := fake.putBucketNotificationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketNotificationRequestReturns(result1 *request.Request, result2 *s3a.PutBucketNotificationOutput) {
+func (fake *FakeClient) PutBucketNotificationRequestReturns(result1 *request.Request, result2 *s3a.PutBucketNotificationOutput) {
 	fake.putBucketNotificationRequestMutex.Lock()
 	defer fake.putBucketNotificationRequestMutex.Unlock()
 	fake.PutBucketNotificationRequestStub = nil
@@ -19412,7 +19412,7 @@ func (fake *FakeS3) PutBucketNotificationRequestReturns(result1 *request.Request
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketNotificationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketNotificationOutput) {
+func (fake *FakeClient) PutBucketNotificationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketNotificationOutput) {
 	fake.putBucketNotificationRequestMutex.Lock()
 	defer fake.putBucketNotificationRequestMutex.Unlock()
 	fake.PutBucketNotificationRequestStub = nil
@@ -19428,7 +19428,7 @@ func (fake *FakeS3) PutBucketNotificationRequestReturnsOnCall(i int, result1 *re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketNotificationWithContext(arg1 context.Context, arg2 *s3a.PutBucketNotificationInput, arg3 ...request.Option) (*s3a.PutBucketNotificationOutput, error) {
+func (fake *FakeClient) PutBucketNotificationWithContext(arg1 context.Context, arg2 *s3a.PutBucketNotificationInput, arg3 ...request.Option) (*s3a.PutBucketNotificationOutput, error) {
 	fake.putBucketNotificationWithContextMutex.Lock()
 	ret, specificReturn := fake.putBucketNotificationWithContextReturnsOnCall[len(fake.putBucketNotificationWithContextArgsForCall)]
 	fake.putBucketNotificationWithContextArgsForCall = append(fake.putBucketNotificationWithContextArgsForCall, struct {
@@ -19448,26 +19448,26 @@ func (fake *FakeS3) PutBucketNotificationWithContext(arg1 context.Context, arg2 
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketNotificationWithContextCallCount() int {
+func (fake *FakeClient) PutBucketNotificationWithContextCallCount() int {
 	fake.putBucketNotificationWithContextMutex.RLock()
 	defer fake.putBucketNotificationWithContextMutex.RUnlock()
 	return len(fake.putBucketNotificationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketNotificationWithContextCalls(stub func(context.Context, *s3a.PutBucketNotificationInput, ...request.Option) (*s3a.PutBucketNotificationOutput, error)) {
+func (fake *FakeClient) PutBucketNotificationWithContextCalls(stub func(context.Context, *s3a.PutBucketNotificationInput, ...request.Option) (*s3a.PutBucketNotificationOutput, error)) {
 	fake.putBucketNotificationWithContextMutex.Lock()
 	defer fake.putBucketNotificationWithContextMutex.Unlock()
 	fake.PutBucketNotificationWithContextStub = stub
 }
 
-func (fake *FakeS3) PutBucketNotificationWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketNotificationInput, []request.Option) {
+func (fake *FakeClient) PutBucketNotificationWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketNotificationInput, []request.Option) {
 	fake.putBucketNotificationWithContextMutex.RLock()
 	defer fake.putBucketNotificationWithContextMutex.RUnlock()
 	argsForCall := fake.putBucketNotificationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutBucketNotificationWithContextReturns(result1 *s3a.PutBucketNotificationOutput, result2 error) {
+func (fake *FakeClient) PutBucketNotificationWithContextReturns(result1 *s3a.PutBucketNotificationOutput, result2 error) {
 	fake.putBucketNotificationWithContextMutex.Lock()
 	defer fake.putBucketNotificationWithContextMutex.Unlock()
 	fake.PutBucketNotificationWithContextStub = nil
@@ -19477,7 +19477,7 @@ func (fake *FakeS3) PutBucketNotificationWithContextReturns(result1 *s3a.PutBuck
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketNotificationWithContextReturnsOnCall(i int, result1 *s3a.PutBucketNotificationOutput, result2 error) {
+func (fake *FakeClient) PutBucketNotificationWithContextReturnsOnCall(i int, result1 *s3a.PutBucketNotificationOutput, result2 error) {
 	fake.putBucketNotificationWithContextMutex.Lock()
 	defer fake.putBucketNotificationWithContextMutex.Unlock()
 	fake.PutBucketNotificationWithContextStub = nil
@@ -19493,7 +19493,7 @@ func (fake *FakeS3) PutBucketNotificationWithContextReturnsOnCall(i int, result1
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketOwnershipControls(arg1 *s3a.PutBucketOwnershipControlsInput) (*s3a.PutBucketOwnershipControlsOutput, error) {
+func (fake *FakeClient) PutBucketOwnershipControls(arg1 *s3a.PutBucketOwnershipControlsInput) (*s3a.PutBucketOwnershipControlsOutput, error) {
 	fake.putBucketOwnershipControlsMutex.Lock()
 	ret, specificReturn := fake.putBucketOwnershipControlsReturnsOnCall[len(fake.putBucketOwnershipControlsArgsForCall)]
 	fake.putBucketOwnershipControlsArgsForCall = append(fake.putBucketOwnershipControlsArgsForCall, struct {
@@ -19511,26 +19511,26 @@ func (fake *FakeS3) PutBucketOwnershipControls(arg1 *s3a.PutBucketOwnershipContr
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketOwnershipControlsCallCount() int {
+func (fake *FakeClient) PutBucketOwnershipControlsCallCount() int {
 	fake.putBucketOwnershipControlsMutex.RLock()
 	defer fake.putBucketOwnershipControlsMutex.RUnlock()
 	return len(fake.putBucketOwnershipControlsArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketOwnershipControlsCalls(stub func(*s3a.PutBucketOwnershipControlsInput) (*s3a.PutBucketOwnershipControlsOutput, error)) {
+func (fake *FakeClient) PutBucketOwnershipControlsCalls(stub func(*s3a.PutBucketOwnershipControlsInput) (*s3a.PutBucketOwnershipControlsOutput, error)) {
 	fake.putBucketOwnershipControlsMutex.Lock()
 	defer fake.putBucketOwnershipControlsMutex.Unlock()
 	fake.PutBucketOwnershipControlsStub = stub
 }
 
-func (fake *FakeS3) PutBucketOwnershipControlsArgsForCall(i int) *s3a.PutBucketOwnershipControlsInput {
+func (fake *FakeClient) PutBucketOwnershipControlsArgsForCall(i int) *s3a.PutBucketOwnershipControlsInput {
 	fake.putBucketOwnershipControlsMutex.RLock()
 	defer fake.putBucketOwnershipControlsMutex.RUnlock()
 	argsForCall := fake.putBucketOwnershipControlsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketOwnershipControlsReturns(result1 *s3a.PutBucketOwnershipControlsOutput, result2 error) {
+func (fake *FakeClient) PutBucketOwnershipControlsReturns(result1 *s3a.PutBucketOwnershipControlsOutput, result2 error) {
 	fake.putBucketOwnershipControlsMutex.Lock()
 	defer fake.putBucketOwnershipControlsMutex.Unlock()
 	fake.PutBucketOwnershipControlsStub = nil
@@ -19540,7 +19540,7 @@ func (fake *FakeS3) PutBucketOwnershipControlsReturns(result1 *s3a.PutBucketOwne
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketOwnershipControlsReturnsOnCall(i int, result1 *s3a.PutBucketOwnershipControlsOutput, result2 error) {
+func (fake *FakeClient) PutBucketOwnershipControlsReturnsOnCall(i int, result1 *s3a.PutBucketOwnershipControlsOutput, result2 error) {
 	fake.putBucketOwnershipControlsMutex.Lock()
 	defer fake.putBucketOwnershipControlsMutex.Unlock()
 	fake.PutBucketOwnershipControlsStub = nil
@@ -19556,7 +19556,7 @@ func (fake *FakeS3) PutBucketOwnershipControlsReturnsOnCall(i int, result1 *s3a.
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketOwnershipControlsRequest(arg1 *s3a.PutBucketOwnershipControlsInput) (*request.Request, *s3a.PutBucketOwnershipControlsOutput) {
+func (fake *FakeClient) PutBucketOwnershipControlsRequest(arg1 *s3a.PutBucketOwnershipControlsInput) (*request.Request, *s3a.PutBucketOwnershipControlsOutput) {
 	fake.putBucketOwnershipControlsRequestMutex.Lock()
 	ret, specificReturn := fake.putBucketOwnershipControlsRequestReturnsOnCall[len(fake.putBucketOwnershipControlsRequestArgsForCall)]
 	fake.putBucketOwnershipControlsRequestArgsForCall = append(fake.putBucketOwnershipControlsRequestArgsForCall, struct {
@@ -19574,26 +19574,26 @@ func (fake *FakeS3) PutBucketOwnershipControlsRequest(arg1 *s3a.PutBucketOwnersh
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketOwnershipControlsRequestCallCount() int {
+func (fake *FakeClient) PutBucketOwnershipControlsRequestCallCount() int {
 	fake.putBucketOwnershipControlsRequestMutex.RLock()
 	defer fake.putBucketOwnershipControlsRequestMutex.RUnlock()
 	return len(fake.putBucketOwnershipControlsRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketOwnershipControlsRequestCalls(stub func(*s3a.PutBucketOwnershipControlsInput) (*request.Request, *s3a.PutBucketOwnershipControlsOutput)) {
+func (fake *FakeClient) PutBucketOwnershipControlsRequestCalls(stub func(*s3a.PutBucketOwnershipControlsInput) (*request.Request, *s3a.PutBucketOwnershipControlsOutput)) {
 	fake.putBucketOwnershipControlsRequestMutex.Lock()
 	defer fake.putBucketOwnershipControlsRequestMutex.Unlock()
 	fake.PutBucketOwnershipControlsRequestStub = stub
 }
 
-func (fake *FakeS3) PutBucketOwnershipControlsRequestArgsForCall(i int) *s3a.PutBucketOwnershipControlsInput {
+func (fake *FakeClient) PutBucketOwnershipControlsRequestArgsForCall(i int) *s3a.PutBucketOwnershipControlsInput {
 	fake.putBucketOwnershipControlsRequestMutex.RLock()
 	defer fake.putBucketOwnershipControlsRequestMutex.RUnlock()
 	argsForCall := fake.putBucketOwnershipControlsRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketOwnershipControlsRequestReturns(result1 *request.Request, result2 *s3a.PutBucketOwnershipControlsOutput) {
+func (fake *FakeClient) PutBucketOwnershipControlsRequestReturns(result1 *request.Request, result2 *s3a.PutBucketOwnershipControlsOutput) {
 	fake.putBucketOwnershipControlsRequestMutex.Lock()
 	defer fake.putBucketOwnershipControlsRequestMutex.Unlock()
 	fake.PutBucketOwnershipControlsRequestStub = nil
@@ -19603,7 +19603,7 @@ func (fake *FakeS3) PutBucketOwnershipControlsRequestReturns(result1 *request.Re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketOwnershipControlsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketOwnershipControlsOutput) {
+func (fake *FakeClient) PutBucketOwnershipControlsRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketOwnershipControlsOutput) {
 	fake.putBucketOwnershipControlsRequestMutex.Lock()
 	defer fake.putBucketOwnershipControlsRequestMutex.Unlock()
 	fake.PutBucketOwnershipControlsRequestStub = nil
@@ -19619,7 +19619,7 @@ func (fake *FakeS3) PutBucketOwnershipControlsRequestReturnsOnCall(i int, result
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketOwnershipControlsWithContext(arg1 context.Context, arg2 *s3a.PutBucketOwnershipControlsInput, arg3 ...request.Option) (*s3a.PutBucketOwnershipControlsOutput, error) {
+func (fake *FakeClient) PutBucketOwnershipControlsWithContext(arg1 context.Context, arg2 *s3a.PutBucketOwnershipControlsInput, arg3 ...request.Option) (*s3a.PutBucketOwnershipControlsOutput, error) {
 	fake.putBucketOwnershipControlsWithContextMutex.Lock()
 	ret, specificReturn := fake.putBucketOwnershipControlsWithContextReturnsOnCall[len(fake.putBucketOwnershipControlsWithContextArgsForCall)]
 	fake.putBucketOwnershipControlsWithContextArgsForCall = append(fake.putBucketOwnershipControlsWithContextArgsForCall, struct {
@@ -19639,26 +19639,26 @@ func (fake *FakeS3) PutBucketOwnershipControlsWithContext(arg1 context.Context, 
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketOwnershipControlsWithContextCallCount() int {
+func (fake *FakeClient) PutBucketOwnershipControlsWithContextCallCount() int {
 	fake.putBucketOwnershipControlsWithContextMutex.RLock()
 	defer fake.putBucketOwnershipControlsWithContextMutex.RUnlock()
 	return len(fake.putBucketOwnershipControlsWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketOwnershipControlsWithContextCalls(stub func(context.Context, *s3a.PutBucketOwnershipControlsInput, ...request.Option) (*s3a.PutBucketOwnershipControlsOutput, error)) {
+func (fake *FakeClient) PutBucketOwnershipControlsWithContextCalls(stub func(context.Context, *s3a.PutBucketOwnershipControlsInput, ...request.Option) (*s3a.PutBucketOwnershipControlsOutput, error)) {
 	fake.putBucketOwnershipControlsWithContextMutex.Lock()
 	defer fake.putBucketOwnershipControlsWithContextMutex.Unlock()
 	fake.PutBucketOwnershipControlsWithContextStub = stub
 }
 
-func (fake *FakeS3) PutBucketOwnershipControlsWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketOwnershipControlsInput, []request.Option) {
+func (fake *FakeClient) PutBucketOwnershipControlsWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketOwnershipControlsInput, []request.Option) {
 	fake.putBucketOwnershipControlsWithContextMutex.RLock()
 	defer fake.putBucketOwnershipControlsWithContextMutex.RUnlock()
 	argsForCall := fake.putBucketOwnershipControlsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutBucketOwnershipControlsWithContextReturns(result1 *s3a.PutBucketOwnershipControlsOutput, result2 error) {
+func (fake *FakeClient) PutBucketOwnershipControlsWithContextReturns(result1 *s3a.PutBucketOwnershipControlsOutput, result2 error) {
 	fake.putBucketOwnershipControlsWithContextMutex.Lock()
 	defer fake.putBucketOwnershipControlsWithContextMutex.Unlock()
 	fake.PutBucketOwnershipControlsWithContextStub = nil
@@ -19668,7 +19668,7 @@ func (fake *FakeS3) PutBucketOwnershipControlsWithContextReturns(result1 *s3a.Pu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketOwnershipControlsWithContextReturnsOnCall(i int, result1 *s3a.PutBucketOwnershipControlsOutput, result2 error) {
+func (fake *FakeClient) PutBucketOwnershipControlsWithContextReturnsOnCall(i int, result1 *s3a.PutBucketOwnershipControlsOutput, result2 error) {
 	fake.putBucketOwnershipControlsWithContextMutex.Lock()
 	defer fake.putBucketOwnershipControlsWithContextMutex.Unlock()
 	fake.PutBucketOwnershipControlsWithContextStub = nil
@@ -19684,7 +19684,7 @@ func (fake *FakeS3) PutBucketOwnershipControlsWithContextReturnsOnCall(i int, re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketPolicy(arg1 *s3a.PutBucketPolicyInput) (*s3a.PutBucketPolicyOutput, error) {
+func (fake *FakeClient) PutBucketPolicy(arg1 *s3a.PutBucketPolicyInput) (*s3a.PutBucketPolicyOutput, error) {
 	fake.putBucketPolicyMutex.Lock()
 	ret, specificReturn := fake.putBucketPolicyReturnsOnCall[len(fake.putBucketPolicyArgsForCall)]
 	fake.putBucketPolicyArgsForCall = append(fake.putBucketPolicyArgsForCall, struct {
@@ -19702,26 +19702,26 @@ func (fake *FakeS3) PutBucketPolicy(arg1 *s3a.PutBucketPolicyInput) (*s3a.PutBuc
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketPolicyCallCount() int {
+func (fake *FakeClient) PutBucketPolicyCallCount() int {
 	fake.putBucketPolicyMutex.RLock()
 	defer fake.putBucketPolicyMutex.RUnlock()
 	return len(fake.putBucketPolicyArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketPolicyCalls(stub func(*s3a.PutBucketPolicyInput) (*s3a.PutBucketPolicyOutput, error)) {
+func (fake *FakeClient) PutBucketPolicyCalls(stub func(*s3a.PutBucketPolicyInput) (*s3a.PutBucketPolicyOutput, error)) {
 	fake.putBucketPolicyMutex.Lock()
 	defer fake.putBucketPolicyMutex.Unlock()
 	fake.PutBucketPolicyStub = stub
 }
 
-func (fake *FakeS3) PutBucketPolicyArgsForCall(i int) *s3a.PutBucketPolicyInput {
+func (fake *FakeClient) PutBucketPolicyArgsForCall(i int) *s3a.PutBucketPolicyInput {
 	fake.putBucketPolicyMutex.RLock()
 	defer fake.putBucketPolicyMutex.RUnlock()
 	argsForCall := fake.putBucketPolicyArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketPolicyReturns(result1 *s3a.PutBucketPolicyOutput, result2 error) {
+func (fake *FakeClient) PutBucketPolicyReturns(result1 *s3a.PutBucketPolicyOutput, result2 error) {
 	fake.putBucketPolicyMutex.Lock()
 	defer fake.putBucketPolicyMutex.Unlock()
 	fake.PutBucketPolicyStub = nil
@@ -19731,7 +19731,7 @@ func (fake *FakeS3) PutBucketPolicyReturns(result1 *s3a.PutBucketPolicyOutput, r
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketPolicyReturnsOnCall(i int, result1 *s3a.PutBucketPolicyOutput, result2 error) {
+func (fake *FakeClient) PutBucketPolicyReturnsOnCall(i int, result1 *s3a.PutBucketPolicyOutput, result2 error) {
 	fake.putBucketPolicyMutex.Lock()
 	defer fake.putBucketPolicyMutex.Unlock()
 	fake.PutBucketPolicyStub = nil
@@ -19747,7 +19747,7 @@ func (fake *FakeS3) PutBucketPolicyReturnsOnCall(i int, result1 *s3a.PutBucketPo
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketPolicyRequest(arg1 *s3a.PutBucketPolicyInput) (*request.Request, *s3a.PutBucketPolicyOutput) {
+func (fake *FakeClient) PutBucketPolicyRequest(arg1 *s3a.PutBucketPolicyInput) (*request.Request, *s3a.PutBucketPolicyOutput) {
 	fake.putBucketPolicyRequestMutex.Lock()
 	ret, specificReturn := fake.putBucketPolicyRequestReturnsOnCall[len(fake.putBucketPolicyRequestArgsForCall)]
 	fake.putBucketPolicyRequestArgsForCall = append(fake.putBucketPolicyRequestArgsForCall, struct {
@@ -19765,26 +19765,26 @@ func (fake *FakeS3) PutBucketPolicyRequest(arg1 *s3a.PutBucketPolicyInput) (*req
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketPolicyRequestCallCount() int {
+func (fake *FakeClient) PutBucketPolicyRequestCallCount() int {
 	fake.putBucketPolicyRequestMutex.RLock()
 	defer fake.putBucketPolicyRequestMutex.RUnlock()
 	return len(fake.putBucketPolicyRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketPolicyRequestCalls(stub func(*s3a.PutBucketPolicyInput) (*request.Request, *s3a.PutBucketPolicyOutput)) {
+func (fake *FakeClient) PutBucketPolicyRequestCalls(stub func(*s3a.PutBucketPolicyInput) (*request.Request, *s3a.PutBucketPolicyOutput)) {
 	fake.putBucketPolicyRequestMutex.Lock()
 	defer fake.putBucketPolicyRequestMutex.Unlock()
 	fake.PutBucketPolicyRequestStub = stub
 }
 
-func (fake *FakeS3) PutBucketPolicyRequestArgsForCall(i int) *s3a.PutBucketPolicyInput {
+func (fake *FakeClient) PutBucketPolicyRequestArgsForCall(i int) *s3a.PutBucketPolicyInput {
 	fake.putBucketPolicyRequestMutex.RLock()
 	defer fake.putBucketPolicyRequestMutex.RUnlock()
 	argsForCall := fake.putBucketPolicyRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketPolicyRequestReturns(result1 *request.Request, result2 *s3a.PutBucketPolicyOutput) {
+func (fake *FakeClient) PutBucketPolicyRequestReturns(result1 *request.Request, result2 *s3a.PutBucketPolicyOutput) {
 	fake.putBucketPolicyRequestMutex.Lock()
 	defer fake.putBucketPolicyRequestMutex.Unlock()
 	fake.PutBucketPolicyRequestStub = nil
@@ -19794,7 +19794,7 @@ func (fake *FakeS3) PutBucketPolicyRequestReturns(result1 *request.Request, resu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketPolicyRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketPolicyOutput) {
+func (fake *FakeClient) PutBucketPolicyRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketPolicyOutput) {
 	fake.putBucketPolicyRequestMutex.Lock()
 	defer fake.putBucketPolicyRequestMutex.Unlock()
 	fake.PutBucketPolicyRequestStub = nil
@@ -19810,7 +19810,7 @@ func (fake *FakeS3) PutBucketPolicyRequestReturnsOnCall(i int, result1 *request.
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketPolicyWithContext(arg1 context.Context, arg2 *s3a.PutBucketPolicyInput, arg3 ...request.Option) (*s3a.PutBucketPolicyOutput, error) {
+func (fake *FakeClient) PutBucketPolicyWithContext(arg1 context.Context, arg2 *s3a.PutBucketPolicyInput, arg3 ...request.Option) (*s3a.PutBucketPolicyOutput, error) {
 	fake.putBucketPolicyWithContextMutex.Lock()
 	ret, specificReturn := fake.putBucketPolicyWithContextReturnsOnCall[len(fake.putBucketPolicyWithContextArgsForCall)]
 	fake.putBucketPolicyWithContextArgsForCall = append(fake.putBucketPolicyWithContextArgsForCall, struct {
@@ -19830,26 +19830,26 @@ func (fake *FakeS3) PutBucketPolicyWithContext(arg1 context.Context, arg2 *s3a.P
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketPolicyWithContextCallCount() int {
+func (fake *FakeClient) PutBucketPolicyWithContextCallCount() int {
 	fake.putBucketPolicyWithContextMutex.RLock()
 	defer fake.putBucketPolicyWithContextMutex.RUnlock()
 	return len(fake.putBucketPolicyWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketPolicyWithContextCalls(stub func(context.Context, *s3a.PutBucketPolicyInput, ...request.Option) (*s3a.PutBucketPolicyOutput, error)) {
+func (fake *FakeClient) PutBucketPolicyWithContextCalls(stub func(context.Context, *s3a.PutBucketPolicyInput, ...request.Option) (*s3a.PutBucketPolicyOutput, error)) {
 	fake.putBucketPolicyWithContextMutex.Lock()
 	defer fake.putBucketPolicyWithContextMutex.Unlock()
 	fake.PutBucketPolicyWithContextStub = stub
 }
 
-func (fake *FakeS3) PutBucketPolicyWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketPolicyInput, []request.Option) {
+func (fake *FakeClient) PutBucketPolicyWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketPolicyInput, []request.Option) {
 	fake.putBucketPolicyWithContextMutex.RLock()
 	defer fake.putBucketPolicyWithContextMutex.RUnlock()
 	argsForCall := fake.putBucketPolicyWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutBucketPolicyWithContextReturns(result1 *s3a.PutBucketPolicyOutput, result2 error) {
+func (fake *FakeClient) PutBucketPolicyWithContextReturns(result1 *s3a.PutBucketPolicyOutput, result2 error) {
 	fake.putBucketPolicyWithContextMutex.Lock()
 	defer fake.putBucketPolicyWithContextMutex.Unlock()
 	fake.PutBucketPolicyWithContextStub = nil
@@ -19859,7 +19859,7 @@ func (fake *FakeS3) PutBucketPolicyWithContextReturns(result1 *s3a.PutBucketPoli
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketPolicyWithContextReturnsOnCall(i int, result1 *s3a.PutBucketPolicyOutput, result2 error) {
+func (fake *FakeClient) PutBucketPolicyWithContextReturnsOnCall(i int, result1 *s3a.PutBucketPolicyOutput, result2 error) {
 	fake.putBucketPolicyWithContextMutex.Lock()
 	defer fake.putBucketPolicyWithContextMutex.Unlock()
 	fake.PutBucketPolicyWithContextStub = nil
@@ -19875,7 +19875,7 @@ func (fake *FakeS3) PutBucketPolicyWithContextReturnsOnCall(i int, result1 *s3a.
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketReplication(arg1 *s3a.PutBucketReplicationInput) (*s3a.PutBucketReplicationOutput, error) {
+func (fake *FakeClient) PutBucketReplication(arg1 *s3a.PutBucketReplicationInput) (*s3a.PutBucketReplicationOutput, error) {
 	fake.putBucketReplicationMutex.Lock()
 	ret, specificReturn := fake.putBucketReplicationReturnsOnCall[len(fake.putBucketReplicationArgsForCall)]
 	fake.putBucketReplicationArgsForCall = append(fake.putBucketReplicationArgsForCall, struct {
@@ -19893,26 +19893,26 @@ func (fake *FakeS3) PutBucketReplication(arg1 *s3a.PutBucketReplicationInput) (*
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketReplicationCallCount() int {
+func (fake *FakeClient) PutBucketReplicationCallCount() int {
 	fake.putBucketReplicationMutex.RLock()
 	defer fake.putBucketReplicationMutex.RUnlock()
 	return len(fake.putBucketReplicationArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketReplicationCalls(stub func(*s3a.PutBucketReplicationInput) (*s3a.PutBucketReplicationOutput, error)) {
+func (fake *FakeClient) PutBucketReplicationCalls(stub func(*s3a.PutBucketReplicationInput) (*s3a.PutBucketReplicationOutput, error)) {
 	fake.putBucketReplicationMutex.Lock()
 	defer fake.putBucketReplicationMutex.Unlock()
 	fake.PutBucketReplicationStub = stub
 }
 
-func (fake *FakeS3) PutBucketReplicationArgsForCall(i int) *s3a.PutBucketReplicationInput {
+func (fake *FakeClient) PutBucketReplicationArgsForCall(i int) *s3a.PutBucketReplicationInput {
 	fake.putBucketReplicationMutex.RLock()
 	defer fake.putBucketReplicationMutex.RUnlock()
 	argsForCall := fake.putBucketReplicationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketReplicationReturns(result1 *s3a.PutBucketReplicationOutput, result2 error) {
+func (fake *FakeClient) PutBucketReplicationReturns(result1 *s3a.PutBucketReplicationOutput, result2 error) {
 	fake.putBucketReplicationMutex.Lock()
 	defer fake.putBucketReplicationMutex.Unlock()
 	fake.PutBucketReplicationStub = nil
@@ -19922,7 +19922,7 @@ func (fake *FakeS3) PutBucketReplicationReturns(result1 *s3a.PutBucketReplicatio
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketReplicationReturnsOnCall(i int, result1 *s3a.PutBucketReplicationOutput, result2 error) {
+func (fake *FakeClient) PutBucketReplicationReturnsOnCall(i int, result1 *s3a.PutBucketReplicationOutput, result2 error) {
 	fake.putBucketReplicationMutex.Lock()
 	defer fake.putBucketReplicationMutex.Unlock()
 	fake.PutBucketReplicationStub = nil
@@ -19938,7 +19938,7 @@ func (fake *FakeS3) PutBucketReplicationReturnsOnCall(i int, result1 *s3a.PutBuc
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketReplicationRequest(arg1 *s3a.PutBucketReplicationInput) (*request.Request, *s3a.PutBucketReplicationOutput) {
+func (fake *FakeClient) PutBucketReplicationRequest(arg1 *s3a.PutBucketReplicationInput) (*request.Request, *s3a.PutBucketReplicationOutput) {
 	fake.putBucketReplicationRequestMutex.Lock()
 	ret, specificReturn := fake.putBucketReplicationRequestReturnsOnCall[len(fake.putBucketReplicationRequestArgsForCall)]
 	fake.putBucketReplicationRequestArgsForCall = append(fake.putBucketReplicationRequestArgsForCall, struct {
@@ -19956,26 +19956,26 @@ func (fake *FakeS3) PutBucketReplicationRequest(arg1 *s3a.PutBucketReplicationIn
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketReplicationRequestCallCount() int {
+func (fake *FakeClient) PutBucketReplicationRequestCallCount() int {
 	fake.putBucketReplicationRequestMutex.RLock()
 	defer fake.putBucketReplicationRequestMutex.RUnlock()
 	return len(fake.putBucketReplicationRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketReplicationRequestCalls(stub func(*s3a.PutBucketReplicationInput) (*request.Request, *s3a.PutBucketReplicationOutput)) {
+func (fake *FakeClient) PutBucketReplicationRequestCalls(stub func(*s3a.PutBucketReplicationInput) (*request.Request, *s3a.PutBucketReplicationOutput)) {
 	fake.putBucketReplicationRequestMutex.Lock()
 	defer fake.putBucketReplicationRequestMutex.Unlock()
 	fake.PutBucketReplicationRequestStub = stub
 }
 
-func (fake *FakeS3) PutBucketReplicationRequestArgsForCall(i int) *s3a.PutBucketReplicationInput {
+func (fake *FakeClient) PutBucketReplicationRequestArgsForCall(i int) *s3a.PutBucketReplicationInput {
 	fake.putBucketReplicationRequestMutex.RLock()
 	defer fake.putBucketReplicationRequestMutex.RUnlock()
 	argsForCall := fake.putBucketReplicationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketReplicationRequestReturns(result1 *request.Request, result2 *s3a.PutBucketReplicationOutput) {
+func (fake *FakeClient) PutBucketReplicationRequestReturns(result1 *request.Request, result2 *s3a.PutBucketReplicationOutput) {
 	fake.putBucketReplicationRequestMutex.Lock()
 	defer fake.putBucketReplicationRequestMutex.Unlock()
 	fake.PutBucketReplicationRequestStub = nil
@@ -19985,7 +19985,7 @@ func (fake *FakeS3) PutBucketReplicationRequestReturns(result1 *request.Request,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketReplicationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketReplicationOutput) {
+func (fake *FakeClient) PutBucketReplicationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketReplicationOutput) {
 	fake.putBucketReplicationRequestMutex.Lock()
 	defer fake.putBucketReplicationRequestMutex.Unlock()
 	fake.PutBucketReplicationRequestStub = nil
@@ -20001,7 +20001,7 @@ func (fake *FakeS3) PutBucketReplicationRequestReturnsOnCall(i int, result1 *req
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketReplicationWithContext(arg1 context.Context, arg2 *s3a.PutBucketReplicationInput, arg3 ...request.Option) (*s3a.PutBucketReplicationOutput, error) {
+func (fake *FakeClient) PutBucketReplicationWithContext(arg1 context.Context, arg2 *s3a.PutBucketReplicationInput, arg3 ...request.Option) (*s3a.PutBucketReplicationOutput, error) {
 	fake.putBucketReplicationWithContextMutex.Lock()
 	ret, specificReturn := fake.putBucketReplicationWithContextReturnsOnCall[len(fake.putBucketReplicationWithContextArgsForCall)]
 	fake.putBucketReplicationWithContextArgsForCall = append(fake.putBucketReplicationWithContextArgsForCall, struct {
@@ -20021,26 +20021,26 @@ func (fake *FakeS3) PutBucketReplicationWithContext(arg1 context.Context, arg2 *
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketReplicationWithContextCallCount() int {
+func (fake *FakeClient) PutBucketReplicationWithContextCallCount() int {
 	fake.putBucketReplicationWithContextMutex.RLock()
 	defer fake.putBucketReplicationWithContextMutex.RUnlock()
 	return len(fake.putBucketReplicationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketReplicationWithContextCalls(stub func(context.Context, *s3a.PutBucketReplicationInput, ...request.Option) (*s3a.PutBucketReplicationOutput, error)) {
+func (fake *FakeClient) PutBucketReplicationWithContextCalls(stub func(context.Context, *s3a.PutBucketReplicationInput, ...request.Option) (*s3a.PutBucketReplicationOutput, error)) {
 	fake.putBucketReplicationWithContextMutex.Lock()
 	defer fake.putBucketReplicationWithContextMutex.Unlock()
 	fake.PutBucketReplicationWithContextStub = stub
 }
 
-func (fake *FakeS3) PutBucketReplicationWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketReplicationInput, []request.Option) {
+func (fake *FakeClient) PutBucketReplicationWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketReplicationInput, []request.Option) {
 	fake.putBucketReplicationWithContextMutex.RLock()
 	defer fake.putBucketReplicationWithContextMutex.RUnlock()
 	argsForCall := fake.putBucketReplicationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutBucketReplicationWithContextReturns(result1 *s3a.PutBucketReplicationOutput, result2 error) {
+func (fake *FakeClient) PutBucketReplicationWithContextReturns(result1 *s3a.PutBucketReplicationOutput, result2 error) {
 	fake.putBucketReplicationWithContextMutex.Lock()
 	defer fake.putBucketReplicationWithContextMutex.Unlock()
 	fake.PutBucketReplicationWithContextStub = nil
@@ -20050,7 +20050,7 @@ func (fake *FakeS3) PutBucketReplicationWithContextReturns(result1 *s3a.PutBucke
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketReplicationWithContextReturnsOnCall(i int, result1 *s3a.PutBucketReplicationOutput, result2 error) {
+func (fake *FakeClient) PutBucketReplicationWithContextReturnsOnCall(i int, result1 *s3a.PutBucketReplicationOutput, result2 error) {
 	fake.putBucketReplicationWithContextMutex.Lock()
 	defer fake.putBucketReplicationWithContextMutex.Unlock()
 	fake.PutBucketReplicationWithContextStub = nil
@@ -20066,7 +20066,7 @@ func (fake *FakeS3) PutBucketReplicationWithContextReturnsOnCall(i int, result1 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketRequestPayment(arg1 *s3a.PutBucketRequestPaymentInput) (*s3a.PutBucketRequestPaymentOutput, error) {
+func (fake *FakeClient) PutBucketRequestPayment(arg1 *s3a.PutBucketRequestPaymentInput) (*s3a.PutBucketRequestPaymentOutput, error) {
 	fake.putBucketRequestPaymentMutex.Lock()
 	ret, specificReturn := fake.putBucketRequestPaymentReturnsOnCall[len(fake.putBucketRequestPaymentArgsForCall)]
 	fake.putBucketRequestPaymentArgsForCall = append(fake.putBucketRequestPaymentArgsForCall, struct {
@@ -20084,26 +20084,26 @@ func (fake *FakeS3) PutBucketRequestPayment(arg1 *s3a.PutBucketRequestPaymentInp
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketRequestPaymentCallCount() int {
+func (fake *FakeClient) PutBucketRequestPaymentCallCount() int {
 	fake.putBucketRequestPaymentMutex.RLock()
 	defer fake.putBucketRequestPaymentMutex.RUnlock()
 	return len(fake.putBucketRequestPaymentArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketRequestPaymentCalls(stub func(*s3a.PutBucketRequestPaymentInput) (*s3a.PutBucketRequestPaymentOutput, error)) {
+func (fake *FakeClient) PutBucketRequestPaymentCalls(stub func(*s3a.PutBucketRequestPaymentInput) (*s3a.PutBucketRequestPaymentOutput, error)) {
 	fake.putBucketRequestPaymentMutex.Lock()
 	defer fake.putBucketRequestPaymentMutex.Unlock()
 	fake.PutBucketRequestPaymentStub = stub
 }
 
-func (fake *FakeS3) PutBucketRequestPaymentArgsForCall(i int) *s3a.PutBucketRequestPaymentInput {
+func (fake *FakeClient) PutBucketRequestPaymentArgsForCall(i int) *s3a.PutBucketRequestPaymentInput {
 	fake.putBucketRequestPaymentMutex.RLock()
 	defer fake.putBucketRequestPaymentMutex.RUnlock()
 	argsForCall := fake.putBucketRequestPaymentArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketRequestPaymentReturns(result1 *s3a.PutBucketRequestPaymentOutput, result2 error) {
+func (fake *FakeClient) PutBucketRequestPaymentReturns(result1 *s3a.PutBucketRequestPaymentOutput, result2 error) {
 	fake.putBucketRequestPaymentMutex.Lock()
 	defer fake.putBucketRequestPaymentMutex.Unlock()
 	fake.PutBucketRequestPaymentStub = nil
@@ -20113,7 +20113,7 @@ func (fake *FakeS3) PutBucketRequestPaymentReturns(result1 *s3a.PutBucketRequest
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketRequestPaymentReturnsOnCall(i int, result1 *s3a.PutBucketRequestPaymentOutput, result2 error) {
+func (fake *FakeClient) PutBucketRequestPaymentReturnsOnCall(i int, result1 *s3a.PutBucketRequestPaymentOutput, result2 error) {
 	fake.putBucketRequestPaymentMutex.Lock()
 	defer fake.putBucketRequestPaymentMutex.Unlock()
 	fake.PutBucketRequestPaymentStub = nil
@@ -20129,7 +20129,7 @@ func (fake *FakeS3) PutBucketRequestPaymentReturnsOnCall(i int, result1 *s3a.Put
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketRequestPaymentRequest(arg1 *s3a.PutBucketRequestPaymentInput) (*request.Request, *s3a.PutBucketRequestPaymentOutput) {
+func (fake *FakeClient) PutBucketRequestPaymentRequest(arg1 *s3a.PutBucketRequestPaymentInput) (*request.Request, *s3a.PutBucketRequestPaymentOutput) {
 	fake.putBucketRequestPaymentRequestMutex.Lock()
 	ret, specificReturn := fake.putBucketRequestPaymentRequestReturnsOnCall[len(fake.putBucketRequestPaymentRequestArgsForCall)]
 	fake.putBucketRequestPaymentRequestArgsForCall = append(fake.putBucketRequestPaymentRequestArgsForCall, struct {
@@ -20147,26 +20147,26 @@ func (fake *FakeS3) PutBucketRequestPaymentRequest(arg1 *s3a.PutBucketRequestPay
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketRequestPaymentRequestCallCount() int {
+func (fake *FakeClient) PutBucketRequestPaymentRequestCallCount() int {
 	fake.putBucketRequestPaymentRequestMutex.RLock()
 	defer fake.putBucketRequestPaymentRequestMutex.RUnlock()
 	return len(fake.putBucketRequestPaymentRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketRequestPaymentRequestCalls(stub func(*s3a.PutBucketRequestPaymentInput) (*request.Request, *s3a.PutBucketRequestPaymentOutput)) {
+func (fake *FakeClient) PutBucketRequestPaymentRequestCalls(stub func(*s3a.PutBucketRequestPaymentInput) (*request.Request, *s3a.PutBucketRequestPaymentOutput)) {
 	fake.putBucketRequestPaymentRequestMutex.Lock()
 	defer fake.putBucketRequestPaymentRequestMutex.Unlock()
 	fake.PutBucketRequestPaymentRequestStub = stub
 }
 
-func (fake *FakeS3) PutBucketRequestPaymentRequestArgsForCall(i int) *s3a.PutBucketRequestPaymentInput {
+func (fake *FakeClient) PutBucketRequestPaymentRequestArgsForCall(i int) *s3a.PutBucketRequestPaymentInput {
 	fake.putBucketRequestPaymentRequestMutex.RLock()
 	defer fake.putBucketRequestPaymentRequestMutex.RUnlock()
 	argsForCall := fake.putBucketRequestPaymentRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketRequestPaymentRequestReturns(result1 *request.Request, result2 *s3a.PutBucketRequestPaymentOutput) {
+func (fake *FakeClient) PutBucketRequestPaymentRequestReturns(result1 *request.Request, result2 *s3a.PutBucketRequestPaymentOutput) {
 	fake.putBucketRequestPaymentRequestMutex.Lock()
 	defer fake.putBucketRequestPaymentRequestMutex.Unlock()
 	fake.PutBucketRequestPaymentRequestStub = nil
@@ -20176,7 +20176,7 @@ func (fake *FakeS3) PutBucketRequestPaymentRequestReturns(result1 *request.Reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketRequestPaymentRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketRequestPaymentOutput) {
+func (fake *FakeClient) PutBucketRequestPaymentRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketRequestPaymentOutput) {
 	fake.putBucketRequestPaymentRequestMutex.Lock()
 	defer fake.putBucketRequestPaymentRequestMutex.Unlock()
 	fake.PutBucketRequestPaymentRequestStub = nil
@@ -20192,7 +20192,7 @@ func (fake *FakeS3) PutBucketRequestPaymentRequestReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketRequestPaymentWithContext(arg1 context.Context, arg2 *s3a.PutBucketRequestPaymentInput, arg3 ...request.Option) (*s3a.PutBucketRequestPaymentOutput, error) {
+func (fake *FakeClient) PutBucketRequestPaymentWithContext(arg1 context.Context, arg2 *s3a.PutBucketRequestPaymentInput, arg3 ...request.Option) (*s3a.PutBucketRequestPaymentOutput, error) {
 	fake.putBucketRequestPaymentWithContextMutex.Lock()
 	ret, specificReturn := fake.putBucketRequestPaymentWithContextReturnsOnCall[len(fake.putBucketRequestPaymentWithContextArgsForCall)]
 	fake.putBucketRequestPaymentWithContextArgsForCall = append(fake.putBucketRequestPaymentWithContextArgsForCall, struct {
@@ -20212,26 +20212,26 @@ func (fake *FakeS3) PutBucketRequestPaymentWithContext(arg1 context.Context, arg
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketRequestPaymentWithContextCallCount() int {
+func (fake *FakeClient) PutBucketRequestPaymentWithContextCallCount() int {
 	fake.putBucketRequestPaymentWithContextMutex.RLock()
 	defer fake.putBucketRequestPaymentWithContextMutex.RUnlock()
 	return len(fake.putBucketRequestPaymentWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketRequestPaymentWithContextCalls(stub func(context.Context, *s3a.PutBucketRequestPaymentInput, ...request.Option) (*s3a.PutBucketRequestPaymentOutput, error)) {
+func (fake *FakeClient) PutBucketRequestPaymentWithContextCalls(stub func(context.Context, *s3a.PutBucketRequestPaymentInput, ...request.Option) (*s3a.PutBucketRequestPaymentOutput, error)) {
 	fake.putBucketRequestPaymentWithContextMutex.Lock()
 	defer fake.putBucketRequestPaymentWithContextMutex.Unlock()
 	fake.PutBucketRequestPaymentWithContextStub = stub
 }
 
-func (fake *FakeS3) PutBucketRequestPaymentWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketRequestPaymentInput, []request.Option) {
+func (fake *FakeClient) PutBucketRequestPaymentWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketRequestPaymentInput, []request.Option) {
 	fake.putBucketRequestPaymentWithContextMutex.RLock()
 	defer fake.putBucketRequestPaymentWithContextMutex.RUnlock()
 	argsForCall := fake.putBucketRequestPaymentWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutBucketRequestPaymentWithContextReturns(result1 *s3a.PutBucketRequestPaymentOutput, result2 error) {
+func (fake *FakeClient) PutBucketRequestPaymentWithContextReturns(result1 *s3a.PutBucketRequestPaymentOutput, result2 error) {
 	fake.putBucketRequestPaymentWithContextMutex.Lock()
 	defer fake.putBucketRequestPaymentWithContextMutex.Unlock()
 	fake.PutBucketRequestPaymentWithContextStub = nil
@@ -20241,7 +20241,7 @@ func (fake *FakeS3) PutBucketRequestPaymentWithContextReturns(result1 *s3a.PutBu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketRequestPaymentWithContextReturnsOnCall(i int, result1 *s3a.PutBucketRequestPaymentOutput, result2 error) {
+func (fake *FakeClient) PutBucketRequestPaymentWithContextReturnsOnCall(i int, result1 *s3a.PutBucketRequestPaymentOutput, result2 error) {
 	fake.putBucketRequestPaymentWithContextMutex.Lock()
 	defer fake.putBucketRequestPaymentWithContextMutex.Unlock()
 	fake.PutBucketRequestPaymentWithContextStub = nil
@@ -20257,7 +20257,7 @@ func (fake *FakeS3) PutBucketRequestPaymentWithContextReturnsOnCall(i int, resul
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketTagging(arg1 *s3a.PutBucketTaggingInput) (*s3a.PutBucketTaggingOutput, error) {
+func (fake *FakeClient) PutBucketTagging(arg1 *s3a.PutBucketTaggingInput) (*s3a.PutBucketTaggingOutput, error) {
 	fake.putBucketTaggingMutex.Lock()
 	ret, specificReturn := fake.putBucketTaggingReturnsOnCall[len(fake.putBucketTaggingArgsForCall)]
 	fake.putBucketTaggingArgsForCall = append(fake.putBucketTaggingArgsForCall, struct {
@@ -20275,26 +20275,26 @@ func (fake *FakeS3) PutBucketTagging(arg1 *s3a.PutBucketTaggingInput) (*s3a.PutB
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketTaggingCallCount() int {
+func (fake *FakeClient) PutBucketTaggingCallCount() int {
 	fake.putBucketTaggingMutex.RLock()
 	defer fake.putBucketTaggingMutex.RUnlock()
 	return len(fake.putBucketTaggingArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketTaggingCalls(stub func(*s3a.PutBucketTaggingInput) (*s3a.PutBucketTaggingOutput, error)) {
+func (fake *FakeClient) PutBucketTaggingCalls(stub func(*s3a.PutBucketTaggingInput) (*s3a.PutBucketTaggingOutput, error)) {
 	fake.putBucketTaggingMutex.Lock()
 	defer fake.putBucketTaggingMutex.Unlock()
 	fake.PutBucketTaggingStub = stub
 }
 
-func (fake *FakeS3) PutBucketTaggingArgsForCall(i int) *s3a.PutBucketTaggingInput {
+func (fake *FakeClient) PutBucketTaggingArgsForCall(i int) *s3a.PutBucketTaggingInput {
 	fake.putBucketTaggingMutex.RLock()
 	defer fake.putBucketTaggingMutex.RUnlock()
 	argsForCall := fake.putBucketTaggingArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketTaggingReturns(result1 *s3a.PutBucketTaggingOutput, result2 error) {
+func (fake *FakeClient) PutBucketTaggingReturns(result1 *s3a.PutBucketTaggingOutput, result2 error) {
 	fake.putBucketTaggingMutex.Lock()
 	defer fake.putBucketTaggingMutex.Unlock()
 	fake.PutBucketTaggingStub = nil
@@ -20304,7 +20304,7 @@ func (fake *FakeS3) PutBucketTaggingReturns(result1 *s3a.PutBucketTaggingOutput,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketTaggingReturnsOnCall(i int, result1 *s3a.PutBucketTaggingOutput, result2 error) {
+func (fake *FakeClient) PutBucketTaggingReturnsOnCall(i int, result1 *s3a.PutBucketTaggingOutput, result2 error) {
 	fake.putBucketTaggingMutex.Lock()
 	defer fake.putBucketTaggingMutex.Unlock()
 	fake.PutBucketTaggingStub = nil
@@ -20320,7 +20320,7 @@ func (fake *FakeS3) PutBucketTaggingReturnsOnCall(i int, result1 *s3a.PutBucketT
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketTaggingRequest(arg1 *s3a.PutBucketTaggingInput) (*request.Request, *s3a.PutBucketTaggingOutput) {
+func (fake *FakeClient) PutBucketTaggingRequest(arg1 *s3a.PutBucketTaggingInput) (*request.Request, *s3a.PutBucketTaggingOutput) {
 	fake.putBucketTaggingRequestMutex.Lock()
 	ret, specificReturn := fake.putBucketTaggingRequestReturnsOnCall[len(fake.putBucketTaggingRequestArgsForCall)]
 	fake.putBucketTaggingRequestArgsForCall = append(fake.putBucketTaggingRequestArgsForCall, struct {
@@ -20338,26 +20338,26 @@ func (fake *FakeS3) PutBucketTaggingRequest(arg1 *s3a.PutBucketTaggingInput) (*r
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketTaggingRequestCallCount() int {
+func (fake *FakeClient) PutBucketTaggingRequestCallCount() int {
 	fake.putBucketTaggingRequestMutex.RLock()
 	defer fake.putBucketTaggingRequestMutex.RUnlock()
 	return len(fake.putBucketTaggingRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketTaggingRequestCalls(stub func(*s3a.PutBucketTaggingInput) (*request.Request, *s3a.PutBucketTaggingOutput)) {
+func (fake *FakeClient) PutBucketTaggingRequestCalls(stub func(*s3a.PutBucketTaggingInput) (*request.Request, *s3a.PutBucketTaggingOutput)) {
 	fake.putBucketTaggingRequestMutex.Lock()
 	defer fake.putBucketTaggingRequestMutex.Unlock()
 	fake.PutBucketTaggingRequestStub = stub
 }
 
-func (fake *FakeS3) PutBucketTaggingRequestArgsForCall(i int) *s3a.PutBucketTaggingInput {
+func (fake *FakeClient) PutBucketTaggingRequestArgsForCall(i int) *s3a.PutBucketTaggingInput {
 	fake.putBucketTaggingRequestMutex.RLock()
 	defer fake.putBucketTaggingRequestMutex.RUnlock()
 	argsForCall := fake.putBucketTaggingRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketTaggingRequestReturns(result1 *request.Request, result2 *s3a.PutBucketTaggingOutput) {
+func (fake *FakeClient) PutBucketTaggingRequestReturns(result1 *request.Request, result2 *s3a.PutBucketTaggingOutput) {
 	fake.putBucketTaggingRequestMutex.Lock()
 	defer fake.putBucketTaggingRequestMutex.Unlock()
 	fake.PutBucketTaggingRequestStub = nil
@@ -20367,7 +20367,7 @@ func (fake *FakeS3) PutBucketTaggingRequestReturns(result1 *request.Request, res
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketTaggingRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketTaggingOutput) {
+func (fake *FakeClient) PutBucketTaggingRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketTaggingOutput) {
 	fake.putBucketTaggingRequestMutex.Lock()
 	defer fake.putBucketTaggingRequestMutex.Unlock()
 	fake.PutBucketTaggingRequestStub = nil
@@ -20383,7 +20383,7 @@ func (fake *FakeS3) PutBucketTaggingRequestReturnsOnCall(i int, result1 *request
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketTaggingWithContext(arg1 context.Context, arg2 *s3a.PutBucketTaggingInput, arg3 ...request.Option) (*s3a.PutBucketTaggingOutput, error) {
+func (fake *FakeClient) PutBucketTaggingWithContext(arg1 context.Context, arg2 *s3a.PutBucketTaggingInput, arg3 ...request.Option) (*s3a.PutBucketTaggingOutput, error) {
 	fake.putBucketTaggingWithContextMutex.Lock()
 	ret, specificReturn := fake.putBucketTaggingWithContextReturnsOnCall[len(fake.putBucketTaggingWithContextArgsForCall)]
 	fake.putBucketTaggingWithContextArgsForCall = append(fake.putBucketTaggingWithContextArgsForCall, struct {
@@ -20403,26 +20403,26 @@ func (fake *FakeS3) PutBucketTaggingWithContext(arg1 context.Context, arg2 *s3a.
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketTaggingWithContextCallCount() int {
+func (fake *FakeClient) PutBucketTaggingWithContextCallCount() int {
 	fake.putBucketTaggingWithContextMutex.RLock()
 	defer fake.putBucketTaggingWithContextMutex.RUnlock()
 	return len(fake.putBucketTaggingWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketTaggingWithContextCalls(stub func(context.Context, *s3a.PutBucketTaggingInput, ...request.Option) (*s3a.PutBucketTaggingOutput, error)) {
+func (fake *FakeClient) PutBucketTaggingWithContextCalls(stub func(context.Context, *s3a.PutBucketTaggingInput, ...request.Option) (*s3a.PutBucketTaggingOutput, error)) {
 	fake.putBucketTaggingWithContextMutex.Lock()
 	defer fake.putBucketTaggingWithContextMutex.Unlock()
 	fake.PutBucketTaggingWithContextStub = stub
 }
 
-func (fake *FakeS3) PutBucketTaggingWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketTaggingInput, []request.Option) {
+func (fake *FakeClient) PutBucketTaggingWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketTaggingInput, []request.Option) {
 	fake.putBucketTaggingWithContextMutex.RLock()
 	defer fake.putBucketTaggingWithContextMutex.RUnlock()
 	argsForCall := fake.putBucketTaggingWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutBucketTaggingWithContextReturns(result1 *s3a.PutBucketTaggingOutput, result2 error) {
+func (fake *FakeClient) PutBucketTaggingWithContextReturns(result1 *s3a.PutBucketTaggingOutput, result2 error) {
 	fake.putBucketTaggingWithContextMutex.Lock()
 	defer fake.putBucketTaggingWithContextMutex.Unlock()
 	fake.PutBucketTaggingWithContextStub = nil
@@ -20432,7 +20432,7 @@ func (fake *FakeS3) PutBucketTaggingWithContextReturns(result1 *s3a.PutBucketTag
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketTaggingWithContextReturnsOnCall(i int, result1 *s3a.PutBucketTaggingOutput, result2 error) {
+func (fake *FakeClient) PutBucketTaggingWithContextReturnsOnCall(i int, result1 *s3a.PutBucketTaggingOutput, result2 error) {
 	fake.putBucketTaggingWithContextMutex.Lock()
 	defer fake.putBucketTaggingWithContextMutex.Unlock()
 	fake.PutBucketTaggingWithContextStub = nil
@@ -20448,7 +20448,7 @@ func (fake *FakeS3) PutBucketTaggingWithContextReturnsOnCall(i int, result1 *s3a
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketVersioning(arg1 *s3a.PutBucketVersioningInput) (*s3a.PutBucketVersioningOutput, error) {
+func (fake *FakeClient) PutBucketVersioning(arg1 *s3a.PutBucketVersioningInput) (*s3a.PutBucketVersioningOutput, error) {
 	fake.putBucketVersioningMutex.Lock()
 	ret, specificReturn := fake.putBucketVersioningReturnsOnCall[len(fake.putBucketVersioningArgsForCall)]
 	fake.putBucketVersioningArgsForCall = append(fake.putBucketVersioningArgsForCall, struct {
@@ -20466,26 +20466,26 @@ func (fake *FakeS3) PutBucketVersioning(arg1 *s3a.PutBucketVersioningInput) (*s3
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketVersioningCallCount() int {
+func (fake *FakeClient) PutBucketVersioningCallCount() int {
 	fake.putBucketVersioningMutex.RLock()
 	defer fake.putBucketVersioningMutex.RUnlock()
 	return len(fake.putBucketVersioningArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketVersioningCalls(stub func(*s3a.PutBucketVersioningInput) (*s3a.PutBucketVersioningOutput, error)) {
+func (fake *FakeClient) PutBucketVersioningCalls(stub func(*s3a.PutBucketVersioningInput) (*s3a.PutBucketVersioningOutput, error)) {
 	fake.putBucketVersioningMutex.Lock()
 	defer fake.putBucketVersioningMutex.Unlock()
 	fake.PutBucketVersioningStub = stub
 }
 
-func (fake *FakeS3) PutBucketVersioningArgsForCall(i int) *s3a.PutBucketVersioningInput {
+func (fake *FakeClient) PutBucketVersioningArgsForCall(i int) *s3a.PutBucketVersioningInput {
 	fake.putBucketVersioningMutex.RLock()
 	defer fake.putBucketVersioningMutex.RUnlock()
 	argsForCall := fake.putBucketVersioningArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketVersioningReturns(result1 *s3a.PutBucketVersioningOutput, result2 error) {
+func (fake *FakeClient) PutBucketVersioningReturns(result1 *s3a.PutBucketVersioningOutput, result2 error) {
 	fake.putBucketVersioningMutex.Lock()
 	defer fake.putBucketVersioningMutex.Unlock()
 	fake.PutBucketVersioningStub = nil
@@ -20495,7 +20495,7 @@ func (fake *FakeS3) PutBucketVersioningReturns(result1 *s3a.PutBucketVersioningO
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketVersioningReturnsOnCall(i int, result1 *s3a.PutBucketVersioningOutput, result2 error) {
+func (fake *FakeClient) PutBucketVersioningReturnsOnCall(i int, result1 *s3a.PutBucketVersioningOutput, result2 error) {
 	fake.putBucketVersioningMutex.Lock()
 	defer fake.putBucketVersioningMutex.Unlock()
 	fake.PutBucketVersioningStub = nil
@@ -20511,7 +20511,7 @@ func (fake *FakeS3) PutBucketVersioningReturnsOnCall(i int, result1 *s3a.PutBuck
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketVersioningRequest(arg1 *s3a.PutBucketVersioningInput) (*request.Request, *s3a.PutBucketVersioningOutput) {
+func (fake *FakeClient) PutBucketVersioningRequest(arg1 *s3a.PutBucketVersioningInput) (*request.Request, *s3a.PutBucketVersioningOutput) {
 	fake.putBucketVersioningRequestMutex.Lock()
 	ret, specificReturn := fake.putBucketVersioningRequestReturnsOnCall[len(fake.putBucketVersioningRequestArgsForCall)]
 	fake.putBucketVersioningRequestArgsForCall = append(fake.putBucketVersioningRequestArgsForCall, struct {
@@ -20529,26 +20529,26 @@ func (fake *FakeS3) PutBucketVersioningRequest(arg1 *s3a.PutBucketVersioningInpu
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketVersioningRequestCallCount() int {
+func (fake *FakeClient) PutBucketVersioningRequestCallCount() int {
 	fake.putBucketVersioningRequestMutex.RLock()
 	defer fake.putBucketVersioningRequestMutex.RUnlock()
 	return len(fake.putBucketVersioningRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketVersioningRequestCalls(stub func(*s3a.PutBucketVersioningInput) (*request.Request, *s3a.PutBucketVersioningOutput)) {
+func (fake *FakeClient) PutBucketVersioningRequestCalls(stub func(*s3a.PutBucketVersioningInput) (*request.Request, *s3a.PutBucketVersioningOutput)) {
 	fake.putBucketVersioningRequestMutex.Lock()
 	defer fake.putBucketVersioningRequestMutex.Unlock()
 	fake.PutBucketVersioningRequestStub = stub
 }
 
-func (fake *FakeS3) PutBucketVersioningRequestArgsForCall(i int) *s3a.PutBucketVersioningInput {
+func (fake *FakeClient) PutBucketVersioningRequestArgsForCall(i int) *s3a.PutBucketVersioningInput {
 	fake.putBucketVersioningRequestMutex.RLock()
 	defer fake.putBucketVersioningRequestMutex.RUnlock()
 	argsForCall := fake.putBucketVersioningRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketVersioningRequestReturns(result1 *request.Request, result2 *s3a.PutBucketVersioningOutput) {
+func (fake *FakeClient) PutBucketVersioningRequestReturns(result1 *request.Request, result2 *s3a.PutBucketVersioningOutput) {
 	fake.putBucketVersioningRequestMutex.Lock()
 	defer fake.putBucketVersioningRequestMutex.Unlock()
 	fake.PutBucketVersioningRequestStub = nil
@@ -20558,7 +20558,7 @@ func (fake *FakeS3) PutBucketVersioningRequestReturns(result1 *request.Request, 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketVersioningRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketVersioningOutput) {
+func (fake *FakeClient) PutBucketVersioningRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketVersioningOutput) {
 	fake.putBucketVersioningRequestMutex.Lock()
 	defer fake.putBucketVersioningRequestMutex.Unlock()
 	fake.PutBucketVersioningRequestStub = nil
@@ -20574,7 +20574,7 @@ func (fake *FakeS3) PutBucketVersioningRequestReturnsOnCall(i int, result1 *requ
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketVersioningWithContext(arg1 context.Context, arg2 *s3a.PutBucketVersioningInput, arg3 ...request.Option) (*s3a.PutBucketVersioningOutput, error) {
+func (fake *FakeClient) PutBucketVersioningWithContext(arg1 context.Context, arg2 *s3a.PutBucketVersioningInput, arg3 ...request.Option) (*s3a.PutBucketVersioningOutput, error) {
 	fake.putBucketVersioningWithContextMutex.Lock()
 	ret, specificReturn := fake.putBucketVersioningWithContextReturnsOnCall[len(fake.putBucketVersioningWithContextArgsForCall)]
 	fake.putBucketVersioningWithContextArgsForCall = append(fake.putBucketVersioningWithContextArgsForCall, struct {
@@ -20594,26 +20594,26 @@ func (fake *FakeS3) PutBucketVersioningWithContext(arg1 context.Context, arg2 *s
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketVersioningWithContextCallCount() int {
+func (fake *FakeClient) PutBucketVersioningWithContextCallCount() int {
 	fake.putBucketVersioningWithContextMutex.RLock()
 	defer fake.putBucketVersioningWithContextMutex.RUnlock()
 	return len(fake.putBucketVersioningWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketVersioningWithContextCalls(stub func(context.Context, *s3a.PutBucketVersioningInput, ...request.Option) (*s3a.PutBucketVersioningOutput, error)) {
+func (fake *FakeClient) PutBucketVersioningWithContextCalls(stub func(context.Context, *s3a.PutBucketVersioningInput, ...request.Option) (*s3a.PutBucketVersioningOutput, error)) {
 	fake.putBucketVersioningWithContextMutex.Lock()
 	defer fake.putBucketVersioningWithContextMutex.Unlock()
 	fake.PutBucketVersioningWithContextStub = stub
 }
 
-func (fake *FakeS3) PutBucketVersioningWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketVersioningInput, []request.Option) {
+func (fake *FakeClient) PutBucketVersioningWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketVersioningInput, []request.Option) {
 	fake.putBucketVersioningWithContextMutex.RLock()
 	defer fake.putBucketVersioningWithContextMutex.RUnlock()
 	argsForCall := fake.putBucketVersioningWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutBucketVersioningWithContextReturns(result1 *s3a.PutBucketVersioningOutput, result2 error) {
+func (fake *FakeClient) PutBucketVersioningWithContextReturns(result1 *s3a.PutBucketVersioningOutput, result2 error) {
 	fake.putBucketVersioningWithContextMutex.Lock()
 	defer fake.putBucketVersioningWithContextMutex.Unlock()
 	fake.PutBucketVersioningWithContextStub = nil
@@ -20623,7 +20623,7 @@ func (fake *FakeS3) PutBucketVersioningWithContextReturns(result1 *s3a.PutBucket
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketVersioningWithContextReturnsOnCall(i int, result1 *s3a.PutBucketVersioningOutput, result2 error) {
+func (fake *FakeClient) PutBucketVersioningWithContextReturnsOnCall(i int, result1 *s3a.PutBucketVersioningOutput, result2 error) {
 	fake.putBucketVersioningWithContextMutex.Lock()
 	defer fake.putBucketVersioningWithContextMutex.Unlock()
 	fake.PutBucketVersioningWithContextStub = nil
@@ -20639,7 +20639,7 @@ func (fake *FakeS3) PutBucketVersioningWithContextReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketWebsite(arg1 *s3a.PutBucketWebsiteInput) (*s3a.PutBucketWebsiteOutput, error) {
+func (fake *FakeClient) PutBucketWebsite(arg1 *s3a.PutBucketWebsiteInput) (*s3a.PutBucketWebsiteOutput, error) {
 	fake.putBucketWebsiteMutex.Lock()
 	ret, specificReturn := fake.putBucketWebsiteReturnsOnCall[len(fake.putBucketWebsiteArgsForCall)]
 	fake.putBucketWebsiteArgsForCall = append(fake.putBucketWebsiteArgsForCall, struct {
@@ -20657,26 +20657,26 @@ func (fake *FakeS3) PutBucketWebsite(arg1 *s3a.PutBucketWebsiteInput) (*s3a.PutB
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketWebsiteCallCount() int {
+func (fake *FakeClient) PutBucketWebsiteCallCount() int {
 	fake.putBucketWebsiteMutex.RLock()
 	defer fake.putBucketWebsiteMutex.RUnlock()
 	return len(fake.putBucketWebsiteArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketWebsiteCalls(stub func(*s3a.PutBucketWebsiteInput) (*s3a.PutBucketWebsiteOutput, error)) {
+func (fake *FakeClient) PutBucketWebsiteCalls(stub func(*s3a.PutBucketWebsiteInput) (*s3a.PutBucketWebsiteOutput, error)) {
 	fake.putBucketWebsiteMutex.Lock()
 	defer fake.putBucketWebsiteMutex.Unlock()
 	fake.PutBucketWebsiteStub = stub
 }
 
-func (fake *FakeS3) PutBucketWebsiteArgsForCall(i int) *s3a.PutBucketWebsiteInput {
+func (fake *FakeClient) PutBucketWebsiteArgsForCall(i int) *s3a.PutBucketWebsiteInput {
 	fake.putBucketWebsiteMutex.RLock()
 	defer fake.putBucketWebsiteMutex.RUnlock()
 	argsForCall := fake.putBucketWebsiteArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketWebsiteReturns(result1 *s3a.PutBucketWebsiteOutput, result2 error) {
+func (fake *FakeClient) PutBucketWebsiteReturns(result1 *s3a.PutBucketWebsiteOutput, result2 error) {
 	fake.putBucketWebsiteMutex.Lock()
 	defer fake.putBucketWebsiteMutex.Unlock()
 	fake.PutBucketWebsiteStub = nil
@@ -20686,7 +20686,7 @@ func (fake *FakeS3) PutBucketWebsiteReturns(result1 *s3a.PutBucketWebsiteOutput,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketWebsiteReturnsOnCall(i int, result1 *s3a.PutBucketWebsiteOutput, result2 error) {
+func (fake *FakeClient) PutBucketWebsiteReturnsOnCall(i int, result1 *s3a.PutBucketWebsiteOutput, result2 error) {
 	fake.putBucketWebsiteMutex.Lock()
 	defer fake.putBucketWebsiteMutex.Unlock()
 	fake.PutBucketWebsiteStub = nil
@@ -20702,7 +20702,7 @@ func (fake *FakeS3) PutBucketWebsiteReturnsOnCall(i int, result1 *s3a.PutBucketW
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketWebsiteRequest(arg1 *s3a.PutBucketWebsiteInput) (*request.Request, *s3a.PutBucketWebsiteOutput) {
+func (fake *FakeClient) PutBucketWebsiteRequest(arg1 *s3a.PutBucketWebsiteInput) (*request.Request, *s3a.PutBucketWebsiteOutput) {
 	fake.putBucketWebsiteRequestMutex.Lock()
 	ret, specificReturn := fake.putBucketWebsiteRequestReturnsOnCall[len(fake.putBucketWebsiteRequestArgsForCall)]
 	fake.putBucketWebsiteRequestArgsForCall = append(fake.putBucketWebsiteRequestArgsForCall, struct {
@@ -20720,26 +20720,26 @@ func (fake *FakeS3) PutBucketWebsiteRequest(arg1 *s3a.PutBucketWebsiteInput) (*r
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketWebsiteRequestCallCount() int {
+func (fake *FakeClient) PutBucketWebsiteRequestCallCount() int {
 	fake.putBucketWebsiteRequestMutex.RLock()
 	defer fake.putBucketWebsiteRequestMutex.RUnlock()
 	return len(fake.putBucketWebsiteRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketWebsiteRequestCalls(stub func(*s3a.PutBucketWebsiteInput) (*request.Request, *s3a.PutBucketWebsiteOutput)) {
+func (fake *FakeClient) PutBucketWebsiteRequestCalls(stub func(*s3a.PutBucketWebsiteInput) (*request.Request, *s3a.PutBucketWebsiteOutput)) {
 	fake.putBucketWebsiteRequestMutex.Lock()
 	defer fake.putBucketWebsiteRequestMutex.Unlock()
 	fake.PutBucketWebsiteRequestStub = stub
 }
 
-func (fake *FakeS3) PutBucketWebsiteRequestArgsForCall(i int) *s3a.PutBucketWebsiteInput {
+func (fake *FakeClient) PutBucketWebsiteRequestArgsForCall(i int) *s3a.PutBucketWebsiteInput {
 	fake.putBucketWebsiteRequestMutex.RLock()
 	defer fake.putBucketWebsiteRequestMutex.RUnlock()
 	argsForCall := fake.putBucketWebsiteRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutBucketWebsiteRequestReturns(result1 *request.Request, result2 *s3a.PutBucketWebsiteOutput) {
+func (fake *FakeClient) PutBucketWebsiteRequestReturns(result1 *request.Request, result2 *s3a.PutBucketWebsiteOutput) {
 	fake.putBucketWebsiteRequestMutex.Lock()
 	defer fake.putBucketWebsiteRequestMutex.Unlock()
 	fake.PutBucketWebsiteRequestStub = nil
@@ -20749,7 +20749,7 @@ func (fake *FakeS3) PutBucketWebsiteRequestReturns(result1 *request.Request, res
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketWebsiteRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketWebsiteOutput) {
+func (fake *FakeClient) PutBucketWebsiteRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutBucketWebsiteOutput) {
 	fake.putBucketWebsiteRequestMutex.Lock()
 	defer fake.putBucketWebsiteRequestMutex.Unlock()
 	fake.PutBucketWebsiteRequestStub = nil
@@ -20765,7 +20765,7 @@ func (fake *FakeS3) PutBucketWebsiteRequestReturnsOnCall(i int, result1 *request
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketWebsiteWithContext(arg1 context.Context, arg2 *s3a.PutBucketWebsiteInput, arg3 ...request.Option) (*s3a.PutBucketWebsiteOutput, error) {
+func (fake *FakeClient) PutBucketWebsiteWithContext(arg1 context.Context, arg2 *s3a.PutBucketWebsiteInput, arg3 ...request.Option) (*s3a.PutBucketWebsiteOutput, error) {
 	fake.putBucketWebsiteWithContextMutex.Lock()
 	ret, specificReturn := fake.putBucketWebsiteWithContextReturnsOnCall[len(fake.putBucketWebsiteWithContextArgsForCall)]
 	fake.putBucketWebsiteWithContextArgsForCall = append(fake.putBucketWebsiteWithContextArgsForCall, struct {
@@ -20785,26 +20785,26 @@ func (fake *FakeS3) PutBucketWebsiteWithContext(arg1 context.Context, arg2 *s3a.
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutBucketWebsiteWithContextCallCount() int {
+func (fake *FakeClient) PutBucketWebsiteWithContextCallCount() int {
 	fake.putBucketWebsiteWithContextMutex.RLock()
 	defer fake.putBucketWebsiteWithContextMutex.RUnlock()
 	return len(fake.putBucketWebsiteWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutBucketWebsiteWithContextCalls(stub func(context.Context, *s3a.PutBucketWebsiteInput, ...request.Option) (*s3a.PutBucketWebsiteOutput, error)) {
+func (fake *FakeClient) PutBucketWebsiteWithContextCalls(stub func(context.Context, *s3a.PutBucketWebsiteInput, ...request.Option) (*s3a.PutBucketWebsiteOutput, error)) {
 	fake.putBucketWebsiteWithContextMutex.Lock()
 	defer fake.putBucketWebsiteWithContextMutex.Unlock()
 	fake.PutBucketWebsiteWithContextStub = stub
 }
 
-func (fake *FakeS3) PutBucketWebsiteWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketWebsiteInput, []request.Option) {
+func (fake *FakeClient) PutBucketWebsiteWithContextArgsForCall(i int) (context.Context, *s3a.PutBucketWebsiteInput, []request.Option) {
 	fake.putBucketWebsiteWithContextMutex.RLock()
 	defer fake.putBucketWebsiteWithContextMutex.RUnlock()
 	argsForCall := fake.putBucketWebsiteWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutBucketWebsiteWithContextReturns(result1 *s3a.PutBucketWebsiteOutput, result2 error) {
+func (fake *FakeClient) PutBucketWebsiteWithContextReturns(result1 *s3a.PutBucketWebsiteOutput, result2 error) {
 	fake.putBucketWebsiteWithContextMutex.Lock()
 	defer fake.putBucketWebsiteWithContextMutex.Unlock()
 	fake.PutBucketWebsiteWithContextStub = nil
@@ -20814,7 +20814,7 @@ func (fake *FakeS3) PutBucketWebsiteWithContextReturns(result1 *s3a.PutBucketWeb
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutBucketWebsiteWithContextReturnsOnCall(i int, result1 *s3a.PutBucketWebsiteOutput, result2 error) {
+func (fake *FakeClient) PutBucketWebsiteWithContextReturnsOnCall(i int, result1 *s3a.PutBucketWebsiteOutput, result2 error) {
 	fake.putBucketWebsiteWithContextMutex.Lock()
 	defer fake.putBucketWebsiteWithContextMutex.Unlock()
 	fake.PutBucketWebsiteWithContextStub = nil
@@ -20830,7 +20830,7 @@ func (fake *FakeS3) PutBucketWebsiteWithContextReturnsOnCall(i int, result1 *s3a
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObject(arg1 *s3a.PutObjectInput) (*s3a.PutObjectOutput, error) {
+func (fake *FakeClient) PutObject(arg1 *s3a.PutObjectInput) (*s3a.PutObjectOutput, error) {
 	fake.putObjectMutex.Lock()
 	ret, specificReturn := fake.putObjectReturnsOnCall[len(fake.putObjectArgsForCall)]
 	fake.putObjectArgsForCall = append(fake.putObjectArgsForCall, struct {
@@ -20848,26 +20848,26 @@ func (fake *FakeS3) PutObject(arg1 *s3a.PutObjectInput) (*s3a.PutObjectOutput, e
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutObjectCallCount() int {
+func (fake *FakeClient) PutObjectCallCount() int {
 	fake.putObjectMutex.RLock()
 	defer fake.putObjectMutex.RUnlock()
 	return len(fake.putObjectArgsForCall)
 }
 
-func (fake *FakeS3) PutObjectCalls(stub func(*s3a.PutObjectInput) (*s3a.PutObjectOutput, error)) {
+func (fake *FakeClient) PutObjectCalls(stub func(*s3a.PutObjectInput) (*s3a.PutObjectOutput, error)) {
 	fake.putObjectMutex.Lock()
 	defer fake.putObjectMutex.Unlock()
 	fake.PutObjectStub = stub
 }
 
-func (fake *FakeS3) PutObjectArgsForCall(i int) *s3a.PutObjectInput {
+func (fake *FakeClient) PutObjectArgsForCall(i int) *s3a.PutObjectInput {
 	fake.putObjectMutex.RLock()
 	defer fake.putObjectMutex.RUnlock()
 	argsForCall := fake.putObjectArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutObjectReturns(result1 *s3a.PutObjectOutput, result2 error) {
+func (fake *FakeClient) PutObjectReturns(result1 *s3a.PutObjectOutput, result2 error) {
 	fake.putObjectMutex.Lock()
 	defer fake.putObjectMutex.Unlock()
 	fake.PutObjectStub = nil
@@ -20877,7 +20877,7 @@ func (fake *FakeS3) PutObjectReturns(result1 *s3a.PutObjectOutput, result2 error
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectReturnsOnCall(i int, result1 *s3a.PutObjectOutput, result2 error) {
+func (fake *FakeClient) PutObjectReturnsOnCall(i int, result1 *s3a.PutObjectOutput, result2 error) {
 	fake.putObjectMutex.Lock()
 	defer fake.putObjectMutex.Unlock()
 	fake.PutObjectStub = nil
@@ -20893,7 +20893,7 @@ func (fake *FakeS3) PutObjectReturnsOnCall(i int, result1 *s3a.PutObjectOutput, 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectAcl(arg1 *s3a.PutObjectAclInput) (*s3a.PutObjectAclOutput, error) {
+func (fake *FakeClient) PutObjectAcl(arg1 *s3a.PutObjectAclInput) (*s3a.PutObjectAclOutput, error) {
 	fake.putObjectAclMutex.Lock()
 	ret, specificReturn := fake.putObjectAclReturnsOnCall[len(fake.putObjectAclArgsForCall)]
 	fake.putObjectAclArgsForCall = append(fake.putObjectAclArgsForCall, struct {
@@ -20911,26 +20911,26 @@ func (fake *FakeS3) PutObjectAcl(arg1 *s3a.PutObjectAclInput) (*s3a.PutObjectAcl
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutObjectAclCallCount() int {
+func (fake *FakeClient) PutObjectAclCallCount() int {
 	fake.putObjectAclMutex.RLock()
 	defer fake.putObjectAclMutex.RUnlock()
 	return len(fake.putObjectAclArgsForCall)
 }
 
-func (fake *FakeS3) PutObjectAclCalls(stub func(*s3a.PutObjectAclInput) (*s3a.PutObjectAclOutput, error)) {
+func (fake *FakeClient) PutObjectAclCalls(stub func(*s3a.PutObjectAclInput) (*s3a.PutObjectAclOutput, error)) {
 	fake.putObjectAclMutex.Lock()
 	defer fake.putObjectAclMutex.Unlock()
 	fake.PutObjectAclStub = stub
 }
 
-func (fake *FakeS3) PutObjectAclArgsForCall(i int) *s3a.PutObjectAclInput {
+func (fake *FakeClient) PutObjectAclArgsForCall(i int) *s3a.PutObjectAclInput {
 	fake.putObjectAclMutex.RLock()
 	defer fake.putObjectAclMutex.RUnlock()
 	argsForCall := fake.putObjectAclArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutObjectAclReturns(result1 *s3a.PutObjectAclOutput, result2 error) {
+func (fake *FakeClient) PutObjectAclReturns(result1 *s3a.PutObjectAclOutput, result2 error) {
 	fake.putObjectAclMutex.Lock()
 	defer fake.putObjectAclMutex.Unlock()
 	fake.PutObjectAclStub = nil
@@ -20940,7 +20940,7 @@ func (fake *FakeS3) PutObjectAclReturns(result1 *s3a.PutObjectAclOutput, result2
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectAclReturnsOnCall(i int, result1 *s3a.PutObjectAclOutput, result2 error) {
+func (fake *FakeClient) PutObjectAclReturnsOnCall(i int, result1 *s3a.PutObjectAclOutput, result2 error) {
 	fake.putObjectAclMutex.Lock()
 	defer fake.putObjectAclMutex.Unlock()
 	fake.PutObjectAclStub = nil
@@ -20956,7 +20956,7 @@ func (fake *FakeS3) PutObjectAclReturnsOnCall(i int, result1 *s3a.PutObjectAclOu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectAclRequest(arg1 *s3a.PutObjectAclInput) (*request.Request, *s3a.PutObjectAclOutput) {
+func (fake *FakeClient) PutObjectAclRequest(arg1 *s3a.PutObjectAclInput) (*request.Request, *s3a.PutObjectAclOutput) {
 	fake.putObjectAclRequestMutex.Lock()
 	ret, specificReturn := fake.putObjectAclRequestReturnsOnCall[len(fake.putObjectAclRequestArgsForCall)]
 	fake.putObjectAclRequestArgsForCall = append(fake.putObjectAclRequestArgsForCall, struct {
@@ -20974,26 +20974,26 @@ func (fake *FakeS3) PutObjectAclRequest(arg1 *s3a.PutObjectAclInput) (*request.R
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutObjectAclRequestCallCount() int {
+func (fake *FakeClient) PutObjectAclRequestCallCount() int {
 	fake.putObjectAclRequestMutex.RLock()
 	defer fake.putObjectAclRequestMutex.RUnlock()
 	return len(fake.putObjectAclRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutObjectAclRequestCalls(stub func(*s3a.PutObjectAclInput) (*request.Request, *s3a.PutObjectAclOutput)) {
+func (fake *FakeClient) PutObjectAclRequestCalls(stub func(*s3a.PutObjectAclInput) (*request.Request, *s3a.PutObjectAclOutput)) {
 	fake.putObjectAclRequestMutex.Lock()
 	defer fake.putObjectAclRequestMutex.Unlock()
 	fake.PutObjectAclRequestStub = stub
 }
 
-func (fake *FakeS3) PutObjectAclRequestArgsForCall(i int) *s3a.PutObjectAclInput {
+func (fake *FakeClient) PutObjectAclRequestArgsForCall(i int) *s3a.PutObjectAclInput {
 	fake.putObjectAclRequestMutex.RLock()
 	defer fake.putObjectAclRequestMutex.RUnlock()
 	argsForCall := fake.putObjectAclRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutObjectAclRequestReturns(result1 *request.Request, result2 *s3a.PutObjectAclOutput) {
+func (fake *FakeClient) PutObjectAclRequestReturns(result1 *request.Request, result2 *s3a.PutObjectAclOutput) {
 	fake.putObjectAclRequestMutex.Lock()
 	defer fake.putObjectAclRequestMutex.Unlock()
 	fake.PutObjectAclRequestStub = nil
@@ -21003,7 +21003,7 @@ func (fake *FakeS3) PutObjectAclRequestReturns(result1 *request.Request, result2
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectAclRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutObjectAclOutput) {
+func (fake *FakeClient) PutObjectAclRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutObjectAclOutput) {
 	fake.putObjectAclRequestMutex.Lock()
 	defer fake.putObjectAclRequestMutex.Unlock()
 	fake.PutObjectAclRequestStub = nil
@@ -21019,7 +21019,7 @@ func (fake *FakeS3) PutObjectAclRequestReturnsOnCall(i int, result1 *request.Req
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectAclWithContext(arg1 context.Context, arg2 *s3a.PutObjectAclInput, arg3 ...request.Option) (*s3a.PutObjectAclOutput, error) {
+func (fake *FakeClient) PutObjectAclWithContext(arg1 context.Context, arg2 *s3a.PutObjectAclInput, arg3 ...request.Option) (*s3a.PutObjectAclOutput, error) {
 	fake.putObjectAclWithContextMutex.Lock()
 	ret, specificReturn := fake.putObjectAclWithContextReturnsOnCall[len(fake.putObjectAclWithContextArgsForCall)]
 	fake.putObjectAclWithContextArgsForCall = append(fake.putObjectAclWithContextArgsForCall, struct {
@@ -21039,26 +21039,26 @@ func (fake *FakeS3) PutObjectAclWithContext(arg1 context.Context, arg2 *s3a.PutO
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutObjectAclWithContextCallCount() int {
+func (fake *FakeClient) PutObjectAclWithContextCallCount() int {
 	fake.putObjectAclWithContextMutex.RLock()
 	defer fake.putObjectAclWithContextMutex.RUnlock()
 	return len(fake.putObjectAclWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutObjectAclWithContextCalls(stub func(context.Context, *s3a.PutObjectAclInput, ...request.Option) (*s3a.PutObjectAclOutput, error)) {
+func (fake *FakeClient) PutObjectAclWithContextCalls(stub func(context.Context, *s3a.PutObjectAclInput, ...request.Option) (*s3a.PutObjectAclOutput, error)) {
 	fake.putObjectAclWithContextMutex.Lock()
 	defer fake.putObjectAclWithContextMutex.Unlock()
 	fake.PutObjectAclWithContextStub = stub
 }
 
-func (fake *FakeS3) PutObjectAclWithContextArgsForCall(i int) (context.Context, *s3a.PutObjectAclInput, []request.Option) {
+func (fake *FakeClient) PutObjectAclWithContextArgsForCall(i int) (context.Context, *s3a.PutObjectAclInput, []request.Option) {
 	fake.putObjectAclWithContextMutex.RLock()
 	defer fake.putObjectAclWithContextMutex.RUnlock()
 	argsForCall := fake.putObjectAclWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutObjectAclWithContextReturns(result1 *s3a.PutObjectAclOutput, result2 error) {
+func (fake *FakeClient) PutObjectAclWithContextReturns(result1 *s3a.PutObjectAclOutput, result2 error) {
 	fake.putObjectAclWithContextMutex.Lock()
 	defer fake.putObjectAclWithContextMutex.Unlock()
 	fake.PutObjectAclWithContextStub = nil
@@ -21068,7 +21068,7 @@ func (fake *FakeS3) PutObjectAclWithContextReturns(result1 *s3a.PutObjectAclOutp
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectAclWithContextReturnsOnCall(i int, result1 *s3a.PutObjectAclOutput, result2 error) {
+func (fake *FakeClient) PutObjectAclWithContextReturnsOnCall(i int, result1 *s3a.PutObjectAclOutput, result2 error) {
 	fake.putObjectAclWithContextMutex.Lock()
 	defer fake.putObjectAclWithContextMutex.Unlock()
 	fake.PutObjectAclWithContextStub = nil
@@ -21084,7 +21084,7 @@ func (fake *FakeS3) PutObjectAclWithContextReturnsOnCall(i int, result1 *s3a.Put
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectLegalHold(arg1 *s3a.PutObjectLegalHoldInput) (*s3a.PutObjectLegalHoldOutput, error) {
+func (fake *FakeClient) PutObjectLegalHold(arg1 *s3a.PutObjectLegalHoldInput) (*s3a.PutObjectLegalHoldOutput, error) {
 	fake.putObjectLegalHoldMutex.Lock()
 	ret, specificReturn := fake.putObjectLegalHoldReturnsOnCall[len(fake.putObjectLegalHoldArgsForCall)]
 	fake.putObjectLegalHoldArgsForCall = append(fake.putObjectLegalHoldArgsForCall, struct {
@@ -21102,26 +21102,26 @@ func (fake *FakeS3) PutObjectLegalHold(arg1 *s3a.PutObjectLegalHoldInput) (*s3a.
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutObjectLegalHoldCallCount() int {
+func (fake *FakeClient) PutObjectLegalHoldCallCount() int {
 	fake.putObjectLegalHoldMutex.RLock()
 	defer fake.putObjectLegalHoldMutex.RUnlock()
 	return len(fake.putObjectLegalHoldArgsForCall)
 }
 
-func (fake *FakeS3) PutObjectLegalHoldCalls(stub func(*s3a.PutObjectLegalHoldInput) (*s3a.PutObjectLegalHoldOutput, error)) {
+func (fake *FakeClient) PutObjectLegalHoldCalls(stub func(*s3a.PutObjectLegalHoldInput) (*s3a.PutObjectLegalHoldOutput, error)) {
 	fake.putObjectLegalHoldMutex.Lock()
 	defer fake.putObjectLegalHoldMutex.Unlock()
 	fake.PutObjectLegalHoldStub = stub
 }
 
-func (fake *FakeS3) PutObjectLegalHoldArgsForCall(i int) *s3a.PutObjectLegalHoldInput {
+func (fake *FakeClient) PutObjectLegalHoldArgsForCall(i int) *s3a.PutObjectLegalHoldInput {
 	fake.putObjectLegalHoldMutex.RLock()
 	defer fake.putObjectLegalHoldMutex.RUnlock()
 	argsForCall := fake.putObjectLegalHoldArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutObjectLegalHoldReturns(result1 *s3a.PutObjectLegalHoldOutput, result2 error) {
+func (fake *FakeClient) PutObjectLegalHoldReturns(result1 *s3a.PutObjectLegalHoldOutput, result2 error) {
 	fake.putObjectLegalHoldMutex.Lock()
 	defer fake.putObjectLegalHoldMutex.Unlock()
 	fake.PutObjectLegalHoldStub = nil
@@ -21131,7 +21131,7 @@ func (fake *FakeS3) PutObjectLegalHoldReturns(result1 *s3a.PutObjectLegalHoldOut
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectLegalHoldReturnsOnCall(i int, result1 *s3a.PutObjectLegalHoldOutput, result2 error) {
+func (fake *FakeClient) PutObjectLegalHoldReturnsOnCall(i int, result1 *s3a.PutObjectLegalHoldOutput, result2 error) {
 	fake.putObjectLegalHoldMutex.Lock()
 	defer fake.putObjectLegalHoldMutex.Unlock()
 	fake.PutObjectLegalHoldStub = nil
@@ -21147,7 +21147,7 @@ func (fake *FakeS3) PutObjectLegalHoldReturnsOnCall(i int, result1 *s3a.PutObjec
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectLegalHoldRequest(arg1 *s3a.PutObjectLegalHoldInput) (*request.Request, *s3a.PutObjectLegalHoldOutput) {
+func (fake *FakeClient) PutObjectLegalHoldRequest(arg1 *s3a.PutObjectLegalHoldInput) (*request.Request, *s3a.PutObjectLegalHoldOutput) {
 	fake.putObjectLegalHoldRequestMutex.Lock()
 	ret, specificReturn := fake.putObjectLegalHoldRequestReturnsOnCall[len(fake.putObjectLegalHoldRequestArgsForCall)]
 	fake.putObjectLegalHoldRequestArgsForCall = append(fake.putObjectLegalHoldRequestArgsForCall, struct {
@@ -21165,26 +21165,26 @@ func (fake *FakeS3) PutObjectLegalHoldRequest(arg1 *s3a.PutObjectLegalHoldInput)
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutObjectLegalHoldRequestCallCount() int {
+func (fake *FakeClient) PutObjectLegalHoldRequestCallCount() int {
 	fake.putObjectLegalHoldRequestMutex.RLock()
 	defer fake.putObjectLegalHoldRequestMutex.RUnlock()
 	return len(fake.putObjectLegalHoldRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutObjectLegalHoldRequestCalls(stub func(*s3a.PutObjectLegalHoldInput) (*request.Request, *s3a.PutObjectLegalHoldOutput)) {
+func (fake *FakeClient) PutObjectLegalHoldRequestCalls(stub func(*s3a.PutObjectLegalHoldInput) (*request.Request, *s3a.PutObjectLegalHoldOutput)) {
 	fake.putObjectLegalHoldRequestMutex.Lock()
 	defer fake.putObjectLegalHoldRequestMutex.Unlock()
 	fake.PutObjectLegalHoldRequestStub = stub
 }
 
-func (fake *FakeS3) PutObjectLegalHoldRequestArgsForCall(i int) *s3a.PutObjectLegalHoldInput {
+func (fake *FakeClient) PutObjectLegalHoldRequestArgsForCall(i int) *s3a.PutObjectLegalHoldInput {
 	fake.putObjectLegalHoldRequestMutex.RLock()
 	defer fake.putObjectLegalHoldRequestMutex.RUnlock()
 	argsForCall := fake.putObjectLegalHoldRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutObjectLegalHoldRequestReturns(result1 *request.Request, result2 *s3a.PutObjectLegalHoldOutput) {
+func (fake *FakeClient) PutObjectLegalHoldRequestReturns(result1 *request.Request, result2 *s3a.PutObjectLegalHoldOutput) {
 	fake.putObjectLegalHoldRequestMutex.Lock()
 	defer fake.putObjectLegalHoldRequestMutex.Unlock()
 	fake.PutObjectLegalHoldRequestStub = nil
@@ -21194,7 +21194,7 @@ func (fake *FakeS3) PutObjectLegalHoldRequestReturns(result1 *request.Request, r
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectLegalHoldRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutObjectLegalHoldOutput) {
+func (fake *FakeClient) PutObjectLegalHoldRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutObjectLegalHoldOutput) {
 	fake.putObjectLegalHoldRequestMutex.Lock()
 	defer fake.putObjectLegalHoldRequestMutex.Unlock()
 	fake.PutObjectLegalHoldRequestStub = nil
@@ -21210,7 +21210,7 @@ func (fake *FakeS3) PutObjectLegalHoldRequestReturnsOnCall(i int, result1 *reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectLegalHoldWithContext(arg1 context.Context, arg2 *s3a.PutObjectLegalHoldInput, arg3 ...request.Option) (*s3a.PutObjectLegalHoldOutput, error) {
+func (fake *FakeClient) PutObjectLegalHoldWithContext(arg1 context.Context, arg2 *s3a.PutObjectLegalHoldInput, arg3 ...request.Option) (*s3a.PutObjectLegalHoldOutput, error) {
 	fake.putObjectLegalHoldWithContextMutex.Lock()
 	ret, specificReturn := fake.putObjectLegalHoldWithContextReturnsOnCall[len(fake.putObjectLegalHoldWithContextArgsForCall)]
 	fake.putObjectLegalHoldWithContextArgsForCall = append(fake.putObjectLegalHoldWithContextArgsForCall, struct {
@@ -21230,26 +21230,26 @@ func (fake *FakeS3) PutObjectLegalHoldWithContext(arg1 context.Context, arg2 *s3
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutObjectLegalHoldWithContextCallCount() int {
+func (fake *FakeClient) PutObjectLegalHoldWithContextCallCount() int {
 	fake.putObjectLegalHoldWithContextMutex.RLock()
 	defer fake.putObjectLegalHoldWithContextMutex.RUnlock()
 	return len(fake.putObjectLegalHoldWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutObjectLegalHoldWithContextCalls(stub func(context.Context, *s3a.PutObjectLegalHoldInput, ...request.Option) (*s3a.PutObjectLegalHoldOutput, error)) {
+func (fake *FakeClient) PutObjectLegalHoldWithContextCalls(stub func(context.Context, *s3a.PutObjectLegalHoldInput, ...request.Option) (*s3a.PutObjectLegalHoldOutput, error)) {
 	fake.putObjectLegalHoldWithContextMutex.Lock()
 	defer fake.putObjectLegalHoldWithContextMutex.Unlock()
 	fake.PutObjectLegalHoldWithContextStub = stub
 }
 
-func (fake *FakeS3) PutObjectLegalHoldWithContextArgsForCall(i int) (context.Context, *s3a.PutObjectLegalHoldInput, []request.Option) {
+func (fake *FakeClient) PutObjectLegalHoldWithContextArgsForCall(i int) (context.Context, *s3a.PutObjectLegalHoldInput, []request.Option) {
 	fake.putObjectLegalHoldWithContextMutex.RLock()
 	defer fake.putObjectLegalHoldWithContextMutex.RUnlock()
 	argsForCall := fake.putObjectLegalHoldWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutObjectLegalHoldWithContextReturns(result1 *s3a.PutObjectLegalHoldOutput, result2 error) {
+func (fake *FakeClient) PutObjectLegalHoldWithContextReturns(result1 *s3a.PutObjectLegalHoldOutput, result2 error) {
 	fake.putObjectLegalHoldWithContextMutex.Lock()
 	defer fake.putObjectLegalHoldWithContextMutex.Unlock()
 	fake.PutObjectLegalHoldWithContextStub = nil
@@ -21259,7 +21259,7 @@ func (fake *FakeS3) PutObjectLegalHoldWithContextReturns(result1 *s3a.PutObjectL
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectLegalHoldWithContextReturnsOnCall(i int, result1 *s3a.PutObjectLegalHoldOutput, result2 error) {
+func (fake *FakeClient) PutObjectLegalHoldWithContextReturnsOnCall(i int, result1 *s3a.PutObjectLegalHoldOutput, result2 error) {
 	fake.putObjectLegalHoldWithContextMutex.Lock()
 	defer fake.putObjectLegalHoldWithContextMutex.Unlock()
 	fake.PutObjectLegalHoldWithContextStub = nil
@@ -21275,7 +21275,7 @@ func (fake *FakeS3) PutObjectLegalHoldWithContextReturnsOnCall(i int, result1 *s
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectLockConfiguration(arg1 *s3a.PutObjectLockConfigurationInput) (*s3a.PutObjectLockConfigurationOutput, error) {
+func (fake *FakeClient) PutObjectLockConfiguration(arg1 *s3a.PutObjectLockConfigurationInput) (*s3a.PutObjectLockConfigurationOutput, error) {
 	fake.putObjectLockConfigurationMutex.Lock()
 	ret, specificReturn := fake.putObjectLockConfigurationReturnsOnCall[len(fake.putObjectLockConfigurationArgsForCall)]
 	fake.putObjectLockConfigurationArgsForCall = append(fake.putObjectLockConfigurationArgsForCall, struct {
@@ -21293,26 +21293,26 @@ func (fake *FakeS3) PutObjectLockConfiguration(arg1 *s3a.PutObjectLockConfigurat
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutObjectLockConfigurationCallCount() int {
+func (fake *FakeClient) PutObjectLockConfigurationCallCount() int {
 	fake.putObjectLockConfigurationMutex.RLock()
 	defer fake.putObjectLockConfigurationMutex.RUnlock()
 	return len(fake.putObjectLockConfigurationArgsForCall)
 }
 
-func (fake *FakeS3) PutObjectLockConfigurationCalls(stub func(*s3a.PutObjectLockConfigurationInput) (*s3a.PutObjectLockConfigurationOutput, error)) {
+func (fake *FakeClient) PutObjectLockConfigurationCalls(stub func(*s3a.PutObjectLockConfigurationInput) (*s3a.PutObjectLockConfigurationOutput, error)) {
 	fake.putObjectLockConfigurationMutex.Lock()
 	defer fake.putObjectLockConfigurationMutex.Unlock()
 	fake.PutObjectLockConfigurationStub = stub
 }
 
-func (fake *FakeS3) PutObjectLockConfigurationArgsForCall(i int) *s3a.PutObjectLockConfigurationInput {
+func (fake *FakeClient) PutObjectLockConfigurationArgsForCall(i int) *s3a.PutObjectLockConfigurationInput {
 	fake.putObjectLockConfigurationMutex.RLock()
 	defer fake.putObjectLockConfigurationMutex.RUnlock()
 	argsForCall := fake.putObjectLockConfigurationArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutObjectLockConfigurationReturns(result1 *s3a.PutObjectLockConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutObjectLockConfigurationReturns(result1 *s3a.PutObjectLockConfigurationOutput, result2 error) {
 	fake.putObjectLockConfigurationMutex.Lock()
 	defer fake.putObjectLockConfigurationMutex.Unlock()
 	fake.PutObjectLockConfigurationStub = nil
@@ -21322,7 +21322,7 @@ func (fake *FakeS3) PutObjectLockConfigurationReturns(result1 *s3a.PutObjectLock
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectLockConfigurationReturnsOnCall(i int, result1 *s3a.PutObjectLockConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutObjectLockConfigurationReturnsOnCall(i int, result1 *s3a.PutObjectLockConfigurationOutput, result2 error) {
 	fake.putObjectLockConfigurationMutex.Lock()
 	defer fake.putObjectLockConfigurationMutex.Unlock()
 	fake.PutObjectLockConfigurationStub = nil
@@ -21338,7 +21338,7 @@ func (fake *FakeS3) PutObjectLockConfigurationReturnsOnCall(i int, result1 *s3a.
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectLockConfigurationRequest(arg1 *s3a.PutObjectLockConfigurationInput) (*request.Request, *s3a.PutObjectLockConfigurationOutput) {
+func (fake *FakeClient) PutObjectLockConfigurationRequest(arg1 *s3a.PutObjectLockConfigurationInput) (*request.Request, *s3a.PutObjectLockConfigurationOutput) {
 	fake.putObjectLockConfigurationRequestMutex.Lock()
 	ret, specificReturn := fake.putObjectLockConfigurationRequestReturnsOnCall[len(fake.putObjectLockConfigurationRequestArgsForCall)]
 	fake.putObjectLockConfigurationRequestArgsForCall = append(fake.putObjectLockConfigurationRequestArgsForCall, struct {
@@ -21356,26 +21356,26 @@ func (fake *FakeS3) PutObjectLockConfigurationRequest(arg1 *s3a.PutObjectLockCon
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutObjectLockConfigurationRequestCallCount() int {
+func (fake *FakeClient) PutObjectLockConfigurationRequestCallCount() int {
 	fake.putObjectLockConfigurationRequestMutex.RLock()
 	defer fake.putObjectLockConfigurationRequestMutex.RUnlock()
 	return len(fake.putObjectLockConfigurationRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutObjectLockConfigurationRequestCalls(stub func(*s3a.PutObjectLockConfigurationInput) (*request.Request, *s3a.PutObjectLockConfigurationOutput)) {
+func (fake *FakeClient) PutObjectLockConfigurationRequestCalls(stub func(*s3a.PutObjectLockConfigurationInput) (*request.Request, *s3a.PutObjectLockConfigurationOutput)) {
 	fake.putObjectLockConfigurationRequestMutex.Lock()
 	defer fake.putObjectLockConfigurationRequestMutex.Unlock()
 	fake.PutObjectLockConfigurationRequestStub = stub
 }
 
-func (fake *FakeS3) PutObjectLockConfigurationRequestArgsForCall(i int) *s3a.PutObjectLockConfigurationInput {
+func (fake *FakeClient) PutObjectLockConfigurationRequestArgsForCall(i int) *s3a.PutObjectLockConfigurationInput {
 	fake.putObjectLockConfigurationRequestMutex.RLock()
 	defer fake.putObjectLockConfigurationRequestMutex.RUnlock()
 	argsForCall := fake.putObjectLockConfigurationRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutObjectLockConfigurationRequestReturns(result1 *request.Request, result2 *s3a.PutObjectLockConfigurationOutput) {
+func (fake *FakeClient) PutObjectLockConfigurationRequestReturns(result1 *request.Request, result2 *s3a.PutObjectLockConfigurationOutput) {
 	fake.putObjectLockConfigurationRequestMutex.Lock()
 	defer fake.putObjectLockConfigurationRequestMutex.Unlock()
 	fake.PutObjectLockConfigurationRequestStub = nil
@@ -21385,7 +21385,7 @@ func (fake *FakeS3) PutObjectLockConfigurationRequestReturns(result1 *request.Re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectLockConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutObjectLockConfigurationOutput) {
+func (fake *FakeClient) PutObjectLockConfigurationRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutObjectLockConfigurationOutput) {
 	fake.putObjectLockConfigurationRequestMutex.Lock()
 	defer fake.putObjectLockConfigurationRequestMutex.Unlock()
 	fake.PutObjectLockConfigurationRequestStub = nil
@@ -21401,7 +21401,7 @@ func (fake *FakeS3) PutObjectLockConfigurationRequestReturnsOnCall(i int, result
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectLockConfigurationWithContext(arg1 context.Context, arg2 *s3a.PutObjectLockConfigurationInput, arg3 ...request.Option) (*s3a.PutObjectLockConfigurationOutput, error) {
+func (fake *FakeClient) PutObjectLockConfigurationWithContext(arg1 context.Context, arg2 *s3a.PutObjectLockConfigurationInput, arg3 ...request.Option) (*s3a.PutObjectLockConfigurationOutput, error) {
 	fake.putObjectLockConfigurationWithContextMutex.Lock()
 	ret, specificReturn := fake.putObjectLockConfigurationWithContextReturnsOnCall[len(fake.putObjectLockConfigurationWithContextArgsForCall)]
 	fake.putObjectLockConfigurationWithContextArgsForCall = append(fake.putObjectLockConfigurationWithContextArgsForCall, struct {
@@ -21421,26 +21421,26 @@ func (fake *FakeS3) PutObjectLockConfigurationWithContext(arg1 context.Context, 
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutObjectLockConfigurationWithContextCallCount() int {
+func (fake *FakeClient) PutObjectLockConfigurationWithContextCallCount() int {
 	fake.putObjectLockConfigurationWithContextMutex.RLock()
 	defer fake.putObjectLockConfigurationWithContextMutex.RUnlock()
 	return len(fake.putObjectLockConfigurationWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutObjectLockConfigurationWithContextCalls(stub func(context.Context, *s3a.PutObjectLockConfigurationInput, ...request.Option) (*s3a.PutObjectLockConfigurationOutput, error)) {
+func (fake *FakeClient) PutObjectLockConfigurationWithContextCalls(stub func(context.Context, *s3a.PutObjectLockConfigurationInput, ...request.Option) (*s3a.PutObjectLockConfigurationOutput, error)) {
 	fake.putObjectLockConfigurationWithContextMutex.Lock()
 	defer fake.putObjectLockConfigurationWithContextMutex.Unlock()
 	fake.PutObjectLockConfigurationWithContextStub = stub
 }
 
-func (fake *FakeS3) PutObjectLockConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.PutObjectLockConfigurationInput, []request.Option) {
+func (fake *FakeClient) PutObjectLockConfigurationWithContextArgsForCall(i int) (context.Context, *s3a.PutObjectLockConfigurationInput, []request.Option) {
 	fake.putObjectLockConfigurationWithContextMutex.RLock()
 	defer fake.putObjectLockConfigurationWithContextMutex.RUnlock()
 	argsForCall := fake.putObjectLockConfigurationWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutObjectLockConfigurationWithContextReturns(result1 *s3a.PutObjectLockConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutObjectLockConfigurationWithContextReturns(result1 *s3a.PutObjectLockConfigurationOutput, result2 error) {
 	fake.putObjectLockConfigurationWithContextMutex.Lock()
 	defer fake.putObjectLockConfigurationWithContextMutex.Unlock()
 	fake.PutObjectLockConfigurationWithContextStub = nil
@@ -21450,7 +21450,7 @@ func (fake *FakeS3) PutObjectLockConfigurationWithContextReturns(result1 *s3a.Pu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectLockConfigurationWithContextReturnsOnCall(i int, result1 *s3a.PutObjectLockConfigurationOutput, result2 error) {
+func (fake *FakeClient) PutObjectLockConfigurationWithContextReturnsOnCall(i int, result1 *s3a.PutObjectLockConfigurationOutput, result2 error) {
 	fake.putObjectLockConfigurationWithContextMutex.Lock()
 	defer fake.putObjectLockConfigurationWithContextMutex.Unlock()
 	fake.PutObjectLockConfigurationWithContextStub = nil
@@ -21466,7 +21466,7 @@ func (fake *FakeS3) PutObjectLockConfigurationWithContextReturnsOnCall(i int, re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectRequest(arg1 *s3a.PutObjectInput) (*request.Request, *s3a.PutObjectOutput) {
+func (fake *FakeClient) PutObjectRequest(arg1 *s3a.PutObjectInput) (*request.Request, *s3a.PutObjectOutput) {
 	fake.putObjectRequestMutex.Lock()
 	ret, specificReturn := fake.putObjectRequestReturnsOnCall[len(fake.putObjectRequestArgsForCall)]
 	fake.putObjectRequestArgsForCall = append(fake.putObjectRequestArgsForCall, struct {
@@ -21484,26 +21484,26 @@ func (fake *FakeS3) PutObjectRequest(arg1 *s3a.PutObjectInput) (*request.Request
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutObjectRequestCallCount() int {
+func (fake *FakeClient) PutObjectRequestCallCount() int {
 	fake.putObjectRequestMutex.RLock()
 	defer fake.putObjectRequestMutex.RUnlock()
 	return len(fake.putObjectRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutObjectRequestCalls(stub func(*s3a.PutObjectInput) (*request.Request, *s3a.PutObjectOutput)) {
+func (fake *FakeClient) PutObjectRequestCalls(stub func(*s3a.PutObjectInput) (*request.Request, *s3a.PutObjectOutput)) {
 	fake.putObjectRequestMutex.Lock()
 	defer fake.putObjectRequestMutex.Unlock()
 	fake.PutObjectRequestStub = stub
 }
 
-func (fake *FakeS3) PutObjectRequestArgsForCall(i int) *s3a.PutObjectInput {
+func (fake *FakeClient) PutObjectRequestArgsForCall(i int) *s3a.PutObjectInput {
 	fake.putObjectRequestMutex.RLock()
 	defer fake.putObjectRequestMutex.RUnlock()
 	argsForCall := fake.putObjectRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutObjectRequestReturns(result1 *request.Request, result2 *s3a.PutObjectOutput) {
+func (fake *FakeClient) PutObjectRequestReturns(result1 *request.Request, result2 *s3a.PutObjectOutput) {
 	fake.putObjectRequestMutex.Lock()
 	defer fake.putObjectRequestMutex.Unlock()
 	fake.PutObjectRequestStub = nil
@@ -21513,7 +21513,7 @@ func (fake *FakeS3) PutObjectRequestReturns(result1 *request.Request, result2 *s
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutObjectOutput) {
+func (fake *FakeClient) PutObjectRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutObjectOutput) {
 	fake.putObjectRequestMutex.Lock()
 	defer fake.putObjectRequestMutex.Unlock()
 	fake.PutObjectRequestStub = nil
@@ -21529,7 +21529,7 @@ func (fake *FakeS3) PutObjectRequestReturnsOnCall(i int, result1 *request.Reques
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectRetention(arg1 *s3a.PutObjectRetentionInput) (*s3a.PutObjectRetentionOutput, error) {
+func (fake *FakeClient) PutObjectRetention(arg1 *s3a.PutObjectRetentionInput) (*s3a.PutObjectRetentionOutput, error) {
 	fake.putObjectRetentionMutex.Lock()
 	ret, specificReturn := fake.putObjectRetentionReturnsOnCall[len(fake.putObjectRetentionArgsForCall)]
 	fake.putObjectRetentionArgsForCall = append(fake.putObjectRetentionArgsForCall, struct {
@@ -21547,26 +21547,26 @@ func (fake *FakeS3) PutObjectRetention(arg1 *s3a.PutObjectRetentionInput) (*s3a.
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutObjectRetentionCallCount() int {
+func (fake *FakeClient) PutObjectRetentionCallCount() int {
 	fake.putObjectRetentionMutex.RLock()
 	defer fake.putObjectRetentionMutex.RUnlock()
 	return len(fake.putObjectRetentionArgsForCall)
 }
 
-func (fake *FakeS3) PutObjectRetentionCalls(stub func(*s3a.PutObjectRetentionInput) (*s3a.PutObjectRetentionOutput, error)) {
+func (fake *FakeClient) PutObjectRetentionCalls(stub func(*s3a.PutObjectRetentionInput) (*s3a.PutObjectRetentionOutput, error)) {
 	fake.putObjectRetentionMutex.Lock()
 	defer fake.putObjectRetentionMutex.Unlock()
 	fake.PutObjectRetentionStub = stub
 }
 
-func (fake *FakeS3) PutObjectRetentionArgsForCall(i int) *s3a.PutObjectRetentionInput {
+func (fake *FakeClient) PutObjectRetentionArgsForCall(i int) *s3a.PutObjectRetentionInput {
 	fake.putObjectRetentionMutex.RLock()
 	defer fake.putObjectRetentionMutex.RUnlock()
 	argsForCall := fake.putObjectRetentionArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutObjectRetentionReturns(result1 *s3a.PutObjectRetentionOutput, result2 error) {
+func (fake *FakeClient) PutObjectRetentionReturns(result1 *s3a.PutObjectRetentionOutput, result2 error) {
 	fake.putObjectRetentionMutex.Lock()
 	defer fake.putObjectRetentionMutex.Unlock()
 	fake.PutObjectRetentionStub = nil
@@ -21576,7 +21576,7 @@ func (fake *FakeS3) PutObjectRetentionReturns(result1 *s3a.PutObjectRetentionOut
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectRetentionReturnsOnCall(i int, result1 *s3a.PutObjectRetentionOutput, result2 error) {
+func (fake *FakeClient) PutObjectRetentionReturnsOnCall(i int, result1 *s3a.PutObjectRetentionOutput, result2 error) {
 	fake.putObjectRetentionMutex.Lock()
 	defer fake.putObjectRetentionMutex.Unlock()
 	fake.PutObjectRetentionStub = nil
@@ -21592,7 +21592,7 @@ func (fake *FakeS3) PutObjectRetentionReturnsOnCall(i int, result1 *s3a.PutObjec
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectRetentionRequest(arg1 *s3a.PutObjectRetentionInput) (*request.Request, *s3a.PutObjectRetentionOutput) {
+func (fake *FakeClient) PutObjectRetentionRequest(arg1 *s3a.PutObjectRetentionInput) (*request.Request, *s3a.PutObjectRetentionOutput) {
 	fake.putObjectRetentionRequestMutex.Lock()
 	ret, specificReturn := fake.putObjectRetentionRequestReturnsOnCall[len(fake.putObjectRetentionRequestArgsForCall)]
 	fake.putObjectRetentionRequestArgsForCall = append(fake.putObjectRetentionRequestArgsForCall, struct {
@@ -21610,26 +21610,26 @@ func (fake *FakeS3) PutObjectRetentionRequest(arg1 *s3a.PutObjectRetentionInput)
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutObjectRetentionRequestCallCount() int {
+func (fake *FakeClient) PutObjectRetentionRequestCallCount() int {
 	fake.putObjectRetentionRequestMutex.RLock()
 	defer fake.putObjectRetentionRequestMutex.RUnlock()
 	return len(fake.putObjectRetentionRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutObjectRetentionRequestCalls(stub func(*s3a.PutObjectRetentionInput) (*request.Request, *s3a.PutObjectRetentionOutput)) {
+func (fake *FakeClient) PutObjectRetentionRequestCalls(stub func(*s3a.PutObjectRetentionInput) (*request.Request, *s3a.PutObjectRetentionOutput)) {
 	fake.putObjectRetentionRequestMutex.Lock()
 	defer fake.putObjectRetentionRequestMutex.Unlock()
 	fake.PutObjectRetentionRequestStub = stub
 }
 
-func (fake *FakeS3) PutObjectRetentionRequestArgsForCall(i int) *s3a.PutObjectRetentionInput {
+func (fake *FakeClient) PutObjectRetentionRequestArgsForCall(i int) *s3a.PutObjectRetentionInput {
 	fake.putObjectRetentionRequestMutex.RLock()
 	defer fake.putObjectRetentionRequestMutex.RUnlock()
 	argsForCall := fake.putObjectRetentionRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutObjectRetentionRequestReturns(result1 *request.Request, result2 *s3a.PutObjectRetentionOutput) {
+func (fake *FakeClient) PutObjectRetentionRequestReturns(result1 *request.Request, result2 *s3a.PutObjectRetentionOutput) {
 	fake.putObjectRetentionRequestMutex.Lock()
 	defer fake.putObjectRetentionRequestMutex.Unlock()
 	fake.PutObjectRetentionRequestStub = nil
@@ -21639,7 +21639,7 @@ func (fake *FakeS3) PutObjectRetentionRequestReturns(result1 *request.Request, r
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectRetentionRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutObjectRetentionOutput) {
+func (fake *FakeClient) PutObjectRetentionRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutObjectRetentionOutput) {
 	fake.putObjectRetentionRequestMutex.Lock()
 	defer fake.putObjectRetentionRequestMutex.Unlock()
 	fake.PutObjectRetentionRequestStub = nil
@@ -21655,7 +21655,7 @@ func (fake *FakeS3) PutObjectRetentionRequestReturnsOnCall(i int, result1 *reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectRetentionWithContext(arg1 context.Context, arg2 *s3a.PutObjectRetentionInput, arg3 ...request.Option) (*s3a.PutObjectRetentionOutput, error) {
+func (fake *FakeClient) PutObjectRetentionWithContext(arg1 context.Context, arg2 *s3a.PutObjectRetentionInput, arg3 ...request.Option) (*s3a.PutObjectRetentionOutput, error) {
 	fake.putObjectRetentionWithContextMutex.Lock()
 	ret, specificReturn := fake.putObjectRetentionWithContextReturnsOnCall[len(fake.putObjectRetentionWithContextArgsForCall)]
 	fake.putObjectRetentionWithContextArgsForCall = append(fake.putObjectRetentionWithContextArgsForCall, struct {
@@ -21675,26 +21675,26 @@ func (fake *FakeS3) PutObjectRetentionWithContext(arg1 context.Context, arg2 *s3
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutObjectRetentionWithContextCallCount() int {
+func (fake *FakeClient) PutObjectRetentionWithContextCallCount() int {
 	fake.putObjectRetentionWithContextMutex.RLock()
 	defer fake.putObjectRetentionWithContextMutex.RUnlock()
 	return len(fake.putObjectRetentionWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutObjectRetentionWithContextCalls(stub func(context.Context, *s3a.PutObjectRetentionInput, ...request.Option) (*s3a.PutObjectRetentionOutput, error)) {
+func (fake *FakeClient) PutObjectRetentionWithContextCalls(stub func(context.Context, *s3a.PutObjectRetentionInput, ...request.Option) (*s3a.PutObjectRetentionOutput, error)) {
 	fake.putObjectRetentionWithContextMutex.Lock()
 	defer fake.putObjectRetentionWithContextMutex.Unlock()
 	fake.PutObjectRetentionWithContextStub = stub
 }
 
-func (fake *FakeS3) PutObjectRetentionWithContextArgsForCall(i int) (context.Context, *s3a.PutObjectRetentionInput, []request.Option) {
+func (fake *FakeClient) PutObjectRetentionWithContextArgsForCall(i int) (context.Context, *s3a.PutObjectRetentionInput, []request.Option) {
 	fake.putObjectRetentionWithContextMutex.RLock()
 	defer fake.putObjectRetentionWithContextMutex.RUnlock()
 	argsForCall := fake.putObjectRetentionWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutObjectRetentionWithContextReturns(result1 *s3a.PutObjectRetentionOutput, result2 error) {
+func (fake *FakeClient) PutObjectRetentionWithContextReturns(result1 *s3a.PutObjectRetentionOutput, result2 error) {
 	fake.putObjectRetentionWithContextMutex.Lock()
 	defer fake.putObjectRetentionWithContextMutex.Unlock()
 	fake.PutObjectRetentionWithContextStub = nil
@@ -21704,7 +21704,7 @@ func (fake *FakeS3) PutObjectRetentionWithContextReturns(result1 *s3a.PutObjectR
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectRetentionWithContextReturnsOnCall(i int, result1 *s3a.PutObjectRetentionOutput, result2 error) {
+func (fake *FakeClient) PutObjectRetentionWithContextReturnsOnCall(i int, result1 *s3a.PutObjectRetentionOutput, result2 error) {
 	fake.putObjectRetentionWithContextMutex.Lock()
 	defer fake.putObjectRetentionWithContextMutex.Unlock()
 	fake.PutObjectRetentionWithContextStub = nil
@@ -21720,7 +21720,7 @@ func (fake *FakeS3) PutObjectRetentionWithContextReturnsOnCall(i int, result1 *s
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectTagging(arg1 *s3a.PutObjectTaggingInput) (*s3a.PutObjectTaggingOutput, error) {
+func (fake *FakeClient) PutObjectTagging(arg1 *s3a.PutObjectTaggingInput) (*s3a.PutObjectTaggingOutput, error) {
 	fake.putObjectTaggingMutex.Lock()
 	ret, specificReturn := fake.putObjectTaggingReturnsOnCall[len(fake.putObjectTaggingArgsForCall)]
 	fake.putObjectTaggingArgsForCall = append(fake.putObjectTaggingArgsForCall, struct {
@@ -21738,26 +21738,26 @@ func (fake *FakeS3) PutObjectTagging(arg1 *s3a.PutObjectTaggingInput) (*s3a.PutO
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutObjectTaggingCallCount() int {
+func (fake *FakeClient) PutObjectTaggingCallCount() int {
 	fake.putObjectTaggingMutex.RLock()
 	defer fake.putObjectTaggingMutex.RUnlock()
 	return len(fake.putObjectTaggingArgsForCall)
 }
 
-func (fake *FakeS3) PutObjectTaggingCalls(stub func(*s3a.PutObjectTaggingInput) (*s3a.PutObjectTaggingOutput, error)) {
+func (fake *FakeClient) PutObjectTaggingCalls(stub func(*s3a.PutObjectTaggingInput) (*s3a.PutObjectTaggingOutput, error)) {
 	fake.putObjectTaggingMutex.Lock()
 	defer fake.putObjectTaggingMutex.Unlock()
 	fake.PutObjectTaggingStub = stub
 }
 
-func (fake *FakeS3) PutObjectTaggingArgsForCall(i int) *s3a.PutObjectTaggingInput {
+func (fake *FakeClient) PutObjectTaggingArgsForCall(i int) *s3a.PutObjectTaggingInput {
 	fake.putObjectTaggingMutex.RLock()
 	defer fake.putObjectTaggingMutex.RUnlock()
 	argsForCall := fake.putObjectTaggingArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutObjectTaggingReturns(result1 *s3a.PutObjectTaggingOutput, result2 error) {
+func (fake *FakeClient) PutObjectTaggingReturns(result1 *s3a.PutObjectTaggingOutput, result2 error) {
 	fake.putObjectTaggingMutex.Lock()
 	defer fake.putObjectTaggingMutex.Unlock()
 	fake.PutObjectTaggingStub = nil
@@ -21767,7 +21767,7 @@ func (fake *FakeS3) PutObjectTaggingReturns(result1 *s3a.PutObjectTaggingOutput,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectTaggingReturnsOnCall(i int, result1 *s3a.PutObjectTaggingOutput, result2 error) {
+func (fake *FakeClient) PutObjectTaggingReturnsOnCall(i int, result1 *s3a.PutObjectTaggingOutput, result2 error) {
 	fake.putObjectTaggingMutex.Lock()
 	defer fake.putObjectTaggingMutex.Unlock()
 	fake.PutObjectTaggingStub = nil
@@ -21783,7 +21783,7 @@ func (fake *FakeS3) PutObjectTaggingReturnsOnCall(i int, result1 *s3a.PutObjectT
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectTaggingRequest(arg1 *s3a.PutObjectTaggingInput) (*request.Request, *s3a.PutObjectTaggingOutput) {
+func (fake *FakeClient) PutObjectTaggingRequest(arg1 *s3a.PutObjectTaggingInput) (*request.Request, *s3a.PutObjectTaggingOutput) {
 	fake.putObjectTaggingRequestMutex.Lock()
 	ret, specificReturn := fake.putObjectTaggingRequestReturnsOnCall[len(fake.putObjectTaggingRequestArgsForCall)]
 	fake.putObjectTaggingRequestArgsForCall = append(fake.putObjectTaggingRequestArgsForCall, struct {
@@ -21801,26 +21801,26 @@ func (fake *FakeS3) PutObjectTaggingRequest(arg1 *s3a.PutObjectTaggingInput) (*r
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutObjectTaggingRequestCallCount() int {
+func (fake *FakeClient) PutObjectTaggingRequestCallCount() int {
 	fake.putObjectTaggingRequestMutex.RLock()
 	defer fake.putObjectTaggingRequestMutex.RUnlock()
 	return len(fake.putObjectTaggingRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutObjectTaggingRequestCalls(stub func(*s3a.PutObjectTaggingInput) (*request.Request, *s3a.PutObjectTaggingOutput)) {
+func (fake *FakeClient) PutObjectTaggingRequestCalls(stub func(*s3a.PutObjectTaggingInput) (*request.Request, *s3a.PutObjectTaggingOutput)) {
 	fake.putObjectTaggingRequestMutex.Lock()
 	defer fake.putObjectTaggingRequestMutex.Unlock()
 	fake.PutObjectTaggingRequestStub = stub
 }
 
-func (fake *FakeS3) PutObjectTaggingRequestArgsForCall(i int) *s3a.PutObjectTaggingInput {
+func (fake *FakeClient) PutObjectTaggingRequestArgsForCall(i int) *s3a.PutObjectTaggingInput {
 	fake.putObjectTaggingRequestMutex.RLock()
 	defer fake.putObjectTaggingRequestMutex.RUnlock()
 	argsForCall := fake.putObjectTaggingRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutObjectTaggingRequestReturns(result1 *request.Request, result2 *s3a.PutObjectTaggingOutput) {
+func (fake *FakeClient) PutObjectTaggingRequestReturns(result1 *request.Request, result2 *s3a.PutObjectTaggingOutput) {
 	fake.putObjectTaggingRequestMutex.Lock()
 	defer fake.putObjectTaggingRequestMutex.Unlock()
 	fake.PutObjectTaggingRequestStub = nil
@@ -21830,7 +21830,7 @@ func (fake *FakeS3) PutObjectTaggingRequestReturns(result1 *request.Request, res
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectTaggingRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutObjectTaggingOutput) {
+func (fake *FakeClient) PutObjectTaggingRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutObjectTaggingOutput) {
 	fake.putObjectTaggingRequestMutex.Lock()
 	defer fake.putObjectTaggingRequestMutex.Unlock()
 	fake.PutObjectTaggingRequestStub = nil
@@ -21846,7 +21846,7 @@ func (fake *FakeS3) PutObjectTaggingRequestReturnsOnCall(i int, result1 *request
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectTaggingWithContext(arg1 context.Context, arg2 *s3a.PutObjectTaggingInput, arg3 ...request.Option) (*s3a.PutObjectTaggingOutput, error) {
+func (fake *FakeClient) PutObjectTaggingWithContext(arg1 context.Context, arg2 *s3a.PutObjectTaggingInput, arg3 ...request.Option) (*s3a.PutObjectTaggingOutput, error) {
 	fake.putObjectTaggingWithContextMutex.Lock()
 	ret, specificReturn := fake.putObjectTaggingWithContextReturnsOnCall[len(fake.putObjectTaggingWithContextArgsForCall)]
 	fake.putObjectTaggingWithContextArgsForCall = append(fake.putObjectTaggingWithContextArgsForCall, struct {
@@ -21866,26 +21866,26 @@ func (fake *FakeS3) PutObjectTaggingWithContext(arg1 context.Context, arg2 *s3a.
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutObjectTaggingWithContextCallCount() int {
+func (fake *FakeClient) PutObjectTaggingWithContextCallCount() int {
 	fake.putObjectTaggingWithContextMutex.RLock()
 	defer fake.putObjectTaggingWithContextMutex.RUnlock()
 	return len(fake.putObjectTaggingWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutObjectTaggingWithContextCalls(stub func(context.Context, *s3a.PutObjectTaggingInput, ...request.Option) (*s3a.PutObjectTaggingOutput, error)) {
+func (fake *FakeClient) PutObjectTaggingWithContextCalls(stub func(context.Context, *s3a.PutObjectTaggingInput, ...request.Option) (*s3a.PutObjectTaggingOutput, error)) {
 	fake.putObjectTaggingWithContextMutex.Lock()
 	defer fake.putObjectTaggingWithContextMutex.Unlock()
 	fake.PutObjectTaggingWithContextStub = stub
 }
 
-func (fake *FakeS3) PutObjectTaggingWithContextArgsForCall(i int) (context.Context, *s3a.PutObjectTaggingInput, []request.Option) {
+func (fake *FakeClient) PutObjectTaggingWithContextArgsForCall(i int) (context.Context, *s3a.PutObjectTaggingInput, []request.Option) {
 	fake.putObjectTaggingWithContextMutex.RLock()
 	defer fake.putObjectTaggingWithContextMutex.RUnlock()
 	argsForCall := fake.putObjectTaggingWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutObjectTaggingWithContextReturns(result1 *s3a.PutObjectTaggingOutput, result2 error) {
+func (fake *FakeClient) PutObjectTaggingWithContextReturns(result1 *s3a.PutObjectTaggingOutput, result2 error) {
 	fake.putObjectTaggingWithContextMutex.Lock()
 	defer fake.putObjectTaggingWithContextMutex.Unlock()
 	fake.PutObjectTaggingWithContextStub = nil
@@ -21895,7 +21895,7 @@ func (fake *FakeS3) PutObjectTaggingWithContextReturns(result1 *s3a.PutObjectTag
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectTaggingWithContextReturnsOnCall(i int, result1 *s3a.PutObjectTaggingOutput, result2 error) {
+func (fake *FakeClient) PutObjectTaggingWithContextReturnsOnCall(i int, result1 *s3a.PutObjectTaggingOutput, result2 error) {
 	fake.putObjectTaggingWithContextMutex.Lock()
 	defer fake.putObjectTaggingWithContextMutex.Unlock()
 	fake.PutObjectTaggingWithContextStub = nil
@@ -21911,7 +21911,7 @@ func (fake *FakeS3) PutObjectTaggingWithContextReturnsOnCall(i int, result1 *s3a
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectWithContext(arg1 context.Context, arg2 *s3a.PutObjectInput, arg3 ...request.Option) (*s3a.PutObjectOutput, error) {
+func (fake *FakeClient) PutObjectWithContext(arg1 context.Context, arg2 *s3a.PutObjectInput, arg3 ...request.Option) (*s3a.PutObjectOutput, error) {
 	fake.putObjectWithContextMutex.Lock()
 	ret, specificReturn := fake.putObjectWithContextReturnsOnCall[len(fake.putObjectWithContextArgsForCall)]
 	fake.putObjectWithContextArgsForCall = append(fake.putObjectWithContextArgsForCall, struct {
@@ -21931,26 +21931,26 @@ func (fake *FakeS3) PutObjectWithContext(arg1 context.Context, arg2 *s3a.PutObje
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutObjectWithContextCallCount() int {
+func (fake *FakeClient) PutObjectWithContextCallCount() int {
 	fake.putObjectWithContextMutex.RLock()
 	defer fake.putObjectWithContextMutex.RUnlock()
 	return len(fake.putObjectWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutObjectWithContextCalls(stub func(context.Context, *s3a.PutObjectInput, ...request.Option) (*s3a.PutObjectOutput, error)) {
+func (fake *FakeClient) PutObjectWithContextCalls(stub func(context.Context, *s3a.PutObjectInput, ...request.Option) (*s3a.PutObjectOutput, error)) {
 	fake.putObjectWithContextMutex.Lock()
 	defer fake.putObjectWithContextMutex.Unlock()
 	fake.PutObjectWithContextStub = stub
 }
 
-func (fake *FakeS3) PutObjectWithContextArgsForCall(i int) (context.Context, *s3a.PutObjectInput, []request.Option) {
+func (fake *FakeClient) PutObjectWithContextArgsForCall(i int) (context.Context, *s3a.PutObjectInput, []request.Option) {
 	fake.putObjectWithContextMutex.RLock()
 	defer fake.putObjectWithContextMutex.RUnlock()
 	argsForCall := fake.putObjectWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutObjectWithContextReturns(result1 *s3a.PutObjectOutput, result2 error) {
+func (fake *FakeClient) PutObjectWithContextReturns(result1 *s3a.PutObjectOutput, result2 error) {
 	fake.putObjectWithContextMutex.Lock()
 	defer fake.putObjectWithContextMutex.Unlock()
 	fake.PutObjectWithContextStub = nil
@@ -21960,7 +21960,7 @@ func (fake *FakeS3) PutObjectWithContextReturns(result1 *s3a.PutObjectOutput, re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutObjectWithContextReturnsOnCall(i int, result1 *s3a.PutObjectOutput, result2 error) {
+func (fake *FakeClient) PutObjectWithContextReturnsOnCall(i int, result1 *s3a.PutObjectOutput, result2 error) {
 	fake.putObjectWithContextMutex.Lock()
 	defer fake.putObjectWithContextMutex.Unlock()
 	fake.PutObjectWithContextStub = nil
@@ -21976,7 +21976,7 @@ func (fake *FakeS3) PutObjectWithContextReturnsOnCall(i int, result1 *s3a.PutObj
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutPublicAccessBlock(arg1 *s3a.PutPublicAccessBlockInput) (*s3a.PutPublicAccessBlockOutput, error) {
+func (fake *FakeClient) PutPublicAccessBlock(arg1 *s3a.PutPublicAccessBlockInput) (*s3a.PutPublicAccessBlockOutput, error) {
 	fake.putPublicAccessBlockMutex.Lock()
 	ret, specificReturn := fake.putPublicAccessBlockReturnsOnCall[len(fake.putPublicAccessBlockArgsForCall)]
 	fake.putPublicAccessBlockArgsForCall = append(fake.putPublicAccessBlockArgsForCall, struct {
@@ -21994,26 +21994,26 @@ func (fake *FakeS3) PutPublicAccessBlock(arg1 *s3a.PutPublicAccessBlockInput) (*
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutPublicAccessBlockCallCount() int {
+func (fake *FakeClient) PutPublicAccessBlockCallCount() int {
 	fake.putPublicAccessBlockMutex.RLock()
 	defer fake.putPublicAccessBlockMutex.RUnlock()
 	return len(fake.putPublicAccessBlockArgsForCall)
 }
 
-func (fake *FakeS3) PutPublicAccessBlockCalls(stub func(*s3a.PutPublicAccessBlockInput) (*s3a.PutPublicAccessBlockOutput, error)) {
+func (fake *FakeClient) PutPublicAccessBlockCalls(stub func(*s3a.PutPublicAccessBlockInput) (*s3a.PutPublicAccessBlockOutput, error)) {
 	fake.putPublicAccessBlockMutex.Lock()
 	defer fake.putPublicAccessBlockMutex.Unlock()
 	fake.PutPublicAccessBlockStub = stub
 }
 
-func (fake *FakeS3) PutPublicAccessBlockArgsForCall(i int) *s3a.PutPublicAccessBlockInput {
+func (fake *FakeClient) PutPublicAccessBlockArgsForCall(i int) *s3a.PutPublicAccessBlockInput {
 	fake.putPublicAccessBlockMutex.RLock()
 	defer fake.putPublicAccessBlockMutex.RUnlock()
 	argsForCall := fake.putPublicAccessBlockArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutPublicAccessBlockReturns(result1 *s3a.PutPublicAccessBlockOutput, result2 error) {
+func (fake *FakeClient) PutPublicAccessBlockReturns(result1 *s3a.PutPublicAccessBlockOutput, result2 error) {
 	fake.putPublicAccessBlockMutex.Lock()
 	defer fake.putPublicAccessBlockMutex.Unlock()
 	fake.PutPublicAccessBlockStub = nil
@@ -22023,7 +22023,7 @@ func (fake *FakeS3) PutPublicAccessBlockReturns(result1 *s3a.PutPublicAccessBloc
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutPublicAccessBlockReturnsOnCall(i int, result1 *s3a.PutPublicAccessBlockOutput, result2 error) {
+func (fake *FakeClient) PutPublicAccessBlockReturnsOnCall(i int, result1 *s3a.PutPublicAccessBlockOutput, result2 error) {
 	fake.putPublicAccessBlockMutex.Lock()
 	defer fake.putPublicAccessBlockMutex.Unlock()
 	fake.PutPublicAccessBlockStub = nil
@@ -22039,7 +22039,7 @@ func (fake *FakeS3) PutPublicAccessBlockReturnsOnCall(i int, result1 *s3a.PutPub
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutPublicAccessBlockRequest(arg1 *s3a.PutPublicAccessBlockInput) (*request.Request, *s3a.PutPublicAccessBlockOutput) {
+func (fake *FakeClient) PutPublicAccessBlockRequest(arg1 *s3a.PutPublicAccessBlockInput) (*request.Request, *s3a.PutPublicAccessBlockOutput) {
 	fake.putPublicAccessBlockRequestMutex.Lock()
 	ret, specificReturn := fake.putPublicAccessBlockRequestReturnsOnCall[len(fake.putPublicAccessBlockRequestArgsForCall)]
 	fake.putPublicAccessBlockRequestArgsForCall = append(fake.putPublicAccessBlockRequestArgsForCall, struct {
@@ -22057,26 +22057,26 @@ func (fake *FakeS3) PutPublicAccessBlockRequest(arg1 *s3a.PutPublicAccessBlockIn
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutPublicAccessBlockRequestCallCount() int {
+func (fake *FakeClient) PutPublicAccessBlockRequestCallCount() int {
 	fake.putPublicAccessBlockRequestMutex.RLock()
 	defer fake.putPublicAccessBlockRequestMutex.RUnlock()
 	return len(fake.putPublicAccessBlockRequestArgsForCall)
 }
 
-func (fake *FakeS3) PutPublicAccessBlockRequestCalls(stub func(*s3a.PutPublicAccessBlockInput) (*request.Request, *s3a.PutPublicAccessBlockOutput)) {
+func (fake *FakeClient) PutPublicAccessBlockRequestCalls(stub func(*s3a.PutPublicAccessBlockInput) (*request.Request, *s3a.PutPublicAccessBlockOutput)) {
 	fake.putPublicAccessBlockRequestMutex.Lock()
 	defer fake.putPublicAccessBlockRequestMutex.Unlock()
 	fake.PutPublicAccessBlockRequestStub = stub
 }
 
-func (fake *FakeS3) PutPublicAccessBlockRequestArgsForCall(i int) *s3a.PutPublicAccessBlockInput {
+func (fake *FakeClient) PutPublicAccessBlockRequestArgsForCall(i int) *s3a.PutPublicAccessBlockInput {
 	fake.putPublicAccessBlockRequestMutex.RLock()
 	defer fake.putPublicAccessBlockRequestMutex.RUnlock()
 	argsForCall := fake.putPublicAccessBlockRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) PutPublicAccessBlockRequestReturns(result1 *request.Request, result2 *s3a.PutPublicAccessBlockOutput) {
+func (fake *FakeClient) PutPublicAccessBlockRequestReturns(result1 *request.Request, result2 *s3a.PutPublicAccessBlockOutput) {
 	fake.putPublicAccessBlockRequestMutex.Lock()
 	defer fake.putPublicAccessBlockRequestMutex.Unlock()
 	fake.PutPublicAccessBlockRequestStub = nil
@@ -22086,7 +22086,7 @@ func (fake *FakeS3) PutPublicAccessBlockRequestReturns(result1 *request.Request,
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutPublicAccessBlockRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutPublicAccessBlockOutput) {
+func (fake *FakeClient) PutPublicAccessBlockRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.PutPublicAccessBlockOutput) {
 	fake.putPublicAccessBlockRequestMutex.Lock()
 	defer fake.putPublicAccessBlockRequestMutex.Unlock()
 	fake.PutPublicAccessBlockRequestStub = nil
@@ -22102,7 +22102,7 @@ func (fake *FakeS3) PutPublicAccessBlockRequestReturnsOnCall(i int, result1 *req
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutPublicAccessBlockWithContext(arg1 context.Context, arg2 *s3a.PutPublicAccessBlockInput, arg3 ...request.Option) (*s3a.PutPublicAccessBlockOutput, error) {
+func (fake *FakeClient) PutPublicAccessBlockWithContext(arg1 context.Context, arg2 *s3a.PutPublicAccessBlockInput, arg3 ...request.Option) (*s3a.PutPublicAccessBlockOutput, error) {
 	fake.putPublicAccessBlockWithContextMutex.Lock()
 	ret, specificReturn := fake.putPublicAccessBlockWithContextReturnsOnCall[len(fake.putPublicAccessBlockWithContextArgsForCall)]
 	fake.putPublicAccessBlockWithContextArgsForCall = append(fake.putPublicAccessBlockWithContextArgsForCall, struct {
@@ -22122,26 +22122,26 @@ func (fake *FakeS3) PutPublicAccessBlockWithContext(arg1 context.Context, arg2 *
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) PutPublicAccessBlockWithContextCallCount() int {
+func (fake *FakeClient) PutPublicAccessBlockWithContextCallCount() int {
 	fake.putPublicAccessBlockWithContextMutex.RLock()
 	defer fake.putPublicAccessBlockWithContextMutex.RUnlock()
 	return len(fake.putPublicAccessBlockWithContextArgsForCall)
 }
 
-func (fake *FakeS3) PutPublicAccessBlockWithContextCalls(stub func(context.Context, *s3a.PutPublicAccessBlockInput, ...request.Option) (*s3a.PutPublicAccessBlockOutput, error)) {
+func (fake *FakeClient) PutPublicAccessBlockWithContextCalls(stub func(context.Context, *s3a.PutPublicAccessBlockInput, ...request.Option) (*s3a.PutPublicAccessBlockOutput, error)) {
 	fake.putPublicAccessBlockWithContextMutex.Lock()
 	defer fake.putPublicAccessBlockWithContextMutex.Unlock()
 	fake.PutPublicAccessBlockWithContextStub = stub
 }
 
-func (fake *FakeS3) PutPublicAccessBlockWithContextArgsForCall(i int) (context.Context, *s3a.PutPublicAccessBlockInput, []request.Option) {
+func (fake *FakeClient) PutPublicAccessBlockWithContextArgsForCall(i int) (context.Context, *s3a.PutPublicAccessBlockInput, []request.Option) {
 	fake.putPublicAccessBlockWithContextMutex.RLock()
 	defer fake.putPublicAccessBlockWithContextMutex.RUnlock()
 	argsForCall := fake.putPublicAccessBlockWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) PutPublicAccessBlockWithContextReturns(result1 *s3a.PutPublicAccessBlockOutput, result2 error) {
+func (fake *FakeClient) PutPublicAccessBlockWithContextReturns(result1 *s3a.PutPublicAccessBlockOutput, result2 error) {
 	fake.putPublicAccessBlockWithContextMutex.Lock()
 	defer fake.putPublicAccessBlockWithContextMutex.Unlock()
 	fake.PutPublicAccessBlockWithContextStub = nil
@@ -22151,7 +22151,7 @@ func (fake *FakeS3) PutPublicAccessBlockWithContextReturns(result1 *s3a.PutPubli
 	}{result1, result2}
 }
 
-func (fake *FakeS3) PutPublicAccessBlockWithContextReturnsOnCall(i int, result1 *s3a.PutPublicAccessBlockOutput, result2 error) {
+func (fake *FakeClient) PutPublicAccessBlockWithContextReturnsOnCall(i int, result1 *s3a.PutPublicAccessBlockOutput, result2 error) {
 	fake.putPublicAccessBlockWithContextMutex.Lock()
 	defer fake.putPublicAccessBlockWithContextMutex.Unlock()
 	fake.PutPublicAccessBlockWithContextStub = nil
@@ -22167,7 +22167,7 @@ func (fake *FakeS3) PutPublicAccessBlockWithContextReturnsOnCall(i int, result1 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) RestoreObject(arg1 *s3a.RestoreObjectInput) (*s3a.RestoreObjectOutput, error) {
+func (fake *FakeClient) RestoreObject(arg1 *s3a.RestoreObjectInput) (*s3a.RestoreObjectOutput, error) {
 	fake.restoreObjectMutex.Lock()
 	ret, specificReturn := fake.restoreObjectReturnsOnCall[len(fake.restoreObjectArgsForCall)]
 	fake.restoreObjectArgsForCall = append(fake.restoreObjectArgsForCall, struct {
@@ -22185,26 +22185,26 @@ func (fake *FakeS3) RestoreObject(arg1 *s3a.RestoreObjectInput) (*s3a.RestoreObj
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) RestoreObjectCallCount() int {
+func (fake *FakeClient) RestoreObjectCallCount() int {
 	fake.restoreObjectMutex.RLock()
 	defer fake.restoreObjectMutex.RUnlock()
 	return len(fake.restoreObjectArgsForCall)
 }
 
-func (fake *FakeS3) RestoreObjectCalls(stub func(*s3a.RestoreObjectInput) (*s3a.RestoreObjectOutput, error)) {
+func (fake *FakeClient) RestoreObjectCalls(stub func(*s3a.RestoreObjectInput) (*s3a.RestoreObjectOutput, error)) {
 	fake.restoreObjectMutex.Lock()
 	defer fake.restoreObjectMutex.Unlock()
 	fake.RestoreObjectStub = stub
 }
 
-func (fake *FakeS3) RestoreObjectArgsForCall(i int) *s3a.RestoreObjectInput {
+func (fake *FakeClient) RestoreObjectArgsForCall(i int) *s3a.RestoreObjectInput {
 	fake.restoreObjectMutex.RLock()
 	defer fake.restoreObjectMutex.RUnlock()
 	argsForCall := fake.restoreObjectArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) RestoreObjectReturns(result1 *s3a.RestoreObjectOutput, result2 error) {
+func (fake *FakeClient) RestoreObjectReturns(result1 *s3a.RestoreObjectOutput, result2 error) {
 	fake.restoreObjectMutex.Lock()
 	defer fake.restoreObjectMutex.Unlock()
 	fake.RestoreObjectStub = nil
@@ -22214,7 +22214,7 @@ func (fake *FakeS3) RestoreObjectReturns(result1 *s3a.RestoreObjectOutput, resul
 	}{result1, result2}
 }
 
-func (fake *FakeS3) RestoreObjectReturnsOnCall(i int, result1 *s3a.RestoreObjectOutput, result2 error) {
+func (fake *FakeClient) RestoreObjectReturnsOnCall(i int, result1 *s3a.RestoreObjectOutput, result2 error) {
 	fake.restoreObjectMutex.Lock()
 	defer fake.restoreObjectMutex.Unlock()
 	fake.RestoreObjectStub = nil
@@ -22230,7 +22230,7 @@ func (fake *FakeS3) RestoreObjectReturnsOnCall(i int, result1 *s3a.RestoreObject
 	}{result1, result2}
 }
 
-func (fake *FakeS3) RestoreObjectRequest(arg1 *s3a.RestoreObjectInput) (*request.Request, *s3a.RestoreObjectOutput) {
+func (fake *FakeClient) RestoreObjectRequest(arg1 *s3a.RestoreObjectInput) (*request.Request, *s3a.RestoreObjectOutput) {
 	fake.restoreObjectRequestMutex.Lock()
 	ret, specificReturn := fake.restoreObjectRequestReturnsOnCall[len(fake.restoreObjectRequestArgsForCall)]
 	fake.restoreObjectRequestArgsForCall = append(fake.restoreObjectRequestArgsForCall, struct {
@@ -22248,26 +22248,26 @@ func (fake *FakeS3) RestoreObjectRequest(arg1 *s3a.RestoreObjectInput) (*request
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) RestoreObjectRequestCallCount() int {
+func (fake *FakeClient) RestoreObjectRequestCallCount() int {
 	fake.restoreObjectRequestMutex.RLock()
 	defer fake.restoreObjectRequestMutex.RUnlock()
 	return len(fake.restoreObjectRequestArgsForCall)
 }
 
-func (fake *FakeS3) RestoreObjectRequestCalls(stub func(*s3a.RestoreObjectInput) (*request.Request, *s3a.RestoreObjectOutput)) {
+func (fake *FakeClient) RestoreObjectRequestCalls(stub func(*s3a.RestoreObjectInput) (*request.Request, *s3a.RestoreObjectOutput)) {
 	fake.restoreObjectRequestMutex.Lock()
 	defer fake.restoreObjectRequestMutex.Unlock()
 	fake.RestoreObjectRequestStub = stub
 }
 
-func (fake *FakeS3) RestoreObjectRequestArgsForCall(i int) *s3a.RestoreObjectInput {
+func (fake *FakeClient) RestoreObjectRequestArgsForCall(i int) *s3a.RestoreObjectInput {
 	fake.restoreObjectRequestMutex.RLock()
 	defer fake.restoreObjectRequestMutex.RUnlock()
 	argsForCall := fake.restoreObjectRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) RestoreObjectRequestReturns(result1 *request.Request, result2 *s3a.RestoreObjectOutput) {
+func (fake *FakeClient) RestoreObjectRequestReturns(result1 *request.Request, result2 *s3a.RestoreObjectOutput) {
 	fake.restoreObjectRequestMutex.Lock()
 	defer fake.restoreObjectRequestMutex.Unlock()
 	fake.RestoreObjectRequestStub = nil
@@ -22277,7 +22277,7 @@ func (fake *FakeS3) RestoreObjectRequestReturns(result1 *request.Request, result
 	}{result1, result2}
 }
 
-func (fake *FakeS3) RestoreObjectRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.RestoreObjectOutput) {
+func (fake *FakeClient) RestoreObjectRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.RestoreObjectOutput) {
 	fake.restoreObjectRequestMutex.Lock()
 	defer fake.restoreObjectRequestMutex.Unlock()
 	fake.RestoreObjectRequestStub = nil
@@ -22293,7 +22293,7 @@ func (fake *FakeS3) RestoreObjectRequestReturnsOnCall(i int, result1 *request.Re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) RestoreObjectWithContext(arg1 context.Context, arg2 *s3a.RestoreObjectInput, arg3 ...request.Option) (*s3a.RestoreObjectOutput, error) {
+func (fake *FakeClient) RestoreObjectWithContext(arg1 context.Context, arg2 *s3a.RestoreObjectInput, arg3 ...request.Option) (*s3a.RestoreObjectOutput, error) {
 	fake.restoreObjectWithContextMutex.Lock()
 	ret, specificReturn := fake.restoreObjectWithContextReturnsOnCall[len(fake.restoreObjectWithContextArgsForCall)]
 	fake.restoreObjectWithContextArgsForCall = append(fake.restoreObjectWithContextArgsForCall, struct {
@@ -22313,26 +22313,26 @@ func (fake *FakeS3) RestoreObjectWithContext(arg1 context.Context, arg2 *s3a.Res
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) RestoreObjectWithContextCallCount() int {
+func (fake *FakeClient) RestoreObjectWithContextCallCount() int {
 	fake.restoreObjectWithContextMutex.RLock()
 	defer fake.restoreObjectWithContextMutex.RUnlock()
 	return len(fake.restoreObjectWithContextArgsForCall)
 }
 
-func (fake *FakeS3) RestoreObjectWithContextCalls(stub func(context.Context, *s3a.RestoreObjectInput, ...request.Option) (*s3a.RestoreObjectOutput, error)) {
+func (fake *FakeClient) RestoreObjectWithContextCalls(stub func(context.Context, *s3a.RestoreObjectInput, ...request.Option) (*s3a.RestoreObjectOutput, error)) {
 	fake.restoreObjectWithContextMutex.Lock()
 	defer fake.restoreObjectWithContextMutex.Unlock()
 	fake.RestoreObjectWithContextStub = stub
 }
 
-func (fake *FakeS3) RestoreObjectWithContextArgsForCall(i int) (context.Context, *s3a.RestoreObjectInput, []request.Option) {
+func (fake *FakeClient) RestoreObjectWithContextArgsForCall(i int) (context.Context, *s3a.RestoreObjectInput, []request.Option) {
 	fake.restoreObjectWithContextMutex.RLock()
 	defer fake.restoreObjectWithContextMutex.RUnlock()
 	argsForCall := fake.restoreObjectWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) RestoreObjectWithContextReturns(result1 *s3a.RestoreObjectOutput, result2 error) {
+func (fake *FakeClient) RestoreObjectWithContextReturns(result1 *s3a.RestoreObjectOutput, result2 error) {
 	fake.restoreObjectWithContextMutex.Lock()
 	defer fake.restoreObjectWithContextMutex.Unlock()
 	fake.RestoreObjectWithContextStub = nil
@@ -22342,7 +22342,7 @@ func (fake *FakeS3) RestoreObjectWithContextReturns(result1 *s3a.RestoreObjectOu
 	}{result1, result2}
 }
 
-func (fake *FakeS3) RestoreObjectWithContextReturnsOnCall(i int, result1 *s3a.RestoreObjectOutput, result2 error) {
+func (fake *FakeClient) RestoreObjectWithContextReturnsOnCall(i int, result1 *s3a.RestoreObjectOutput, result2 error) {
 	fake.restoreObjectWithContextMutex.Lock()
 	defer fake.restoreObjectWithContextMutex.Unlock()
 	fake.RestoreObjectWithContextStub = nil
@@ -22358,7 +22358,7 @@ func (fake *FakeS3) RestoreObjectWithContextReturnsOnCall(i int, result1 *s3a.Re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) SelectObjectContent(arg1 *s3a.SelectObjectContentInput) (*s3a.SelectObjectContentOutput, error) {
+func (fake *FakeClient) SelectObjectContent(arg1 *s3a.SelectObjectContentInput) (*s3a.SelectObjectContentOutput, error) {
 	fake.selectObjectContentMutex.Lock()
 	ret, specificReturn := fake.selectObjectContentReturnsOnCall[len(fake.selectObjectContentArgsForCall)]
 	fake.selectObjectContentArgsForCall = append(fake.selectObjectContentArgsForCall, struct {
@@ -22376,26 +22376,26 @@ func (fake *FakeS3) SelectObjectContent(arg1 *s3a.SelectObjectContentInput) (*s3
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) SelectObjectContentCallCount() int {
+func (fake *FakeClient) SelectObjectContentCallCount() int {
 	fake.selectObjectContentMutex.RLock()
 	defer fake.selectObjectContentMutex.RUnlock()
 	return len(fake.selectObjectContentArgsForCall)
 }
 
-func (fake *FakeS3) SelectObjectContentCalls(stub func(*s3a.SelectObjectContentInput) (*s3a.SelectObjectContentOutput, error)) {
+func (fake *FakeClient) SelectObjectContentCalls(stub func(*s3a.SelectObjectContentInput) (*s3a.SelectObjectContentOutput, error)) {
 	fake.selectObjectContentMutex.Lock()
 	defer fake.selectObjectContentMutex.Unlock()
 	fake.SelectObjectContentStub = stub
 }
 
-func (fake *FakeS3) SelectObjectContentArgsForCall(i int) *s3a.SelectObjectContentInput {
+func (fake *FakeClient) SelectObjectContentArgsForCall(i int) *s3a.SelectObjectContentInput {
 	fake.selectObjectContentMutex.RLock()
 	defer fake.selectObjectContentMutex.RUnlock()
 	argsForCall := fake.selectObjectContentArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) SelectObjectContentReturns(result1 *s3a.SelectObjectContentOutput, result2 error) {
+func (fake *FakeClient) SelectObjectContentReturns(result1 *s3a.SelectObjectContentOutput, result2 error) {
 	fake.selectObjectContentMutex.Lock()
 	defer fake.selectObjectContentMutex.Unlock()
 	fake.SelectObjectContentStub = nil
@@ -22405,7 +22405,7 @@ func (fake *FakeS3) SelectObjectContentReturns(result1 *s3a.SelectObjectContentO
 	}{result1, result2}
 }
 
-func (fake *FakeS3) SelectObjectContentReturnsOnCall(i int, result1 *s3a.SelectObjectContentOutput, result2 error) {
+func (fake *FakeClient) SelectObjectContentReturnsOnCall(i int, result1 *s3a.SelectObjectContentOutput, result2 error) {
 	fake.selectObjectContentMutex.Lock()
 	defer fake.selectObjectContentMutex.Unlock()
 	fake.SelectObjectContentStub = nil
@@ -22421,7 +22421,7 @@ func (fake *FakeS3) SelectObjectContentReturnsOnCall(i int, result1 *s3a.SelectO
 	}{result1, result2}
 }
 
-func (fake *FakeS3) SelectObjectContentRequest(arg1 *s3a.SelectObjectContentInput) (*request.Request, *s3a.SelectObjectContentOutput) {
+func (fake *FakeClient) SelectObjectContentRequest(arg1 *s3a.SelectObjectContentInput) (*request.Request, *s3a.SelectObjectContentOutput) {
 	fake.selectObjectContentRequestMutex.Lock()
 	ret, specificReturn := fake.selectObjectContentRequestReturnsOnCall[len(fake.selectObjectContentRequestArgsForCall)]
 	fake.selectObjectContentRequestArgsForCall = append(fake.selectObjectContentRequestArgsForCall, struct {
@@ -22439,26 +22439,26 @@ func (fake *FakeS3) SelectObjectContentRequest(arg1 *s3a.SelectObjectContentInpu
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) SelectObjectContentRequestCallCount() int {
+func (fake *FakeClient) SelectObjectContentRequestCallCount() int {
 	fake.selectObjectContentRequestMutex.RLock()
 	defer fake.selectObjectContentRequestMutex.RUnlock()
 	return len(fake.selectObjectContentRequestArgsForCall)
 }
 
-func (fake *FakeS3) SelectObjectContentRequestCalls(stub func(*s3a.SelectObjectContentInput) (*request.Request, *s3a.SelectObjectContentOutput)) {
+func (fake *FakeClient) SelectObjectContentRequestCalls(stub func(*s3a.SelectObjectContentInput) (*request.Request, *s3a.SelectObjectContentOutput)) {
 	fake.selectObjectContentRequestMutex.Lock()
 	defer fake.selectObjectContentRequestMutex.Unlock()
 	fake.SelectObjectContentRequestStub = stub
 }
 
-func (fake *FakeS3) SelectObjectContentRequestArgsForCall(i int) *s3a.SelectObjectContentInput {
+func (fake *FakeClient) SelectObjectContentRequestArgsForCall(i int) *s3a.SelectObjectContentInput {
 	fake.selectObjectContentRequestMutex.RLock()
 	defer fake.selectObjectContentRequestMutex.RUnlock()
 	argsForCall := fake.selectObjectContentRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) SelectObjectContentRequestReturns(result1 *request.Request, result2 *s3a.SelectObjectContentOutput) {
+func (fake *FakeClient) SelectObjectContentRequestReturns(result1 *request.Request, result2 *s3a.SelectObjectContentOutput) {
 	fake.selectObjectContentRequestMutex.Lock()
 	defer fake.selectObjectContentRequestMutex.Unlock()
 	fake.SelectObjectContentRequestStub = nil
@@ -22468,7 +22468,7 @@ func (fake *FakeS3) SelectObjectContentRequestReturns(result1 *request.Request, 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) SelectObjectContentRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.SelectObjectContentOutput) {
+func (fake *FakeClient) SelectObjectContentRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.SelectObjectContentOutput) {
 	fake.selectObjectContentRequestMutex.Lock()
 	defer fake.selectObjectContentRequestMutex.Unlock()
 	fake.SelectObjectContentRequestStub = nil
@@ -22484,7 +22484,7 @@ func (fake *FakeS3) SelectObjectContentRequestReturnsOnCall(i int, result1 *requ
 	}{result1, result2}
 }
 
-func (fake *FakeS3) SelectObjectContentWithContext(arg1 context.Context, arg2 *s3a.SelectObjectContentInput, arg3 ...request.Option) (*s3a.SelectObjectContentOutput, error) {
+func (fake *FakeClient) SelectObjectContentWithContext(arg1 context.Context, arg2 *s3a.SelectObjectContentInput, arg3 ...request.Option) (*s3a.SelectObjectContentOutput, error) {
 	fake.selectObjectContentWithContextMutex.Lock()
 	ret, specificReturn := fake.selectObjectContentWithContextReturnsOnCall[len(fake.selectObjectContentWithContextArgsForCall)]
 	fake.selectObjectContentWithContextArgsForCall = append(fake.selectObjectContentWithContextArgsForCall, struct {
@@ -22504,26 +22504,26 @@ func (fake *FakeS3) SelectObjectContentWithContext(arg1 context.Context, arg2 *s
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) SelectObjectContentWithContextCallCount() int {
+func (fake *FakeClient) SelectObjectContentWithContextCallCount() int {
 	fake.selectObjectContentWithContextMutex.RLock()
 	defer fake.selectObjectContentWithContextMutex.RUnlock()
 	return len(fake.selectObjectContentWithContextArgsForCall)
 }
 
-func (fake *FakeS3) SelectObjectContentWithContextCalls(stub func(context.Context, *s3a.SelectObjectContentInput, ...request.Option) (*s3a.SelectObjectContentOutput, error)) {
+func (fake *FakeClient) SelectObjectContentWithContextCalls(stub func(context.Context, *s3a.SelectObjectContentInput, ...request.Option) (*s3a.SelectObjectContentOutput, error)) {
 	fake.selectObjectContentWithContextMutex.Lock()
 	defer fake.selectObjectContentWithContextMutex.Unlock()
 	fake.SelectObjectContentWithContextStub = stub
 }
 
-func (fake *FakeS3) SelectObjectContentWithContextArgsForCall(i int) (context.Context, *s3a.SelectObjectContentInput, []request.Option) {
+func (fake *FakeClient) SelectObjectContentWithContextArgsForCall(i int) (context.Context, *s3a.SelectObjectContentInput, []request.Option) {
 	fake.selectObjectContentWithContextMutex.RLock()
 	defer fake.selectObjectContentWithContextMutex.RUnlock()
 	argsForCall := fake.selectObjectContentWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) SelectObjectContentWithContextReturns(result1 *s3a.SelectObjectContentOutput, result2 error) {
+func (fake *FakeClient) SelectObjectContentWithContextReturns(result1 *s3a.SelectObjectContentOutput, result2 error) {
 	fake.selectObjectContentWithContextMutex.Lock()
 	defer fake.selectObjectContentWithContextMutex.Unlock()
 	fake.SelectObjectContentWithContextStub = nil
@@ -22533,7 +22533,7 @@ func (fake *FakeS3) SelectObjectContentWithContextReturns(result1 *s3a.SelectObj
 	}{result1, result2}
 }
 
-func (fake *FakeS3) SelectObjectContentWithContextReturnsOnCall(i int, result1 *s3a.SelectObjectContentOutput, result2 error) {
+func (fake *FakeClient) SelectObjectContentWithContextReturnsOnCall(i int, result1 *s3a.SelectObjectContentOutput, result2 error) {
 	fake.selectObjectContentWithContextMutex.Lock()
 	defer fake.selectObjectContentWithContextMutex.Unlock()
 	fake.SelectObjectContentWithContextStub = nil
@@ -22549,7 +22549,7 @@ func (fake *FakeS3) SelectObjectContentWithContextReturnsOnCall(i int, result1 *
 	}{result1, result2}
 }
 
-func (fake *FakeS3) Upload(arg1 *s3manager.UploadInput, arg2 ...func(*s3manager.Uploader)) (*s3manager.UploadOutput, error) {
+func (fake *FakeClient) Upload(arg1 *s3manager.UploadInput, arg2 ...func(*s3manager.Uploader)) (*s3manager.UploadOutput, error) {
 	fake.uploadMutex.Lock()
 	ret, specificReturn := fake.uploadReturnsOnCall[len(fake.uploadArgsForCall)]
 	fake.uploadArgsForCall = append(fake.uploadArgsForCall, struct {
@@ -22568,26 +22568,26 @@ func (fake *FakeS3) Upload(arg1 *s3manager.UploadInput, arg2 ...func(*s3manager.
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) UploadCallCount() int {
+func (fake *FakeClient) UploadCallCount() int {
 	fake.uploadMutex.RLock()
 	defer fake.uploadMutex.RUnlock()
 	return len(fake.uploadArgsForCall)
 }
 
-func (fake *FakeS3) UploadCalls(stub func(*s3manager.UploadInput, ...func(*s3manager.Uploader)) (*s3manager.UploadOutput, error)) {
+func (fake *FakeClient) UploadCalls(stub func(*s3manager.UploadInput, ...func(*s3manager.Uploader)) (*s3manager.UploadOutput, error)) {
 	fake.uploadMutex.Lock()
 	defer fake.uploadMutex.Unlock()
 	fake.UploadStub = stub
 }
 
-func (fake *FakeS3) UploadArgsForCall(i int) (*s3manager.UploadInput, []func(*s3manager.Uploader)) {
+func (fake *FakeClient) UploadArgsForCall(i int) (*s3manager.UploadInput, []func(*s3manager.Uploader)) {
 	fake.uploadMutex.RLock()
 	defer fake.uploadMutex.RUnlock()
 	argsForCall := fake.uploadArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2
 }
 
-func (fake *FakeS3) UploadReturns(result1 *s3manager.UploadOutput, result2 error) {
+func (fake *FakeClient) UploadReturns(result1 *s3manager.UploadOutput, result2 error) {
 	fake.uploadMutex.Lock()
 	defer fake.uploadMutex.Unlock()
 	fake.UploadStub = nil
@@ -22597,7 +22597,7 @@ func (fake *FakeS3) UploadReturns(result1 *s3manager.UploadOutput, result2 error
 	}{result1, result2}
 }
 
-func (fake *FakeS3) UploadReturnsOnCall(i int, result1 *s3manager.UploadOutput, result2 error) {
+func (fake *FakeClient) UploadReturnsOnCall(i int, result1 *s3manager.UploadOutput, result2 error) {
 	fake.uploadMutex.Lock()
 	defer fake.uploadMutex.Unlock()
 	fake.UploadStub = nil
@@ -22613,7 +22613,7 @@ func (fake *FakeS3) UploadReturnsOnCall(i int, result1 *s3manager.UploadOutput, 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) UploadPart(arg1 *s3a.UploadPartInput) (*s3a.UploadPartOutput, error) {
+func (fake *FakeClient) UploadPart(arg1 *s3a.UploadPartInput) (*s3a.UploadPartOutput, error) {
 	fake.uploadPartMutex.Lock()
 	ret, specificReturn := fake.uploadPartReturnsOnCall[len(fake.uploadPartArgsForCall)]
 	fake.uploadPartArgsForCall = append(fake.uploadPartArgsForCall, struct {
@@ -22631,26 +22631,26 @@ func (fake *FakeS3) UploadPart(arg1 *s3a.UploadPartInput) (*s3a.UploadPartOutput
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) UploadPartCallCount() int {
+func (fake *FakeClient) UploadPartCallCount() int {
 	fake.uploadPartMutex.RLock()
 	defer fake.uploadPartMutex.RUnlock()
 	return len(fake.uploadPartArgsForCall)
 }
 
-func (fake *FakeS3) UploadPartCalls(stub func(*s3a.UploadPartInput) (*s3a.UploadPartOutput, error)) {
+func (fake *FakeClient) UploadPartCalls(stub func(*s3a.UploadPartInput) (*s3a.UploadPartOutput, error)) {
 	fake.uploadPartMutex.Lock()
 	defer fake.uploadPartMutex.Unlock()
 	fake.UploadPartStub = stub
 }
 
-func (fake *FakeS3) UploadPartArgsForCall(i int) *s3a.UploadPartInput {
+func (fake *FakeClient) UploadPartArgsForCall(i int) *s3a.UploadPartInput {
 	fake.uploadPartMutex.RLock()
 	defer fake.uploadPartMutex.RUnlock()
 	argsForCall := fake.uploadPartArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) UploadPartReturns(result1 *s3a.UploadPartOutput, result2 error) {
+func (fake *FakeClient) UploadPartReturns(result1 *s3a.UploadPartOutput, result2 error) {
 	fake.uploadPartMutex.Lock()
 	defer fake.uploadPartMutex.Unlock()
 	fake.UploadPartStub = nil
@@ -22660,7 +22660,7 @@ func (fake *FakeS3) UploadPartReturns(result1 *s3a.UploadPartOutput, result2 err
 	}{result1, result2}
 }
 
-func (fake *FakeS3) UploadPartReturnsOnCall(i int, result1 *s3a.UploadPartOutput, result2 error) {
+func (fake *FakeClient) UploadPartReturnsOnCall(i int, result1 *s3a.UploadPartOutput, result2 error) {
 	fake.uploadPartMutex.Lock()
 	defer fake.uploadPartMutex.Unlock()
 	fake.UploadPartStub = nil
@@ -22676,7 +22676,7 @@ func (fake *FakeS3) UploadPartReturnsOnCall(i int, result1 *s3a.UploadPartOutput
 	}{result1, result2}
 }
 
-func (fake *FakeS3) UploadPartCopy(arg1 *s3a.UploadPartCopyInput) (*s3a.UploadPartCopyOutput, error) {
+func (fake *FakeClient) UploadPartCopy(arg1 *s3a.UploadPartCopyInput) (*s3a.UploadPartCopyOutput, error) {
 	fake.uploadPartCopyMutex.Lock()
 	ret, specificReturn := fake.uploadPartCopyReturnsOnCall[len(fake.uploadPartCopyArgsForCall)]
 	fake.uploadPartCopyArgsForCall = append(fake.uploadPartCopyArgsForCall, struct {
@@ -22694,26 +22694,26 @@ func (fake *FakeS3) UploadPartCopy(arg1 *s3a.UploadPartCopyInput) (*s3a.UploadPa
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) UploadPartCopyCallCount() int {
+func (fake *FakeClient) UploadPartCopyCallCount() int {
 	fake.uploadPartCopyMutex.RLock()
 	defer fake.uploadPartCopyMutex.RUnlock()
 	return len(fake.uploadPartCopyArgsForCall)
 }
 
-func (fake *FakeS3) UploadPartCopyCalls(stub func(*s3a.UploadPartCopyInput) (*s3a.UploadPartCopyOutput, error)) {
+func (fake *FakeClient) UploadPartCopyCalls(stub func(*s3a.UploadPartCopyInput) (*s3a.UploadPartCopyOutput, error)) {
 	fake.uploadPartCopyMutex.Lock()
 	defer fake.uploadPartCopyMutex.Unlock()
 	fake.UploadPartCopyStub = stub
 }
 
-func (fake *FakeS3) UploadPartCopyArgsForCall(i int) *s3a.UploadPartCopyInput {
+func (fake *FakeClient) UploadPartCopyArgsForCall(i int) *s3a.UploadPartCopyInput {
 	fake.uploadPartCopyMutex.RLock()
 	defer fake.uploadPartCopyMutex.RUnlock()
 	argsForCall := fake.uploadPartCopyArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) UploadPartCopyReturns(result1 *s3a.UploadPartCopyOutput, result2 error) {
+func (fake *FakeClient) UploadPartCopyReturns(result1 *s3a.UploadPartCopyOutput, result2 error) {
 	fake.uploadPartCopyMutex.Lock()
 	defer fake.uploadPartCopyMutex.Unlock()
 	fake.UploadPartCopyStub = nil
@@ -22723,7 +22723,7 @@ func (fake *FakeS3) UploadPartCopyReturns(result1 *s3a.UploadPartCopyOutput, res
 	}{result1, result2}
 }
 
-func (fake *FakeS3) UploadPartCopyReturnsOnCall(i int, result1 *s3a.UploadPartCopyOutput, result2 error) {
+func (fake *FakeClient) UploadPartCopyReturnsOnCall(i int, result1 *s3a.UploadPartCopyOutput, result2 error) {
 	fake.uploadPartCopyMutex.Lock()
 	defer fake.uploadPartCopyMutex.Unlock()
 	fake.UploadPartCopyStub = nil
@@ -22739,7 +22739,7 @@ func (fake *FakeS3) UploadPartCopyReturnsOnCall(i int, result1 *s3a.UploadPartCo
 	}{result1, result2}
 }
 
-func (fake *FakeS3) UploadPartCopyRequest(arg1 *s3a.UploadPartCopyInput) (*request.Request, *s3a.UploadPartCopyOutput) {
+func (fake *FakeClient) UploadPartCopyRequest(arg1 *s3a.UploadPartCopyInput) (*request.Request, *s3a.UploadPartCopyOutput) {
 	fake.uploadPartCopyRequestMutex.Lock()
 	ret, specificReturn := fake.uploadPartCopyRequestReturnsOnCall[len(fake.uploadPartCopyRequestArgsForCall)]
 	fake.uploadPartCopyRequestArgsForCall = append(fake.uploadPartCopyRequestArgsForCall, struct {
@@ -22757,26 +22757,26 @@ func (fake *FakeS3) UploadPartCopyRequest(arg1 *s3a.UploadPartCopyInput) (*reque
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) UploadPartCopyRequestCallCount() int {
+func (fake *FakeClient) UploadPartCopyRequestCallCount() int {
 	fake.uploadPartCopyRequestMutex.RLock()
 	defer fake.uploadPartCopyRequestMutex.RUnlock()
 	return len(fake.uploadPartCopyRequestArgsForCall)
 }
 
-func (fake *FakeS3) UploadPartCopyRequestCalls(stub func(*s3a.UploadPartCopyInput) (*request.Request, *s3a.UploadPartCopyOutput)) {
+func (fake *FakeClient) UploadPartCopyRequestCalls(stub func(*s3a.UploadPartCopyInput) (*request.Request, *s3a.UploadPartCopyOutput)) {
 	fake.uploadPartCopyRequestMutex.Lock()
 	defer fake.uploadPartCopyRequestMutex.Unlock()
 	fake.UploadPartCopyRequestStub = stub
 }
 
-func (fake *FakeS3) UploadPartCopyRequestArgsForCall(i int) *s3a.UploadPartCopyInput {
+func (fake *FakeClient) UploadPartCopyRequestArgsForCall(i int) *s3a.UploadPartCopyInput {
 	fake.uploadPartCopyRequestMutex.RLock()
 	defer fake.uploadPartCopyRequestMutex.RUnlock()
 	argsForCall := fake.uploadPartCopyRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) UploadPartCopyRequestReturns(result1 *request.Request, result2 *s3a.UploadPartCopyOutput) {
+func (fake *FakeClient) UploadPartCopyRequestReturns(result1 *request.Request, result2 *s3a.UploadPartCopyOutput) {
 	fake.uploadPartCopyRequestMutex.Lock()
 	defer fake.uploadPartCopyRequestMutex.Unlock()
 	fake.UploadPartCopyRequestStub = nil
@@ -22786,7 +22786,7 @@ func (fake *FakeS3) UploadPartCopyRequestReturns(result1 *request.Request, resul
 	}{result1, result2}
 }
 
-func (fake *FakeS3) UploadPartCopyRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.UploadPartCopyOutput) {
+func (fake *FakeClient) UploadPartCopyRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.UploadPartCopyOutput) {
 	fake.uploadPartCopyRequestMutex.Lock()
 	defer fake.uploadPartCopyRequestMutex.Unlock()
 	fake.UploadPartCopyRequestStub = nil
@@ -22802,7 +22802,7 @@ func (fake *FakeS3) UploadPartCopyRequestReturnsOnCall(i int, result1 *request.R
 	}{result1, result2}
 }
 
-func (fake *FakeS3) UploadPartCopyWithContext(arg1 context.Context, arg2 *s3a.UploadPartCopyInput, arg3 ...request.Option) (*s3a.UploadPartCopyOutput, error) {
+func (fake *FakeClient) UploadPartCopyWithContext(arg1 context.Context, arg2 *s3a.UploadPartCopyInput, arg3 ...request.Option) (*s3a.UploadPartCopyOutput, error) {
 	fake.uploadPartCopyWithContextMutex.Lock()
 	ret, specificReturn := fake.uploadPartCopyWithContextReturnsOnCall[len(fake.uploadPartCopyWithContextArgsForCall)]
 	fake.uploadPartCopyWithContextArgsForCall = append(fake.uploadPartCopyWithContextArgsForCall, struct {
@@ -22822,26 +22822,26 @@ func (fake *FakeS3) UploadPartCopyWithContext(arg1 context.Context, arg2 *s3a.Up
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) UploadPartCopyWithContextCallCount() int {
+func (fake *FakeClient) UploadPartCopyWithContextCallCount() int {
 	fake.uploadPartCopyWithContextMutex.RLock()
 	defer fake.uploadPartCopyWithContextMutex.RUnlock()
 	return len(fake.uploadPartCopyWithContextArgsForCall)
 }
 
-func (fake *FakeS3) UploadPartCopyWithContextCalls(stub func(context.Context, *s3a.UploadPartCopyInput, ...request.Option) (*s3a.UploadPartCopyOutput, error)) {
+func (fake *FakeClient) UploadPartCopyWithContextCalls(stub func(context.Context, *s3a.UploadPartCopyInput, ...request.Option) (*s3a.UploadPartCopyOutput, error)) {
 	fake.uploadPartCopyWithContextMutex.Lock()
 	defer fake.uploadPartCopyWithContextMutex.Unlock()
 	fake.UploadPartCopyWithContextStub = stub
 }
 
-func (fake *FakeS3) UploadPartCopyWithContextArgsForCall(i int) (context.Context, *s3a.UploadPartCopyInput, []request.Option) {
+func (fake *FakeClient) UploadPartCopyWithContextArgsForCall(i int) (context.Context, *s3a.UploadPartCopyInput, []request.Option) {
 	fake.uploadPartCopyWithContextMutex.RLock()
 	defer fake.uploadPartCopyWithContextMutex.RUnlock()
 	argsForCall := fake.uploadPartCopyWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) UploadPartCopyWithContextReturns(result1 *s3a.UploadPartCopyOutput, result2 error) {
+func (fake *FakeClient) UploadPartCopyWithContextReturns(result1 *s3a.UploadPartCopyOutput, result2 error) {
 	fake.uploadPartCopyWithContextMutex.Lock()
 	defer fake.uploadPartCopyWithContextMutex.Unlock()
 	fake.UploadPartCopyWithContextStub = nil
@@ -22851,7 +22851,7 @@ func (fake *FakeS3) UploadPartCopyWithContextReturns(result1 *s3a.UploadPartCopy
 	}{result1, result2}
 }
 
-func (fake *FakeS3) UploadPartCopyWithContextReturnsOnCall(i int, result1 *s3a.UploadPartCopyOutput, result2 error) {
+func (fake *FakeClient) UploadPartCopyWithContextReturnsOnCall(i int, result1 *s3a.UploadPartCopyOutput, result2 error) {
 	fake.uploadPartCopyWithContextMutex.Lock()
 	defer fake.uploadPartCopyWithContextMutex.Unlock()
 	fake.UploadPartCopyWithContextStub = nil
@@ -22867,7 +22867,7 @@ func (fake *FakeS3) UploadPartCopyWithContextReturnsOnCall(i int, result1 *s3a.U
 	}{result1, result2}
 }
 
-func (fake *FakeS3) UploadPartRequest(arg1 *s3a.UploadPartInput) (*request.Request, *s3a.UploadPartOutput) {
+func (fake *FakeClient) UploadPartRequest(arg1 *s3a.UploadPartInput) (*request.Request, *s3a.UploadPartOutput) {
 	fake.uploadPartRequestMutex.Lock()
 	ret, specificReturn := fake.uploadPartRequestReturnsOnCall[len(fake.uploadPartRequestArgsForCall)]
 	fake.uploadPartRequestArgsForCall = append(fake.uploadPartRequestArgsForCall, struct {
@@ -22885,26 +22885,26 @@ func (fake *FakeS3) UploadPartRequest(arg1 *s3a.UploadPartInput) (*request.Reque
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) UploadPartRequestCallCount() int {
+func (fake *FakeClient) UploadPartRequestCallCount() int {
 	fake.uploadPartRequestMutex.RLock()
 	defer fake.uploadPartRequestMutex.RUnlock()
 	return len(fake.uploadPartRequestArgsForCall)
 }
 
-func (fake *FakeS3) UploadPartRequestCalls(stub func(*s3a.UploadPartInput) (*request.Request, *s3a.UploadPartOutput)) {
+func (fake *FakeClient) UploadPartRequestCalls(stub func(*s3a.UploadPartInput) (*request.Request, *s3a.UploadPartOutput)) {
 	fake.uploadPartRequestMutex.Lock()
 	defer fake.uploadPartRequestMutex.Unlock()
 	fake.UploadPartRequestStub = stub
 }
 
-func (fake *FakeS3) UploadPartRequestArgsForCall(i int) *s3a.UploadPartInput {
+func (fake *FakeClient) UploadPartRequestArgsForCall(i int) *s3a.UploadPartInput {
 	fake.uploadPartRequestMutex.RLock()
 	defer fake.uploadPartRequestMutex.RUnlock()
 	argsForCall := fake.uploadPartRequestArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) UploadPartRequestReturns(result1 *request.Request, result2 *s3a.UploadPartOutput) {
+func (fake *FakeClient) UploadPartRequestReturns(result1 *request.Request, result2 *s3a.UploadPartOutput) {
 	fake.uploadPartRequestMutex.Lock()
 	defer fake.uploadPartRequestMutex.Unlock()
 	fake.UploadPartRequestStub = nil
@@ -22914,7 +22914,7 @@ func (fake *FakeS3) UploadPartRequestReturns(result1 *request.Request, result2 *
 	}{result1, result2}
 }
 
-func (fake *FakeS3) UploadPartRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.UploadPartOutput) {
+func (fake *FakeClient) UploadPartRequestReturnsOnCall(i int, result1 *request.Request, result2 *s3a.UploadPartOutput) {
 	fake.uploadPartRequestMutex.Lock()
 	defer fake.uploadPartRequestMutex.Unlock()
 	fake.UploadPartRequestStub = nil
@@ -22930,7 +22930,7 @@ func (fake *FakeS3) UploadPartRequestReturnsOnCall(i int, result1 *request.Reque
 	}{result1, result2}
 }
 
-func (fake *FakeS3) UploadPartWithContext(arg1 context.Context, arg2 *s3a.UploadPartInput, arg3 ...request.Option) (*s3a.UploadPartOutput, error) {
+func (fake *FakeClient) UploadPartWithContext(arg1 context.Context, arg2 *s3a.UploadPartInput, arg3 ...request.Option) (*s3a.UploadPartOutput, error) {
 	fake.uploadPartWithContextMutex.Lock()
 	ret, specificReturn := fake.uploadPartWithContextReturnsOnCall[len(fake.uploadPartWithContextArgsForCall)]
 	fake.uploadPartWithContextArgsForCall = append(fake.uploadPartWithContextArgsForCall, struct {
@@ -22950,26 +22950,26 @@ func (fake *FakeS3) UploadPartWithContext(arg1 context.Context, arg2 *s3a.Upload
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) UploadPartWithContextCallCount() int {
+func (fake *FakeClient) UploadPartWithContextCallCount() int {
 	fake.uploadPartWithContextMutex.RLock()
 	defer fake.uploadPartWithContextMutex.RUnlock()
 	return len(fake.uploadPartWithContextArgsForCall)
 }
 
-func (fake *FakeS3) UploadPartWithContextCalls(stub func(context.Context, *s3a.UploadPartInput, ...request.Option) (*s3a.UploadPartOutput, error)) {
+func (fake *FakeClient) UploadPartWithContextCalls(stub func(context.Context, *s3a.UploadPartInput, ...request.Option) (*s3a.UploadPartOutput, error)) {
 	fake.uploadPartWithContextMutex.Lock()
 	defer fake.uploadPartWithContextMutex.Unlock()
 	fake.UploadPartWithContextStub = stub
 }
 
-func (fake *FakeS3) UploadPartWithContextArgsForCall(i int) (context.Context, *s3a.UploadPartInput, []request.Option) {
+func (fake *FakeClient) UploadPartWithContextArgsForCall(i int) (context.Context, *s3a.UploadPartInput, []request.Option) {
 	fake.uploadPartWithContextMutex.RLock()
 	defer fake.uploadPartWithContextMutex.RUnlock()
 	argsForCall := fake.uploadPartWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) UploadPartWithContextReturns(result1 *s3a.UploadPartOutput, result2 error) {
+func (fake *FakeClient) UploadPartWithContextReturns(result1 *s3a.UploadPartOutput, result2 error) {
 	fake.uploadPartWithContextMutex.Lock()
 	defer fake.uploadPartWithContextMutex.Unlock()
 	fake.UploadPartWithContextStub = nil
@@ -22979,7 +22979,7 @@ func (fake *FakeS3) UploadPartWithContextReturns(result1 *s3a.UploadPartOutput, 
 	}{result1, result2}
 }
 
-func (fake *FakeS3) UploadPartWithContextReturnsOnCall(i int, result1 *s3a.UploadPartOutput, result2 error) {
+func (fake *FakeClient) UploadPartWithContextReturnsOnCall(i int, result1 *s3a.UploadPartOutput, result2 error) {
 	fake.uploadPartWithContextMutex.Lock()
 	defer fake.uploadPartWithContextMutex.Unlock()
 	fake.UploadPartWithContextStub = nil
@@ -22995,7 +22995,7 @@ func (fake *FakeS3) UploadPartWithContextReturnsOnCall(i int, result1 *s3a.Uploa
 	}{result1, result2}
 }
 
-func (fake *FakeS3) UploadWithContext(arg1 context.Context, arg2 *s3manager.UploadInput, arg3 ...func(*s3manager.Uploader)) (*s3manager.UploadOutput, error) {
+func (fake *FakeClient) UploadWithContext(arg1 context.Context, arg2 *s3manager.UploadInput, arg3 ...func(*s3manager.Uploader)) (*s3manager.UploadOutput, error) {
 	fake.uploadWithContextMutex.Lock()
 	ret, specificReturn := fake.uploadWithContextReturnsOnCall[len(fake.uploadWithContextArgsForCall)]
 	fake.uploadWithContextArgsForCall = append(fake.uploadWithContextArgsForCall, struct {
@@ -23015,26 +23015,26 @@ func (fake *FakeS3) UploadWithContext(arg1 context.Context, arg2 *s3manager.Uplo
 	return fakeReturns.result1, fakeReturns.result2
 }
 
-func (fake *FakeS3) UploadWithContextCallCount() int {
+func (fake *FakeClient) UploadWithContextCallCount() int {
 	fake.uploadWithContextMutex.RLock()
 	defer fake.uploadWithContextMutex.RUnlock()
 	return len(fake.uploadWithContextArgsForCall)
 }
 
-func (fake *FakeS3) UploadWithContextCalls(stub func(context.Context, *s3manager.UploadInput, ...func(*s3manager.Uploader)) (*s3manager.UploadOutput, error)) {
+func (fake *FakeClient) UploadWithContextCalls(stub func(context.Context, *s3manager.UploadInput, ...func(*s3manager.Uploader)) (*s3manager.UploadOutput, error)) {
 	fake.uploadWithContextMutex.Lock()
 	defer fake.uploadWithContextMutex.Unlock()
 	fake.UploadWithContextStub = stub
 }
 
-func (fake *FakeS3) UploadWithContextArgsForCall(i int) (context.Context, *s3manager.UploadInput, []func(*s3manager.Uploader)) {
+func (fake *FakeClient) UploadWithContextArgsForCall(i int) (context.Context, *s3manager.UploadInput, []func(*s3manager.Uploader)) {
 	fake.uploadWithContextMutex.RLock()
 	defer fake.uploadWithContextMutex.RUnlock()
 	argsForCall := fake.uploadWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) UploadWithContextReturns(result1 *s3manager.UploadOutput, result2 error) {
+func (fake *FakeClient) UploadWithContextReturns(result1 *s3manager.UploadOutput, result2 error) {
 	fake.uploadWithContextMutex.Lock()
 	defer fake.uploadWithContextMutex.Unlock()
 	fake.UploadWithContextStub = nil
@@ -23044,7 +23044,7 @@ func (fake *FakeS3) UploadWithContextReturns(result1 *s3manager.UploadOutput, re
 	}{result1, result2}
 }
 
-func (fake *FakeS3) UploadWithContextReturnsOnCall(i int, result1 *s3manager.UploadOutput, result2 error) {
+func (fake *FakeClient) UploadWithContextReturnsOnCall(i int, result1 *s3manager.UploadOutput, result2 error) {
 	fake.uploadWithContextMutex.Lock()
 	defer fake.uploadWithContextMutex.Unlock()
 	fake.UploadWithContextStub = nil
@@ -23060,7 +23060,7 @@ func (fake *FakeS3) UploadWithContextReturnsOnCall(i int, result1 *s3manager.Upl
 	}{result1, result2}
 }
 
-func (fake *FakeS3) WaitUntilBucketExists(arg1 *s3a.HeadBucketInput) error {
+func (fake *FakeClient) WaitUntilBucketExists(arg1 *s3a.HeadBucketInput) error {
 	fake.waitUntilBucketExistsMutex.Lock()
 	ret, specificReturn := fake.waitUntilBucketExistsReturnsOnCall[len(fake.waitUntilBucketExistsArgsForCall)]
 	fake.waitUntilBucketExistsArgsForCall = append(fake.waitUntilBucketExistsArgsForCall, struct {
@@ -23078,26 +23078,26 @@ func (fake *FakeS3) WaitUntilBucketExists(arg1 *s3a.HeadBucketInput) error {
 	return fakeReturns.result1
 }
 
-func (fake *FakeS3) WaitUntilBucketExistsCallCount() int {
+func (fake *FakeClient) WaitUntilBucketExistsCallCount() int {
 	fake.waitUntilBucketExistsMutex.RLock()
 	defer fake.waitUntilBucketExistsMutex.RUnlock()
 	return len(fake.waitUntilBucketExistsArgsForCall)
 }
 
-func (fake *FakeS3) WaitUntilBucketExistsCalls(stub func(*s3a.HeadBucketInput) error) {
+func (fake *FakeClient) WaitUntilBucketExistsCalls(stub func(*s3a.HeadBucketInput) error) {
 	fake.waitUntilBucketExistsMutex.Lock()
 	defer fake.waitUntilBucketExistsMutex.Unlock()
 	fake.WaitUntilBucketExistsStub = stub
 }
 
-func (fake *FakeS3) WaitUntilBucketExistsArgsForCall(i int) *s3a.HeadBucketInput {
+func (fake *FakeClient) WaitUntilBucketExistsArgsForCall(i int) *s3a.HeadBucketInput {
 	fake.waitUntilBucketExistsMutex.RLock()
 	defer fake.waitUntilBucketExistsMutex.RUnlock()
 	argsForCall := fake.waitUntilBucketExistsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) WaitUntilBucketExistsReturns(result1 error) {
+func (fake *FakeClient) WaitUntilBucketExistsReturns(result1 error) {
 	fake.waitUntilBucketExistsMutex.Lock()
 	defer fake.waitUntilBucketExistsMutex.Unlock()
 	fake.WaitUntilBucketExistsStub = nil
@@ -23106,7 +23106,7 @@ func (fake *FakeS3) WaitUntilBucketExistsReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) WaitUntilBucketExistsReturnsOnCall(i int, result1 error) {
+func (fake *FakeClient) WaitUntilBucketExistsReturnsOnCall(i int, result1 error) {
 	fake.waitUntilBucketExistsMutex.Lock()
 	defer fake.waitUntilBucketExistsMutex.Unlock()
 	fake.WaitUntilBucketExistsStub = nil
@@ -23120,7 +23120,7 @@ func (fake *FakeS3) WaitUntilBucketExistsReturnsOnCall(i int, result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) WaitUntilBucketExistsWithContext(arg1 context.Context, arg2 *s3a.HeadBucketInput, arg3 ...request.WaiterOption) error {
+func (fake *FakeClient) WaitUntilBucketExistsWithContext(arg1 context.Context, arg2 *s3a.HeadBucketInput, arg3 ...request.WaiterOption) error {
 	fake.waitUntilBucketExistsWithContextMutex.Lock()
 	ret, specificReturn := fake.waitUntilBucketExistsWithContextReturnsOnCall[len(fake.waitUntilBucketExistsWithContextArgsForCall)]
 	fake.waitUntilBucketExistsWithContextArgsForCall = append(fake.waitUntilBucketExistsWithContextArgsForCall, struct {
@@ -23140,26 +23140,26 @@ func (fake *FakeS3) WaitUntilBucketExistsWithContext(arg1 context.Context, arg2 
 	return fakeReturns.result1
 }
 
-func (fake *FakeS3) WaitUntilBucketExistsWithContextCallCount() int {
+func (fake *FakeClient) WaitUntilBucketExistsWithContextCallCount() int {
 	fake.waitUntilBucketExistsWithContextMutex.RLock()
 	defer fake.waitUntilBucketExistsWithContextMutex.RUnlock()
 	return len(fake.waitUntilBucketExistsWithContextArgsForCall)
 }
 
-func (fake *FakeS3) WaitUntilBucketExistsWithContextCalls(stub func(context.Context, *s3a.HeadBucketInput, ...request.WaiterOption) error) {
+func (fake *FakeClient) WaitUntilBucketExistsWithContextCalls(stub func(context.Context, *s3a.HeadBucketInput, ...request.WaiterOption) error) {
 	fake.waitUntilBucketExistsWithContextMutex.Lock()
 	defer fake.waitUntilBucketExistsWithContextMutex.Unlock()
 	fake.WaitUntilBucketExistsWithContextStub = stub
 }
 
-func (fake *FakeS3) WaitUntilBucketExistsWithContextArgsForCall(i int) (context.Context, *s3a.HeadBucketInput, []request.WaiterOption) {
+func (fake *FakeClient) WaitUntilBucketExistsWithContextArgsForCall(i int) (context.Context, *s3a.HeadBucketInput, []request.WaiterOption) {
 	fake.waitUntilBucketExistsWithContextMutex.RLock()
 	defer fake.waitUntilBucketExistsWithContextMutex.RUnlock()
 	argsForCall := fake.waitUntilBucketExistsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) WaitUntilBucketExistsWithContextReturns(result1 error) {
+func (fake *FakeClient) WaitUntilBucketExistsWithContextReturns(result1 error) {
 	fake.waitUntilBucketExistsWithContextMutex.Lock()
 	defer fake.waitUntilBucketExistsWithContextMutex.Unlock()
 	fake.WaitUntilBucketExistsWithContextStub = nil
@@ -23168,7 +23168,7 @@ func (fake *FakeS3) WaitUntilBucketExistsWithContextReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) WaitUntilBucketExistsWithContextReturnsOnCall(i int, result1 error) {
+func (fake *FakeClient) WaitUntilBucketExistsWithContextReturnsOnCall(i int, result1 error) {
 	fake.waitUntilBucketExistsWithContextMutex.Lock()
 	defer fake.waitUntilBucketExistsWithContextMutex.Unlock()
 	fake.WaitUntilBucketExistsWithContextStub = nil
@@ -23182,7 +23182,7 @@ func (fake *FakeS3) WaitUntilBucketExistsWithContextReturnsOnCall(i int, result1
 	}{result1}
 }
 
-func (fake *FakeS3) WaitUntilBucketNotExists(arg1 *s3a.HeadBucketInput) error {
+func (fake *FakeClient) WaitUntilBucketNotExists(arg1 *s3a.HeadBucketInput) error {
 	fake.waitUntilBucketNotExistsMutex.Lock()
 	ret, specificReturn := fake.waitUntilBucketNotExistsReturnsOnCall[len(fake.waitUntilBucketNotExistsArgsForCall)]
 	fake.waitUntilBucketNotExistsArgsForCall = append(fake.waitUntilBucketNotExistsArgsForCall, struct {
@@ -23200,26 +23200,26 @@ func (fake *FakeS3) WaitUntilBucketNotExists(arg1 *s3a.HeadBucketInput) error {
 	return fakeReturns.result1
 }
 
-func (fake *FakeS3) WaitUntilBucketNotExistsCallCount() int {
+func (fake *FakeClient) WaitUntilBucketNotExistsCallCount() int {
 	fake.waitUntilBucketNotExistsMutex.RLock()
 	defer fake.waitUntilBucketNotExistsMutex.RUnlock()
 	return len(fake.waitUntilBucketNotExistsArgsForCall)
 }
 
-func (fake *FakeS3) WaitUntilBucketNotExistsCalls(stub func(*s3a.HeadBucketInput) error) {
+func (fake *FakeClient) WaitUntilBucketNotExistsCalls(stub func(*s3a.HeadBucketInput) error) {
 	fake.waitUntilBucketNotExistsMutex.Lock()
 	defer fake.waitUntilBucketNotExistsMutex.Unlock()
 	fake.WaitUntilBucketNotExistsStub = stub
 }
 
-func (fake *FakeS3) WaitUntilBucketNotExistsArgsForCall(i int) *s3a.HeadBucketInput {
+func (fake *FakeClient) WaitUntilBucketNotExistsArgsForCall(i int) *s3a.HeadBucketInput {
 	fake.waitUntilBucketNotExistsMutex.RLock()
 	defer fake.waitUntilBucketNotExistsMutex.RUnlock()
 	argsForCall := fake.waitUntilBucketNotExistsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) WaitUntilBucketNotExistsReturns(result1 error) {
+func (fake *FakeClient) WaitUntilBucketNotExistsReturns(result1 error) {
 	fake.waitUntilBucketNotExistsMutex.Lock()
 	defer fake.waitUntilBucketNotExistsMutex.Unlock()
 	fake.WaitUntilBucketNotExistsStub = nil
@@ -23228,7 +23228,7 @@ func (fake *FakeS3) WaitUntilBucketNotExistsReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) WaitUntilBucketNotExistsReturnsOnCall(i int, result1 error) {
+func (fake *FakeClient) WaitUntilBucketNotExistsReturnsOnCall(i int, result1 error) {
 	fake.waitUntilBucketNotExistsMutex.Lock()
 	defer fake.waitUntilBucketNotExistsMutex.Unlock()
 	fake.WaitUntilBucketNotExistsStub = nil
@@ -23242,7 +23242,7 @@ func (fake *FakeS3) WaitUntilBucketNotExistsReturnsOnCall(i int, result1 error) 
 	}{result1}
 }
 
-func (fake *FakeS3) WaitUntilBucketNotExistsWithContext(arg1 context.Context, arg2 *s3a.HeadBucketInput, arg3 ...request.WaiterOption) error {
+func (fake *FakeClient) WaitUntilBucketNotExistsWithContext(arg1 context.Context, arg2 *s3a.HeadBucketInput, arg3 ...request.WaiterOption) error {
 	fake.waitUntilBucketNotExistsWithContextMutex.Lock()
 	ret, specificReturn := fake.waitUntilBucketNotExistsWithContextReturnsOnCall[len(fake.waitUntilBucketNotExistsWithContextArgsForCall)]
 	fake.waitUntilBucketNotExistsWithContextArgsForCall = append(fake.waitUntilBucketNotExistsWithContextArgsForCall, struct {
@@ -23262,26 +23262,26 @@ func (fake *FakeS3) WaitUntilBucketNotExistsWithContext(arg1 context.Context, ar
 	return fakeReturns.result1
 }
 
-func (fake *FakeS3) WaitUntilBucketNotExistsWithContextCallCount() int {
+func (fake *FakeClient) WaitUntilBucketNotExistsWithContextCallCount() int {
 	fake.waitUntilBucketNotExistsWithContextMutex.RLock()
 	defer fake.waitUntilBucketNotExistsWithContextMutex.RUnlock()
 	return len(fake.waitUntilBucketNotExistsWithContextArgsForCall)
 }
 
-func (fake *FakeS3) WaitUntilBucketNotExistsWithContextCalls(stub func(context.Context, *s3a.HeadBucketInput, ...request.WaiterOption) error) {
+func (fake *FakeClient) WaitUntilBucketNotExistsWithContextCalls(stub func(context.Context, *s3a.HeadBucketInput, ...request.WaiterOption) error) {
 	fake.waitUntilBucketNotExistsWithContextMutex.Lock()
 	defer fake.waitUntilBucketNotExistsWithContextMutex.Unlock()
 	fake.WaitUntilBucketNotExistsWithContextStub = stub
 }
 
-func (fake *FakeS3) WaitUntilBucketNotExistsWithContextArgsForCall(i int) (context.Context, *s3a.HeadBucketInput, []request.WaiterOption) {
+func (fake *FakeClient) WaitUntilBucketNotExistsWithContextArgsForCall(i int) (context.Context, *s3a.HeadBucketInput, []request.WaiterOption) {
 	fake.waitUntilBucketNotExistsWithContextMutex.RLock()
 	defer fake.waitUntilBucketNotExistsWithContextMutex.RUnlock()
 	argsForCall := fake.waitUntilBucketNotExistsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) WaitUntilBucketNotExistsWithContextReturns(result1 error) {
+func (fake *FakeClient) WaitUntilBucketNotExistsWithContextReturns(result1 error) {
 	fake.waitUntilBucketNotExistsWithContextMutex.Lock()
 	defer fake.waitUntilBucketNotExistsWithContextMutex.Unlock()
 	fake.WaitUntilBucketNotExistsWithContextStub = nil
@@ -23290,7 +23290,7 @@ func (fake *FakeS3) WaitUntilBucketNotExistsWithContextReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) WaitUntilBucketNotExistsWithContextReturnsOnCall(i int, result1 error) {
+func (fake *FakeClient) WaitUntilBucketNotExistsWithContextReturnsOnCall(i int, result1 error) {
 	fake.waitUntilBucketNotExistsWithContextMutex.Lock()
 	defer fake.waitUntilBucketNotExistsWithContextMutex.Unlock()
 	fake.WaitUntilBucketNotExistsWithContextStub = nil
@@ -23304,7 +23304,7 @@ func (fake *FakeS3) WaitUntilBucketNotExistsWithContextReturnsOnCall(i int, resu
 	}{result1}
 }
 
-func (fake *FakeS3) WaitUntilObjectExists(arg1 *s3a.HeadObjectInput) error {
+func (fake *FakeClient) WaitUntilObjectExists(arg1 *s3a.HeadObjectInput) error {
 	fake.waitUntilObjectExistsMutex.Lock()
 	ret, specificReturn := fake.waitUntilObjectExistsReturnsOnCall[len(fake.waitUntilObjectExistsArgsForCall)]
 	fake.waitUntilObjectExistsArgsForCall = append(fake.waitUntilObjectExistsArgsForCall, struct {
@@ -23322,26 +23322,26 @@ func (fake *FakeS3) WaitUntilObjectExists(arg1 *s3a.HeadObjectInput) error {
 	return fakeReturns.result1
 }
 
-func (fake *FakeS3) WaitUntilObjectExistsCallCount() int {
+func (fake *FakeClient) WaitUntilObjectExistsCallCount() int {
 	fake.waitUntilObjectExistsMutex.RLock()
 	defer fake.waitUntilObjectExistsMutex.RUnlock()
 	return len(fake.waitUntilObjectExistsArgsForCall)
 }
 
-func (fake *FakeS3) WaitUntilObjectExistsCalls(stub func(*s3a.HeadObjectInput) error) {
+func (fake *FakeClient) WaitUntilObjectExistsCalls(stub func(*s3a.HeadObjectInput) error) {
 	fake.waitUntilObjectExistsMutex.Lock()
 	defer fake.waitUntilObjectExistsMutex.Unlock()
 	fake.WaitUntilObjectExistsStub = stub
 }
 
-func (fake *FakeS3) WaitUntilObjectExistsArgsForCall(i int) *s3a.HeadObjectInput {
+func (fake *FakeClient) WaitUntilObjectExistsArgsForCall(i int) *s3a.HeadObjectInput {
 	fake.waitUntilObjectExistsMutex.RLock()
 	defer fake.waitUntilObjectExistsMutex.RUnlock()
 	argsForCall := fake.waitUntilObjectExistsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) WaitUntilObjectExistsReturns(result1 error) {
+func (fake *FakeClient) WaitUntilObjectExistsReturns(result1 error) {
 	fake.waitUntilObjectExistsMutex.Lock()
 	defer fake.waitUntilObjectExistsMutex.Unlock()
 	fake.WaitUntilObjectExistsStub = nil
@@ -23350,7 +23350,7 @@ func (fake *FakeS3) WaitUntilObjectExistsReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) WaitUntilObjectExistsReturnsOnCall(i int, result1 error) {
+func (fake *FakeClient) WaitUntilObjectExistsReturnsOnCall(i int, result1 error) {
 	fake.waitUntilObjectExistsMutex.Lock()
 	defer fake.waitUntilObjectExistsMutex.Unlock()
 	fake.WaitUntilObjectExistsStub = nil
@@ -23364,7 +23364,7 @@ func (fake *FakeS3) WaitUntilObjectExistsReturnsOnCall(i int, result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) WaitUntilObjectExistsWithContext(arg1 context.Context, arg2 *s3a.HeadObjectInput, arg3 ...request.WaiterOption) error {
+func (fake *FakeClient) WaitUntilObjectExistsWithContext(arg1 context.Context, arg2 *s3a.HeadObjectInput, arg3 ...request.WaiterOption) error {
 	fake.waitUntilObjectExistsWithContextMutex.Lock()
 	ret, specificReturn := fake.waitUntilObjectExistsWithContextReturnsOnCall[len(fake.waitUntilObjectExistsWithContextArgsForCall)]
 	fake.waitUntilObjectExistsWithContextArgsForCall = append(fake.waitUntilObjectExistsWithContextArgsForCall, struct {
@@ -23384,26 +23384,26 @@ func (fake *FakeS3) WaitUntilObjectExistsWithContext(arg1 context.Context, arg2 
 	return fakeReturns.result1
 }
 
-func (fake *FakeS3) WaitUntilObjectExistsWithContextCallCount() int {
+func (fake *FakeClient) WaitUntilObjectExistsWithContextCallCount() int {
 	fake.waitUntilObjectExistsWithContextMutex.RLock()
 	defer fake.waitUntilObjectExistsWithContextMutex.RUnlock()
 	return len(fake.waitUntilObjectExistsWithContextArgsForCall)
 }
 
-func (fake *FakeS3) WaitUntilObjectExistsWithContextCalls(stub func(context.Context, *s3a.HeadObjectInput, ...request.WaiterOption) error) {
+func (fake *FakeClient) WaitUntilObjectExistsWithContextCalls(stub func(context.Context, *s3a.HeadObjectInput, ...request.WaiterOption) error) {
 	fake.waitUntilObjectExistsWithContextMutex.Lock()
 	defer fake.waitUntilObjectExistsWithContextMutex.Unlock()
 	fake.WaitUntilObjectExistsWithContextStub = stub
 }
 
-func (fake *FakeS3) WaitUntilObjectExistsWithContextArgsForCall(i int) (context.Context, *s3a.HeadObjectInput, []request.WaiterOption) {
+func (fake *FakeClient) WaitUntilObjectExistsWithContextArgsForCall(i int) (context.Context, *s3a.HeadObjectInput, []request.WaiterOption) {
 	fake.waitUntilObjectExistsWithContextMutex.RLock()
 	defer fake.waitUntilObjectExistsWithContextMutex.RUnlock()
 	argsForCall := fake.waitUntilObjectExistsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) WaitUntilObjectExistsWithContextReturns(result1 error) {
+func (fake *FakeClient) WaitUntilObjectExistsWithContextReturns(result1 error) {
 	fake.waitUntilObjectExistsWithContextMutex.Lock()
 	defer fake.waitUntilObjectExistsWithContextMutex.Unlock()
 	fake.WaitUntilObjectExistsWithContextStub = nil
@@ -23412,7 +23412,7 @@ func (fake *FakeS3) WaitUntilObjectExistsWithContextReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) WaitUntilObjectExistsWithContextReturnsOnCall(i int, result1 error) {
+func (fake *FakeClient) WaitUntilObjectExistsWithContextReturnsOnCall(i int, result1 error) {
 	fake.waitUntilObjectExistsWithContextMutex.Lock()
 	defer fake.waitUntilObjectExistsWithContextMutex.Unlock()
 	fake.WaitUntilObjectExistsWithContextStub = nil
@@ -23426,7 +23426,7 @@ func (fake *FakeS3) WaitUntilObjectExistsWithContextReturnsOnCall(i int, result1
 	}{result1}
 }
 
-func (fake *FakeS3) WaitUntilObjectNotExists(arg1 *s3a.HeadObjectInput) error {
+func (fake *FakeClient) WaitUntilObjectNotExists(arg1 *s3a.HeadObjectInput) error {
 	fake.waitUntilObjectNotExistsMutex.Lock()
 	ret, specificReturn := fake.waitUntilObjectNotExistsReturnsOnCall[len(fake.waitUntilObjectNotExistsArgsForCall)]
 	fake.waitUntilObjectNotExistsArgsForCall = append(fake.waitUntilObjectNotExistsArgsForCall, struct {
@@ -23444,26 +23444,26 @@ func (fake *FakeS3) WaitUntilObjectNotExists(arg1 *s3a.HeadObjectInput) error {
 	return fakeReturns.result1
 }
 
-func (fake *FakeS3) WaitUntilObjectNotExistsCallCount() int {
+func (fake *FakeClient) WaitUntilObjectNotExistsCallCount() int {
 	fake.waitUntilObjectNotExistsMutex.RLock()
 	defer fake.waitUntilObjectNotExistsMutex.RUnlock()
 	return len(fake.waitUntilObjectNotExistsArgsForCall)
 }
 
-func (fake *FakeS3) WaitUntilObjectNotExistsCalls(stub func(*s3a.HeadObjectInput) error) {
+func (fake *FakeClient) WaitUntilObjectNotExistsCalls(stub func(*s3a.HeadObjectInput) error) {
 	fake.waitUntilObjectNotExistsMutex.Lock()
 	defer fake.waitUntilObjectNotExistsMutex.Unlock()
 	fake.WaitUntilObjectNotExistsStub = stub
 }
 
-func (fake *FakeS3) WaitUntilObjectNotExistsArgsForCall(i int) *s3a.HeadObjectInput {
+func (fake *FakeClient) WaitUntilObjectNotExistsArgsForCall(i int) *s3a.HeadObjectInput {
 	fake.waitUntilObjectNotExistsMutex.RLock()
 	defer fake.waitUntilObjectNotExistsMutex.RUnlock()
 	argsForCall := fake.waitUntilObjectNotExistsArgsForCall[i]
 	return argsForCall.arg1
 }
 
-func (fake *FakeS3) WaitUntilObjectNotExistsReturns(result1 error) {
+func (fake *FakeClient) WaitUntilObjectNotExistsReturns(result1 error) {
 	fake.waitUntilObjectNotExistsMutex.Lock()
 	defer fake.waitUntilObjectNotExistsMutex.Unlock()
 	fake.WaitUntilObjectNotExistsStub = nil
@@ -23472,7 +23472,7 @@ func (fake *FakeS3) WaitUntilObjectNotExistsReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) WaitUntilObjectNotExistsReturnsOnCall(i int, result1 error) {
+func (fake *FakeClient) WaitUntilObjectNotExistsReturnsOnCall(i int, result1 error) {
 	fake.waitUntilObjectNotExistsMutex.Lock()
 	defer fake.waitUntilObjectNotExistsMutex.Unlock()
 	fake.WaitUntilObjectNotExistsStub = nil
@@ -23486,7 +23486,7 @@ func (fake *FakeS3) WaitUntilObjectNotExistsReturnsOnCall(i int, result1 error) 
 	}{result1}
 }
 
-func (fake *FakeS3) WaitUntilObjectNotExistsWithContext(arg1 context.Context, arg2 *s3a.HeadObjectInput, arg3 ...request.WaiterOption) error {
+func (fake *FakeClient) WaitUntilObjectNotExistsWithContext(arg1 context.Context, arg2 *s3a.HeadObjectInput, arg3 ...request.WaiterOption) error {
 	fake.waitUntilObjectNotExistsWithContextMutex.Lock()
 	ret, specificReturn := fake.waitUntilObjectNotExistsWithContextReturnsOnCall[len(fake.waitUntilObjectNotExistsWithContextArgsForCall)]
 	fake.waitUntilObjectNotExistsWithContextArgsForCall = append(fake.waitUntilObjectNotExistsWithContextArgsForCall, struct {
@@ -23506,26 +23506,26 @@ func (fake *FakeS3) WaitUntilObjectNotExistsWithContext(arg1 context.Context, ar
 	return fakeReturns.result1
 }
 
-func (fake *FakeS3) WaitUntilObjectNotExistsWithContextCallCount() int {
+func (fake *FakeClient) WaitUntilObjectNotExistsWithContextCallCount() int {
 	fake.waitUntilObjectNotExistsWithContextMutex.RLock()
 	defer fake.waitUntilObjectNotExistsWithContextMutex.RUnlock()
 	return len(fake.waitUntilObjectNotExistsWithContextArgsForCall)
 }
 
-func (fake *FakeS3) WaitUntilObjectNotExistsWithContextCalls(stub func(context.Context, *s3a.HeadObjectInput, ...request.WaiterOption) error) {
+func (fake *FakeClient) WaitUntilObjectNotExistsWithContextCalls(stub func(context.Context, *s3a.HeadObjectInput, ...request.WaiterOption) error) {
 	fake.waitUntilObjectNotExistsWithContextMutex.Lock()
 	defer fake.waitUntilObjectNotExistsWithContextMutex.Unlock()
 	fake.WaitUntilObjectNotExistsWithContextStub = stub
 }
 
-func (fake *FakeS3) WaitUntilObjectNotExistsWithContextArgsForCall(i int) (context.Context, *s3a.HeadObjectInput, []request.WaiterOption) {
+func (fake *FakeClient) WaitUntilObjectNotExistsWithContextArgsForCall(i int) (context.Context, *s3a.HeadObjectInput, []request.WaiterOption) {
 	fake.waitUntilObjectNotExistsWithContextMutex.RLock()
 	defer fake.waitUntilObjectNotExistsWithContextMutex.RUnlock()
 	argsForCall := fake.waitUntilObjectNotExistsWithContextArgsForCall[i]
 	return argsForCall.arg1, argsForCall.arg2, argsForCall.arg3
 }
 
-func (fake *FakeS3) WaitUntilObjectNotExistsWithContextReturns(result1 error) {
+func (fake *FakeClient) WaitUntilObjectNotExistsWithContextReturns(result1 error) {
 	fake.waitUntilObjectNotExistsWithContextMutex.Lock()
 	defer fake.waitUntilObjectNotExistsWithContextMutex.Unlock()
 	fake.WaitUntilObjectNotExistsWithContextStub = nil
@@ -23534,7 +23534,7 @@ func (fake *FakeS3) WaitUntilObjectNotExistsWithContextReturns(result1 error) {
 	}{result1}
 }
 
-func (fake *FakeS3) WaitUntilObjectNotExistsWithContextReturnsOnCall(i int, result1 error) {
+func (fake *FakeClient) WaitUntilObjectNotExistsWithContextReturnsOnCall(i int, result1 error) {
 	fake.waitUntilObjectNotExistsWithContextMutex.Lock()
 	defer fake.waitUntilObjectNotExistsWithContextMutex.Unlock()
 	fake.WaitUntilObjectNotExistsWithContextStub = nil
@@ -23548,7 +23548,7 @@ func (fake *FakeS3) WaitUntilObjectNotExistsWithContextReturnsOnCall(i int, resu
 	}{result1}
 }
 
-func (fake *FakeS3) Invocations() map[string][][]interface{} {
+func (fake *FakeClient) Invocations() map[string][][]interface{} {
 	fake.invocationsMutex.RLock()
 	defer fake.invocationsMutex.RUnlock()
 	fake.abortMultipartUploadMutex.RLock()
@@ -24168,7 +24168,7 @@ func (fake *FakeS3) Invocations() map[string][][]interface{} {
 	return copiedInvocations
 }
 
-func (fake *FakeS3) recordInvocation(key string, args []interface{}) {
+func (fake *FakeClient) recordInvocation(key string, args []interface{}) {
 	fake.invocationsMutex.Lock()
 	defer fake.invocationsMutex.Unlock()
 	if fake.invocations == nil {
@@ -24180,4 +24180,4 @@ func (fake *FakeS3) recordInvocation(key string, args []interface{}) {
 	fake.invocations[key] = append(fake.invocations[key], args)
 }
 
-var _ s3.S3 = new(FakeS3)
+var _ s3.Client = new(FakeClient)

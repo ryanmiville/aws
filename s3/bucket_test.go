@@ -19,7 +19,7 @@ import (
 
 func TestNewReader(t *testing.T) {
 	t.Run("gets a reader from S3", func(t *testing.T) {
-		client := &s3fakes.FakeS3{}
+		client := &s3fakes.FakeClient{}
 		rc := ioutil.NopCloser(&bytes.Buffer{})
 		resp := &awss3.GetObjectOutput{Body: rc}
 		client.GetObjectWithContextReturns(resp, nil)
@@ -33,7 +33,7 @@ func TestNewReader(t *testing.T) {
 	})
 
 	t.Run("client fails", func(t *testing.T) {
-		client := &s3fakes.FakeS3{}
+		client := &s3fakes.FakeClient{}
 		expected := errors.New("get object failed")
 		client.GetObjectWithContextReturns(nil, expected)
 		b := s3.NewBucket(client, "bucketName")
@@ -47,7 +47,7 @@ func TestNewReader(t *testing.T) {
 
 func TestNewWriter(t *testing.T) {
 	t.Run("writes to s3", func(t *testing.T) {
-		client := &s3fakes.FakeS3{}
+		client := &s3fakes.FakeClient{}
 		var read []byte
 		var readErr error
 		client.UploadWithContextStub = func(_ context.Context, in *s3manager.UploadInput, opts ...func(*s3manager.Uploader)) (*s3manager.UploadOutput, error) {
@@ -75,7 +75,7 @@ func TestNewWriter(t *testing.T) {
 	})
 
 	t.Run("client fails", func(t *testing.T) {
-		client := &s3fakes.FakeS3{}
+		client := &s3fakes.FakeClient{}
 		expected := errors.New("upload failed")
 		client.UploadWithContextStub = func(_ context.Context, in *s3manager.UploadInput, opts ...func(*s3manager.Uploader)) (*s3manager.UploadOutput, error) {
 			ioutil.ReadAll(in.Body)
@@ -99,7 +99,7 @@ func TestNewWriter(t *testing.T) {
 	})
 
 	t.Run("Write after Close", func(t *testing.T) {
-		client := &s3fakes.FakeS3{}
+		client := &s3fakes.FakeClient{}
 		expected := errors.New("sticky error")
 		client.UploadWithContextReturns(nil, expected)
 		b := s3.NewBucket(client, "bucketName")

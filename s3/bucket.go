@@ -10,11 +10,11 @@ import (
 )
 
 type Bucket struct {
-	client S3
+	client Client
 	name   string
 }
 
-func NewBucket(client S3, name string) *Bucket {
+func NewBucket(client Client, name string) *Bucket {
 	return &Bucket{client: client, name: name}
 }
 
